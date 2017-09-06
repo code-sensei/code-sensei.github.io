@@ -1,0 +1,52 @@
+body {
+    text-align: center;
+    color: #fff;
+}
+
+a {
+    color: #fff;
+}
+
+a:hover {
+    color: #1488CC;
+}
+
+h2 {
+    color: grey
+}
+
+.hint {
+    color: #1488CC;
+}
+
+
+/* ff00cc 333399 */
+
+.header {
+    width: 100%;
+    height: 768px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#1488CC, #2B32B2)
+}
+
+.navigation {
+    padding: 7px;
+    width: 100%;
+    background: #2B32B2;
+    border-top: 2px solid #fff;
+}
+
+.fa-2-5x {
+    font-size: 23px;
+}
+
+#projects {
+    padding: 30px;
+}
+
+#projects>h2 {
+    padding-bottom: 10px;
+}
