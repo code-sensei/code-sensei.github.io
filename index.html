@@ -22,6 +22,28 @@
 
 <body>
 
+    <!-- Mobile Navigation bar -->
+    <div class="mobile-navigation hidden-sm-up">
+        <ul class="nav nav-pills justify-content-around">
+            <li class="nav-item">
+                <a class="nav-link fa fa-2-5x fa-folder" href="#projects"></a>
+                <p>Projects</p>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fa fa-2-5x fa-file-text-o" href="resume.html"></a>
+                <p>Resume</p>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fa fa-2-5x fa-envelope" href="#contact"></a>
+                <p>Contact</p>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fa fa-2-5x fa-github-alt" href="https://github.com/code-sensei"></a>
+                <p>Github</p>
+            </li>
+        </ul>
+    </div>
+
     <!-- Header -->
     <div class="header">
         <img class="animated fadeIn mb-4" height="150px" width="150px" src="profile.jpg" alt="Profile Image" style="border-radius: 50%; margin-bottom: 20px">
@@ -30,7 +52,7 @@
     </div>
 
     <!-- Navigation bar -->
-    <div class="navigation">
+    <div class="navigation hidden-xs-down">
         <ul class="nav nav-pills justify-content-around">
             <li class="nav-item">
                 <a class="nav-link fa fa-2-5x fa-folder" href="#projects"></a>
@@ -97,7 +119,27 @@
 
     <!-- Contact Form -->
     <div id="contact">
-        <h2> Contact </h2>
+        <div class="card">
+            <h2 style="color: #fff; padding: 20px"> Contact </h2>
+            <div class="container">
+                <form class="contact">
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text warning-text">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name/Company</label>
+                        <input type="text" class="form-control" id="name" placeholder="Company/Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="Message">Message</label>
+                        <textarea id="message" cols="20" rows="20" type="text" class="form-control" id="message" placeholder="Any thoughts for me?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-outline-white">Send</button>
+                </form>
+            </div>
+        </div>
 
         <!-- <div class="next">
             <span class="fa fa-2x fa-chevron-down" style="padding-top: 70px; color: #ff00cc"></span>
