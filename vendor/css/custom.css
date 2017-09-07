@@ -169,3 +169,9 @@ p.res {
         margin-top: 450px
     }
 }
+
+@media screen and (max-width: 375px) {
+    .skills {
+        margin-top: 500px
+    }
+}
