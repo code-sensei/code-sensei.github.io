@@ -165,6 +165,7 @@ p.res {
     }
     .header {
         height: 650px;
+        background: linear-gradient(#1488CC, #2B32B2);
     }
     .skills {
         margin-top: 450px
