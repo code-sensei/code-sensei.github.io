@@ -40,7 +40,7 @@ textarea#message {
     justify-content: center;
     align-items: center;
     background: linear-gradient(#1488CC, #2B32B2);
-    background-image: url('../../header_img.png');
+/*     background-image: url('../../header_img.png'); */
 }
 
 .navigation {
