@@ -1934,6 +1934,24 @@ nav {
     transform-origin: 100% 50%;
 }
 
+.tab {
+    padding: 20px;
+    color: #3e69fe;
+    font-size: 20px;
+    font-weight: 700;
+    /* background-color: #3e69fe; */
+    border-top: 5px solid #3e69fe;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    color: #3e69fe;
+}
+
+.nav-link {
+    border: 0;
+}
+
 @media (max-width: 767px) {
     nav {
         margin-right: 0;
