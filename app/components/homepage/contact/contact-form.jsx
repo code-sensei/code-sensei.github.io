@@ -11,6 +11,7 @@ function ContactForm() {
     name: '',
     email: '',
     message: '',
+    reply: ''
   });
   const [error, setError] = useState({
     email: false,
@@ -47,6 +48,7 @@ function ContactForm() {
           name: '',
           email: '',
           message: '',
+          reply: ''
         });
       };
     } catch (error) {
