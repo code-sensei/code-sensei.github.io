@@ -19,7 +19,7 @@ function Education() {
       />
       <div className="flex justify-center -translate-y-[1px]">
         <div className="w-3/4">
-          <div className="h-[1px] bg-gradient-to-r from-transparent via-violet-500 to-transparent  w-full" />
+          <div className="h-[1px] bg-gradient-to-r from-transparent blue-400 to-transparent  w-full" />
         </div>
       </div>
 
@@ -55,7 +55,7 @@ function Education() {
                         className="absolute bottom-0 opacity-80"
                       />
                       <div className="flex justify-center">
-                        <p className="text-xs sm:text-sm text-[#16f2b3]">
+                        <p className="text-xs sm:text-sm text-blue-700">
                           {education.duration}
                         </p>
                       </div>

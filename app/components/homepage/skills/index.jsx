@@ -12,7 +12,7 @@ function Skills() {
 
       <div className="flex justify-center -translate-y-[1px]">
         <div className="w-3/4">
-          <div className="h-[1px] bg-gradient-to-r from-transparent via-violet-500 to-transparent  w-full" />
+          <div className="h-[1px] bg-gradient-to-r from-transparent blue-400 to-transparent  w-full" />
         </div>
       </div>
 
@@ -42,7 +42,7 @@ function Skills() {
               <div className="h-full w-full rounded-lg border border-[#1f223c] bg-[#11152c] shadow-none shadow-gray-50 group-hover:border-violet-500 transition-all duration-500">
                 <div className="flex -translate-y-[1px] justify-center">
                   <div className="w-3/4">
-                    <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-violet-500 to-transparent" />
+                    <div className="h-[1px] w-full bg-gradient-to-r from-transparent blue-400 to-transparent" />
                   </div>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-3 p-6">
