@@ -24,6 +24,11 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env: 
+  NEXT_PUBLIC_EMAILJS_SERVICE_ID: service_yb0p81g
+  NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: template_zn0l91z
+  NEXT_PUBLIC_EMAILJS_PUBLIC_KEY: 1wvxeG0CsGuwq_QCf
+
 jobs:
   # Build job
   build:
