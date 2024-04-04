@@ -2,7 +2,7 @@ export const personalData = {
   name: "Babangida Tsowa",
   profile: '/profile.png',
   designation: "Frontend Engineer",
-  description: `In previous roles, I led the development of software tools as Chief Technology Officer at Sweet Ride Nigeria LTD and Lead Frontend Engineer at Clafiya, where I optimized the admin dashboard, doubling user satisfaction and contributing to securing $610,000 in funding. Alongside my core responsibilities, I actively engage in community development, receiving recognition for mentoring and participating in hackathons. With a B.Tech. in Computer Science, I bring expertise in web development and UI/UX design. I am eager to join innovative organizations like Buffer, leveraging my skills to empower small businesses and contribute to a diverse and inclusive work culture.`,
+  description: `As an experienced Chief Technology Officer at Sweet Ride Nigeria LTD, I provide strategic leadership and drive product development to align with business goals. Previously, as Lead Frontend Engineer at Clafiya, I spearheaded transformative projects, contributing to significant funding and user satisfaction improvements. With expertise in web3 technologies, including blockchain projects, I've demonstrated adaptability and proficiency in complex development landscapes. Across roles at Quantum Tech LLC, Encentral Solutions Limited, and Unortodox Solutions, I consistently delivered innovative solutions, recognized for community engagement and tech contributions. I bring diverse skills in web development and UI/UX design, eager to apply them to blockchain projects, driven by a passion for innovation and collaboration.`,
   email: 'tsowababangida@gmail.com',
   phone: '+2347063301032',
   address: 'Abuja, Nigeria',
@@ -13,5 +13,5 @@ export const personalData = {
   // stackOverflow: 'https://stackoverflow.com/users/16840768/abu-said',
   // leetcode: "https://leetcode.com/said3812/",
   devUsername: "codesensei",
-  resume: "https://drive.google.com/file/d/1eyutpKFFhJ9X-qpQGKhUNnVRkB5Wer00/view?usp=sharing"
+  resume: "https://1drv.ms/b/s!ArFNkwUUhTohjDnZdkhMFV7UFcuL"
 }
