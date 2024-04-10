@@ -7,15 +7,17 @@ import { FaCommentAlt } from 'react-icons/fa';
 
 function BlogCard({ blog }) {
 
+  // console.log('Blog: ', blog);
+
   return (
     <div className="border border-[#1d293a] hover:border-[#464c6a] transition-all duration-500 bg-[#1b203e] rounded-lg relative group"
     >
       <div className="h-44 lg:h-52 w-auto cursor-pointer overflow-hidden rounded-t-lg">
         <Image
-          src={blog?.cover_image}
+          src={blog?.cover_image || blog?.social_image}
           height={1080}
           width={1920}
-          alt=""
+          alt={blog?.title}
           className='h-full w-full group-hover:scale-110 transition-all duration-300'
         />
       </div>

@@ -9,7 +9,7 @@ import Projects from "./components/homepage/projects";
 import Skills from "./components/homepage/skills";
 
 async function getData() {
-  const res = await fetch(`https://dev.to/api/articles?perpage=9&username=${personalData.devUsername}`)
+  const res = await fetch(`https://dev.to/api/articles?&username=${personalData.devUsername}`)
 
   if (!res.ok) {
     throw new Error('Failed to fetch data')
@@ -18,8 +18,10 @@ async function getData() {
   const data = await res.json();
 
   const filtered = data.sort((a, b) => new Date(b.published_at) - new Date(a.published_at))
-    .filter((item) => item?.cover_image)
-    .sort(() => Math.random() - 0.9);
+    // .filter((item) => item?.cover_image)
+    // .sort((a, b) => b.public_reactions_count - a.public_reactions_count);
+
+  // console.log('Res: ', filtered);
 
   return filtered;
 };
