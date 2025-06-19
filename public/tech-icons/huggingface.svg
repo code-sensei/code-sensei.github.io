@@ -1,0 +1,14 @@
+<!-- HuggingFace official devicon SVG (2024) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <g>
+    <circle cx="128" cy="128" r="120" fill="#FFD21F"/>
+    <ellipse cx="88" cy="132" rx="15" ry="22" fill="#fff"/>
+    <ellipse cx="168" cy="132" rx="15" ry="22" fill="#fff"/>
+    <ellipse cx="88" cy="132" rx="9" ry="14" fill="#191921"/>
+    <ellipse cx="168" cy="132" rx="9" ry="14" fill="#191921"/>
+    <ellipse cx="101" cy="125" rx="3" ry="4" fill="#fff" opacity="0.7"/>
+    <ellipse cx="181" cy="125" rx="3" ry="4" fill="#fff" opacity="0.7"/>
+    <path d="M128 149c35 0 54 17 59 24-18 22-48.8 21-59 21-10.2 0-41 .8-59-21 5-7 24-24 59-24z" fill="#fff" stroke="#191921" stroke-width="3"/>
+    <rect x="104" y="110" width="48" height="10" rx="5" fill="#191921"/>
+  </g>
+</svg>

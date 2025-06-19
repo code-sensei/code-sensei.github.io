@@ -10,12 +10,12 @@ const Footer = () => {
     {
       name: 'GitHub',
       icon: Github,
-      url: 'https://github.com',
+      url: 'https://github.com/code-sensei',
     },
     {
       name: 'LinkedIn',
       icon: Linkedin,
-      url: 'https://linkedin.com',
+      url: 'https://linkedin.com/in/btsowa',
     },
   ];
 
@@ -32,10 +32,10 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold text-primary">Alex Johnson</h3>
+            <h3 className="text-xl font-bold text-primary">Babangida Tsowa</h3>
             <p className="text-muted-foreground">
               Full Stack Developer passionate about creating beautiful, 
-              functional web applications.
+              functional web applications and delivering complete AI systems.
             </p>
           </div>
 
@@ -62,7 +62,7 @@ const Footer = () => {
             <div className="flex space-x-3">
               {socialLinks.map((social, index) => (
                 <Button key={index} variant="outline" size="icon" asChild>
-                  <a href={social.url} target="_blank" rel="noopener noreferrer">
+                  <a href={social.url} target="_blank" rel="noopener noreferrer" className='hover:bg-primary hover:text-black transition-colors'>
                     <social.icon className="h-5 w-5" />
                     <span className="sr-only">{social.name}</span>
                   </a>
@@ -74,7 +74,7 @@ const Footer = () => {
 
         <div className="mt-8 pt-8 border-t border-border text-center">
           <p className="text-muted-foreground">
-            © {currentYear} Alex Johnson. All rights reserved.
+            © {currentYear} Babangida Tsowa. All rights reserved.
           </p>
         </div>
       </div>

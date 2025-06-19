@@ -5,36 +5,80 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 const Experience = () => {
   const experiences = [
     {
-      company: 'TechCorp Solutions',
-      role: 'Senior Full Stack Developer',
-      duration: '2022 - Present',
-      description: 'Leading development of scalable web applications using React, Node.js, and AWS. Mentoring junior developers and implementing best practices for code quality and performance.',
+      company: 'Ministry of Foreign Affairs, Nigeria',
+      role: 'Software & AI Consultant',
+      duration: 'Oct 2023 – Present',
+      description:
+        'Consulted on and delivered AI-driven and fullstack solutions to improve workflow efficiency and digital reporting, focusing on sustainable transformation across teams.',
       highlights: [
-        'Reduced application load time by 40% through optimization',
-        'Led a team of 5 developers on a major product launch',
-        'Implemented CI/CD pipelines improving deployment efficiency by 60%',
+        'Engineered responsive UIs with React, TypeScript, and Next.js, streamlining internal processes (Fullstack, Consulting).',
+        'Architected frontend for real-time intelligence platforms, optimizing user experience and response times (AI, Fullstack).',
+        'Developed AI tools for workflow automation, increasing operational efficiency (AI, Consulting).',
+        'Aligned development with institutional goals through stakeholder engagement and robust documentation (Consulting).',
+        'Led knowledge-sharing sessions on AI integration and software best practices (AI, Consulting).',
       ],
     },
     {
-      company: 'Digital Innovations Inc',
-      role: 'Frontend Developer',
-      duration: '2020 - 2022',
-      description: 'Developed responsive web applications and mobile-first designs. Collaborated with UX/UI designers to implement pixel-perfect interfaces using React and modern CSS frameworks.',
+      company: 'SweetRide Nigeria LTD',
+      role: 'Chief Technology Officer (CTO)',
+      duration: 'Oct 2022 – Aug 2024',
+      description:
+        'Oversaw product engineering and strategy for scalable mobility platforms, mentoring teams and driving fullstack innovation.',
       highlights: [
-        'Built 15+ responsive web applications',
-        'Improved user engagement by 35% through UX improvements',
-        'Introduced component-based architecture reducing development time by 25%',
+        'Directed design and end-to-end development of operational platforms (Fullstack, Consulting).',
+        'Led PRD authorship and SWOT analyses to inform AI and product strategy (Consulting, AI).',
+        'Mentored engineers, setting standards for code quality and QA (Consulting, Fullstack).',
+        'Automated key business processes, enhancing operational workflows (Fullstack, Consulting).',
       ],
     },
     {
-      company: 'StartupXYZ',
-      role: 'Junior Web Developer',
-      duration: '2019 - 2020',
-      description: 'Worked on various web development projects using HTML, CSS, JavaScript, and PHP. Gained experience in database design and API development.',
+      company: 'Federal Ministry of Foreign Affairs',
+      role: 'Development Team Lead (Contractor)',
+      duration: 'Jan 2023 – Oct 2023',
+      description:
+        'Led delivery of AI-powered platforms for government data analysis and automation, integrating robust APIs for improved analytics.',
       highlights: [
-        'Contributed to 10+ client projects',
-        'Learned modern web development practices',
-        'Collaborated with cross-functional teams',
+        'Built big-data, AI-enabled systems for advanced reporting (AI, Fullstack).',
+        'Designed/implemented RESTful APIs with Node.js, Express, and JWT security (Fullstack).',
+        'Ensured seamless frontend-backend integration for consistent features (Fullstack).',
+        'Promoted agile, collaborative practices using GitHub and Jira (Consulting, Fullstack).',
+      ],
+    },
+    {
+      company: 'Clafiya',
+      role: 'Lead Frontend Engineer',
+      duration: 'Jan 2021 – Oct 2022',
+      description:
+        'Directed frontend development for a health-tech platform, supporting scale, funding, and operational advancements through modular design.',
+      highlights: [
+        'Built/coordinated apps for 1,000+ users using React.js and Next.js (Fullstack).',
+        'Developed modular UI systems, enabling rapid feature iterations (Fullstack).',
+        'Enhanced admin workflows, contributing to successful Series A fundraising (Consulting, Fullstack).',
+        'Collaborated with cross-functional teams for robust product delivery (Consulting, Fullstack).',
+      ],
+    },
+    {
+      company: 'Quantum Tech LLC',
+      role: 'Frontend Developer (Web3, Blockchain)',
+      duration: 'Mar 2022 – Aug 2022',
+      description:
+        'Developed interfaces for decentralized applications, collaborating on fullstack and blockchain integrations for NFT platforms.',
+      highlights: [
+        'Delivered DApp features in Vue 3/Nuxt.js with blockchain backend integration (Fullstack, Consulting).',
+        'Implemented NFT marketplace interfaces for Ethereum/Polygon ecosystems (Fullstack).',
+        'Collaborated with Solidity and backend teams to ensure full product delivery (Fullstack, Consulting).',
+      ],
+    },
+    {
+      company: 'Asusu Technology',
+      role: 'Full Stack Developer',
+      duration: 'Feb 2020 – Mar 2021',
+      description:
+        'Engineered and maintained digital finance platforms, focusing on seamless user experience and scalable architecture.',
+      highlights: [
+        'Integrated RESTful APIs with dynamic frontends for seamless data flow (Fullstack).',
+        'Automated build/deploy pipelines for faster, more robust releases (Fullstack).',
+        'Enhanced payment workflows, improving operational efficiency (Fullstack, Consulting).',
       ],
     },
   ];
@@ -99,6 +143,83 @@ const Experience = () => {
           </div>
         </div>
       </div>
+      {/* Key Achievements Section */}
+      <section className="pt-12">
+        <div className="text-center mb-10">
+          <h3 className="text-2xl font-bold mb-2">Key Achievements</h3>
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            Selected highlights across my professional and community journey.
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+          <Card className="h-full shadow-md border-l-8 border-primary flex flex-col">
+            <CardContent className="pt-6 pb-6 flex flex-col flex-1">
+              <div className="mb-2 flex items-center gap-2">
+                <span className="text-2xl" role="img" aria-label="funding">🚀</span>
+                <span className="font-semibold text-base">Series A Funding</span>
+              </div>
+              <p className="text-muted-foreground text-sm flex-1">
+                Contributed to securing $610,000 in Series A funding at Clafiya by driving and leading frontend innovation.
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="h-full shadow-md border-l-8 border-primary flex flex-col">
+            <CardContent className="pt-6 pb-6 flex flex-col flex-1">
+              <div className="mb-2 flex items-center gap-2">
+                <span className="text-2xl" role="img" aria-label="ai">🤖</span>
+                <span className="font-semibold text-base">AI Solution Delivery</span>
+              </div>
+              <p className="text-muted-foreground text-sm flex-1">
+                Delivered a big-data AI solution for the Ministry of Foreign Affairs, improving national security reporting processes.
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="h-full shadow-md border-l-8 border-primary flex flex-col">
+            <CardContent className="pt-6 pb-6 flex flex-col flex-1">
+              <div className="mb-2 flex items-center gap-2">
+                <span className="text-2xl" role="img" aria-label="event">🏆</span>
+                <span className="font-semibold text-base">Major Event Leadership</span>
+              </div>
+              <p className="text-muted-foreground text-sm flex-1">
+                Organized the NACOSS National Hackathon and coordinated two Google Hash Code Competitions.
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="h-full shadow-md border-l-8 border-primary flex flex-col">
+            <CardContent className="pt-6 pb-6 flex flex-col flex-1">
+              <div className="mb-2 flex items-center gap-2">
+                <span className="text-2xl" role="img" aria-label="github">💻</span>
+                <span className="font-semibold text-base">Community Training</span>
+              </div>
+              <p className="text-muted-foreground text-sm flex-1">
+                Led a GitHub workshop attended by over 100 participants, focusing on platform best practices.
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="h-full shadow-md border-l-8 border-primary flex flex-col">
+            <CardContent className="pt-6 pb-6 flex flex-col flex-1">
+              <div className="mb-2 flex items-center gap-2">
+                <span className="text-2xl" role="img" aria-label="ds">📊</span>
+                <span className="font-semibold text-base">AI Bootcamp Organizer</span>
+              </div>
+              <p className="text-muted-foreground text-sm flex-1">
+                Organized a two-week Data Science and Artificial Intelligence Bootcamp in partnership with DSN Nigeria.
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="h-full shadow-md border-l-8 border-primary flex flex-col">
+            <CardContent className="pt-6 pb-6 flex flex-col flex-1">
+              <div className="mb-2 flex items-center gap-2">
+                <span className="text-2xl" role="img" aria-label="policy">📄</span>
+                <span className="font-semibold text-base">National Policy Contributor</span>
+              </div>
+              <p className="text-muted-foreground text-sm flex-1">
+                Participated in reviewing the National AI Strategy and NITDA’s Software Development Guidelines.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
     </section>
   );
 };

@@ -41,17 +41,17 @@ const Contact = () => {
   const contactInfo = [
     {
       label: 'Email',
-      value: 'alex.johnson@example.com',
-      href: 'mailto:alex.johnson@example.com',
+      value: 'tsowababangida@gmail.com',
+      href: 'mailto:tsowababangida@gmail.com',
     },
     {
       label: 'Phone',
-      value: '+1 (555) 123-4567',
+      value: '+234 706-330-1032',
       href: 'tel:+15551234567',
     },
     {
       label: 'Location',
-      value: 'San Francisco, CA',
+      value: 'Federal Capital Territory, NG',
       href: '#',
     },
   ];
@@ -139,7 +139,7 @@ const Contact = () => {
             </div>
 
             {/* Illustration */}
-            <div className="flex justify-center">
+            {/* <div className="flex justify-center">
               <div className="relative">
                 <img
                   src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop"
@@ -148,7 +148,7 @@ const Contact = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-lg"></div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

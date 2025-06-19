@@ -5,49 +5,27 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 const Education = () => {
   const education = [
     {
-      institution: 'University of Technology',
-      degree: 'Bachelor of Science in Computer Science',
-      duration: '2015 - 2019',
-      grade: 'Magna Cum Laude',
-      description: 'Focused on software engineering, algorithms, and web technologies. Graduated with honors.',
+      institution: "Federal University of Technology, Minna",
+      degree: "B.Tech., Computer Science (Second Class, Upper Division)",
+      duration: "2014 – 2021",
+      grade: "3.65/5.00",
+      description: "",
       highlights: [
-        'Dean\'s List for 6 semesters',
-        'Capstone project: Full-stack web application for student management',
-        'Member of Computer Science Society',
-      ],
-    },
-    {
-      institution: 'Tech Academy',
-      degree: 'Full Stack Web Development Bootcamp',
-      duration: '2019',
-      grade: 'Certificate of Completion',
-      description: 'Intensive 12-week program covering modern web development technologies and best practices.',
-      highlights: [
-        'Built 5 full-stack applications',
-        'Learned React, Node.js, and database design',
-        'Collaborative projects with industry mentors',
+        "Director of Software, SICT: Organized Google Hash Code Competitions (2), hackathons, AI/DS labs.",
+        "Co‑founded FUTMINNA DevCircle, nurturing Google Developer Groups, GDSC, Ingressive for Good, Women Tech Makers, GitHub Campus Ambassadors, etc.",
+        "Developed a faculty payment portal adopted across departments.",
+        "Organized a two-week Data Science and Artificial Intelligence Bootcamp in partnership with DSN Nigeria."
       ],
     },
   ];
 
   const certifications = [
     {
-      name: 'AWS Certified Solutions Architect',
-      issuer: 'Amazon Web Services',
-      date: '2023',
-      level: 'Associate',
-    },
-    {
-      name: 'Google Cloud Professional Developer',
-      issuer: 'Google Cloud',
-      date: '2022',
-      level: 'Professional',
-    },
-    {
-      name: 'MongoDB Certified Developer',
-      issuer: 'MongoDB University',
-      date: '2021',
-      level: 'Associate',
+      name: "AI Engineering Professional Certification (In Progress)",
+      issuer: "IBM Skills Network",
+      date: "Expected Completion: November 2025",
+      level: "In Progress",
+      link: 'https://www.coursera.org/professional-certificates/ai-engineer'
     },
   ];
 
@@ -57,7 +35,7 @@ const Education = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Education & Certifications</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            My academic background and professional certifications
+            Academic history, highlights, and recognized professional certifications.
           </p>
         </div>
 
@@ -76,15 +54,15 @@ const Education = () => {
                       </CardDescription>
                     </div>
                     <div className="text-right">
-                      <div className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full mb-1">
+                      <div className="text-xs w-max text-muted-foreground bg-muted px-3 py-1 rounded-full mb-2">
                         {edu.duration}
                       </div>
-                      <div className="text-sm font-medium text-primary">
+                      <div className="text-xs w-min text-black bg-primary px-3 py-1 rounded-full mb-1">
                         {edu.grade}
                       </div>
                     </div>
                   </div>
-                  <p className="text-muted-foreground">{edu.description}</p>
+                  {/* No program description */}
                 </CardHeader>
                 <CardContent>
                   <h4 className="font-semibold mb-3">Highlights:</h4>
@@ -110,13 +88,16 @@ const Education = () => {
               <Card key={index} className="text-center hover:shadow-md transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-lg">{cert.name}</CardTitle>
-                  <CardDescription>{cert.issuer}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-2">
-                    <div className="text-sm font-medium text-primary">{cert.level}</div>
-                    <div className="text-sm text-muted-foreground">{cert.date}</div>
-                  </div>
+                  <CardDescription>{cert.issuer}</CardDescription>
+                  <CardDescription>{cert.date}</CardDescription>
+                  <CardDescription>{cert.level}</CardDescription>
+                  <a href={cert.link} target="_blank" rel="noopener noreferrer" className='mt-4 inline-block text-primary hover:underline'>
+                    {/* <Button> */}
+                      View Program
+                    {/* </Button> */}
+                  </a>
                 </CardContent>
               </Card>
             ))}

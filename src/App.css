@@ -40,3 +40,15 @@
 .read-the-docs {
   color: #888;
 }
+
+n8n.logo-icon {
+  width: 100%
+}
+
+n8n.path-icon {
+  fill: #fd8925
+}
+
+n8n.path-name {
+  fill: #fd8925
+}

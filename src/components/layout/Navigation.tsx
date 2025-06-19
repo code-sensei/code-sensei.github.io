@@ -13,9 +13,10 @@ const Navigation = () => {
     { id: 'skills', label: 'Skills' },
     { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
+    { id: 'community', label: 'Community & Mentorship' },
     { id: 'education', label: 'Education' },
-    { id: 'blog', label: 'Blog' },
-    { id: 'contact', label: 'Contact' },
+    // { id: 'blog', label: 'Blog' },
+    // { id: 'contact', label: 'Contact' },
   ];
 
   useEffect(() => {
@@ -48,9 +49,15 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0">
-            <span className="text-xl font-bold text-primary">Portfolio</span>
-          </div>
+          {/* <div className="flex-shrink-0">
+            <img
+              src="/profile-image.png"
+              alt="profile image"
+              width={40}
+              height={40}
+              className="rounded-full"
+            /> 
+          </div> */}
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
