@@ -8,7 +8,7 @@ const Navigation = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const navItems = [
+  const navItems: Array<{ id: string; label: string; isRoute?: boolean }> = [
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
     { id: "skills", label: "Skills" },
@@ -16,7 +16,7 @@ const Navigation = () => {
     { id: "experience", label: "Experience" },
     { id: "community", label: "Community" },
     { id: "education", label: "Education" },
-    { id: "blog", label: "Blog", isRoute: true },
+    // { id: "blog", label: "Blog", isRoute: true },
   ];
 
   useEffect(() => {
