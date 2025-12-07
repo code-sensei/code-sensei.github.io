@@ -8,7 +8,14 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blog/posts";
-import { Calendar, Clock, ArrowRight, BookOpen } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  ArrowRight,
+  BookOpen,
+  TrendingUp,
+  Sparkles,
+} from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { BlogPost } from "@/types/blog";
@@ -26,7 +33,7 @@ const Blog = () => {
       } catch (error) {
         console.error("Error loading featured posts:", error);
       } finally {
-        setLoading(false);
+        setTimeout(() => setLoading(false), 300);
       }
     };
     loadPosts();
@@ -40,11 +47,30 @@ const Blog = () => {
     navigate("/blog");
   };
 
+  // Loading skeleton
   if (loading) {
     return (
-      <section className="py-20 px-4 bg-background/50">
+      <section className="py-20 px-4 bg-gradient-to-b from-background to-background/50">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center">Loading...</div>
+          <div className="text-center mb-12 animate-pulse">
+            <div className="h-10 w-64 bg-muted rounded-lg mx-auto mb-4" />
+            <div className="h-6 w-96 bg-muted rounded-lg mx-auto" />
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="animate-pulse"
+                style={{ animationDelay: `${i * 100}ms` }}
+              >
+                <div className="h-48 bg-muted rounded-2xl mb-4" />
+                <div className="h-6 bg-muted rounded-lg mb-3 w-3/4" />
+                <div className="h-4 bg-muted rounded-lg mb-2 w-full" />
+                <div className="h-4 bg-muted rounded-lg w-2/3" />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     );
@@ -55,59 +81,80 @@ const Blog = () => {
   }
 
   return (
-    <section id="blog" className="py-16 md:py-24 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 px-4 bg-gradient-to-b from-background to-background/50 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16 animate-fadeIn">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <BookOpen className="w-6 h-6 text-primary" />
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-              Latest from the Blog
-            </h2>
+        <div className="text-center mb-16 animate-fadeIn">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6 animate-slideDown">
+            <BookOpen className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium text-primary">
+              Latest Insights
+            </span>
           </div>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Insights on AI, web development, career growth, and technology
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 animate-slideDown">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60">
+              Featured Articles
+            </span>
+          </h2>
+
+          <p
+            className="text-lg text-muted-foreground max-w-2xl mx-auto animate-slideDown"
+            style={{ animationDelay: "100ms" }}
+          >
+            Dive into the latest thoughts on AI, development, and technology
             leadership
           </p>
         </div>
 
         {/* Featured Posts Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
           {featuredPosts.map((post, index) => (
             <Card
               key={post.id}
-              className="group card-hover overflow-hidden border-2 hover:border-primary/50 cursor-pointer flex flex-col"
+              className="group relative overflow-hidden border hover:border-primary/50 transition-all duration-500 cursor-pointer hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 bg-gradient-to-br from-card to-card/50 animate-slideUp"
               onClick={() => handlePostClick(post.slug)}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Cover Image */}
-              <div className="relative h-48 md:h-56 overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent z-10" />
                 <img
                   src={post.coverImage || "/blog/default.jpg"}
                   alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+                {/* Featured Badge */}
+                <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r from-primary to-primary/80 text-primary-foreground text-xs font-semibold shadow-lg">
+                  <TrendingUp className="w-3 h-3" />
+                  Featured
+                </div>
 
                 {/* Category Badge */}
-                <div className="absolute top-4 right-4 bg-primary/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-primary-foreground">
+                <div className="absolute top-3 right-3 z-20 px-3 py-1 rounded-full bg-background/90 backdrop-blur-sm text-xs font-medium border border-border">
                   {post.category}
                 </div>
               </div>
 
-              {/* Card Content */}
-              <CardHeader className="flex-grow">
-                <CardTitle className="text-lg md:text-xl group-hover:text-primary transition-colors line-clamp-2">
+              <CardHeader>
+                <CardTitle className="text-xl font-bold group-hover:text-primary transition-colors line-clamp-2 leading-tight">
                   {post.title}
                 </CardTitle>
-                <CardDescription className="text-sm line-clamp-2">
+                <CardDescription className="text-sm line-clamp-2 leading-relaxed">
                   {post.excerpt}
                 </CardDescription>
               </CardHeader>
 
               <CardContent className="space-y-4">
                 {/* Meta Information */}
-                <div className="flex items-center justify-between text-xs text-muted-foreground">
+                <div className="flex items-center gap-4 text-xs text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-3.5 h-3.5" />
                     {formatDistanceToNow(new Date(post.publishedAt), {
@@ -116,7 +163,7 @@ const Blog = () => {
                   </div>
                   <div className="flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" />
-                    {post.readingTime} min read
+                    {post.readingTime} min
                   </div>
                 </div>
 
@@ -125,40 +172,35 @@ const Blog = () => {
                   {post.tags.slice(0, 3).map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-0.5 bg-primary/10 text-primary rounded-full text-xs font-medium"
+                      className="px-2.5 py-0.5 bg-primary/10 text-primary rounded-full text-xs font-medium"
                     >
                       {tag}
                     </span>
                   ))}
-                  {post.tags.length > 3 && (
-                    <span className="px-2 py-0.5 bg-muted text-muted-foreground rounded-full text-xs font-medium">
-                      +{post.tags.length - 3}
-                    </span>
-                  )}
                 </div>
 
-                {/* Read More Button */}
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="w-full group-hover:bg-primary/10 group-hover:text-primary transition-all"
-                >
-                  Read Article
-                  <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                {/* Read More Indicator */}
+                <div className="flex items-center gap-2 text-primary text-sm font-medium pt-2 group-hover:gap-3 transition-all">
+                  <span>Read article</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
         {/* View All Button */}
-        <div className="text-center animate-fadeIn">
+        <div
+          className="text-center animate-fadeIn"
+          style={{ animationDelay: "400ms" }}
+        >
           <Button
             size="lg"
             onClick={handleViewAllClick}
-            className="group transition-all hover:scale-105"
+            className="group rounded-full px-8 shadow-lg hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 hover:scale-105"
           >
-            View All Posts
+            <Sparkles className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
+            View All Articles
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
