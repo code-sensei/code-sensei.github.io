@@ -104,9 +104,11 @@ const Navigation = () => {
             onClick={() => scrollToSection("home")}
             className="flex-shrink-0 group"
           >
-            <span className="text-xl md:text-2xl font-bold gradient-text group-hover:scale-105 transition-transform inline-block">
-              BT
-            </span>
+            <img
+              src="/profile-image.png"
+              alt="Babangida Tsowa"
+              className="h-10 w-10 md:h-12 md:w-12 rounded-full ring-2 ring-primary/20 group-hover:ring-primary/40 transition-all duration-300 group-hover:scale-105 object-cover"
+            />
           </button>
 
           {/* Desktop Navigation */}
