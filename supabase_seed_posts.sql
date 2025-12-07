@@ -1,12 +1,11 @@
 -- Seed blog posts table with existing static data
 -- Run this in Supabase SQL Editor after creating the table
 
--- Clear existing data (optional - remove this line if you want to keep existing posts)
+-- Clear existing data (optional - uncomment this line if you want to clear existing posts first)
 -- DELETE FROM public.blog_posts;
 
--- Insert all blog posts
+-- Insert all blog posts (letting the database generate UUIDs)
 INSERT INTO public.blog_posts (
-  id,
   title,
   slug,
   excerpt,
@@ -24,7 +23,6 @@ INSERT INTO public.blog_posts (
   published
 ) VALUES
 (
-  '1'::uuid,
   'Building Scalable AI Systems: Lessons from Production',
   'building-scalable-ai-systems',
   'Discover the key principles and best practices I''ve learned while building and deploying AI systems at scale for government and enterprise clients.',
@@ -102,7 +100,6 @@ What challenges have you faced in building AI systems? Share your experiences in
   true
 ),
 (
-  '2'::uuid,
   'React Performance Optimization: Real-World Techniques',
   'react-performance-optimization',
   'Learn practical React performance optimization techniques that I''ve used to improve load times and user experience in production applications.',
@@ -254,7 +251,6 @@ What performance techniques have worked for you?',
   true
 ),
 (
-  '3'::uuid,
   'My Journey: From Student to CTO',
   'journey-student-to-cto',
   'Reflections on my career journey from organizing hackathons at university to becoming a CTO, and the lessons learned along the way.',
@@ -354,7 +350,6 @@ What''s your career story? I''d love to hear it!',
   true
 ),
 (
-  '4'::uuid,
   'TypeScript Best Practices for Large Projects',
   'typescript-best-practices',
   'Essential TypeScript patterns and practices I use to maintain type safety and code quality in large-scale applications.',
@@ -481,4 +476,7 @@ TypeScript is a powerful tool when used correctly. These practices have helped m
   false,
   true
 )
-ON CONFLICT (id) DO NOTHING;
+ON CONFLICT (slug) DO NOTHING;
+
+-- Verify the insert
+SELECT COUNT(*) as total_posts FROM public.blog_posts;
