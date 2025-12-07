@@ -13,6 +13,7 @@ import {
   getFeaturedPosts,
   getPostsByCategory,
   getAllTags,
+  getAllCategories,
 } from "@/data/blog/posts";
 import { BlogPost } from "@/types/blog";
 import {
@@ -34,6 +35,7 @@ const Blog = () => {
   const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
   const [allTags, setAllTags] = useState<string[]>([]);
+  const [categories, setCategories] = useState<string[]>(["All"]);
   const [categoryPosts, setCategoryPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -43,14 +45,16 @@ const Blog = () => {
   useEffect(() => {
     const loadInitialData = async () => {
       try {
-        const [posts, featured, tags] = await Promise.all([
+        const [posts, featured, tags, cats] = await Promise.all([
           getBlogPosts(),
           getFeaturedPosts(),
           getAllTags(),
+          getAllCategories(),
         ]);
         setAllPosts(posts);
         setFeaturedPosts(featured);
         setAllTags(tags);
+        setCategories(cats);
         setCategoryPosts(posts);
       } catch (error) {
         console.error("Error loading blog data:", error);
@@ -110,6 +114,16 @@ const Blog = () => {
       setSelectedTag(tag);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background pt-20 flex items-center justify-center">
+        <div className="text-center animate-fadeIn">
+          <h1 className="text-2xl font-bold mb-4">Loading blog posts...</h1>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background pt-20">
@@ -223,14 +237,7 @@ const Blog = () => {
 
           {/* Category Filter */}
           <div className="flex flex-wrap gap-2 justify-center">
-            {[
-              "All",
-              "AI Engineering",
-              "Web Development",
-              "Career",
-              "Leadership",
-              "Technology",
-            ].map((category) => (
+            {categories.map((category) => (
               <Button
                 key={category}
                 variant={selectedCategory === category ? "default" : "outline"}

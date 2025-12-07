@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 import { getPostBySlug } from "@/data/blog/posts";
-import { BlogPost } from "@/types/blog";
+import type { BlogPost } from "@/types/blog";
 import { Button } from "@/components/ui/button";
 import {
   ArrowLeft,
@@ -284,7 +284,14 @@ const BlogPost = () => {
                   {children}
                 </blockquote>
               ),
-              code: ({ inline, className, children, ...props }: any) => {
+              code: ({
+                inline,
+                className,
+                children,
+                ...props
+              }: React.ComponentPropsWithoutRef<"code"> & {
+                inline?: boolean;
+              }) => {
                 if (inline) {
                   return (
                     <code
