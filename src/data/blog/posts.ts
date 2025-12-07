@@ -1,6 +1,16 @@
 import { BlogPost } from "@/types/blog";
+import {
+  getBlogPosts as getSupabasePosts,
+  getFeaturedPosts as getSupabaseFeatured,
+  getPostBySlug as getSupabasePostBySlug,
+  getPostsByCategory as getSupabasePostsByCategory,
+  getPostsByTag as getSupabasePostsByTag,
+  getAllTags as getSupabaseAllTags,
+  getAllCategories as getSupabaseAllCategories,
+} from "@/lib/api/blog";
 
-export const blogPosts: BlogPost[] = [
+// Static fallback data
+const staticBlogPosts: BlogPost[] = [
   {
     id: "1",
     title: "Building Scalable AI Systems: Lessons from Production",
@@ -479,39 +489,94 @@ export const categories: string[] = [
   "Technology",
 ];
 
-export function getBlogPosts(): BlogPost[] {
-  return blogPosts.filter((post) => post.published);
-}
-
-export function getFeaturedPosts(): BlogPost[] {
-  return blogPosts.filter((post) => post.published && post.featured);
-}
-
-export function getPostBySlug(slug: string): BlogPost | undefined {
-  return blogPosts.find((post) => post.slug === slug && post.published);
-}
-
-export function getPostsByCategory(category: string): BlogPost[] {
-  if (category === "All") {
-    return getBlogPosts();
-  }
-  return blogPosts.filter(
-    (post) => post.published && post.category === category
-  );
-}
-
-export function getPostsByTag(tag: string): BlogPost[] {
-  return blogPosts.filter(
-    (post) => post.published && post.tags.includes(tag)
-  );
-}
-
-export function getAllTags(): string[] {
-  const tags = new Set<string>();
-  blogPosts.forEach((post) => {
-    if (post.published) {
-      post.tags.forEach((tag) => tags.add(tag));
+// Helper function to use Supabase with fallback to static data
+async function withFallback<T>(
+  supabaseFunc: () => Promise<T>,
+  fallbackFunc: () => T
+): Promise<T> {
+  try {
+    const result = await supabaseFunc();
+    // If result is an empty array or null, use fallback
+    if (Array.isArray(result) && result.length === 0) {
+      return fallbackFunc();
     }
-  });
-  return Array.from(tags).sort();
+    if (result === null || result === undefined) {
+      return fallbackFunc();
+    }
+    return result;
+  } catch (error) {
+    console.warn('Falling back to static data:', error);
+    return fallbackFunc();
+  }
 }
+
+// Export functions that try Supabase first, then fall back to static data
+export async function getBlogPosts(): Promise<BlogPost[]> {
+  return withFallback(
+    getSupabasePosts,
+    () => staticBlogPosts.filter((post) => post.published)
+  );
+}
+
+export async function getFeaturedPosts(): Promise<BlogPost[]> {
+  return withFallback(
+    getSupabaseFeatured,
+    () => staticBlogPosts.filter((post) => post.published && post.featured)
+  );
+}
+
+export async function getPostBySlug(slug: string): Promise<BlogPost | undefined> {
+  const result = await withFallback(
+    () => getSupabasePostBySlug(slug),
+    () => staticBlogPosts.find((post) => post.slug === slug && post.published) || null
+  );
+  return result || undefined;
+}
+
+export async function getPostsByCategory(category: string): Promise<BlogPost[]> {
+  return withFallback(
+    () => getSupabasePostsByCategory(category),
+    () => {
+      if (category === "All") {
+        return staticBlogPosts.filter((post) => post.published);
+      }
+      return staticBlogPosts.filter(
+        (post) => post.published && post.category === category
+      );
+    }
+  );
+}
+
+export async function getPostsByTag(tag: string): Promise<BlogPost[]> {
+  return withFallback(
+    () => getSupabasePostsByTag(tag),
+    () => staticBlogPosts.filter(
+      (post) => post.published && post.tags.includes(tag)
+    )
+  );
+}
+
+export async function getAllTags(): Promise<string[]> {
+  return withFallback(
+    getSupabaseAllTags,
+    () => {
+      const tags = new Set<string>();
+      staticBlogPosts.forEach((post) => {
+        if (post.published) {
+          post.tags.forEach((tag) => tags.add(tag));
+        }
+      });
+      return Array.from(tags).sort();
+    }
+  );
+}
+
+export async function getAllCategories(): Promise<string[]> {
+  return withFallback(
+    getSupabaseAllCategories,
+    () => categories
+  );
+}
+
+// Export static data for direct access if needed
+export { staticBlogPosts as blogPosts };</parameter>
