@@ -16,6 +16,7 @@ const Navigation = () => {
     { id: "experience", label: "Experience" },
     { id: "community", label: "Community" },
     { id: "education", label: "Education" },
+    { id: "blog", label: "Blog", isRoute: true },
   ];
 
   useEffect(() => {
@@ -42,7 +43,13 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId: string, isRoute?: boolean) => {
+    if (isRoute) {
+      window.location.href = `/${sectionId}`;
+      setIsOpen(false);
+      return;
+    }
+
     const element = document.getElementById(sectionId);
     if (element) {
       const offset = 80; // Height of navbar
@@ -108,7 +115,7 @@ const Navigation = () => {
               {navItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => scrollToSection(item.id, item.isRoute)}
                   className={`px-3 xl:px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative group ${
                     activeSection === item.id
                       ? "text-primary"
@@ -169,7 +176,7 @@ const Navigation = () => {
             {navItems.map((item, index) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => scrollToSection(item.id, item.isRoute)}
                 className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 transform ${
                   activeSection === item.id
                     ? "text-primary bg-primary/10 scale-[1.02]"

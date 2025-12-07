@@ -1,90 +1,139 @@
-
-import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import React from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { getFeaturedPosts } from "@/data/blog/posts";
+import { Calendar, Clock, ArrowRight, BookOpen } from "lucide-react";
+import { formatDistanceToNow } from "date-fns";
+import { useNavigate } from "react-router-dom";
 
 const Blog = () => {
-  const blogPosts = [
-    {
-      title: 'Building Scalable React Applications',
-      excerpt: 'Learn best practices for architecting large-scale React applications that maintain performance and code quality.',
-      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=250&fit=crop',
-      date: 'March 15, 2024',
-      readTime: '8 min read',
-      tags: ['React', 'Architecture', 'Performance'],
-    },
-    {
-      title: 'The Future of Web Development',
-      excerpt: 'Exploring emerging trends and technologies that are shaping the future of web development.',
-      image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=400&h=250&fit=crop',
-      date: 'March 8, 2024',
-      readTime: '6 min read',
-      tags: ['Web Development', 'Trends', 'Future'],
-    },
-    {
-      title: 'Mastering TypeScript for Better Code',
-      excerpt: 'How TypeScript can improve your development experience and help you write more maintainable code.',
-      image: 'https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=400&h=250&fit=crop',
-      date: 'February 28, 2024',
-      readTime: '10 min read',
-      tags: ['TypeScript', 'Code Quality', 'Development'],
-    },
-  ];
+  const navigate = useNavigate();
+  const featuredPosts = getFeaturedPosts().slice(0, 3);
+
+  const handlePostClick = (slug: string) => {
+    navigate(`/blog/${slug}`);
+  };
+
+  const handleViewAllClick = () => {
+    navigate("/blog");
+  };
+
+  if (featuredPosts.length === 0) {
+    return null;
+  }
 
   return (
-    <section id="blog" className="py-20">
+    <section id="blog" className="py-16 md:py-24 bg-muted/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Latest Blog Posts</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Sharing my thoughts on web development, technology trends, and best practices
+        {/* Section Header */}
+        <div className="text-center mb-12 md:mb-16 animate-fadeIn">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <BookOpen className="w-6 h-6 text-primary" />
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+              Latest from the Blog
+            </h2>
+          </div>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+            Insights on AI, web development, career growth, and technology
+            leadership
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {blogPosts.map((post, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-shadow overflow-hidden">
-              <div className="relative overflow-hidden">
+        {/* Featured Posts Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
+          {featuredPosts.map((post, index) => (
+            <Card
+              key={post.id}
+              className="group card-hover overflow-hidden border-2 hover:border-primary/50 cursor-pointer flex flex-col"
+              onClick={() => handlePostClick(post.slug)}
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              {/* Cover Image */}
+              <div className="relative h-48 md:h-56 overflow-hidden">
                 <img
-                  src={post.image}
+                  src={post.coverImage || "/blog/default.jpg"}
                   alt={post.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute top-4 left-4">
-                  <span className="bg-primary text-primary-foreground px-2 py-1 rounded text-xs font-medium">
-                    {post.readTime}
-                  </span>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+                {/* Category Badge */}
+                <div className="absolute top-4 right-4 bg-primary/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-primary-foreground">
+                  {post.category}
                 </div>
               </div>
-              <CardHeader>
-                <div className="text-sm text-muted-foreground mb-2">{post.date}</div>
-                <CardTitle className="text-xl group-hover:text-primary transition-colors">
+
+              {/* Card Content */}
+              <CardHeader className="flex-grow">
+                <CardTitle className="text-lg md:text-xl group-hover:text-primary transition-colors line-clamp-2">
                   {post.title}
                 </CardTitle>
-                <CardDescription>{post.excerpt}</CardDescription>
+                <CardDescription className="text-sm line-clamp-2">
+                  {post.excerpt}
+                </CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {post.tags.map((tag, tagIndex) => (
+
+              <CardContent className="space-y-4">
+                {/* Meta Information */}
+                <div className="flex items-center justify-between text-xs text-muted-foreground">
+                  <div className="flex items-center gap-1">
+                    <Calendar className="w-3.5 h-3.5" />
+                    {formatDistanceToNow(new Date(post.publishedAt), {
+                      addSuffix: true,
+                    })}
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Clock className="w-3.5 h-3.5" />
+                    {post.readingTime} min read
+                  </div>
+                </div>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1.5">
+                  {post.tags.slice(0, 3).map((tag) => (
                     <span
-                      key={tagIndex}
-                      className="px-2 py-1 bg-secondary text-secondary-foreground rounded text-xs"
+                      key={tag}
+                      className="px-2 py-0.5 bg-primary/10 text-primary rounded-full text-xs font-medium"
                     >
                       {tag}
                     </span>
                   ))}
+                  {post.tags.length > 3 && (
+                    <span className="px-2 py-0.5 bg-muted text-muted-foreground rounded-full text-xs font-medium">
+                      +{post.tags.length - 3}
+                    </span>
+                  )}
                 </div>
-                <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  Read More
+
+                {/* Read More Button */}
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="w-full group-hover:bg-primary/10 group-hover:text-primary transition-all"
+                >
+                  Read Article
+                  <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        <div className="text-center">
-          <Button size="lg" variant="outline">
+        {/* View All Button */}
+        <div className="text-center animate-fadeIn">
+          <Button
+            size="lg"
+            onClick={handleViewAllClick}
+            className="group transition-all hover:scale-105"
+          >
             View All Posts
+            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>
