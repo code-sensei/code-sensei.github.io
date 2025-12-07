@@ -87,7 +87,13 @@ What challenges have you faced in building AI systems? Share your experiences in
     publishedAt: "2024-01-15T10:00:00Z",
     updatedAt: "2024-01-15T10:00:00Z",
     category: "AI Engineering",
-    tags: ["AI", "Machine Learning", "Production", "Best Practices", "Architecture"],
+    tags: [
+      "AI",
+      "Machine Learning",
+      "Production",
+      "Best Practices",
+      "Architecture",
+    ],
     readingTime: 8,
     featured: true,
     published: true,
@@ -492,7 +498,7 @@ export const categories: string[] = [
 // Helper function to use Supabase with fallback to static data
 async function withFallback<T>(
   supabaseFunc: () => Promise<T>,
-  fallbackFunc: () => T
+  fallbackFunc: () => T,
 ): Promise<T> {
   try {
     const result = await supabaseFunc();
@@ -505,35 +511,39 @@ async function withFallback<T>(
     }
     return result;
   } catch (error) {
-    console.warn('Falling back to static data:', error);
+    console.warn("Falling back to static data:", error);
     return fallbackFunc();
   }
 }
 
 // Export functions that try Supabase first, then fall back to static data
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  return withFallback(
-    getSupabasePosts,
-    () => staticBlogPosts.filter((post) => post.published)
+  return withFallback(getSupabasePosts, () =>
+    staticBlogPosts.filter((post) => post.published),
   );
 }
 
 export async function getFeaturedPosts(): Promise<BlogPost[]> {
-  return withFallback(
-    getSupabaseFeatured,
-    () => staticBlogPosts.filter((post) => post.published && post.featured)
+  return withFallback(getSupabaseFeatured, () =>
+    staticBlogPosts.filter((post) => post.published && post.featured),
   );
 }
 
-export async function getPostBySlug(slug: string): Promise<BlogPost | undefined> {
+export async function getPostBySlug(
+  slug: string,
+): Promise<BlogPost | undefined> {
   const result = await withFallback(
     () => getSupabasePostBySlug(slug),
-    () => staticBlogPosts.find((post) => post.slug === slug && post.published) || null
+    () =>
+      staticBlogPosts.find((post) => post.slug === slug && post.published) ||
+      null,
   );
   return result || undefined;
 }
 
-export async function getPostsByCategory(category: string): Promise<BlogPost[]> {
+export async function getPostsByCategory(
+  category: string,
+): Promise<BlogPost[]> {
   return withFallback(
     () => getSupabasePostsByCategory(category),
     () => {
@@ -541,42 +551,37 @@ export async function getPostsByCategory(category: string): Promise<BlogPost[]> 
         return staticBlogPosts.filter((post) => post.published);
       }
       return staticBlogPosts.filter(
-        (post) => post.published && post.category === category
+        (post) => post.published && post.category === category,
       );
-    }
+    },
   );
 }
 
 export async function getPostsByTag(tag: string): Promise<BlogPost[]> {
   return withFallback(
     () => getSupabasePostsByTag(tag),
-    () => staticBlogPosts.filter(
-      (post) => post.published && post.tags.includes(tag)
-    )
+    () =>
+      staticBlogPosts.filter(
+        (post) => post.published && post.tags.includes(tag),
+      ),
   );
 }
 
 export async function getAllTags(): Promise<string[]> {
-  return withFallback(
-    getSupabaseAllTags,
-    () => {
-      const tags = new Set<string>();
-      staticBlogPosts.forEach((post) => {
-        if (post.published) {
-          post.tags.forEach((tag) => tags.add(tag));
-        }
-      });
-      return Array.from(tags).sort();
-    }
-  );
+  return withFallback(getSupabaseAllTags, () => {
+    const tags = new Set<string>();
+    staticBlogPosts.forEach((post) => {
+      if (post.published) {
+        post.tags.forEach((tag) => tags.add(tag));
+      }
+    });
+    return Array.from(tags).sort();
+  });
 }
 
 export async function getAllCategories(): Promise<string[]> {
-  return withFallback(
-    getSupabaseAllCategories,
-    () => categories
-  );
+  return withFallback(getSupabaseAllCategories, () => categories);
 }
 
 // Export static data for direct access if needed
-export { staticBlogPosts as blogPosts };</parameter>
+export { staticBlogPosts as blogPosts };
