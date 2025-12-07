@@ -1,138 +1,207 @@
-
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { 
-  Code, 
-  Database, 
-  Globe, 
-  Server, 
-  Smartphone, 
+import React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Code,
+  Database,
+  Globe,
+  Server,
+  Smartphone,
   Terminal,
   Settings,
   Cloud,
   GitBranch,
   Palette,
   Monitor,
-  Cpu
-} from 'lucide-react';
+  Cpu,
+} from "lucide-react";
 
 const Skills = () => {
   const skillCategories = [
     {
-      title: 'Fullstack Developer',
+      title: "Product Engineering",
       icon: <Monitor className="w-6 h-6" />,
       skills: [
-        { name: 'React', level: 95, icon: <Code className="w-4 h-4" /> },
-        { name: 'TypeScript', level: 92, icon: <Code className="w-4 h-4" /> },
-        { name: 'Node.js', level: 90, icon: <Terminal className="w-4 h-4" /> },
-        { name: 'Next.js', level: 88, icon: <Globe className="w-4 h-4" /> },
-        { name: 'Python', level: 85, icon: <Code className="w-4 h-4" /> },
-        { name: 'PostgreSQL', level: 85, icon: <Database className="w-4 h-4" /> },
-        { name: 'MongoDB', level: 80, icon: <Database className="w-4 h-4" /> },
-        { name: 'GraphQL', level: 80, icon: <Globe className="w-4 h-4" /> },
+        { name: "React", level: 95, icon: <Code className="w-4 h-4" /> },
+        { name: "TypeScript", level: 92, icon: <Code className="w-4 h-4" /> },
+        { name: "Node.js", level: 90, icon: <Terminal className="w-4 h-4" /> },
+        { name: "Next.js", level: 88, icon: <Globe className="w-4 h-4" /> },
+        { name: "Python", level: 85, icon: <Code className="w-4 h-4" /> },
+        {
+          name: "PostgreSQL",
+          level: 85,
+          icon: <Database className="w-4 h-4" />,
+        },
+        { name: "MongoDB", level: 80, icon: <Database className="w-4 h-4" /> },
+        { name: "GraphQL", level: 80, icon: <Globe className="w-4 h-4" /> },
         // { name: 'Vue.js', level: 75, icon: <Code className="w-4 h-4" /> },
-        { name: 'Tailwind CSS', level: 90, icon: <Palette className="w-4 h-4" /> },
-        { name: 'DevOps (Docker, CI/CD, AWS)', level: 85, icon: <Settings className="w-4 h-4" /> },
+        {
+          name: "Tailwind CSS",
+          level: 90,
+          icon: <Palette className="w-4 h-4" />,
+        },
+        {
+          name: "DevOps (Docker, CI/CD, AWS)",
+          level: 85,
+          icon: <Settings className="w-4 h-4" />,
+        },
       ],
     },
     {
-      title: 'AI Engineer',
+      title: "AI Engineer",
       icon: <Cpu className="w-6 h-6" />,
       skills: [
-        { name: 'Machine Learning', level: 92, icon: <Cpu className="w-4 h-4" /> },
-        { name: 'Deep Learning (PyTorch, TensorFlow)', level: 90, icon: <Cpu className="w-4 h-4" /> },
-        { name: 'Natural Language Processing', level: 90, icon: <Monitor className="w-4 h-4" /> },
-        { name: 'Computer Vision', level: 80, icon: <Monitor className="w-4 h-4" /> },
-        { name: 'Data Science (Pandas, NumPy, scikit-learn)', level: 88, icon: <Code className="w-4 h-4" /> },
-        { name: 'MLOps (Model deployment, FastAPI, Docker)', level: 80, icon: <Cloud className="w-4 h-4" /> },
-        { name: 'AI Integration (OpenAI, Hugging Face, LangChain)', level: 85, icon: <Cloud className="w-4 h-4" /> },
+        {
+          name: "Machine Learning",
+          level: 92,
+          icon: <Cpu className="w-4 h-4" />,
+        },
+        {
+          name: "Deep Learning (PyTorch, TensorFlow)",
+          level: 90,
+          icon: <Cpu className="w-4 h-4" />,
+        },
+        {
+          name: "Natural Language Processing",
+          level: 90,
+          icon: <Monitor className="w-4 h-4" />,
+        },
+        {
+          name: "Computer Vision",
+          level: 80,
+          icon: <Monitor className="w-4 h-4" />,
+        },
+        {
+          name: "Data Science (Pandas, NumPy, scikit-learn)",
+          level: 88,
+          icon: <Code className="w-4 h-4" />,
+        },
+        {
+          name: "MLOps (Model deployment, FastAPI, Docker)",
+          level: 80,
+          icon: <Cloud className="w-4 h-4" />,
+        },
+        {
+          name: "AI Integration (OpenAI, Hugging Face, LangChain)",
+          level: 85,
+          icon: <Cloud className="w-4 h-4" />,
+        },
       ],
     },
     {
-      title: 'Consultant',
+      title: "Consultant",
       icon: <Globe className="w-6 h-6" />,
       skills: [
-        { name: 'Solution Architecture', level: 92, icon: <Settings className="w-4 h-4" /> },
-        { name: 'Technical & Stakeholder Communication', level: 95, icon: <Globe className="w-4 h-4" /> },
-        { name: 'Project Management', level: 90, icon: <Monitor className="w-4 h-4" /> },
-        { name: 'Agile & Scrum', level: 85, icon: <Monitor className="w-4 h-4" /> },
-        { name: 'Requirements Analysis', level: 90, icon: <Server className="w-4 h-4" /> },
-        { name: 'Mentorship & Team Leadership', level: 90, icon: <GitBranch className="w-4 h-4" /> },
-        { name: 'Cloud Strategy', level: 80, icon: <Cloud className="w-4 h-4" /> },
+        {
+          name: "Solution Architecture",
+          level: 92,
+          icon: <Settings className="w-4 h-4" />,
+        },
+        {
+          name: "Technical & Stakeholder Communication",
+          level: 95,
+          icon: <Globe className="w-4 h-4" />,
+        },
+        {
+          name: "Project Management",
+          level: 90,
+          icon: <Monitor className="w-4 h-4" />,
+        },
+        {
+          name: "Agile & Scrum",
+          level: 85,
+          icon: <Monitor className="w-4 h-4" />,
+        },
+        {
+          name: "Requirements Analysis",
+          level: 90,
+          icon: <Server className="w-4 h-4" />,
+        },
+        {
+          name: "Mentorship & Team Leadership",
+          level: 90,
+          icon: <GitBranch className="w-4 h-4" />,
+        },
+        {
+          name: "Cloud Strategy",
+          level: 80,
+          icon: <Cloud className="w-4 h-4" />,
+        },
       ],
     },
   ];
 
   const technologies = [
-    // Fullstack Developer
-    { name: 'JavaScript', icon: <Code className="w-4 h-4" /> },
-    { name: 'TypeScript', icon: <Code className="w-4 h-4" /> },
-    { name: 'React', icon: <Code className="w-4 h-4" /> },
-    { name: 'Next.js', icon: <Globe className="w-4 h-4" /> },
-    { name: 'Vue.js', icon: <Code className="w-4 h-4" /> },
-    { name: 'Node.js', icon: <Terminal className="w-4 h-4" /> },
-    { name: 'Express.js', icon: <Terminal className="w-4 h-4" /> },
-    { name: 'PostgreSQL', icon: <Database className="w-4 h-4" /> },
-    { name: 'MongoDB', icon: <Database className="w-4 h-4" /> },
-    { name: 'Tailwind CSS', icon: <Palette className="w-4 h-4" /> },
-    { name: 'AWS', icon: <Cloud className="w-4 h-4" /> },
-    { name: 'Docker', icon: <Server className="w-4 h-4" /> },
-    { name: 'Kubernetes', icon: <Cpu className="w-4 h-4" /> },
-    { name: 'Git', icon: <GitBranch className="w-4 h-4" /> },
+    // Product & Full-Stack Development
+    { name: "JavaScript", icon: <Code className="w-4 h-4" /> },
+    { name: "TypeScript", icon: <Code className="w-4 h-4" /> },
+    { name: "React", icon: <Code className="w-4 h-4" /> },
+    { name: "Next.js", icon: <Globe className="w-4 h-4" /> },
+    { name: "Vue.js", icon: <Code className="w-4 h-4" /> },
+    { name: "Node.js", icon: <Terminal className="w-4 h-4" /> },
+    { name: "Express.js", icon: <Terminal className="w-4 h-4" /> },
+    { name: "PostgreSQL", icon: <Database className="w-4 h-4" /> },
+    { name: "MongoDB", icon: <Database className="w-4 h-4" /> },
+    { name: "Tailwind CSS", icon: <Palette className="w-4 h-4" /> },
+    { name: "AWS", icon: <Cloud className="w-4 h-4" /> },
+    { name: "Docker", icon: <Server className="w-4 h-4" /> },
+    { name: "Kubernetes", icon: <Cpu className="w-4 h-4" /> },
+    { name: "Git", icon: <GitBranch className="w-4 h-4" /> },
     // AI Engineer
-    { name: 'Python', icon: <Code className="w-4 h-4" /> },
-    { name: 'Pandas', icon: <Code className="w-4 h-4" /> },
-    { name: 'NumPy', icon: <Code className="w-4 h-4" /> },
-    { name: 'scikit-learn', icon: <Code className="w-4 h-4" /> },
-    { name: 'PyTorch', icon: <Cpu className="w-4 h-4" /> },
-    { name: 'TensorFlow', icon: <Cpu className="w-4 h-4" /> },
-    { name: 'FastAPI', icon: <Code className="w-4 h-4" /> },
-    { name: 'OpenAI API', icon: <Cloud className="w-4 h-4" /> },
-    { name: 'Hugging Face', icon: <Cloud className="w-4 h-4" /> },
-    { name: 'LangChain', icon: <Cloud className="w-4 h-4" /> },
+    { name: "Python", icon: <Code className="w-4 h-4" /> },
+    { name: "Pandas", icon: <Code className="w-4 h-4" /> },
+    { name: "NumPy", icon: <Code className="w-4 h-4" /> },
+    { name: "scikit-learn", icon: <Code className="w-4 h-4" /> },
+    { name: "PyTorch", icon: <Cpu className="w-4 h-4" /> },
+    { name: "TensorFlow", icon: <Cpu className="w-4 h-4" /> },
+    { name: "FastAPI", icon: <Code className="w-4 h-4" /> },
+    { name: "OpenAI API", icon: <Cloud className="w-4 h-4" /> },
+    { name: "Hugging Face", icon: <Cloud className="w-4 h-4" /> },
+    { name: "LangChain", icon: <Cloud className="w-4 h-4" /> },
     // Consulting & Leadership
-    { name: 'Project Management', icon: <Monitor className="w-4 h-4" /> },
-    { name: 'Agile & Scrum', icon: <Monitor className="w-4 h-4" /> },
-    { name: 'Solution Architecture', icon: <Settings className="w-4 h-4" /> },
-    { name: 'Communication', icon: <Globe className="w-4 h-4" /> },
-    { name: 'Mentorship', icon: <GitBranch className="w-4 h-4" /> },
-    { name: 'CI/CD', icon: <Settings className="w-4 h-4" /> }
+    { name: "Project Management", icon: <Monitor className="w-4 h-4" /> },
+    { name: "Agile & Scrum", icon: <Monitor className="w-4 h-4" /> },
+    { name: "Solution Architecture", icon: <Settings className="w-4 h-4" /> },
+    { name: "Communication", icon: <Globe className="w-4 h-4" /> },
+    { name: "Mentorship", icon: <GitBranch className="w-4 h-4" /> },
+    { name: "CI/CD", icon: <Settings className="w-4 h-4" /> },
   ];
 
   return (
     <section id="skills" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Skills & Technologies</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Technical Expertise
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Here are the technologies and tools I work with to bring ideas to life
+            Technologies and frameworks proven across government, enterprise,
+            and high-growth environments—selected for impact, not trends
           </p>
         </div>
 
-
-
-
-        {/* Full Stack Development Tech Grid */}
+        {/* Product & Full-Stack Development Tech Grid */}
         <div className="text-center mb-16">
-          <h3 className="text-2xl font-semibold mb-8">Full Stack Development</h3>
+          <h3 className="text-2xl font-semibold mb-8">
+            Product & Full-Stack Development
+          </h3>
           <div
             className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-10 gap-y-8 justify-items-center max-w-3xl mx-auto"
-            aria-label="Full Stack Tech Grid"
+            aria-label="Product & Full-Stack Tech Grid"
           >
             {[
-              { name: 'React',       file: 'react.svg' },
-              { name: 'TypeScript',  file: 'typescript.svg' },
-              { name: 'JavaScript',  file: 'javascript.svg' },
-              { name: 'HTML5',       file: 'html5.svg' },
-              { name: 'CSS3',        file: 'css3.svg' },
-              { name: 'Next.js',     file: 'nextjs.svg' },
-              { name: 'Node.js',     file: 'nodejs.svg' },
-              { name: 'Express',     file: 'express.svg' },
-              { name: 'Vue.js',      file: 'vuejs.svg' },
-              { name: 'Angular',     file: 'angular.svg' },
-              { name: 'Nuxt.js',     file: 'nuxtjs.svg' },
-              { name: 'Sass/SCSS',   file: 'sass.svg' },
-              { name: 'TailwindCSS', file: 'tailwindcss.svg' },
+              { name: "React", file: "react.svg" },
+              { name: "TypeScript", file: "typescript.svg" },
+              { name: "JavaScript", file: "javascript.svg" },
+              { name: "HTML5", file: "html5.svg" },
+              { name: "CSS3", file: "css3.svg" },
+              { name: "Next.js", file: "nextjs.svg" },
+              { name: "Node.js", file: "nodejs.svg" },
+              { name: "Express", file: "express.svg" },
+              { name: "Vue.js", file: "vuejs.svg" },
+              { name: "Angular", file: "angular.svg" },
+              { name: "Nuxt.js", file: "nuxtjs.svg" },
+              { name: "Sass/SCSS", file: "sass.svg" },
+              { name: "TailwindCSS", file: "tailwindcss.svg" },
             ].map(({ name, file }) => (
               <div key={name} className="flex flex-col items-center space-y-2">
                 <img
@@ -142,7 +211,9 @@ const Skills = () => {
                   draggable="false"
                   loading="lazy"
                 />
-                <span className="text-sm font-medium text-primary text-center">{name}</span>
+                <span className="text-sm font-medium text-primary text-center">
+                  {name}
+                </span>
               </div>
             ))}
           </div>
@@ -153,7 +224,10 @@ const Skills = () => {
           <h3 className="text-2xl font-semibold mb-8">AI Engineering</h3>
           <div className="max-w-2xl mx-auto">
             <p className="mb-6 text-base text-muted-foreground">
-              I leverage a suite of advanced AI technologies including HuggingFace, Azure AI, OpenAI, LangChain, LangGraph, CrewAI, DeepSeek, and orchestration platforms like n8n and Flowise to deliver intelligent, scalable solutions.
+              I leverage a suite of advanced AI technologies including
+              HuggingFace, Azure AI, OpenAI, LangChain, LangGraph, CrewAI,
+              DeepSeek, and orchestration platforms like n8n and Flowise to
+              deliver intelligent, scalable solutions.
             </p>
             <div
               className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-10 gap-y-8 justify-items-center"
@@ -162,7 +236,7 @@ const Skills = () => {
               {[
                 // HuggingFace
                 {
-                  name: 'HuggingFace',
+                  name: "HuggingFace",
                   icon: (
                     <img
                       src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
@@ -175,7 +249,7 @@ const Skills = () => {
                 },
                 // Azure AI
                 {
-                  name: 'Azure AI',
+                  name: "Azure AI",
                   icon: (
                     <img
                       src="https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/1022443-card-grid-products-card-4-azure-ai-model-catalog-24x24?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=48&hei=48&qlt=100&fmt=png-alpha&fit=constrain"
@@ -188,52 +262,165 @@ const Skills = () => {
                 },
                 // OpenAI
                 {
-                  name: 'OpenAI',
+                  name: "OpenAI",
                   icon: (
-                    <svg className="w-[4.9375rem] h-16 will-change-transform md:w-[5.625rem]" width="90" viewBox="0 0 288 78" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30.6 0.398438C13.77 0.398438 0 14.1684 0 30.9984C0 47.8284 13.77 61.5984 30.6 61.5984C47.43 61.5984 61.2 47.9134 61.2 30.9984C61.2 14.0834 47.515 0.398438 30.6 0.398438ZM30.6 50.6334C20.145 50.6334 11.73 42.0484 11.73 30.9984C11.73 19.9484 20.145 11.3634 30.6 11.3634C41.055 11.3634 49.47 19.9484 49.47 30.9984C49.47 42.0484 41.055 50.6334 30.6 50.6334Z" fill="currentColor"></path><path d="M92.1393 17.3984C86.6143 17.3984 81.2593 19.6084 78.4543 23.3484V18.2484H67.4043V77.7484H78.4543V56.2434C81.2593 59.7284 86.4443 61.5984 92.1393 61.5984C104.039 61.5984 113.389 52.2484 113.389 39.4984C113.389 26.7484 104.039 17.3984 92.1393 17.3984ZM90.2693 51.9934C83.9793 51.9934 78.3693 47.0634 78.3693 39.4984C78.3693 31.9334 83.9793 27.0034 90.2693 27.0034C96.5593 27.0034 102.169 31.9334 102.169 39.4984C102.169 47.0634 96.5593 51.9934 90.2693 51.9934Z" fill="currentColor"></path><path d="M139.401 17.3984C127.331 17.3984 117.811 26.8334 117.811 39.4984C117.811 52.1634 126.141 61.5984 139.741 61.5984C150.876 61.5984 158.016 54.8834 160.226 47.3184H149.431C148.071 50.4634 144.246 52.6734 139.656 52.6734C133.961 52.6734 129.626 48.6784 128.606 42.9834H160.736V38.6484C160.736 27.0884 152.661 17.3984 139.401 17.3984ZM128.691 35.1634C129.881 29.8084 134.301 26.3234 139.656 26.3234C145.351 26.3234 149.686 30.0634 150.196 35.1634H128.691Z" fill="currentColor"></path><path d="M190.145 17.3984C185.215 17.3984 180.03 19.6084 177.65 23.2634V18.2484H166.6V60.7484H177.65V37.8834C177.65 31.2534 181.22 26.9184 187 26.9184C192.355 26.9184 195.245 30.9984 195.245 36.6934V60.7484H206.295V34.9084C206.295 24.3684 199.835 17.3984 190.145 17.3984Z" fill="currentColor"></path><path d="M234.596 1.25L210.541 60.75H222.356L227.456 47.745H254.826L259.926 60.75H271.911L248.026 1.25H234.596ZM231.281 37.885L241.141 12.98L250.916 37.885H231.281Z" fill="currentColor"></path><path d="M287.636 1.25H276.416V60.75H287.636V1.25Z" fill="currentColor"></path></svg>
+                    <svg
+                      className="w-[4.9375rem] h-16 will-change-transform md:w-[5.625rem]"
+                      width="90"
+                      viewBox="0 0 288 78"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M30.6 0.398438C13.77 0.398438 0 14.1684 0 30.9984C0 47.8284 13.77 61.5984 30.6 61.5984C47.43 61.5984 61.2 47.9134 61.2 30.9984C61.2 14.0834 47.515 0.398438 30.6 0.398438ZM30.6 50.6334C20.145 50.6334 11.73 42.0484 11.73 30.9984C11.73 19.9484 20.145 11.3634 30.6 11.3634C41.055 11.3634 49.47 19.9484 49.47 30.9984C49.47 42.0484 41.055 50.6334 30.6 50.6334Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M92.1393 17.3984C86.6143 17.3984 81.2593 19.6084 78.4543 23.3484V18.2484H67.4043V77.7484H78.4543V56.2434C81.2593 59.7284 86.4443 61.5984 92.1393 61.5984C104.039 61.5984 113.389 52.2484 113.389 39.4984C113.389 26.7484 104.039 17.3984 92.1393 17.3984ZM90.2693 51.9934C83.9793 51.9934 78.3693 47.0634 78.3693 39.4984C78.3693 31.9334 83.9793 27.0034 90.2693 27.0034C96.5593 27.0034 102.169 31.9334 102.169 39.4984C102.169 47.0634 96.5593 51.9934 90.2693 51.9934Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M139.401 17.3984C127.331 17.3984 117.811 26.8334 117.811 39.4984C117.811 52.1634 126.141 61.5984 139.741 61.5984C150.876 61.5984 158.016 54.8834 160.226 47.3184H149.431C148.071 50.4634 144.246 52.6734 139.656 52.6734C133.961 52.6734 129.626 48.6784 128.606 42.9834H160.736V38.6484C160.736 27.0884 152.661 17.3984 139.401 17.3984ZM128.691 35.1634C129.881 29.8084 134.301 26.3234 139.656 26.3234C145.351 26.3234 149.686 30.0634 150.196 35.1634H128.691Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M190.145 17.3984C185.215 17.3984 180.03 19.6084 177.65 23.2634V18.2484H166.6V60.7484H177.65V37.8834C177.65 31.2534 181.22 26.9184 187 26.9184C192.355 26.9184 195.245 30.9984 195.245 36.6934V60.7484H206.295V34.9084C206.295 24.3684 199.835 17.3984 190.145 17.3984Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M234.596 1.25L210.541 60.75H222.356L227.456 47.745H254.826L259.926 60.75H271.911L248.026 1.25H234.596ZM231.281 37.885L241.141 12.98L250.916 37.885H231.281Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M287.636 1.25H276.416V60.75H287.636V1.25Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
                   ),
                 },
                 // LangChain (official SVG logo-mark)
                 {
-                  name: 'LangChain',
+                  name: "LangChain",
                   icon: (
-                    <svg className="w-[100%] h-16" width="100%" height="100%" viewBox="0 0 240 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M61.5139 11.1569C60.4527 11.1569 59.4549 11.568 58.708 12.3148L55.6899 15.3248C54.8757 16.1368 54.4574 17.2643 54.5431 18.4202C54.5492 18.4833 54.5553 18.5464 54.5615 18.6115C54.6696 19.4988 55.0594 20.2986 55.6899 20.9254C56.1246 21.3589 56.6041 21.6337 57.1857 21.825C57.2163 22 57.2326 22.177 57.2326 22.3541C57.2326 23.1519 56.9225 23.9008 56.3592 24.4625L56.1735 24.6477C55.1655 24.3037 54.3247 23.8011 53.5656 23.044C52.5576 22.0386 51.8903 20.7687 51.6393 19.3747L51.6046 19.1813L51.4515 19.3055C51.3475 19.3889 51.2495 19.4785 51.1577 19.57L48.1396 22.58C46.5928 24.1226 46.5928 26.636 48.1396 28.1786C48.913 28.9499 49.9292 29.3366 50.9475 29.3366C51.9658 29.3366 52.98 28.9499 53.7534 28.1786L56.7715 25.1687C58.3183 23.626 58.3183 21.1147 56.7715 19.57C56.3592 19.159 55.8675 18.8496 55.3104 18.6502C55.2798 18.469 55.2634 18.2879 55.2634 18.1109C55.2634 17.2439 55.6063 16.4217 56.2348 15.7949C57.2449 16.1388 58.1407 16.6965 58.8978 17.4515C59.9038 18.4548 60.5691 19.7227 60.8241 21.1208L60.8588 21.3141L61.0119 21.19C61.116 21.1066 61.2139 21.017 61.3078 20.9234L64.3259 17.9135C65.8727 16.3708 65.8747 13.8575 64.3259 12.3148C63.577 11.568 62.5811 11.1569 61.518 11.1569H61.5139Z" fill="CurrentColor"></path>
-<path d="M59.8966 0.148865H20.4063C9.15426 0.148865 0 9.27841 0 20.5001C0 31.7217 9.15426 40.8513 20.4063 40.8513H59.8966C71.1486 40.8513 80.3029 31.7217 80.3029 20.5001C80.3029 9.27841 71.1486 0.148865 59.8966 0.148865ZM40.4188 32.0555C39.7678 32.1898 39.0352 32.2142 38.5373 31.6953C38.3536 32.1165 37.9251 31.8947 37.5945 31.8398C37.5639 31.9252 37.5374 32.0005 37.5088 32.086C36.4089 32.1593 35.5845 31.04 35.0601 30.1954C34.0193 29.6337 32.8378 29.2918 31.7746 28.7036C31.7134 29.6724 31.9257 30.8731 31.0012 31.4979C30.9543 33.36 33.8255 31.7177 34.0887 33.1056C33.8847 33.128 33.6582 33.073 33.4949 33.2297C32.746 33.9563 31.8869 32.6803 31.0237 33.2074C29.8646 33.7894 29.7483 34.2656 28.3137 34.3857C28.2342 34.2656 28.2668 34.1862 28.3341 34.113C28.7382 33.6449 28.7668 33.0934 29.4565 32.8939C28.7464 32.782 28.1525 33.1728 27.5546 33.4821C26.7771 33.7996 26.7833 32.7657 25.5875 33.537C25.4548 33.4292 25.5181 33.3315 25.5936 33.2481C25.8976 32.8777 26.2976 32.8227 26.7486 32.8431C24.5304 31.6098 23.4856 34.3511 22.4612 32.9876C22.1531 33.069 22.0368 33.3457 21.8429 33.5411C21.6756 33.358 21.8021 33.1361 21.8103 32.9204C21.6103 32.8268 21.3572 32.782 21.4164 32.4625C21.0246 32.3302 20.7512 32.5622 20.4594 32.782C20.1961 32.5785 20.6369 32.2814 20.7185 32.0697C20.9532 31.6627 21.4878 31.9863 21.7592 31.6932C22.5306 31.2557 23.606 31.9659 24.4876 31.8459C25.1671 31.9313 26.0078 31.2353 25.667 30.5413C24.9406 29.6154 25.0691 28.4045 25.0528 27.2974C24.963 26.6522 23.4101 25.83 22.9612 25.134C22.4061 24.5072 21.9735 23.7807 21.5409 23.0664C19.9798 20.0523 20.4716 16.1795 18.5044 13.3812C17.6147 13.8717 16.4556 13.6397 15.6884 12.9823C15.2741 13.3588 15.2557 13.8513 15.2231 14.3744C14.2293 13.3833 14.3538 11.5109 15.1476 10.4079C15.4721 9.97239 15.8598 9.61421 16.2924 9.29876C16.3903 9.22754 16.423 9.15834 16.4209 9.04844C17.2066 5.52362 22.5653 6.20335 24.259 8.70044C25.4875 10.237 25.8589 12.27 27.2526 13.6967C29.1279 15.744 31.2645 17.5471 32.9949 19.7267C34.6315 21.7191 35.8008 24.0554 36.8211 26.4101C37.2374 27.1915 37.2415 28.1501 37.8578 28.8176C38.1618 29.2206 39.6474 30.3175 39.325 30.7062C39.5107 31.1091 40.8983 31.6647 40.4167 32.0555H40.4188ZM66.4449 20.032L63.4269 23.0419C62.6228 23.8438 61.6291 24.4421 60.5516 24.7697L60.4965 24.786L60.4761 24.8389C60.1251 25.7629 59.5925 26.5871 58.8905 27.2852L55.8724 30.2951C54.5562 31.6078 52.8054 32.3302 50.9402 32.3302C49.0751 32.3302 47.3242 31.6078 46.008 30.2951C43.2879 27.5823 43.2879 23.1701 46.008 20.4573L49.0261 17.4474C49.8342 16.6415 50.8015 16.0615 51.8973 15.7257L51.9524 15.7094L51.9728 15.6565C52.3238 14.7325 52.8584 13.9063 53.5625 13.2021L56.5805 10.1922C57.8967 8.87953 59.6476 8.15706 61.5127 8.15706C63.3779 8.15706 65.1287 8.87953 66.4449 10.1922C67.7612 11.5048 68.4856 13.251 68.4856 15.1111C68.4856 16.9712 67.7612 18.7193 66.4449 20.03V20.032Z" fill="CurrentColor"></path>
-<path d="M28.1422 28.4126C27.8769 29.4424 27.7912 31.1946 26.4485 31.2455C26.3383 31.8398 26.8607 32.0636 27.3382 31.8723C27.8096 31.6566 28.034 32.0433 28.1932 32.4279C28.9217 32.5337 29.9992 32.1857 30.04 31.3249C28.9523 30.7001 28.6156 29.5116 28.1442 28.4106L28.1422 28.4126Z" fill="CurrentColor"></path>
-<path d="M99.2089 10.8162H95.624V32.5623H111V29.0983H99.2089V10.8162Z" fill="CurrentColor"></path>
-<path d="M129.021 32.5623H132.606V32.5236H132.653L132.66 32.364C132.661 32.3173 132.674 31.8821 132.608 31.2115V23.1182C132.608 20.0733 134.828 18.6871 136.891 18.6871C139.11 18.6871 140.19 19.8831 140.19 22.3445V32.5623H143.775V21.8674C143.775 17.8054 141.194 15.2812 137.041 15.2812C135.276 15.2812 133.701 15.7825 132.464 16.7351L132.431 15.5794H129.026V32.5623H129.021Z" fill="CurrentColor"></path>
-<path d="M158.365 16.827C157.119 15.8147 155.517 15.2812 153.71 15.2812C148.876 15.2812 145.873 18.6146 145.873 23.9806C145.873 29.3466 148.876 32.7106 153.71 32.7106C155.415 32.7106 156.937 32.2464 158.136 31.363C158.033 33.9953 156.384 35.5588 153.681 35.5588C151.408 35.5588 150.122 34.8351 149.858 33.4085L149.825 33.2312L146.342 34.2935L146.373 34.4369C146.961 37.2722 149.614 38.9647 153.473 38.9647C156.091 38.9647 158.144 38.2523 159.577 36.8451C161.023 35.4266 161.755 33.3827 161.755 30.7715V15.5794H158.439L158.367 16.827H158.365ZM158.141 24.1305C158.141 27.3704 156.563 29.3063 153.918 29.3063C151.083 29.3063 149.458 27.3655 149.458 23.9822C149.458 20.5988 151.084 18.6871 153.918 18.6871C156.499 18.6871 158.115 20.6133 158.141 23.713V24.1305Z" fill="CurrentColor"></path>
-<path d="M179.418 25.6665C178.675 28.0698 176.767 29.3948 174.047 29.3948C170.158 29.3948 167.74 26.4418 167.74 21.6884C167.74 16.9349 170.179 13.9819 174.107 13.9819C176.825 13.9819 178.391 15.0474 179.188 17.4346L179.56 18.5516L182.945 16.9623L182.627 16.0677C181.338 12.4361 178.361 10.5179 174.018 10.5179C171.067 10.5179 168.562 11.5834 166.773 13.5983C165.003 15.5938 164.066 18.3904 164.066 21.69C164.066 28.476 167.983 32.862 174.047 32.862C178.32 32.862 181.63 30.6263 182.9 26.8803L183.224 25.9228L179.747 24.601L179.416 25.6681L179.418 25.6665Z" fill="CurrentColor"></path>
-<path d="M192.806 15.2812C191.094 15.2812 189.571 15.7503 188.375 16.6417V8.73212H184.79V32.5639H188.375V23.1199C188.375 20.0557 190.594 18.6598 192.658 18.6598C194.877 18.6598 195.957 19.8558 195.957 22.3171V32.5656H199.542V21.84C199.542 17.857 196.899 15.2845 192.808 15.2845L192.806 15.2812Z" fill="CurrentColor"></path>
-<path d="M220.496 8.21954C219.164 8.21954 218.197 9.18668 218.197 10.5181C218.197 11.8495 219.164 12.8167 220.496 12.8167C221.827 12.8167 222.794 11.8495 222.794 10.5181C222.794 9.18668 221.827 8.21954 220.496 8.21954Z" fill="CurrentColor"></path>
-<path d="M233.262 15.2812C231.497 15.2812 229.923 15.7825 228.686 16.7351L228.652 15.5794H225.248V32.5623H228.833V23.1182C228.833 20.0733 231.052 18.6871 233.116 18.6871C235.335 18.6871 236.415 19.8831 236.415 22.3445V32.5623H240V21.8674C240 17.8054 237.419 15.2812 233.266 15.2812H233.262Z" fill="CurrentColor"></path>
-<path d="M222.237 15.5794H218.67V23.9984C217.68 23.1666 216.514 22.538 215.198 22.127V21.271C215.198 17.5202 212.736 15.2812 208.611 15.2812C205.26 15.2812 202.754 16.8545 201.733 19.5963L201.458 20.3361L204.332 22.4542L204.825 21.1695C205.475 19.4754 206.679 18.6856 208.611 18.6856C210.544 18.6856 211.613 19.6156 211.613 21.4483V21.5435C211.498 21.5386 211.382 21.5354 211.266 21.5338C207.428 21.4725 204.628 22.3704 202.944 24.1982C201.221 26.068 201.372 28.1683 201.395 28.4004L201.411 28.5616H201.427C201.695 31.1777 203.98 32.8573 207.301 32.8573C209.13 32.8573 210.82 32.348 212.098 31.4179L212.112 32.5607H215.198V27.2479L215.131 27.1996C214.695 26.8804 213.934 26.4678 212.789 26.3227C212.43 26.2776 212.087 26.255 211.771 26.2615H211.611V26.7499C211.611 27.8734 210.32 29.4546 207.448 29.4546C205.328 29.4546 205.012 28.5632 205.012 28.0313V27.9765C205.028 27.738 205.128 27.1544 205.655 26.6112C206.324 25.9197 207.83 25.1106 211.207 25.1622C213.652 25.2008 215.528 25.8843 216.784 27.1947C218.325 28.8034 218.615 31.0053 218.668 31.8676V32.5623H222.235V15.5794H222.237Z" fill="CurrentColor"></path>
-<path d="M119.752 15.2071C116.401 15.2071 113.895 16.7803 112.874 19.5221L112.599 20.262L115.473 22.38L115.966 21.0953C116.616 19.4012 117.82 18.6114 119.752 18.6114C121.685 18.6114 122.754 19.5415 122.754 21.3742V21.8046L119.062 22.4558C114.734 23.2214 112.539 25.0719 112.539 27.9539C112.539 30.836 114.855 32.7832 118.44 32.7832C120.27 32.7832 121.959 32.2738 123.237 31.3437L123.252 32.4866H126.337V21.1969C126.337 17.446 123.875 15.2071 119.751 15.2071H119.752ZM122.754 25.1638V26.6773C122.754 27.8008 121.462 29.3821 118.59 29.3821C116.47 29.3821 116.155 28.4907 116.155 27.9588C116.155 27.4865 116.155 26.3807 119.91 25.6844L122.754 25.1654V25.1638Z" fill="CurrentColor"></path>
-</svg>
+                    <svg
+                      className="w-[100%] h-16"
+                      width="100%"
+                      height="100%"
+                      viewBox="0 0 240 41"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M61.5139 11.1569C60.4527 11.1569 59.4549 11.568 58.708 12.3148L55.6899 15.3248C54.8757 16.1368 54.4574 17.2643 54.5431 18.4202C54.5492 18.4833 54.5553 18.5464 54.5615 18.6115C54.6696 19.4988 55.0594 20.2986 55.6899 20.9254C56.1246 21.3589 56.6041 21.6337 57.1857 21.825C57.2163 22 57.2326 22.177 57.2326 22.3541C57.2326 23.1519 56.9225 23.9008 56.3592 24.4625L56.1735 24.6477C55.1655 24.3037 54.3247 23.8011 53.5656 23.044C52.5576 22.0386 51.8903 20.7687 51.6393 19.3747L51.6046 19.1813L51.4515 19.3055C51.3475 19.3889 51.2495 19.4785 51.1577 19.57L48.1396 22.58C46.5928 24.1226 46.5928 26.636 48.1396 28.1786C48.913 28.9499 49.9292 29.3366 50.9475 29.3366C51.9658 29.3366 52.98 28.9499 53.7534 28.1786L56.7715 25.1687C58.3183 23.626 58.3183 21.1147 56.7715 19.57C56.3592 19.159 55.8675 18.8496 55.3104 18.6502C55.2798 18.469 55.2634 18.2879 55.2634 18.1109C55.2634 17.2439 55.6063 16.4217 56.2348 15.7949C57.2449 16.1388 58.1407 16.6965 58.8978 17.4515C59.9038 18.4548 60.5691 19.7227 60.8241 21.1208L60.8588 21.3141L61.0119 21.19C61.116 21.1066 61.2139 21.017 61.3078 20.9234L64.3259 17.9135C65.8727 16.3708 65.8747 13.8575 64.3259 12.3148C63.577 11.568 62.5811 11.1569 61.518 11.1569H61.5139Z"
+                        fill="CurrentColor"
+                      ></path>
+                      <path
+                        d="M59.8966 0.148865H20.4063C9.15426 0.148865 0 9.27841 0 20.5001C0 31.7217 9.15426 40.8513 20.4063 40.8513H59.8966C71.1486 40.8513 80.3029 31.7217 80.3029 20.5001C80.3029 9.27841 71.1486 0.148865 59.8966 0.148865ZM40.4188 32.0555C39.7678 32.1898 39.0352 32.2142 38.5373 31.6953C38.3536 32.1165 37.9251 31.8947 37.5945 31.8398C37.5639 31.9252 37.5374 32.0005 37.5088 32.086C36.4089 32.1593 35.5845 31.04 35.0601 30.1954C34.0193 29.6337 32.8378 29.2918 31.7746 28.7036C31.7134 29.6724 31.9257 30.8731 31.0012 31.4979C30.9543 33.36 33.8255 31.7177 34.0887 33.1056C33.8847 33.128 33.6582 33.073 33.4949 33.2297C32.746 33.9563 31.8869 32.6803 31.0237 33.2074C29.8646 33.7894 29.7483 34.2656 28.3137 34.3857C28.2342 34.2656 28.2668 34.1862 28.3341 34.113C28.7382 33.6449 28.7668 33.0934 29.4565 32.8939C28.7464 32.782 28.1525 33.1728 27.5546 33.4821C26.7771 33.7996 26.7833 32.7657 25.5875 33.537C25.4548 33.4292 25.5181 33.3315 25.5936 33.2481C25.8976 32.8777 26.2976 32.8227 26.7486 32.8431C24.5304 31.6098 23.4856 34.3511 22.4612 32.9876C22.1531 33.069 22.0368 33.3457 21.8429 33.5411C21.6756 33.358 21.8021 33.1361 21.8103 32.9204C21.6103 32.8268 21.3572 32.782 21.4164 32.4625C21.0246 32.3302 20.7512 32.5622 20.4594 32.782C20.1961 32.5785 20.6369 32.2814 20.7185 32.0697C20.9532 31.6627 21.4878 31.9863 21.7592 31.6932C22.5306 31.2557 23.606 31.9659 24.4876 31.8459C25.1671 31.9313 26.0078 31.2353 25.667 30.5413C24.9406 29.6154 25.0691 28.4045 25.0528 27.2974C24.963 26.6522 23.4101 25.83 22.9612 25.134C22.4061 24.5072 21.9735 23.7807 21.5409 23.0664C19.9798 20.0523 20.4716 16.1795 18.5044 13.3812C17.6147 13.8717 16.4556 13.6397 15.6884 12.9823C15.2741 13.3588 15.2557 13.8513 15.2231 14.3744C14.2293 13.3833 14.3538 11.5109 15.1476 10.4079C15.4721 9.97239 15.8598 9.61421 16.2924 9.29876C16.3903 9.22754 16.423 9.15834 16.4209 9.04844C17.2066 5.52362 22.5653 6.20335 24.259 8.70044C25.4875 10.237 25.8589 12.27 27.2526 13.6967C29.1279 15.744 31.2645 17.5471 32.9949 19.7267C34.6315 21.7191 35.8008 24.0554 36.8211 26.4101C37.2374 27.1915 37.2415 28.1501 37.8578 28.8176C38.1618 29.2206 39.6474 30.3175 39.325 30.7062C39.5107 31.1091 40.8983 31.6647 40.4167 32.0555H40.4188ZM66.4449 20.032L63.4269 23.0419C62.6228 23.8438 61.6291 24.4421 60.5516 24.7697L60.4965 24.786L60.4761 24.8389C60.1251 25.7629 59.5925 26.5871 58.8905 27.2852L55.8724 30.2951C54.5562 31.6078 52.8054 32.3302 50.9402 32.3302C49.0751 32.3302 47.3242 31.6078 46.008 30.2951C43.2879 27.5823 43.2879 23.1701 46.008 20.4573L49.0261 17.4474C49.8342 16.6415 50.8015 16.0615 51.8973 15.7257L51.9524 15.7094L51.9728 15.6565C52.3238 14.7325 52.8584 13.9063 53.5625 13.2021L56.5805 10.1922C57.8967 8.87953 59.6476 8.15706 61.5127 8.15706C63.3779 8.15706 65.1287 8.87953 66.4449 10.1922C67.7612 11.5048 68.4856 13.251 68.4856 15.1111C68.4856 16.9712 67.7612 18.7193 66.4449 20.03V20.032Z"
+                        fill="CurrentColor"
+                      ></path>
+                      <path
+                        d="M28.1422 28.4126C27.8769 29.4424 27.7912 31.1946 26.4485 31.2455C26.3383 31.8398 26.8607 32.0636 27.3382 31.8723C27.8096 31.6566 28.034 32.0433 28.1932 32.4279C28.9217 32.5337 29.9992 32.1857 30.04 31.3249C28.9523 30.7001 28.6156 29.5116 28.1442 28.4106L28.1422 28.4126Z"
+                        fill="CurrentColor"
+                      ></path>
+                      <path
+                        d="M99.2089 10.8162H95.624V32.5623H111V29.0983H99.2089V10.8162Z"
+                        fill="CurrentColor"
+                      ></path>
+                      <path
+                        d="M129.021 32.5623H132.606V32.5236H132.653L132.66 32.364C132.661 32.3173 132.674 31.8821 132.608 31.2115V23.1182C132.608 20.0733 134.828 18.6871 136.891 18.6871C139.11 18.6871 140.19 19.8831 140.19 22.3445V32.5623H143.775V21.8674C143.775 17.8054 141.194 15.2812 137.041 15.2812C135.276 15.2812 133.701 15.7825 132.464 16.7351L132.431 15.5794H129.026V32.5623H129.021Z"
+                        fill="CurrentColor"
+                      ></path>
+                      <path
+                        d="M158.365 16.827C157.119 15.8147 155.517 15.2812 153.71 15.2812C148.876 15.2812 145.873 18.6146 145.873 23.9806C145.873 29.3466 148.876 32.7106 153.71 32.7106C155.415 32.7106 156.937 32.2464 158.136 31.363C158.033 33.9953 156.384 35.5588 153.681 35.5588C151.408 35.5588 150.122 34.8351 149.858 33.4085L149.825 33.2312L146.342 34.2935L146.373 34.4369C146.961 37.2722 149.614 38.9647 153.473 38.9647C156.091 38.9647 158.144 38.2523 159.577 36.8451C161.023 35.4266 161.755 33.3827 161.755 30.7715V15.5794H158.439L158.367 16.827H158.365ZM158.141 24.1305C158.141 27.3704 156.563 29.3063 153.918 29.3063C151.083 29.3063 149.458 27.3655 149.458 23.9822C149.458 20.5988 151.084 18.6871 153.918 18.6871C156.499 18.6871 158.115 20.6133 158.141 23.713V24.1305Z"
+                        fill="CurrentColor"
+                      ></path>
+                      <path
+                        d="M179.418 25.6665C178.675 28.0698 176.767 29.3948 174.047 29.3948C170.158 29.3948 167.74 26.4418 167.74 21.6884C167.74 16.9349 170.179 13.9819 174.107 13.9819C176.825 13.9819 178.391 15.0474 179.188 17.4346L179.56 18.5516L182.945 16.9623L182.627 16.0677C181.338 12.4361 178.361 10.5179 174.018 10.5179C171.067 10.5179 168.562 11.5834 166.773 13.5983C165.003 15.5938 164.066 18.3904 164.066 21.69C164.066 28.476 167.983 32.862 174.047 32.862C178.32 32.862 181.63 30.6263 182.9 26.8803L183.224 25.9228L179.747 24.601L179.416 25.6681L179.418 25.6665Z"
+                        fill="CurrentColor"
+                      ></path>
+                      <path
+                        d="M192.806 15.2812C191.094 15.2812 189.571 15.7503 188.375 16.6417V8.73212H184.79V32.5639H188.375V23.1199C188.375 20.0557 190.594 18.6598 192.658 18.6598C194.877 18.6598 195.957 19.8558 195.957 22.3171V32.5656H199.542V21.84C199.542 17.857 196.899 15.2845 192.808 15.2845L192.806 15.2812Z"
+                        fill="CurrentColor"
+                      ></path>
+                      <path
+                        d="M220.496 8.21954C219.164 8.21954 218.197 9.18668 218.197 10.5181C218.197 11.8495 219.164 12.8167 220.496 12.8167C221.827 12.8167 222.794 11.8495 222.794 10.5181C222.794 9.18668 221.827 8.21954 220.496 8.21954Z"
+                        fill="CurrentColor"
+                      ></path>
+                      <path
+                        d="M233.262 15.2812C231.497 15.2812 229.923 15.7825 228.686 16.7351L228.652 15.5794H225.248V32.5623H228.833V23.1182C228.833 20.0733 231.052 18.6871 233.116 18.6871C235.335 18.6871 236.415 19.8831 236.415 22.3445V32.5623H240V21.8674C240 17.8054 237.419 15.2812 233.266 15.2812H233.262Z"
+                        fill="CurrentColor"
+                      ></path>
+                      <path
+                        d="M222.237 15.5794H218.67V23.9984C217.68 23.1666 216.514 22.538 215.198 22.127V21.271C215.198 17.5202 212.736 15.2812 208.611 15.2812C205.26 15.2812 202.754 16.8545 201.733 19.5963L201.458 20.3361L204.332 22.4542L204.825 21.1695C205.475 19.4754 206.679 18.6856 208.611 18.6856C210.544 18.6856 211.613 19.6156 211.613 21.4483V21.5435C211.498 21.5386 211.382 21.5354 211.266 21.5338C207.428 21.4725 204.628 22.3704 202.944 24.1982C201.221 26.068 201.372 28.1683 201.395 28.4004L201.411 28.5616H201.427C201.695 31.1777 203.98 32.8573 207.301 32.8573C209.13 32.8573 210.82 32.348 212.098 31.4179L212.112 32.5607H215.198V27.2479L215.131 27.1996C214.695 26.8804 213.934 26.4678 212.789 26.3227C212.43 26.2776 212.087 26.255 211.771 26.2615H211.611V26.7499C211.611 27.8734 210.32 29.4546 207.448 29.4546C205.328 29.4546 205.012 28.5632 205.012 28.0313V27.9765C205.028 27.738 205.128 27.1544 205.655 26.6112C206.324 25.9197 207.83 25.1106 211.207 25.1622C213.652 25.2008 215.528 25.8843 216.784 27.1947C218.325 28.8034 218.615 31.0053 218.668 31.8676V32.5623H222.235V15.5794H222.237Z"
+                        fill="CurrentColor"
+                      ></path>
+                      <path
+                        d="M119.752 15.2071C116.401 15.2071 113.895 16.7803 112.874 19.5221L112.599 20.262L115.473 22.38L115.966 21.0953C116.616 19.4012 117.82 18.6114 119.752 18.6114C121.685 18.6114 122.754 19.5415 122.754 21.3742V21.8046L119.062 22.4558C114.734 23.2214 112.539 25.0719 112.539 27.9539C112.539 30.836 114.855 32.7832 118.44 32.7832C120.27 32.7832 121.959 32.2738 123.237 31.3437L123.252 32.4866H126.337V21.1969C126.337 17.446 123.875 15.2071 119.751 15.2071H119.752ZM122.754 25.1638V26.6773C122.754 27.8008 121.462 29.3821 118.59 29.3821C116.47 29.3821 116.155 28.4907 116.155 27.9588C116.155 27.4865 116.155 26.3807 119.91 25.6844L122.754 25.1654V25.1638Z"
+                        fill="CurrentColor"
+                      ></path>
+                    </svg>
                   ),
                 },
                 // LangGraph
                 {
-                  name: 'LangGraph',
+                  name: "LangGraph",
                   icon: (
-                    <svg className="w-[100%] h-16" width="CurrentWidth" height="CurrentHeight" viewBox="0 0 208 33" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M16.0556 0.278809H46.6516C55.3698 0.278809 62.4621 7.39601 62.4621 16.1441C62.4621 24.8923 55.3698 32.0095 46.6516 32.0095H16.0556C7.33738 32.0095 0.245117 24.8923 0.245117 16.1441C0.245117 7.39601 7.33738 0.278809 16.0556 0.278809ZM30.103 24.8723C30.487 25.2763 31.0556 25.2563 31.5593 25.1516L31.5643 25.1541C31.7981 24.9639 31.4658 24.7231 31.1484 24.493C30.9581 24.3551 30.7731 24.2211 30.7189 24.1042C30.8946 23.8899 30.375 23.4035 29.9704 23.0248C29.8006 22.8658 29.6511 22.7258 29.5818 22.6329C29.2939 22.3196 29.1782 21.9243 29.0618 21.5266C28.9846 21.2627 28.9071 20.9978 28.7788 20.7551C27.9883 18.9197 27.083 17.0992 25.8137 15.5456C24.9979 14.513 24.0669 13.5883 23.1356 12.6633C22.5352 12.0669 21.9347 11.4705 21.3648 10.8449C20.7784 10.2395 20.4255 9.49372 20.072 8.74672C19.7761 8.12134 19.4797 7.49509 19.0456 6.94963C17.7314 5.00449 13.5818 4.47332 12.9733 7.22145C12.9758 7.30624 12.9484 7.3611 12.8735 7.41596C12.5369 7.66285 12.2376 7.94215 11.9858 8.2813C11.3698 9.14165 11.275 10.6005 12.0431 11.3736C12.0442 11.357 12.0453 11.3405 12.0464 11.324C12.0721 10.9336 12.0961 10.5687 12.4047 10.2888C12.9982 10.8 13.8985 10.982 14.5868 10.6005C15.4166 11.7909 15.681 13.2299 15.9462 14.6738C16.1671 15.8767 16.3887 17.0829 16.9384 18.1516C16.9497 18.1705 16.9611 18.1894 16.9725 18.2084C17.2955 18.7463 17.6238 19.2928 18.0381 19.7626C18.1886 19.9959 18.4977 20.2477 18.8062 20.4991C19.2132 20.8309 19.6194 21.1618 19.6591 21.4484C19.6609 21.5731 19.6603 21.6994 19.6598 21.8265C19.6566 22.5791 19.6532 23.3584 20.1354 23.9771C20.4022 24.5182 19.7489 25.0618 19.2227 24.9945C18.9342 25.0345 18.619 24.9585 18.306 24.883C17.8778 24.7797 17.4537 24.6774 17.108 24.8748C17.011 24.9798 16.8716 24.9835 16.7316 24.9872C16.5657 24.9915 16.3987 24.9959 16.3 25.1691C16.2797 25.2206 16.2323 25.2787 16.183 25.3391C16.0748 25.4717 15.9575 25.6155 16.098 25.7252C16.1106 25.7156 16.1231 25.7061 16.1356 25.6965C16.3484 25.5341 16.5513 25.3792 16.8386 25.4758C16.8004 25.6881 16.9375 25.745 17.0745 25.8018C17.0984 25.8117 17.1224 25.8217 17.1454 25.8324C17.1439 25.8817 17.1342 25.9314 17.1245 25.9808C17.1015 26.0986 17.0789 26.2142 17.1703 26.3162C17.2137 26.2721 17.2521 26.2225 17.2905 26.1728C17.3846 26.0512 17.4791 25.929 17.6491 25.8848C18.023 26.384 18.3996 26.1767 18.8721 25.9165C19.4051 25.623 20.0601 25.2623 20.9708 25.7726C20.6217 25.7551 20.3099 25.7975 20.0755 26.0868C20.0182 26.1516 19.9683 26.2264 20.0705 26.3112C20.6094 25.9621 20.8336 26.0876 21.0446 26.2057C21.1969 26.2909 21.3423 26.3723 21.5942 26.2688C21.6538 26.2377 21.7133 26.2056 21.7729 26.1735C22.1775 25.9552 22.5877 25.7339 23.068 25.81C22.7093 25.9134 22.5816 26.1408 22.4423 26.3891C22.3734 26.5118 22.3017 26.6396 22.1977 26.7601C22.1429 26.815 22.1179 26.8798 22.1803 26.9721C22.9315 26.9096 23.2153 26.7191 23.5988 26.4618C23.7818 26.339 23.9875 26.201 24.2775 26.0544C24.5981 25.857 24.9187 25.9832 25.2293 26.1056C25.5664 26.2383 25.8917 26.3664 26.1927 26.0718C26.2878 25.9822 26.4071 25.9811 26.5258 25.98C26.569 25.9796 26.6122 25.9792 26.6541 25.9746C26.5604 25.4727 26.0319 25.4786 25.4955 25.4846C24.875 25.4915 24.2438 25.4986 24.2626 24.7202C24.8391 24.3265 24.8444 23.6431 24.8494 22.9972C24.8507 22.8413 24.8518 22.6876 24.8611 22.5406C25.2851 22.7771 25.7336 22.9619 26.1794 23.1455C26.5987 23.3183 27.0156 23.49 27.4072 23.7027C27.8162 24.3611 28.4546 25.2339 29.305 25.1766C29.3274 25.1092 29.3474 25.0519 29.3723 24.9845C29.4213 24.9931 29.4731 25.0062 29.5257 25.0195C29.7489 25.0761 29.9879 25.1366 30.103 24.8723ZM46.7702 17.3907C47.2625 17.8819 47.9304 18.1579 48.6267 18.1579C49.323 18.1579 49.9909 17.8819 50.4832 17.3907C50.9756 16.8995 51.2523 16.2333 51.2523 15.5387C51.2523 14.844 50.9756 14.1778 50.4832 13.6866C49.9909 13.1954 49.323 12.9194 48.6267 12.9194C48.3006 12.9194 47.9807 12.98 47.6822 13.0948L46.1773 10.8981L45.1285 11.6167L46.6412 13.8248C46.2297 14.2992 46.0011 14.9072 46.0011 15.5387C46.0011 16.2333 46.2778 16.8995 46.7702 17.3907ZM42.0587 10.2769C42.4271 10.459 42.8332 10.5522 43.2443 10.549C43.8053 10.5447 44.3501 10.3613 44.7989 10.0256C45.2478 9.68993 45.577 9.21968 45.7385 8.68375C45.9 8.14782 45.8851 7.57439 45.6961 7.04749C45.5072 6.52059 45.154 6.06792 44.6884 5.75581C44.3471 5.52707 43.9568 5.38147 43.5488 5.33074C43.1409 5.28 42.7266 5.32556 42.3396 5.46372C41.9525 5.60189 41.6033 5.82881 41.3202 6.12621C41.0371 6.42362 40.8279 6.78319 40.7096 7.17597C40.5913 7.56875 40.567 7.98376 40.6389 8.38759C40.7107 8.79142 40.8766 9.17277 41.1233 9.50093C41.3699 9.8291 41.6903 10.0949 42.0587 10.2769ZM42.0587 25.4864C42.4271 25.6684 42.8332 25.7616 43.2443 25.7585C43.8053 25.7542 44.3501 25.5707 44.7989 25.2351C45.2478 24.8994 45.577 24.4291 45.7385 23.8932C45.9 23.3573 45.8851 22.7838 45.6961 22.2569C45.5072 21.73 45.154 21.2774 44.6884 20.9653C44.3471 20.7365 43.9568 20.5909 43.5488 20.5402C43.1409 20.4895 42.7266 20.535 42.3396 20.6732C41.9525 20.8114 41.6033 21.0383 41.3202 21.3357C41.0371 21.6331 40.8279 21.9926 40.7096 22.3854C40.5913 22.7782 40.567 23.1932 40.6389 23.597C40.7107 24.0009 40.8766 24.3822 41.1233 24.7104C41.3699 25.0386 41.6903 25.3044 42.0587 25.4864ZM44.4725 16.1899V14.8877H40.454C40.3529 14.4928 40.1601 14.1271 39.8911 13.8199L41.4029 11.5801L40.3034 10.8509L38.7916 13.0906C38.5145 12.9905 38.2224 12.9377 37.9277 12.9344C37.2333 12.9344 36.5675 13.2088 36.0765 13.6972C35.5856 14.1856 35.3097 14.848 35.3097 15.5388C35.3097 16.2295 35.5856 16.8919 36.0765 17.3804C36.5675 17.8688 37.2333 18.1432 37.9277 18.1432C38.2224 18.1398 38.5145 18.087 38.7916 17.9869L40.3034 20.2267L41.3899 19.4974L39.8911 17.2577C40.1601 16.9504 40.3529 16.5847 40.454 16.1899H44.4725Z" fill="currentColor"></path>
-<path d="M149.001 7.88732C147.637 6.80254 145.756 6.25391 143.412 6.25391C141.721 6.25391 140.183 6.65291 138.839 7.43844C137.494 8.22398 136.42 9.37111 135.647 10.8449C134.871 12.3212 134.479 14.1242 134.479 16.2065C134.479 17.795 134.711 19.224 135.17 20.4534C135.627 21.6803 136.273 22.7302 137.085 23.5756C137.898 24.4185 138.856 25.0669 139.933 25.5033C141.011 25.9397 142.183 26.1591 143.415 26.1591C145.255 26.1591 146.856 25.7576 148.175 24.9671C149.494 24.1766 150.519 23.0694 151.228 21.6753C151.936 20.2788 152.295 18.6604 152.295 16.8624C152.295 16.81 152.29 16.6454 152.282 16.3686C152.275 16.1467 152.265 15.9646 152.253 15.83H145.599V18.1741H149.016L149.001 18.2813C148.839 19.396 148.519 20.3387 148.051 21.0843C147.579 21.8325 146.961 22.3985 146.218 22.7651C145.475 23.1317 144.592 23.3137 143.617 23.3038C142.31 23.2863 141.203 22.9796 140.33 22.3911C139.457 21.8025 138.794 20.9721 138.36 19.9172C137.928 18.8699 137.709 17.6205 137.709 16.204C137.709 14.7876 137.931 13.5307 138.365 12.4709C138.804 11.406 139.465 10.5656 140.335 9.9771C141.205 9.38857 142.312 9.09929 143.617 9.11675C144.918 9.11675 146.006 9.46837 146.849 10.1616C147.672 10.8374 148.275 11.7477 148.649 12.8674L151.764 12.3736C151.273 10.4609 150.345 8.94967 149.001 7.88233V7.88732Z" fill="currentColor"></path>
-<path d="M189.434 11.9797C188.429 11.3138 187.245 10.9822 185.878 10.9822C184.512 10.9822 183.35 11.3138 182.417 11.9797C182.225 12.1168 182.048 12.264 181.876 12.4211V11.3837H179.023V32.2789H182.277V25.1143C182.335 25.1592 182.392 25.2041 182.452 25.2465C183.407 25.9173 184.589 26.2515 186 26.2515C187.33 26.2515 188.492 25.9173 189.482 25.2465C190.472 24.5757 191.24 23.6655 191.786 22.5133C192.33 21.3612 192.604 20.062 192.604 18.6156C192.604 17.1692 192.327 15.845 191.774 14.6979C191.22 13.5508 190.442 12.6455 189.437 11.9797H189.434ZM188.791 21.0221C188.527 21.7403 188.123 22.3113 187.579 22.7303C187.035 23.1493 186.342 23.3587 185.502 23.3587C184.661 23.3587 183.936 23.1592 183.404 22.7627C182.873 22.3662 182.484 21.8101 182.24 21.0944C181.993 20.3812 181.871 19.5532 181.871 18.6156C181.871 17.6779 181.993 16.84 182.24 16.1318C182.484 15.4211 182.868 14.8675 183.385 14.471C183.903 14.0744 184.572 13.8749 185.394 13.8749C186.26 13.8749 186.976 14.0869 187.537 14.5109C188.1 14.9348 188.514 15.5059 188.784 16.2266C189.05 16.9448 189.185 17.7428 189.185 18.6181C189.185 19.4934 189.053 20.3039 188.791 21.0221Z" fill="currentColor"></path>
-<path d="M207.579 16.4134C207.522 15.8548 207.395 15.2638 207.198 14.6378C207.001 14.0119 206.696 13.4234 206.287 12.8698C205.876 12.3162 205.322 11.8598 204.627 11.5032C203.931 11.1466 203.045 10.967 201.976 10.967C200.619 10.967 199.474 11.2638 198.547 11.8573C198.048 12.1765 197.617 12.5556 197.247 12.992V6.56055H194.367V25.8473H197.637V18.4134C197.637 17.5306 197.734 16.8049 197.931 16.2363C198.128 15.6703 198.387 15.2239 198.714 14.8972C199.041 14.5705 199.405 14.3411 199.806 14.2064C200.208 14.0718 200.614 14.0044 201.026 14.0044C201.794 14.0044 202.402 14.169 202.853 14.5007C203.305 14.8324 203.644 15.2538 203.871 15.7675C204.098 16.2812 204.242 16.8149 204.307 17.3685C204.37 17.9221 204.402 18.4259 204.402 18.8822V25.8473H207.671V17.77C207.671 17.4209 207.641 16.9695 207.584 16.4109L207.579 16.4134Z" fill="currentColor"></path>
-<path d="M161.861 11.5108C161.417 11.5408 160.981 11.6255 160.559 11.7602C160.138 11.8949 159.751 12.0819 159.405 12.3138C158.996 12.5657 158.644 12.8874 158.355 13.2714C158.227 13.441 158.11 13.6231 157.996 13.825L157.876 14.037V11.5707H155.185V25.7303H158.26V18.5308C158.26 17.9822 158.327 17.461 158.459 16.9846C158.594 16.5083 158.804 16.0744 159.085 15.7004C159.367 15.3238 159.736 15.0121 160.185 14.7702C160.629 14.5034 161.14 14.3438 161.699 14.2989C162.22 14.2565 162.691 14.2914 163.103 14.3986V11.5607C162.701 11.4984 162.285 11.4809 161.861 11.5108Z" fill="currentColor"></path>
-<path d="M75.1577 6.52563V25.77H88.4121V22.8623H78.1677V6.52563H75.1577Z" fill="currentColor"></path>
-<path d="M95.4793 11.0919C92.5915 11.0919 90.4294 12.446 89.5516 14.8076C89.4942 14.9597 89.3271 15.4135 89.3271 15.4135L91.8035 17.0145L92.1401 16.1367C92.7137 14.6405 93.776 13.9447 95.4793 13.9447C97.1825 13.9447 98.1576 14.7702 98.1401 16.3986C98.1401 16.4659 98.1351 16.6654 98.1351 16.6654C98.1351 16.6654 95.8808 17.032 94.9531 17.2265C90.9905 18.0644 89.3296 19.5756 89.3296 22.0519C89.3296 23.3711 90.0628 24.7976 91.3995 25.5981C92.2025 26.0794 93.2498 26.2589 94.4044 26.2589C95.165 26.2589 95.9032 26.1467 96.589 25.9372C98.1451 25.421 98.5765 24.4061 98.5765 24.4061V25.7327H101.153V16.2415C101.153 13.0145 99.0329 11.0894 95.4818 11.0894L95.4793 11.0919ZM98.1476 21.2215C98.1476 22.219 97.0603 23.623 94.5291 23.623C93.8159 23.623 93.3072 23.4335 92.9705 23.1517C92.5192 22.7751 92.3695 22.2315 92.4319 21.7552C92.4593 21.5482 92.584 21.0993 93.0503 20.7103C93.5266 20.3113 94.367 20.0295 95.6663 19.7452C96.7361 19.5133 98.1476 19.2564 98.1476 19.2564V21.2215Z" fill="currentColor"></path>
-<path d="M170.876 11.0919C167.988 11.0919 165.826 12.446 164.948 14.8076C164.891 14.9597 164.724 15.4135 164.724 15.4135L167.2 17.0145L167.537 16.1367C168.11 14.6405 169.173 13.9447 170.876 13.9447C172.579 13.9447 173.554 14.7702 173.537 16.3986C173.537 16.4659 173.532 16.6654 173.532 16.6654C173.532 16.6654 171.277 17.032 170.35 17.2265C166.387 18.0644 164.726 19.5756 164.726 22.0519C164.726 23.3711 165.459 24.7976 166.796 25.5981C167.599 26.0794 168.646 26.2589 169.801 26.2589C170.562 26.2589 171.3 26.1467 171.985 25.9372C173.542 25.421 173.973 24.4061 173.973 24.4061V25.7327H176.549V16.2415C176.549 13.0145 174.429 11.0894 170.878 11.0894L170.876 11.0919ZM173.544 21.2215C173.544 22.219 172.457 23.623 169.926 23.623C169.212 23.623 168.704 23.4335 168.367 23.1517C167.916 22.7751 167.766 22.2315 167.828 21.7552C167.856 21.5482 167.981 21.0993 168.447 20.7103C168.923 20.3113 169.764 20.0295 171.063 19.7452C172.133 19.5133 173.544 19.2564 173.544 19.2564V21.2215Z" fill="currentColor"></path>
-<path d="M110.669 11.0919C110.31 11.0919 109.961 11.1168 109.624 11.1642C107.317 11.5108 106.642 12.6829 106.642 12.6829V11.5108H103.756V25.7402H106.766V17.8475C106.766 15.1667 108.721 13.9447 110.539 13.9447C112.504 13.9447 113.46 15.0021 113.46 17.1741V25.7377H116.47V16.7602C116.47 13.2614 114.248 11.0894 110.669 11.0894V11.0919Z" fill="currentColor"></path>
-<path d="M129.028 11.5008V12.9671C129.028 12.9671 128.29 11.0918 124.936 11.0918C120.769 11.0918 118.178 13.9696 118.178 18.598C118.178 21.2115 119.013 23.2688 120.487 24.5681C121.632 25.5781 123.163 26.0968 124.988 26.1317C126.255 26.1566 127.078 25.81 127.589 25.4833C128.574 24.8574 128.938 24.2614 128.938 24.2614C128.938 24.2614 128.896 24.7277 128.821 25.3586C128.766 25.815 128.664 26.1367 128.664 26.1367C128.205 27.7676 126.866 28.7102 124.911 28.7102C122.956 28.7102 121.771 28.0668 121.537 26.8L118.612 27.6728C119.118 30.1092 121.405 31.5656 124.729 31.5656C126.988 31.5656 128.761 30.9521 129.996 29.7377C131.24 28.5157 131.873 26.7526 131.873 24.4983V11.5008H129.028ZM128.839 18.7302C128.839 21.5781 127.447 23.2788 125.118 23.2788C122.622 23.2788 121.19 21.5731 121.19 18.6005C121.19 15.628 122.622 13.9472 125.118 13.9472C127.392 13.9472 128.819 15.6404 128.839 18.3661V18.7277V18.7302Z" fill="currentColor"></path>
-</svg>
+                    <svg
+                      className="w-[100%] h-16"
+                      width="CurrentWidth"
+                      height="CurrentHeight"
+                      viewBox="0 0 208 33"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M16.0556 0.278809H46.6516C55.3698 0.278809 62.4621 7.39601 62.4621 16.1441C62.4621 24.8923 55.3698 32.0095 46.6516 32.0095H16.0556C7.33738 32.0095 0.245117 24.8923 0.245117 16.1441C0.245117 7.39601 7.33738 0.278809 16.0556 0.278809ZM30.103 24.8723C30.487 25.2763 31.0556 25.2563 31.5593 25.1516L31.5643 25.1541C31.7981 24.9639 31.4658 24.7231 31.1484 24.493C30.9581 24.3551 30.7731 24.2211 30.7189 24.1042C30.8946 23.8899 30.375 23.4035 29.9704 23.0248C29.8006 22.8658 29.6511 22.7258 29.5818 22.6329C29.2939 22.3196 29.1782 21.9243 29.0618 21.5266C28.9846 21.2627 28.9071 20.9978 28.7788 20.7551C27.9883 18.9197 27.083 17.0992 25.8137 15.5456C24.9979 14.513 24.0669 13.5883 23.1356 12.6633C22.5352 12.0669 21.9347 11.4705 21.3648 10.8449C20.7784 10.2395 20.4255 9.49372 20.072 8.74672C19.7761 8.12134 19.4797 7.49509 19.0456 6.94963C17.7314 5.00449 13.5818 4.47332 12.9733 7.22145C12.9758 7.30624 12.9484 7.3611 12.8735 7.41596C12.5369 7.66285 12.2376 7.94215 11.9858 8.2813C11.3698 9.14165 11.275 10.6005 12.0431 11.3736C12.0442 11.357 12.0453 11.3405 12.0464 11.324C12.0721 10.9336 12.0961 10.5687 12.4047 10.2888C12.9982 10.8 13.8985 10.982 14.5868 10.6005C15.4166 11.7909 15.681 13.2299 15.9462 14.6738C16.1671 15.8767 16.3887 17.0829 16.9384 18.1516C16.9497 18.1705 16.9611 18.1894 16.9725 18.2084C17.2955 18.7463 17.6238 19.2928 18.0381 19.7626C18.1886 19.9959 18.4977 20.2477 18.8062 20.4991C19.2132 20.8309 19.6194 21.1618 19.6591 21.4484C19.6609 21.5731 19.6603 21.6994 19.6598 21.8265C19.6566 22.5791 19.6532 23.3584 20.1354 23.9771C20.4022 24.5182 19.7489 25.0618 19.2227 24.9945C18.9342 25.0345 18.619 24.9585 18.306 24.883C17.8778 24.7797 17.4537 24.6774 17.108 24.8748C17.011 24.9798 16.8716 24.9835 16.7316 24.9872C16.5657 24.9915 16.3987 24.9959 16.3 25.1691C16.2797 25.2206 16.2323 25.2787 16.183 25.3391C16.0748 25.4717 15.9575 25.6155 16.098 25.7252C16.1106 25.7156 16.1231 25.7061 16.1356 25.6965C16.3484 25.5341 16.5513 25.3792 16.8386 25.4758C16.8004 25.6881 16.9375 25.745 17.0745 25.8018C17.0984 25.8117 17.1224 25.8217 17.1454 25.8324C17.1439 25.8817 17.1342 25.9314 17.1245 25.9808C17.1015 26.0986 17.0789 26.2142 17.1703 26.3162C17.2137 26.2721 17.2521 26.2225 17.2905 26.1728C17.3846 26.0512 17.4791 25.929 17.6491 25.8848C18.023 26.384 18.3996 26.1767 18.8721 25.9165C19.4051 25.623 20.0601 25.2623 20.9708 25.7726C20.6217 25.7551 20.3099 25.7975 20.0755 26.0868C20.0182 26.1516 19.9683 26.2264 20.0705 26.3112C20.6094 25.9621 20.8336 26.0876 21.0446 26.2057C21.1969 26.2909 21.3423 26.3723 21.5942 26.2688C21.6538 26.2377 21.7133 26.2056 21.7729 26.1735C22.1775 25.9552 22.5877 25.7339 23.068 25.81C22.7093 25.9134 22.5816 26.1408 22.4423 26.3891C22.3734 26.5118 22.3017 26.6396 22.1977 26.7601C22.1429 26.815 22.1179 26.8798 22.1803 26.9721C22.9315 26.9096 23.2153 26.7191 23.5988 26.4618C23.7818 26.339 23.9875 26.201 24.2775 26.0544C24.5981 25.857 24.9187 25.9832 25.2293 26.1056C25.5664 26.2383 25.8917 26.3664 26.1927 26.0718C26.2878 25.9822 26.4071 25.9811 26.5258 25.98C26.569 25.9796 26.6122 25.9792 26.6541 25.9746C26.5604 25.4727 26.0319 25.4786 25.4955 25.4846C24.875 25.4915 24.2438 25.4986 24.2626 24.7202C24.8391 24.3265 24.8444 23.6431 24.8494 22.9972C24.8507 22.8413 24.8518 22.6876 24.8611 22.5406C25.2851 22.7771 25.7336 22.9619 26.1794 23.1455C26.5987 23.3183 27.0156 23.49 27.4072 23.7027C27.8162 24.3611 28.4546 25.2339 29.305 25.1766C29.3274 25.1092 29.3474 25.0519 29.3723 24.9845C29.4213 24.9931 29.4731 25.0062 29.5257 25.0195C29.7489 25.0761 29.9879 25.1366 30.103 24.8723ZM46.7702 17.3907C47.2625 17.8819 47.9304 18.1579 48.6267 18.1579C49.323 18.1579 49.9909 17.8819 50.4832 17.3907C50.9756 16.8995 51.2523 16.2333 51.2523 15.5387C51.2523 14.844 50.9756 14.1778 50.4832 13.6866C49.9909 13.1954 49.323 12.9194 48.6267 12.9194C48.3006 12.9194 47.9807 12.98 47.6822 13.0948L46.1773 10.8981L45.1285 11.6167L46.6412 13.8248C46.2297 14.2992 46.0011 14.9072 46.0011 15.5387C46.0011 16.2333 46.2778 16.8995 46.7702 17.3907ZM42.0587 10.2769C42.4271 10.459 42.8332 10.5522 43.2443 10.549C43.8053 10.5447 44.3501 10.3613 44.7989 10.0256C45.2478 9.68993 45.577 9.21968 45.7385 8.68375C45.9 8.14782 45.8851 7.57439 45.6961 7.04749C45.5072 6.52059 45.154 6.06792 44.6884 5.75581C44.3471 5.52707 43.9568 5.38147 43.5488 5.33074C43.1409 5.28 42.7266 5.32556 42.3396 5.46372C41.9525 5.60189 41.6033 5.82881 41.3202 6.12621C41.0371 6.42362 40.8279 6.78319 40.7096 7.17597C40.5913 7.56875 40.567 7.98376 40.6389 8.38759C40.7107 8.79142 40.8766 9.17277 41.1233 9.50093C41.3699 9.8291 41.6903 10.0949 42.0587 10.2769ZM42.0587 25.4864C42.4271 25.6684 42.8332 25.7616 43.2443 25.7585C43.8053 25.7542 44.3501 25.5707 44.7989 25.2351C45.2478 24.8994 45.577 24.4291 45.7385 23.8932C45.9 23.3573 45.8851 22.7838 45.6961 22.2569C45.5072 21.73 45.154 21.2774 44.6884 20.9653C44.3471 20.7365 43.9568 20.5909 43.5488 20.5402C43.1409 20.4895 42.7266 20.535 42.3396 20.6732C41.9525 20.8114 41.6033 21.0383 41.3202 21.3357C41.0371 21.6331 40.8279 21.9926 40.7096 22.3854C40.5913 22.7782 40.567 23.1932 40.6389 23.597C40.7107 24.0009 40.8766 24.3822 41.1233 24.7104C41.3699 25.0386 41.6903 25.3044 42.0587 25.4864ZM44.4725 16.1899V14.8877H40.454C40.3529 14.4928 40.1601 14.1271 39.8911 13.8199L41.4029 11.5801L40.3034 10.8509L38.7916 13.0906C38.5145 12.9905 38.2224 12.9377 37.9277 12.9344C37.2333 12.9344 36.5675 13.2088 36.0765 13.6972C35.5856 14.1856 35.3097 14.848 35.3097 15.5388C35.3097 16.2295 35.5856 16.8919 36.0765 17.3804C36.5675 17.8688 37.2333 18.1432 37.9277 18.1432C38.2224 18.1398 38.5145 18.087 38.7916 17.9869L40.3034 20.2267L41.3899 19.4974L39.8911 17.2577C40.1601 16.9504 40.3529 16.5847 40.454 16.1899H44.4725Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M149.001 7.88732C147.637 6.80254 145.756 6.25391 143.412 6.25391C141.721 6.25391 140.183 6.65291 138.839 7.43844C137.494 8.22398 136.42 9.37111 135.647 10.8449C134.871 12.3212 134.479 14.1242 134.479 16.2065C134.479 17.795 134.711 19.224 135.17 20.4534C135.627 21.6803 136.273 22.7302 137.085 23.5756C137.898 24.4185 138.856 25.0669 139.933 25.5033C141.011 25.9397 142.183 26.1591 143.415 26.1591C145.255 26.1591 146.856 25.7576 148.175 24.9671C149.494 24.1766 150.519 23.0694 151.228 21.6753C151.936 20.2788 152.295 18.6604 152.295 16.8624C152.295 16.81 152.29 16.6454 152.282 16.3686C152.275 16.1467 152.265 15.9646 152.253 15.83H145.599V18.1741H149.016L149.001 18.2813C148.839 19.396 148.519 20.3387 148.051 21.0843C147.579 21.8325 146.961 22.3985 146.218 22.7651C145.475 23.1317 144.592 23.3137 143.617 23.3038C142.31 23.2863 141.203 22.9796 140.33 22.3911C139.457 21.8025 138.794 20.9721 138.36 19.9172C137.928 18.8699 137.709 17.6205 137.709 16.204C137.709 14.7876 137.931 13.5307 138.365 12.4709C138.804 11.406 139.465 10.5656 140.335 9.9771C141.205 9.38857 142.312 9.09929 143.617 9.11675C144.918 9.11675 146.006 9.46837 146.849 10.1616C147.672 10.8374 148.275 11.7477 148.649 12.8674L151.764 12.3736C151.273 10.4609 150.345 8.94967 149.001 7.88233V7.88732Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M189.434 11.9797C188.429 11.3138 187.245 10.9822 185.878 10.9822C184.512 10.9822 183.35 11.3138 182.417 11.9797C182.225 12.1168 182.048 12.264 181.876 12.4211V11.3837H179.023V32.2789H182.277V25.1143C182.335 25.1592 182.392 25.2041 182.452 25.2465C183.407 25.9173 184.589 26.2515 186 26.2515C187.33 26.2515 188.492 25.9173 189.482 25.2465C190.472 24.5757 191.24 23.6655 191.786 22.5133C192.33 21.3612 192.604 20.062 192.604 18.6156C192.604 17.1692 192.327 15.845 191.774 14.6979C191.22 13.5508 190.442 12.6455 189.437 11.9797H189.434ZM188.791 21.0221C188.527 21.7403 188.123 22.3113 187.579 22.7303C187.035 23.1493 186.342 23.3587 185.502 23.3587C184.661 23.3587 183.936 23.1592 183.404 22.7627C182.873 22.3662 182.484 21.8101 182.24 21.0944C181.993 20.3812 181.871 19.5532 181.871 18.6156C181.871 17.6779 181.993 16.84 182.24 16.1318C182.484 15.4211 182.868 14.8675 183.385 14.471C183.903 14.0744 184.572 13.8749 185.394 13.8749C186.26 13.8749 186.976 14.0869 187.537 14.5109C188.1 14.9348 188.514 15.5059 188.784 16.2266C189.05 16.9448 189.185 17.7428 189.185 18.6181C189.185 19.4934 189.053 20.3039 188.791 21.0221Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M207.579 16.4134C207.522 15.8548 207.395 15.2638 207.198 14.6378C207.001 14.0119 206.696 13.4234 206.287 12.8698C205.876 12.3162 205.322 11.8598 204.627 11.5032C203.931 11.1466 203.045 10.967 201.976 10.967C200.619 10.967 199.474 11.2638 198.547 11.8573C198.048 12.1765 197.617 12.5556 197.247 12.992V6.56055H194.367V25.8473H197.637V18.4134C197.637 17.5306 197.734 16.8049 197.931 16.2363C198.128 15.6703 198.387 15.2239 198.714 14.8972C199.041 14.5705 199.405 14.3411 199.806 14.2064C200.208 14.0718 200.614 14.0044 201.026 14.0044C201.794 14.0044 202.402 14.169 202.853 14.5007C203.305 14.8324 203.644 15.2538 203.871 15.7675C204.098 16.2812 204.242 16.8149 204.307 17.3685C204.37 17.9221 204.402 18.4259 204.402 18.8822V25.8473H207.671V17.77C207.671 17.4209 207.641 16.9695 207.584 16.4109L207.579 16.4134Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M161.861 11.5108C161.417 11.5408 160.981 11.6255 160.559 11.7602C160.138 11.8949 159.751 12.0819 159.405 12.3138C158.996 12.5657 158.644 12.8874 158.355 13.2714C158.227 13.441 158.11 13.6231 157.996 13.825L157.876 14.037V11.5707H155.185V25.7303H158.26V18.5308C158.26 17.9822 158.327 17.461 158.459 16.9846C158.594 16.5083 158.804 16.0744 159.085 15.7004C159.367 15.3238 159.736 15.0121 160.185 14.7702C160.629 14.5034 161.14 14.3438 161.699 14.2989C162.22 14.2565 162.691 14.2914 163.103 14.3986V11.5607C162.701 11.4984 162.285 11.4809 161.861 11.5108Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M75.1577 6.52563V25.77H88.4121V22.8623H78.1677V6.52563H75.1577Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M95.4793 11.0919C92.5915 11.0919 90.4294 12.446 89.5516 14.8076C89.4942 14.9597 89.3271 15.4135 89.3271 15.4135L91.8035 17.0145L92.1401 16.1367C92.7137 14.6405 93.776 13.9447 95.4793 13.9447C97.1825 13.9447 98.1576 14.7702 98.1401 16.3986C98.1401 16.4659 98.1351 16.6654 98.1351 16.6654C98.1351 16.6654 95.8808 17.032 94.9531 17.2265C90.9905 18.0644 89.3296 19.5756 89.3296 22.0519C89.3296 23.3711 90.0628 24.7976 91.3995 25.5981C92.2025 26.0794 93.2498 26.2589 94.4044 26.2589C95.165 26.2589 95.9032 26.1467 96.589 25.9372C98.1451 25.421 98.5765 24.4061 98.5765 24.4061V25.7327H101.153V16.2415C101.153 13.0145 99.0329 11.0894 95.4818 11.0894L95.4793 11.0919ZM98.1476 21.2215C98.1476 22.219 97.0603 23.623 94.5291 23.623C93.8159 23.623 93.3072 23.4335 92.9705 23.1517C92.5192 22.7751 92.3695 22.2315 92.4319 21.7552C92.4593 21.5482 92.584 21.0993 93.0503 20.7103C93.5266 20.3113 94.367 20.0295 95.6663 19.7452C96.7361 19.5133 98.1476 19.2564 98.1476 19.2564V21.2215Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M170.876 11.0919C167.988 11.0919 165.826 12.446 164.948 14.8076C164.891 14.9597 164.724 15.4135 164.724 15.4135L167.2 17.0145L167.537 16.1367C168.11 14.6405 169.173 13.9447 170.876 13.9447C172.579 13.9447 173.554 14.7702 173.537 16.3986C173.537 16.4659 173.532 16.6654 173.532 16.6654C173.532 16.6654 171.277 17.032 170.35 17.2265C166.387 18.0644 164.726 19.5756 164.726 22.0519C164.726 23.3711 165.459 24.7976 166.796 25.5981C167.599 26.0794 168.646 26.2589 169.801 26.2589C170.562 26.2589 171.3 26.1467 171.985 25.9372C173.542 25.421 173.973 24.4061 173.973 24.4061V25.7327H176.549V16.2415C176.549 13.0145 174.429 11.0894 170.878 11.0894L170.876 11.0919ZM173.544 21.2215C173.544 22.219 172.457 23.623 169.926 23.623C169.212 23.623 168.704 23.4335 168.367 23.1517C167.916 22.7751 167.766 22.2315 167.828 21.7552C167.856 21.5482 167.981 21.0993 168.447 20.7103C168.923 20.3113 169.764 20.0295 171.063 19.7452C172.133 19.5133 173.544 19.2564 173.544 19.2564V21.2215Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M110.669 11.0919C110.31 11.0919 109.961 11.1168 109.624 11.1642C107.317 11.5108 106.642 12.6829 106.642 12.6829V11.5108H103.756V25.7402H106.766V17.8475C106.766 15.1667 108.721 13.9447 110.539 13.9447C112.504 13.9447 113.46 15.0021 113.46 17.1741V25.7377H116.47V16.7602C116.47 13.2614 114.248 11.0894 110.669 11.0894V11.0919Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M129.028 11.5008V12.9671C129.028 12.9671 128.29 11.0918 124.936 11.0918C120.769 11.0918 118.178 13.9696 118.178 18.598C118.178 21.2115 119.013 23.2688 120.487 24.5681C121.632 25.5781 123.163 26.0968 124.988 26.1317C126.255 26.1566 127.078 25.81 127.589 25.4833C128.574 24.8574 128.938 24.2614 128.938 24.2614C128.938 24.2614 128.896 24.7277 128.821 25.3586C128.766 25.815 128.664 26.1367 128.664 26.1367C128.205 27.7676 126.866 28.7102 124.911 28.7102C122.956 28.7102 121.771 28.0668 121.537 26.8L118.612 27.6728C119.118 30.1092 121.405 31.5656 124.729 31.5656C126.988 31.5656 128.761 30.9521 129.996 29.7377C131.24 28.5157 131.873 26.7526 131.873 24.4983V11.5008H129.028ZM128.839 18.7302C128.839 21.5781 127.447 23.2788 125.118 23.2788C122.622 23.2788 121.19 21.5731 121.19 18.6005C121.19 15.628 122.622 13.9472 125.118 13.9472C127.392 13.9472 128.819 15.6404 128.839 18.3661V18.7277V18.7302Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
                   ),
                 },
                 // CrewAI
                 {
-                  name: 'CrewAI',
+                  name: "CrewAI",
                   icon: (
                     <img
                       src="https://cdn.prod.website-files.com/66cf2bfc3ed15b02da0ca770/66d07240057721394308addd_Logo%20(1).svg"
@@ -246,21 +433,385 @@ const Skills = () => {
                 },
                 // DeepSeek
                 {
-                  name: 'DeepSeek',
+                  name: "DeepSeek",
                   icon: (
-                    <svg className="max-w-xs w-[100%] h-16" viewBox="-1 0 257 50" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient x1="-0.500229" y1="24.291504" x2="384.499878" y2="24.291504" id="paint_linear_760_1075_0" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"></stop><stop offset="1.000000" stop-color="#000000"></stop></linearGradient></defs><linearGradient x1="-0.500229" y1="24.291504" x2="384.499878" y2="24.291504" id="paint_linear_760_10750_0" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"></stop><stop offset="1.000000" stop-color="#000000"></stop></linearGradient><path id="矢量 2" d="M111.54 10.4C109.08 10.4 106.6 10.94 104.99 12.46C104.85 12.59 104.72 12.73 104.59 12.87L103.41 12.87L103.41 10.4L96.94 10.4L96.94 49.28L103.41 49.28L103.41 25.12C103.41 22.63 103.95 20.13 105.45 18.5C106.95 16.86 109.25 16.28 111.54 16.28C113.82 16.28 116.13 16.86 117.63 18.5C119.13 20.13 119.67 22.63 119.67 25.12C119.67 27.6 119.13 30.1 117.63 31.73C116.13 33.37 113.82 33.95 111.54 33.95L107.86 33.95L107.86 39.83L111.54 39.83C115.35 39.83 119.18 38.86 121.68 36.14C124.18 33.42 125.07 29.26 125.07 25.12C125.07 20.98 124.18 16.81 121.68 14.09C119.18 11.37 115.35 10.4 111.54 10.4Z" fill="url(#paint_linear_760_10750_0)" fill-opacity="1.000000" fill-rule="nonzero"></path><linearGradient x1="-0.500000" y1="24.289795" x2="384.500061" y2="24.289795" id="paint_linear_760_10751_1" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"></stop><stop offset="1.000000" stop-color="#000000"></stop></linearGradient><path id="矢量 2" d="M21.16 26.14C21.16 28.63 20.62 31.13 19.12 32.76C17.62 34.39 15.32 34.98 13.03 34.98C10.74 34.98 8.44 34.39 6.94 32.76C5.44 31.13 4.9 28.63 4.9 26.14C4.9 23.66 5.44 21.15 6.94 19.52C8.44 17.89 10.74 17.31 13.03 17.31L16.71 17.31L16.71 11.43L13.03 11.43C9.22 11.43 5.39 12.4 2.89 15.12C0.39 17.84 -0.5 22 -0.5 26.14C-0.5 30.28 0.39 34.45 2.89 37.17C5.39 39.89 9.22 40.86 13.03 40.86C15.49 40.86 17.96 40.31 19.58 38.8C19.72 38.67 19.85 38.53 19.97 38.39L21.16 38.39L21.16 40.86L27.63 40.86L27.63 1.97L21.16 1.97L21.16 26.14Z" fill="url(#paint_linear_760_10751_1)" fill-opacity="1.000000" fill-rule="nonzero"></path><linearGradient x1="-0.500000" y1="24.285522" x2="384.499939" y2="24.285522" id="paint_linear_760_10752_2" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"></stop><stop offset="1.000000" stop-color="#000000"></stop></linearGradient><path id="矢量 2" d="M46.04 10.4C42.08 10.4 38.1 11.41 35.5 14.22C32.91 17.03 31.98 21.34 31.98 25.63C31.98 29.91 32.91 34.23 35.5 37.04C38.1 39.85 42.08 40.86 46.04 40.86C50 40.86 53.98 39.85 56.58 37.04C57.91 35.59 58.81 33.75 59.37 31.71L52.97 31.71C52.79 31.98 52.59 32.24 52.37 32.48C50.81 34.17 48.42 34.77 46.04 34.77C43.67 34.77 41.28 34.17 39.72 32.48C38.16 30.79 37.6 28.2 37.6 25.63C37.6 23.06 38.16 20.47 39.72 18.78C41.28 17.09 43.67 16.49 46.04 16.49C48.42 16.49 50.81 17.09 52.37 18.78C53.45 19.95 54.05 21.54 54.32 23.27L42.88 23.27L42.88 27.99L60.11 27.99L60.11 25.63C60.11 21.34 59.18 17.03 56.58 14.22C53.99 11.41 50 10.4 46.04 10.4Z" fill="url(#paint_linear_760_10752_2)" fill-opacity="1.000000" fill-rule="nonzero"></path><linearGradient x1="-0.500000" y1="24.285522" x2="384.499939" y2="24.285522" id="paint_linear_760_10753_3" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"></stop><stop offset="1.000000" stop-color="#000000"></stop></linearGradient><path id="矢量 2" d="M78.52 10.4C74.57 10.4 70.58 11.41 67.99 14.22C65.39 17.03 64.46 21.34 64.46 25.63C64.46 29.91 65.39 34.23 67.99 37.04C70.58 39.85 74.57 40.86 78.52 40.86C82.48 40.86 86.46 39.85 89.06 37.04C90.4 35.59 91.29 33.75 91.85 31.71L85.45 31.71C85.27 31.98 85.07 32.24 84.85 32.48C83.29 34.17 80.9 34.77 78.53 34.77C76.15 34.77 73.76 34.17 72.2 32.48C70.64 30.79 70.08 28.2 70.08 25.63C70.08 23.06 70.64 20.47 72.2 18.78C73.76 17.09 76.15 16.49 78.53 16.49C80.9 16.49 83.29 17.09 84.85 18.78C85.93 19.95 86.53 21.54 86.8 23.27L75.36 23.27L75.36 27.99L92.59 27.99L92.59 25.63C92.59 21.34 91.66 17.03 89.06 14.22C86.47 11.41 82.48 10.4 78.52 10.4Z" fill="url(#paint_linear_760_10753_3)" fill-opacity="1.000000" fill-rule="nonzero"></path><linearGradient x1="-0.536057" y1="24.287598" x2="384.499878" y2="24.287598" id="paint_linear_760_10754_4" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"></stop><stop offset="1.000000" stop-color="#000000"></stop></linearGradient><path id="矢量 2" d="M154.02 25.13C151.43 23.47 147.44 22.88 143.49 22.88L143.63 22.88C141.94 22.88 140.24 22.65 139.13 22C138.02 21.36 137.63 20.37 137.63 19.39C137.63 18.41 138.02 17.42 139.13 16.78C140.24 16.13 141.94 15.9 143.63 15.9C145.32 15.9 147.02 16.14 148.12 16.78C149.23 17.42 149.63 18.41 149.63 19.39L156.22 19.39C156.22 16.86 155.37 14.32 153.02 12.66C150.67 11 147.07 10.4 143.49 10.4C139.91 10.4 136.31 11 133.96 12.66C131.61 14.32 130.77 16.86 130.77 19.39C130.77 21.92 131.61 24.47 133.96 26.12C136.31 27.78 139.91 28.38 143.49 28.38C145.35 28.38 147.39 28.61 148.61 29.25C149.84 29.9 150.28 30.89 150.28 31.87C150.28 32.85 149.84 33.84 148.61 34.48C147.39 35.12 145.51 35.35 143.64 35.35C141.78 35.35 139.9 35.12 138.67 34.48C137.45 33.83 137.01 32.85 137.01 31.87L129.42 31.87C129.42 34.39 130.35 36.94 132.95 38.6C135.55 40.26 139.53 40.85 143.49 40.85C147.44 40.85 151.43 40.26 154.02 38.6C156.62 36.94 157.55 34.39 157.55 31.87C157.55 29.34 156.62 26.79 154.02 25.13Z" fill="url(#paint_linear_760_10754_4)" fill-opacity="1.000000" fill-rule="nonzero"></path><linearGradient x1="-0.535828" y1="24.285522" x2="384.464355" y2="24.285522" id="paint_linear_760_10755_5" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"></stop><stop offset="1.000000" stop-color="#000000"></stop></linearGradient><path id="矢量 2" d="M175.97 10.4C172.01 10.4 168.03 11.41 165.43 14.22C162.84 17.03 161.9 21.34 161.9 25.63C161.9 29.91 162.84 34.23 165.43 37.04C168.03 39.85 172.01 40.86 175.97 40.86C179.93 40.86 183.91 39.85 186.51 37.04C187.84 35.59 188.74 33.75 189.29 31.71L182.9 31.71C182.72 31.98 182.52 32.24 182.3 32.48C180.74 34.17 178.35 34.77 175.97 34.77C173.6 34.77 171.2 34.17 169.65 32.48C168.09 30.79 167.53 28.2 167.53 25.63C167.53 23.06 168.09 20.47 169.65 18.78C171.2 17.09 173.6 16.49 175.97 16.49C178.35 16.49 180.74 17.09 182.3 18.78C183.38 19.95 183.98 21.54 184.25 23.27L172.8 23.27L172.8 27.99L190.04 27.99L190.04 25.63C190.04 21.34 189.11 17.03 186.51 14.22C183.91 11.41 179.93 10.4 175.97 10.4Z" fill="url(#paint_linear_760_10755_5)" fill-opacity="1.000000" fill-rule="nonzero"></path><linearGradient x1="-0.535828" y1="24.285522" x2="384.464355" y2="24.285522" id="paint_linear_760_10756_6" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"></stop><stop offset="1.000000" stop-color="#000000"></stop></linearGradient><path id="矢量 2" d="M208.45 10.4C204.49 10.4 200.51 11.41 197.91 14.22C195.32 17.03 194.38 21.34 194.38 25.63C194.38 29.91 195.32 34.23 197.91 37.04C200.51 39.85 204.49 40.86 208.45 40.86C212.41 40.86 216.39 39.85 218.99 37.04C220.32 35.59 221.22 33.75 221.78 31.71L215.38 31.71C215.2 31.98 215 32.24 214.78 32.48C213.22 34.17 210.83 34.77 208.45 34.77C206.08 34.77 203.68 34.17 202.13 32.48C200.57 30.79 200.01 28.2 200.01 25.63C200.01 23.06 200.57 20.47 202.13 18.78C203.68 17.09 206.08 16.49 208.45 16.49C210.83 16.49 213.22 17.09 214.78 18.78C215.86 19.95 216.46 21.54 216.73 23.27L205.29 23.27L205.29 27.99L222.52 27.99L222.52 25.63C222.52 21.34 221.59 17.03 218.99 14.22C216.39 11.41 212.41 10.4 208.45 10.4Z" fill="url(#paint_linear_760_10756_6)" fill-opacity="1.000000" fill-rule="nonzero"></path><linearGradient x1="-0.500000" y1="24.288086" x2="384.655762" y2="24.288086" id="paint_linear_760_10757_7" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"></stop><stop offset="1.000000" stop-color="#000000"></stop></linearGradient><path id="矢量 2" d="M226.86 0.61L233.33 0.61L233.33 40.86L226.86 40.86L226.86 0.61Z" fill="url(#paint_linear_760_10757_7)" fill-opacity="1.000000" fill-rule="evenodd"></path><path id="矢量 2" d="M246.98 11.75L236.36 24.72L246.98 40.86L255 40.86L244.38 24.72L255 11.75L246.98 11.75Z" fill="url(#paint_linear_760_10758_8)" fill-opacity="1.000000" fill-rule="nonzero"></path><linearGradient x1="384.499817" y1="-0.710205" x2="-0.500183" y2="-0.710205" id="paint_linear_760_107515_15" gradientUnits="userSpaceOnUse"><stop stop-color="#4D6BFE"></stop><stop offset="0.603054" stop-color="#3982FF"></stop><stop offset="1.000000" stop-color="#2498FF"></stop></linearGradient><path id="矢量 2" d="M111.54 10.4C109.08 10.4 106.6 10.94 104.99 12.46C104.85 12.59 104.72 12.73 104.59 12.87L103.41 12.87L103.41 10.4L96.94 10.4L96.94 49.28L103.41 49.28L103.41 25.12C103.41 22.63 103.95 20.13 105.45 18.5C106.95 16.86 109.25 16.28 111.54 16.28C113.82 16.28 116.13 16.86 117.63 18.5C119.13 20.13 119.67 22.63 119.67 25.12C119.67 27.6 119.13 30.1 117.63 31.73C116.13 33.37 113.82 33.95 111.54 33.95L107.86 33.95L107.86 39.83L111.54 39.83C115.35 39.83 119.18 38.86 121.68 36.14C124.18 33.42 125.07 29.26 125.07 25.12C125.07 20.98 124.18 16.81 121.68 14.09C119.18 11.37 115.35 10.4 111.54 10.4Z" fill="url(#paint_linear_760_107515_15)" fill-opacity="1.000000" fill-rule="nonzero"></path><linearGradient x1="384.499817" y1="-0.710205" x2="-0.500183" y2="-0.710205" id="paint_linear_760_107516_16" gradientUnits="userSpaceOnUse"><stop stop-color="#4D6BFE"></stop><stop offset="0.603054" stop-color="#3982FF"></stop><stop offset="1.000000" stop-color="#2498FF"></stop></linearGradient><path id="矢量 2" d="M21.16 26.14C21.16 28.63 20.62 31.13 19.12 32.76C17.62 34.39 15.32 34.98 13.03 34.98C10.74 34.98 8.44 34.39 6.94 32.76C5.44 31.13 4.9 28.63 4.9 26.14C4.9 23.66 5.44 21.15 6.94 19.52C8.44 17.89 10.74 17.31 13.03 17.31L16.71 17.31L16.71 11.43L13.03 11.43C9.22 11.43 5.39 12.4 2.89 15.12C0.39 17.84 -0.5 22 -0.5 26.14C-0.5 30.28 0.39 34.45 2.89 37.17C5.39 39.89 9.22 40.86 13.03 40.86C15.49 40.86 17.96 40.31 19.58 38.8C19.72 38.67 19.85 38.53 19.97 38.39L21.16 38.39L21.16 40.86L27.63 40.86L27.63 1.97L21.16 1.97L21.16 26.14Z" fill="url(#paint_linear_760_107516_16)" fill-opacity="1.000000" fill-rule="nonzero"></path><linearGradient x1="384.499817" y1="-0.710205" x2="-0.500183" y2="-0.710205" id="paint_linear_760_107517_17" gradientUnits="userSpaceOnUse"><stop stop-color="#4D6BFE"></stop><stop offset="0.603054" stop-color="#3982FF"></stop><stop offset="1.000000" stop-color="#2498FF"></stop></linearGradient><path id="矢量 2" d="M46.04 10.4C42.08 10.4 38.1 11.41 35.5 14.22C32.91 17.03 31.98 21.34 31.98 25.63C31.98 29.91 32.91 34.23 35.5 37.04C38.1 39.85 42.08 40.86 46.04 40.86C50 40.86 53.98 39.85 56.58 37.04C57.91 35.59 58.81 33.75 59.37 31.71L52.97 31.71C52.79 31.98 52.59 32.24 52.37 32.48C50.81 34.17 48.42 34.77 46.04 34.77C43.67 34.77 41.28 34.17 39.72 32.48C38.16 30.79 37.6 28.2 37.6 25.63C37.6 23.06 38.16 20.47 39.72 18.78C41.28 17.09 43.67 16.49 46.04 16.49C48.42 16.49 50.81 17.09 52.37 18.78C53.45 19.95 54.05 21.54 54.32 23.27L42.88 23.27L42.88 27.99L60.11 27.99L60.11 25.63C60.11 21.34 59.18 17.03 56.58 14.22C53.99 11.41 50 10.4 46.04 10.4Z" fill="url(#paint_linear_760_107517_17)" fill-opacity="1.000000" fill-rule="nonzero"></path><linearGradient x1="384.499817" y1="-0.710205" x2="-0.500183" y2="-0.710205" id="paint_linear_760_107518_18" gradientUnits="userSpaceOnUse"><stop stop-color="#4D6BFE"></stop><stop offset="0.603054" stop-color="#3982FF"></stop><stop offset="1.000000" stop-color="#2498FF"></stop></linearGradient><path id="矢量 2" d="M78.52 10.4C74.57 10.4 70.58 11.41 67.99 14.22C65.39 17.03 64.46 21.34 64.46 25.63C64.46 29.91 65.39 34.23 67.99 37.04C70.58 39.85 74.57 40.86 78.52 40.86C82.48 40.86 86.46 39.85 89.06 37.04C90.4 35.59 91.29 33.75 91.85 31.71L85.45 31.71C85.27 31.98 85.07 32.24 84.85 32.48C83.29 34.17 80.9 34.77 78.53 34.77C76.15 34.77 73.76 34.17 72.2 32.48C70.64 30.79 70.08 28.2 70.08 25.63C70.08 23.06 70.64 20.47 72.2 18.78C73.76 17.09 76.15 16.49 78.53 16.49C80.9 16.49 83.29 17.09 84.85 18.78C85.93 19.95 86.53 21.54 86.8 23.27L75.36 23.27L75.36 27.99L92.59 27.99L92.59 25.63C92.59 21.34 91.66 17.03 89.06 14.22C86.47 11.41 82.48 10.4 78.52 10.4Z" fill="url(#paint_linear_760_107518_18)" fill-opacity="1.000000" fill-rule="nonzero"></path><linearGradient x1="384.499817" y1="-0.710205" x2="-0.500183" y2="-0.710205" id="paint_linear_760_107519_19" gradientUnits="userSpaceOnUse"><stop stop-color="#4D6BFE"></stop><stop offset="0.603054" stop-color="#3982FF"></stop><stop offset="1.000000" stop-color="#2498FF"></stop></linearGradient><path id="矢量 2" d="M154.02 25.13C151.43 23.47 147.44 22.88 143.49 22.88L143.63 22.88C141.94 22.88 140.24 22.65 139.13 22C138.02 21.36 137.63 20.37 137.63 19.39C137.63 18.41 138.02 17.42 139.13 16.78C140.24 16.13 141.94 15.9 143.63 15.9C145.32 15.9 147.02 16.14 148.12 16.78C149.23 17.42 149.63 18.41 149.63 19.39L156.22 19.39C156.22 16.86 155.37 14.32 153.02 12.66C150.67 11 147.07 10.4 143.49 10.4C139.91 10.4 136.31 11 133.96 12.66C131.61 14.32 130.77 16.86 130.77 19.39C130.77 21.92 131.61 24.47 133.96 26.12C136.31 27.78 139.91 28.38 143.49 28.38C145.35 28.38 147.39 28.61 148.61 29.25C149.84 29.9 150.28 30.89 150.28 31.87C150.28 32.85 149.84 33.84 148.61 34.48C147.39 35.12 145.51 35.35 143.64 35.35C141.78 35.35 139.9 35.12 138.67 34.48C137.45 33.83 137.01 32.85 137.01 31.87L129.42 31.87C129.42 34.39 130.35 36.94 132.95 38.6C135.55 40.26 139.53 40.85 143.49 40.85C147.44 40.85 151.43 40.26 154.02 38.6C156.62 36.94 157.55 34.39 157.55 31.87C157.55 29.34 156.62 26.79 154.02 25.13Z" fill="url(#paint_linear_760_107519_19)" fill-opacity="1.000000" fill-rule="nonzero"></path><linearGradient x1="384.499817" y1="-0.710205" x2="-0.500183" y2="-0.710205" id="paint_linear_760_107520_20" gradientUnits="userSpaceOnUse"><stop stop-color="#4D6BFE"></stop><stop offset="0.603054" stop-color="#3982FF"></stop><stop offset="1.000000" stop-color="#2498FF"></stop></linearGradient><path id="矢量 2" d="M175.97 10.4C172.01 10.4 168.03 11.41 165.43 14.22C162.84 17.03 161.9 21.34 161.9 25.63C161.9 29.91 162.84 34.23 165.43 37.04C168.03 39.85 172.01 40.86 175.97 40.86C179.93 40.86 183.91 39.85 186.51 37.04C187.84 35.59 188.74 33.75 189.29 31.71L182.9 31.71C182.72 31.98 182.52 32.24 182.3 32.48C180.74 34.17 178.35 34.77 175.97 34.77C173.6 34.77 171.2 34.17 169.65 32.48C168.09 30.79 167.53 28.2 167.53 25.63C167.53 23.06 168.09 20.47 169.65 18.78C171.2 17.09 173.6 16.49 175.97 16.49C178.35 16.49 180.74 17.09 182.3 18.78C183.38 19.95 183.98 21.54 184.25 23.27L172.8 23.27L172.8 27.99L190.04 27.99L190.04 25.63C190.04 21.34 189.11 17.03 186.51 14.22C183.91 11.41 179.93 10.4 175.97 10.4Z" fill="url(#paint_linear_760_107520_20)" fill-opacity="1.000000" fill-rule="nonzero"></path><linearGradient x1="384.499817" y1="-0.710205" x2="-0.500183" y2="-0.710205" id="paint_linear_760_107521_21" gradientUnits="userSpaceOnUse"><stop stop-color="#4D6BFE"></stop><stop offset="0.603054" stop-color="#3982FF"></stop><stop offset="1.000000" stop-color="#2498FF"></stop></linearGradient><path id="矢量 2" d="M208.45 10.4C204.49 10.4 200.51 11.41 197.91 14.22C195.32 17.03 194.38 21.34 194.38 25.63C194.38 29.91 195.32 34.23 197.91 37.04C200.51 39.85 204.49 40.86 208.45 40.86C212.41 40.86 216.39 39.85 218.99 37.04C220.32 35.59 221.22 33.75 221.78 31.71L215.38 31.71C215.2 31.98 215 32.24 214.78 32.48C213.22 34.17 210.83 34.77 208.45 34.77C206.08 34.77 203.68 34.17 202.13 32.48C200.57 30.79 200.01 28.2 200.01 25.63C200.01 23.06 200.57 20.47 202.13 18.78C203.68 17.09 206.08 16.49 208.45 16.49C210.83 16.49 213.22 17.09 214.78 18.78C215.86 19.95 216.46 21.54 216.73 23.27L205.29 23.27L205.29 27.99L222.52 27.99L222.52 25.63C222.52 21.34 221.59 17.03 218.99 14.22C216.39 11.41 212.41 10.4 208.45 10.4Z" fill="url(#paint_linear_760_107521_21)" fill-opacity="1.000000" fill-rule="nonzero"></path><linearGradient x1="384.499817" y1="-0.710205" x2="-0.500183" y2="-0.710205" id="paint_linear_760_107522_22" gradientUnits="userSpaceOnUse"><stop stop-color="#4D6BFE"></stop><stop offset="0.603054" stop-color="#3982FF"></stop><stop offset="1.000000" stop-color="#2498FF"></stop></linearGradient><path id="矢量 2" d="M226.86 0.61L233.33 0.61L233.33 40.86L226.86 40.86L226.86 0.61Z" fill="url(#paint_linear_760_107522_22)" fill-opacity="1.000000" fill-rule="evenodd"></path><linearGradient x1="384.499817" y1="-0.710205" x2="-0.500183" y2="-0.710205" id="paint_linear_760_107523_23" gradientUnits="userSpaceOnUse"><stop stop-color="#4D6BFE"></stop><stop offset="0.603054" stop-color="#3982FF"></stop><stop offset="1.000000" stop-color="#2498FF"></stop></linearGradient><path id="矢量 2" d="M246.98 11.75L236.36 24.72L246.98 40.86L255 40.86L244.38 24.72L255 11.75L246.98 11.75Z" fill="url(#paint_linear_760_107523_23)" fill-opacity="1.000000" fill-rule="nonzero"></path></svg>
+                    <svg
+                      className="max-w-xs w-[100%] h-16"
+                      viewBox="-1 0 257 50"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <defs>
+                        <linearGradient
+                          x1="-0.500229"
+                          y1="24.291504"
+                          x2="384.499878"
+                          y2="24.291504"
+                          id="paint_linear_760_1075_0"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop stop-color="#FFFFFF"></stop>
+                          <stop offset="1.000000" stop-color="#000000"></stop>
+                        </linearGradient>
+                      </defs>
+                      <linearGradient
+                        x1="-0.500229"
+                        y1="24.291504"
+                        x2="384.499878"
+                        y2="24.291504"
+                        id="paint_linear_760_10750_0"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stop-color="#FFFFFF"></stop>
+                        <stop offset="1.000000" stop-color="#000000"></stop>
+                      </linearGradient>
+                      <path
+                        id="矢量 2"
+                        d="M111.54 10.4C109.08 10.4 106.6 10.94 104.99 12.46C104.85 12.59 104.72 12.73 104.59 12.87L103.41 12.87L103.41 10.4L96.94 10.4L96.94 49.28L103.41 49.28L103.41 25.12C103.41 22.63 103.95 20.13 105.45 18.5C106.95 16.86 109.25 16.28 111.54 16.28C113.82 16.28 116.13 16.86 117.63 18.5C119.13 20.13 119.67 22.63 119.67 25.12C119.67 27.6 119.13 30.1 117.63 31.73C116.13 33.37 113.82 33.95 111.54 33.95L107.86 33.95L107.86 39.83L111.54 39.83C115.35 39.83 119.18 38.86 121.68 36.14C124.18 33.42 125.07 29.26 125.07 25.12C125.07 20.98 124.18 16.81 121.68 14.09C119.18 11.37 115.35 10.4 111.54 10.4Z"
+                        fill="url(#paint_linear_760_10750_0)"
+                        fill-opacity="1.000000"
+                        fill-rule="nonzero"
+                      ></path>
+                      <linearGradient
+                        x1="-0.500000"
+                        y1="24.289795"
+                        x2="384.500061"
+                        y2="24.289795"
+                        id="paint_linear_760_10751_1"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stop-color="#FFFFFF"></stop>
+                        <stop offset="1.000000" stop-color="#000000"></stop>
+                      </linearGradient>
+                      <path
+                        id="矢量 2"
+                        d="M21.16 26.14C21.16 28.63 20.62 31.13 19.12 32.76C17.62 34.39 15.32 34.98 13.03 34.98C10.74 34.98 8.44 34.39 6.94 32.76C5.44 31.13 4.9 28.63 4.9 26.14C4.9 23.66 5.44 21.15 6.94 19.52C8.44 17.89 10.74 17.31 13.03 17.31L16.71 17.31L16.71 11.43L13.03 11.43C9.22 11.43 5.39 12.4 2.89 15.12C0.39 17.84 -0.5 22 -0.5 26.14C-0.5 30.28 0.39 34.45 2.89 37.17C5.39 39.89 9.22 40.86 13.03 40.86C15.49 40.86 17.96 40.31 19.58 38.8C19.72 38.67 19.85 38.53 19.97 38.39L21.16 38.39L21.16 40.86L27.63 40.86L27.63 1.97L21.16 1.97L21.16 26.14Z"
+                        fill="url(#paint_linear_760_10751_1)"
+                        fill-opacity="1.000000"
+                        fill-rule="nonzero"
+                      ></path>
+                      <linearGradient
+                        x1="-0.500000"
+                        y1="24.285522"
+                        x2="384.499939"
+                        y2="24.285522"
+                        id="paint_linear_760_10752_2"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stop-color="#FFFFFF"></stop>
+                        <stop offset="1.000000" stop-color="#000000"></stop>
+                      </linearGradient>
+                      <path
+                        id="矢量 2"
+                        d="M46.04 10.4C42.08 10.4 38.1 11.41 35.5 14.22C32.91 17.03 31.98 21.34 31.98 25.63C31.98 29.91 32.91 34.23 35.5 37.04C38.1 39.85 42.08 40.86 46.04 40.86C50 40.86 53.98 39.85 56.58 37.04C57.91 35.59 58.81 33.75 59.37 31.71L52.97 31.71C52.79 31.98 52.59 32.24 52.37 32.48C50.81 34.17 48.42 34.77 46.04 34.77C43.67 34.77 41.28 34.17 39.72 32.48C38.16 30.79 37.6 28.2 37.6 25.63C37.6 23.06 38.16 20.47 39.72 18.78C41.28 17.09 43.67 16.49 46.04 16.49C48.42 16.49 50.81 17.09 52.37 18.78C53.45 19.95 54.05 21.54 54.32 23.27L42.88 23.27L42.88 27.99L60.11 27.99L60.11 25.63C60.11 21.34 59.18 17.03 56.58 14.22C53.99 11.41 50 10.4 46.04 10.4Z"
+                        fill="url(#paint_linear_760_10752_2)"
+                        fill-opacity="1.000000"
+                        fill-rule="nonzero"
+                      ></path>
+                      <linearGradient
+                        x1="-0.500000"
+                        y1="24.285522"
+                        x2="384.499939"
+                        y2="24.285522"
+                        id="paint_linear_760_10753_3"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stop-color="#FFFFFF"></stop>
+                        <stop offset="1.000000" stop-color="#000000"></stop>
+                      </linearGradient>
+                      <path
+                        id="矢量 2"
+                        d="M78.52 10.4C74.57 10.4 70.58 11.41 67.99 14.22C65.39 17.03 64.46 21.34 64.46 25.63C64.46 29.91 65.39 34.23 67.99 37.04C70.58 39.85 74.57 40.86 78.52 40.86C82.48 40.86 86.46 39.85 89.06 37.04C90.4 35.59 91.29 33.75 91.85 31.71L85.45 31.71C85.27 31.98 85.07 32.24 84.85 32.48C83.29 34.17 80.9 34.77 78.53 34.77C76.15 34.77 73.76 34.17 72.2 32.48C70.64 30.79 70.08 28.2 70.08 25.63C70.08 23.06 70.64 20.47 72.2 18.78C73.76 17.09 76.15 16.49 78.53 16.49C80.9 16.49 83.29 17.09 84.85 18.78C85.93 19.95 86.53 21.54 86.8 23.27L75.36 23.27L75.36 27.99L92.59 27.99L92.59 25.63C92.59 21.34 91.66 17.03 89.06 14.22C86.47 11.41 82.48 10.4 78.52 10.4Z"
+                        fill="url(#paint_linear_760_10753_3)"
+                        fill-opacity="1.000000"
+                        fill-rule="nonzero"
+                      ></path>
+                      <linearGradient
+                        x1="-0.536057"
+                        y1="24.287598"
+                        x2="384.499878"
+                        y2="24.287598"
+                        id="paint_linear_760_10754_4"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stop-color="#FFFFFF"></stop>
+                        <stop offset="1.000000" stop-color="#000000"></stop>
+                      </linearGradient>
+                      <path
+                        id="矢量 2"
+                        d="M154.02 25.13C151.43 23.47 147.44 22.88 143.49 22.88L143.63 22.88C141.94 22.88 140.24 22.65 139.13 22C138.02 21.36 137.63 20.37 137.63 19.39C137.63 18.41 138.02 17.42 139.13 16.78C140.24 16.13 141.94 15.9 143.63 15.9C145.32 15.9 147.02 16.14 148.12 16.78C149.23 17.42 149.63 18.41 149.63 19.39L156.22 19.39C156.22 16.86 155.37 14.32 153.02 12.66C150.67 11 147.07 10.4 143.49 10.4C139.91 10.4 136.31 11 133.96 12.66C131.61 14.32 130.77 16.86 130.77 19.39C130.77 21.92 131.61 24.47 133.96 26.12C136.31 27.78 139.91 28.38 143.49 28.38C145.35 28.38 147.39 28.61 148.61 29.25C149.84 29.9 150.28 30.89 150.28 31.87C150.28 32.85 149.84 33.84 148.61 34.48C147.39 35.12 145.51 35.35 143.64 35.35C141.78 35.35 139.9 35.12 138.67 34.48C137.45 33.83 137.01 32.85 137.01 31.87L129.42 31.87C129.42 34.39 130.35 36.94 132.95 38.6C135.55 40.26 139.53 40.85 143.49 40.85C147.44 40.85 151.43 40.26 154.02 38.6C156.62 36.94 157.55 34.39 157.55 31.87C157.55 29.34 156.62 26.79 154.02 25.13Z"
+                        fill="url(#paint_linear_760_10754_4)"
+                        fill-opacity="1.000000"
+                        fill-rule="nonzero"
+                      ></path>
+                      <linearGradient
+                        x1="-0.535828"
+                        y1="24.285522"
+                        x2="384.464355"
+                        y2="24.285522"
+                        id="paint_linear_760_10755_5"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stop-color="#FFFFFF"></stop>
+                        <stop offset="1.000000" stop-color="#000000"></stop>
+                      </linearGradient>
+                      <path
+                        id="矢量 2"
+                        d="M175.97 10.4C172.01 10.4 168.03 11.41 165.43 14.22C162.84 17.03 161.9 21.34 161.9 25.63C161.9 29.91 162.84 34.23 165.43 37.04C168.03 39.85 172.01 40.86 175.97 40.86C179.93 40.86 183.91 39.85 186.51 37.04C187.84 35.59 188.74 33.75 189.29 31.71L182.9 31.71C182.72 31.98 182.52 32.24 182.3 32.48C180.74 34.17 178.35 34.77 175.97 34.77C173.6 34.77 171.2 34.17 169.65 32.48C168.09 30.79 167.53 28.2 167.53 25.63C167.53 23.06 168.09 20.47 169.65 18.78C171.2 17.09 173.6 16.49 175.97 16.49C178.35 16.49 180.74 17.09 182.3 18.78C183.38 19.95 183.98 21.54 184.25 23.27L172.8 23.27L172.8 27.99L190.04 27.99L190.04 25.63C190.04 21.34 189.11 17.03 186.51 14.22C183.91 11.41 179.93 10.4 175.97 10.4Z"
+                        fill="url(#paint_linear_760_10755_5)"
+                        fill-opacity="1.000000"
+                        fill-rule="nonzero"
+                      ></path>
+                      <linearGradient
+                        x1="-0.535828"
+                        y1="24.285522"
+                        x2="384.464355"
+                        y2="24.285522"
+                        id="paint_linear_760_10756_6"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stop-color="#FFFFFF"></stop>
+                        <stop offset="1.000000" stop-color="#000000"></stop>
+                      </linearGradient>
+                      <path
+                        id="矢量 2"
+                        d="M208.45 10.4C204.49 10.4 200.51 11.41 197.91 14.22C195.32 17.03 194.38 21.34 194.38 25.63C194.38 29.91 195.32 34.23 197.91 37.04C200.51 39.85 204.49 40.86 208.45 40.86C212.41 40.86 216.39 39.85 218.99 37.04C220.32 35.59 221.22 33.75 221.78 31.71L215.38 31.71C215.2 31.98 215 32.24 214.78 32.48C213.22 34.17 210.83 34.77 208.45 34.77C206.08 34.77 203.68 34.17 202.13 32.48C200.57 30.79 200.01 28.2 200.01 25.63C200.01 23.06 200.57 20.47 202.13 18.78C203.68 17.09 206.08 16.49 208.45 16.49C210.83 16.49 213.22 17.09 214.78 18.78C215.86 19.95 216.46 21.54 216.73 23.27L205.29 23.27L205.29 27.99L222.52 27.99L222.52 25.63C222.52 21.34 221.59 17.03 218.99 14.22C216.39 11.41 212.41 10.4 208.45 10.4Z"
+                        fill="url(#paint_linear_760_10756_6)"
+                        fill-opacity="1.000000"
+                        fill-rule="nonzero"
+                      ></path>
+                      <linearGradient
+                        x1="-0.500000"
+                        y1="24.288086"
+                        x2="384.655762"
+                        y2="24.288086"
+                        id="paint_linear_760_10757_7"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stop-color="#FFFFFF"></stop>
+                        <stop offset="1.000000" stop-color="#000000"></stop>
+                      </linearGradient>
+                      <path
+                        id="矢量 2"
+                        d="M226.86 0.61L233.33 0.61L233.33 40.86L226.86 40.86L226.86 0.61Z"
+                        fill="url(#paint_linear_760_10757_7)"
+                        fill-opacity="1.000000"
+                        fill-rule="evenodd"
+                      ></path>
+                      <path
+                        id="矢量 2"
+                        d="M246.98 11.75L236.36 24.72L246.98 40.86L255 40.86L244.38 24.72L255 11.75L246.98 11.75Z"
+                        fill="url(#paint_linear_760_10758_8)"
+                        fill-opacity="1.000000"
+                        fill-rule="nonzero"
+                      ></path>
+                      <linearGradient
+                        x1="384.499817"
+                        y1="-0.710205"
+                        x2="-0.500183"
+                        y2="-0.710205"
+                        id="paint_linear_760_107515_15"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stop-color="#4D6BFE"></stop>
+                        <stop offset="0.603054" stop-color="#3982FF"></stop>
+                        <stop offset="1.000000" stop-color="#2498FF"></stop>
+                      </linearGradient>
+                      <path
+                        id="矢量 2"
+                        d="M111.54 10.4C109.08 10.4 106.6 10.94 104.99 12.46C104.85 12.59 104.72 12.73 104.59 12.87L103.41 12.87L103.41 10.4L96.94 10.4L96.94 49.28L103.41 49.28L103.41 25.12C103.41 22.63 103.95 20.13 105.45 18.5C106.95 16.86 109.25 16.28 111.54 16.28C113.82 16.28 116.13 16.86 117.63 18.5C119.13 20.13 119.67 22.63 119.67 25.12C119.67 27.6 119.13 30.1 117.63 31.73C116.13 33.37 113.82 33.95 111.54 33.95L107.86 33.95L107.86 39.83L111.54 39.83C115.35 39.83 119.18 38.86 121.68 36.14C124.18 33.42 125.07 29.26 125.07 25.12C125.07 20.98 124.18 16.81 121.68 14.09C119.18 11.37 115.35 10.4 111.54 10.4Z"
+                        fill="url(#paint_linear_760_107515_15)"
+                        fill-opacity="1.000000"
+                        fill-rule="nonzero"
+                      ></path>
+                      <linearGradient
+                        x1="384.499817"
+                        y1="-0.710205"
+                        x2="-0.500183"
+                        y2="-0.710205"
+                        id="paint_linear_760_107516_16"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stop-color="#4D6BFE"></stop>
+                        <stop offset="0.603054" stop-color="#3982FF"></stop>
+                        <stop offset="1.000000" stop-color="#2498FF"></stop>
+                      </linearGradient>
+                      <path
+                        id="矢量 2"
+                        d="M21.16 26.14C21.16 28.63 20.62 31.13 19.12 32.76C17.62 34.39 15.32 34.98 13.03 34.98C10.74 34.98 8.44 34.39 6.94 32.76C5.44 31.13 4.9 28.63 4.9 26.14C4.9 23.66 5.44 21.15 6.94 19.52C8.44 17.89 10.74 17.31 13.03 17.31L16.71 17.31L16.71 11.43L13.03 11.43C9.22 11.43 5.39 12.4 2.89 15.12C0.39 17.84 -0.5 22 -0.5 26.14C-0.5 30.28 0.39 34.45 2.89 37.17C5.39 39.89 9.22 40.86 13.03 40.86C15.49 40.86 17.96 40.31 19.58 38.8C19.72 38.67 19.85 38.53 19.97 38.39L21.16 38.39L21.16 40.86L27.63 40.86L27.63 1.97L21.16 1.97L21.16 26.14Z"
+                        fill="url(#paint_linear_760_107516_16)"
+                        fill-opacity="1.000000"
+                        fill-rule="nonzero"
+                      ></path>
+                      <linearGradient
+                        x1="384.499817"
+                        y1="-0.710205"
+                        x2="-0.500183"
+                        y2="-0.710205"
+                        id="paint_linear_760_107517_17"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stop-color="#4D6BFE"></stop>
+                        <stop offset="0.603054" stop-color="#3982FF"></stop>
+                        <stop offset="1.000000" stop-color="#2498FF"></stop>
+                      </linearGradient>
+                      <path
+                        id="矢量 2"
+                        d="M46.04 10.4C42.08 10.4 38.1 11.41 35.5 14.22C32.91 17.03 31.98 21.34 31.98 25.63C31.98 29.91 32.91 34.23 35.5 37.04C38.1 39.85 42.08 40.86 46.04 40.86C50 40.86 53.98 39.85 56.58 37.04C57.91 35.59 58.81 33.75 59.37 31.71L52.97 31.71C52.79 31.98 52.59 32.24 52.37 32.48C50.81 34.17 48.42 34.77 46.04 34.77C43.67 34.77 41.28 34.17 39.72 32.48C38.16 30.79 37.6 28.2 37.6 25.63C37.6 23.06 38.16 20.47 39.72 18.78C41.28 17.09 43.67 16.49 46.04 16.49C48.42 16.49 50.81 17.09 52.37 18.78C53.45 19.95 54.05 21.54 54.32 23.27L42.88 23.27L42.88 27.99L60.11 27.99L60.11 25.63C60.11 21.34 59.18 17.03 56.58 14.22C53.99 11.41 50 10.4 46.04 10.4Z"
+                        fill="url(#paint_linear_760_107517_17)"
+                        fill-opacity="1.000000"
+                        fill-rule="nonzero"
+                      ></path>
+                      <linearGradient
+                        x1="384.499817"
+                        y1="-0.710205"
+                        x2="-0.500183"
+                        y2="-0.710205"
+                        id="paint_linear_760_107518_18"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stop-color="#4D6BFE"></stop>
+                        <stop offset="0.603054" stop-color="#3982FF"></stop>
+                        <stop offset="1.000000" stop-color="#2498FF"></stop>
+                      </linearGradient>
+                      <path
+                        id="矢量 2"
+                        d="M78.52 10.4C74.57 10.4 70.58 11.41 67.99 14.22C65.39 17.03 64.46 21.34 64.46 25.63C64.46 29.91 65.39 34.23 67.99 37.04C70.58 39.85 74.57 40.86 78.52 40.86C82.48 40.86 86.46 39.85 89.06 37.04C90.4 35.59 91.29 33.75 91.85 31.71L85.45 31.71C85.27 31.98 85.07 32.24 84.85 32.48C83.29 34.17 80.9 34.77 78.53 34.77C76.15 34.77 73.76 34.17 72.2 32.48C70.64 30.79 70.08 28.2 70.08 25.63C70.08 23.06 70.64 20.47 72.2 18.78C73.76 17.09 76.15 16.49 78.53 16.49C80.9 16.49 83.29 17.09 84.85 18.78C85.93 19.95 86.53 21.54 86.8 23.27L75.36 23.27L75.36 27.99L92.59 27.99L92.59 25.63C92.59 21.34 91.66 17.03 89.06 14.22C86.47 11.41 82.48 10.4 78.52 10.4Z"
+                        fill="url(#paint_linear_760_107518_18)"
+                        fill-opacity="1.000000"
+                        fill-rule="nonzero"
+                      ></path>
+                      <linearGradient
+                        x1="384.499817"
+                        y1="-0.710205"
+                        x2="-0.500183"
+                        y2="-0.710205"
+                        id="paint_linear_760_107519_19"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stop-color="#4D6BFE"></stop>
+                        <stop offset="0.603054" stop-color="#3982FF"></stop>
+                        <stop offset="1.000000" stop-color="#2498FF"></stop>
+                      </linearGradient>
+                      <path
+                        id="矢量 2"
+                        d="M154.02 25.13C151.43 23.47 147.44 22.88 143.49 22.88L143.63 22.88C141.94 22.88 140.24 22.65 139.13 22C138.02 21.36 137.63 20.37 137.63 19.39C137.63 18.41 138.02 17.42 139.13 16.78C140.24 16.13 141.94 15.9 143.63 15.9C145.32 15.9 147.02 16.14 148.12 16.78C149.23 17.42 149.63 18.41 149.63 19.39L156.22 19.39C156.22 16.86 155.37 14.32 153.02 12.66C150.67 11 147.07 10.4 143.49 10.4C139.91 10.4 136.31 11 133.96 12.66C131.61 14.32 130.77 16.86 130.77 19.39C130.77 21.92 131.61 24.47 133.96 26.12C136.31 27.78 139.91 28.38 143.49 28.38C145.35 28.38 147.39 28.61 148.61 29.25C149.84 29.9 150.28 30.89 150.28 31.87C150.28 32.85 149.84 33.84 148.61 34.48C147.39 35.12 145.51 35.35 143.64 35.35C141.78 35.35 139.9 35.12 138.67 34.48C137.45 33.83 137.01 32.85 137.01 31.87L129.42 31.87C129.42 34.39 130.35 36.94 132.95 38.6C135.55 40.26 139.53 40.85 143.49 40.85C147.44 40.85 151.43 40.26 154.02 38.6C156.62 36.94 157.55 34.39 157.55 31.87C157.55 29.34 156.62 26.79 154.02 25.13Z"
+                        fill="url(#paint_linear_760_107519_19)"
+                        fill-opacity="1.000000"
+                        fill-rule="nonzero"
+                      ></path>
+                      <linearGradient
+                        x1="384.499817"
+                        y1="-0.710205"
+                        x2="-0.500183"
+                        y2="-0.710205"
+                        id="paint_linear_760_107520_20"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stop-color="#4D6BFE"></stop>
+                        <stop offset="0.603054" stop-color="#3982FF"></stop>
+                        <stop offset="1.000000" stop-color="#2498FF"></stop>
+                      </linearGradient>
+                      <path
+                        id="矢量 2"
+                        d="M175.97 10.4C172.01 10.4 168.03 11.41 165.43 14.22C162.84 17.03 161.9 21.34 161.9 25.63C161.9 29.91 162.84 34.23 165.43 37.04C168.03 39.85 172.01 40.86 175.97 40.86C179.93 40.86 183.91 39.85 186.51 37.04C187.84 35.59 188.74 33.75 189.29 31.71L182.9 31.71C182.72 31.98 182.52 32.24 182.3 32.48C180.74 34.17 178.35 34.77 175.97 34.77C173.6 34.77 171.2 34.17 169.65 32.48C168.09 30.79 167.53 28.2 167.53 25.63C167.53 23.06 168.09 20.47 169.65 18.78C171.2 17.09 173.6 16.49 175.97 16.49C178.35 16.49 180.74 17.09 182.3 18.78C183.38 19.95 183.98 21.54 184.25 23.27L172.8 23.27L172.8 27.99L190.04 27.99L190.04 25.63C190.04 21.34 189.11 17.03 186.51 14.22C183.91 11.41 179.93 10.4 175.97 10.4Z"
+                        fill="url(#paint_linear_760_107520_20)"
+                        fill-opacity="1.000000"
+                        fill-rule="nonzero"
+                      ></path>
+                      <linearGradient
+                        x1="384.499817"
+                        y1="-0.710205"
+                        x2="-0.500183"
+                        y2="-0.710205"
+                        id="paint_linear_760_107521_21"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stop-color="#4D6BFE"></stop>
+                        <stop offset="0.603054" stop-color="#3982FF"></stop>
+                        <stop offset="1.000000" stop-color="#2498FF"></stop>
+                      </linearGradient>
+                      <path
+                        id="矢量 2"
+                        d="M208.45 10.4C204.49 10.4 200.51 11.41 197.91 14.22C195.32 17.03 194.38 21.34 194.38 25.63C194.38 29.91 195.32 34.23 197.91 37.04C200.51 39.85 204.49 40.86 208.45 40.86C212.41 40.86 216.39 39.85 218.99 37.04C220.32 35.59 221.22 33.75 221.78 31.71L215.38 31.71C215.2 31.98 215 32.24 214.78 32.48C213.22 34.17 210.83 34.77 208.45 34.77C206.08 34.77 203.68 34.17 202.13 32.48C200.57 30.79 200.01 28.2 200.01 25.63C200.01 23.06 200.57 20.47 202.13 18.78C203.68 17.09 206.08 16.49 208.45 16.49C210.83 16.49 213.22 17.09 214.78 18.78C215.86 19.95 216.46 21.54 216.73 23.27L205.29 23.27L205.29 27.99L222.52 27.99L222.52 25.63C222.52 21.34 221.59 17.03 218.99 14.22C216.39 11.41 212.41 10.4 208.45 10.4Z"
+                        fill="url(#paint_linear_760_107521_21)"
+                        fill-opacity="1.000000"
+                        fill-rule="nonzero"
+                      ></path>
+                      <linearGradient
+                        x1="384.499817"
+                        y1="-0.710205"
+                        x2="-0.500183"
+                        y2="-0.710205"
+                        id="paint_linear_760_107522_22"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stop-color="#4D6BFE"></stop>
+                        <stop offset="0.603054" stop-color="#3982FF"></stop>
+                        <stop offset="1.000000" stop-color="#2498FF"></stop>
+                      </linearGradient>
+                      <path
+                        id="矢量 2"
+                        d="M226.86 0.61L233.33 0.61L233.33 40.86L226.86 40.86L226.86 0.61Z"
+                        fill="url(#paint_linear_760_107522_22)"
+                        fill-opacity="1.000000"
+                        fill-rule="evenodd"
+                      ></path>
+                      <linearGradient
+                        x1="384.499817"
+                        y1="-0.710205"
+                        x2="-0.500183"
+                        y2="-0.710205"
+                        id="paint_linear_760_107523_23"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stop-color="#4D6BFE"></stop>
+                        <stop offset="0.603054" stop-color="#3982FF"></stop>
+                        <stop offset="1.000000" stop-color="#2498FF"></stop>
+                      </linearGradient>
+                      <path
+                        id="矢量 2"
+                        d="M246.98 11.75L236.36 24.72L246.98 40.86L255 40.86L244.38 24.72L255 11.75L246.98 11.75Z"
+                        fill="url(#paint_linear_760_107523_23)"
+                        fill-opacity="1.000000"
+                        fill-rule="nonzero"
+                      ></path>
+                    </svg>
                   ),
                 },
                 // n8n (official logomark)
                 {
-                  name: 'n8n',
+                  name: "n8n",
                   icon: (
-                    <svg data-v-f62d9f74="" className="n8n logo-icon w-[100%] h-16" width="87" height="24" viewBox="0 0 87 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path data-v-f62d9f74="" className="n8n fill-[#ff0c00] path-icon" fill-rule="evenodd" clip-rule="evenodd" d="M47.9855 4.8C47.9855 7.45098 45.8365 9.6 43.1855 9.6C40.949 9.6 39.0696 8.0703 38.5368 6H31.8352C30.662 6 29.6607 6.84822 29.4678 8.00544L29.2706 9.18912C29.0832 10.313 28.5147 11.2911 27.7108 12C28.5147 12.7089 29.0832 13.687 29.2706 14.8109L29.4678 15.9946C29.6607 17.1518 30.662 18 31.8352 18H33.7368C34.2696 15.9297 36.149 14.4 38.3855 14.4C41.0365 14.4 43.1855 16.549 43.1855 19.2C43.1855 21.851 41.0365 24 38.3855 24C36.149 24 34.2696 22.4703 33.7368 20.4H31.8352C29.4888 20.4 27.4863 18.7036 27.1005 16.3891L26.9032 15.2054C26.7104 14.0482 25.7091 13.2 24.5359 13.2H22.5782C21.979 15.1681 20.1495 16.6 17.9855 16.6C15.8216 16.6 13.9921 15.1681 13.3929 13.2H10.5782C9.97901 15.1681 8.14949 16.6 5.98554 16.6C3.33458 16.6 1.18555 14.4509 1.18555 11.8C1.18555 9.14904 3.33458 7.00002 5.98554 7.00002C8.29361 7.00002 10.2212 8.62902 10.6812 10.8H13.2899C13.7499 8.62902 15.6775 7.00002 17.9855 7.00002C20.2936 7.00002 22.2212 8.62902 22.6812 10.8H24.5359C25.7091 10.8 26.7104 9.95178 26.9032 8.79456L27.1005 7.61088C27.4863 5.29638 29.4888 3.6 31.8352 3.6H38.5368C39.0696 1.52973 40.949 0 43.1855 0C45.8365 0 47.9855 2.14903 47.9855 4.8ZM45.5855 4.8C45.5855 6.12546 44.511 7.2 43.1855 7.2C41.8601 7.2 40.7855 6.12546 40.7855 4.8C40.7855 3.47452 41.8601 2.4 43.1855 2.4C44.511 2.4 45.5855 3.47452 45.5855 4.8ZM5.98554 14.2C7.31105 14.2 8.38553 13.1255 8.38553 11.8C8.38553 10.4745 7.31105 9.40002 5.98554 9.40002C4.66006 9.40002 3.58554 10.4745 3.58554 11.8C3.58554 13.1255 4.66006 14.2 5.98554 14.2ZM17.9855 14.2C19.311 14.2 20.3855 13.1255 20.3855 11.8C20.3855 10.4745 19.311 9.40002 17.9855 9.40002C16.6601 9.40002 15.5855 10.4745 15.5855 11.8C15.5855 13.1255 16.6601 14.2 17.9855 14.2ZM38.3855 21.6C39.711 21.6 40.7855 20.5255 40.7855 19.2C40.7855 17.8745 39.711 16.8 38.3855 16.8C37.0601 16.8 35.9855 17.8745 35.9855 19.2C35.9855 20.5255 37.0601 21.6 38.3855 21.6Z"></path><path data-v-f62d9f74="" className="n8n fill-[#ff0c00] path-name" fill-rule="evenodd" clip-rule="evenodd" d="M71.7381 11.4027V11.2852C72.5997 10.8544 73.4613 10.1104 73.4613 8.64206C73.4613 6.52754 71.7183 5.25488 69.3105 5.25488C66.8433 5.25488 65.0811 6.60584 65.0811 8.68118C65.0811 10.0909 65.9037 10.8544 66.8043 11.2852V11.4027C65.8059 11.7551 64.6113 12.8124 64.6113 14.5744C64.6113 16.7086 66.3735 18.1966 69.2907 18.1966C72.2079 18.1966 73.9113 16.7086 73.9113 14.5744C73.9113 12.8124 72.7365 11.7747 71.7381 11.4027ZM69.2907 7.05614C70.2699 7.05614 70.9941 7.68266 70.9941 8.73992C70.9941 9.79718 70.2501 10.4238 69.2907 10.4238C68.3313 10.4238 67.5285 9.79718 67.5285 8.73992C67.5285 7.6631 68.2923 7.05614 69.2907 7.05614ZM69.2907 16.317C68.1549 16.317 67.2351 15.5926 67.2351 14.3591C67.2351 13.2431 67.9983 12.4012 69.2709 12.4012C70.5243 12.4012 71.2881 13.2235 71.2881 14.3983C71.2881 15.5926 70.4067 16.317 69.2907 16.317ZM52.7871 18.0004H55.2933V12.6945C55.2933 10.952 56.3505 10.1884 57.5448 10.1884C58.7195 10.1884 59.6398 10.9715 59.6398 12.577V18.0004H62.1456V12.068C62.1456 9.50314 60.6576 8.01514 58.328 8.01514C56.8596 8.01514 56.0372 8.60248 55.4498 9.36604H55.2933L55.0779 8.21092H52.7871V18.0004ZM78.9632 18.0004H76.457V8.21092H78.7478L78.9632 9.36604H79.1198C79.7072 8.60248 80.5298 8.01514 81.998 8.01514C84.3278 8.01514 85.8158 9.50314 85.8158 12.068V18.0004H83.3096V12.577C83.3096 10.9715 82.3898 10.1884 81.215 10.1884C80.0204 10.1884 78.9632 10.952 78.9632 12.6945V18.0004Z"></path></svg>
+                    <svg
+                      data-v-f62d9f74=""
+                      className="n8n logo-icon w-[100%] h-16"
+                      width="87"
+                      height="24"
+                      viewBox="0 0 87 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        data-v-f62d9f74=""
+                        className="n8n fill-[#ff0c00] path-icon"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M47.9855 4.8C47.9855 7.45098 45.8365 9.6 43.1855 9.6C40.949 9.6 39.0696 8.0703 38.5368 6H31.8352C30.662 6 29.6607 6.84822 29.4678 8.00544L29.2706 9.18912C29.0832 10.313 28.5147 11.2911 27.7108 12C28.5147 12.7089 29.0832 13.687 29.2706 14.8109L29.4678 15.9946C29.6607 17.1518 30.662 18 31.8352 18H33.7368C34.2696 15.9297 36.149 14.4 38.3855 14.4C41.0365 14.4 43.1855 16.549 43.1855 19.2C43.1855 21.851 41.0365 24 38.3855 24C36.149 24 34.2696 22.4703 33.7368 20.4H31.8352C29.4888 20.4 27.4863 18.7036 27.1005 16.3891L26.9032 15.2054C26.7104 14.0482 25.7091 13.2 24.5359 13.2H22.5782C21.979 15.1681 20.1495 16.6 17.9855 16.6C15.8216 16.6 13.9921 15.1681 13.3929 13.2H10.5782C9.97901 15.1681 8.14949 16.6 5.98554 16.6C3.33458 16.6 1.18555 14.4509 1.18555 11.8C1.18555 9.14904 3.33458 7.00002 5.98554 7.00002C8.29361 7.00002 10.2212 8.62902 10.6812 10.8H13.2899C13.7499 8.62902 15.6775 7.00002 17.9855 7.00002C20.2936 7.00002 22.2212 8.62902 22.6812 10.8H24.5359C25.7091 10.8 26.7104 9.95178 26.9032 8.79456L27.1005 7.61088C27.4863 5.29638 29.4888 3.6 31.8352 3.6H38.5368C39.0696 1.52973 40.949 0 43.1855 0C45.8365 0 47.9855 2.14903 47.9855 4.8ZM45.5855 4.8C45.5855 6.12546 44.511 7.2 43.1855 7.2C41.8601 7.2 40.7855 6.12546 40.7855 4.8C40.7855 3.47452 41.8601 2.4 43.1855 2.4C44.511 2.4 45.5855 3.47452 45.5855 4.8ZM5.98554 14.2C7.31105 14.2 8.38553 13.1255 8.38553 11.8C8.38553 10.4745 7.31105 9.40002 5.98554 9.40002C4.66006 9.40002 3.58554 10.4745 3.58554 11.8C3.58554 13.1255 4.66006 14.2 5.98554 14.2ZM17.9855 14.2C19.311 14.2 20.3855 13.1255 20.3855 11.8C20.3855 10.4745 19.311 9.40002 17.9855 9.40002C16.6601 9.40002 15.5855 10.4745 15.5855 11.8C15.5855 13.1255 16.6601 14.2 17.9855 14.2ZM38.3855 21.6C39.711 21.6 40.7855 20.5255 40.7855 19.2C40.7855 17.8745 39.711 16.8 38.3855 16.8C37.0601 16.8 35.9855 17.8745 35.9855 19.2C35.9855 20.5255 37.0601 21.6 38.3855 21.6Z"
+                      ></path>
+                      <path
+                        data-v-f62d9f74=""
+                        className="n8n fill-[#ff0c00] path-name"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M71.7381 11.4027V11.2852C72.5997 10.8544 73.4613 10.1104 73.4613 8.64206C73.4613 6.52754 71.7183 5.25488 69.3105 5.25488C66.8433 5.25488 65.0811 6.60584 65.0811 8.68118C65.0811 10.0909 65.9037 10.8544 66.8043 11.2852V11.4027C65.8059 11.7551 64.6113 12.8124 64.6113 14.5744C64.6113 16.7086 66.3735 18.1966 69.2907 18.1966C72.2079 18.1966 73.9113 16.7086 73.9113 14.5744C73.9113 12.8124 72.7365 11.7747 71.7381 11.4027ZM69.2907 7.05614C70.2699 7.05614 70.9941 7.68266 70.9941 8.73992C70.9941 9.79718 70.2501 10.4238 69.2907 10.4238C68.3313 10.4238 67.5285 9.79718 67.5285 8.73992C67.5285 7.6631 68.2923 7.05614 69.2907 7.05614ZM69.2907 16.317C68.1549 16.317 67.2351 15.5926 67.2351 14.3591C67.2351 13.2431 67.9983 12.4012 69.2709 12.4012C70.5243 12.4012 71.2881 13.2235 71.2881 14.3983C71.2881 15.5926 70.4067 16.317 69.2907 16.317ZM52.7871 18.0004H55.2933V12.6945C55.2933 10.952 56.3505 10.1884 57.5448 10.1884C58.7195 10.1884 59.6398 10.9715 59.6398 12.577V18.0004H62.1456V12.068C62.1456 9.50314 60.6576 8.01514 58.328 8.01514C56.8596 8.01514 56.0372 8.60248 55.4498 9.36604H55.2933L55.0779 8.21092H52.7871V18.0004ZM78.9632 18.0004H76.457V8.21092H78.7478L78.9632 9.36604H79.1198C79.7072 8.60248 80.5298 8.01514 81.998 8.01514C84.3278 8.01514 85.8158 9.50314 85.8158 12.068V18.0004H83.3096V12.577C83.3096 10.9715 82.3898 10.1884 81.215 10.1884C80.0204 10.1884 78.9632 10.952 78.9632 12.6945V18.0004Z"
+                      ></path>
+                    </svg>
                   ),
                 },
                 // Flowise
                 {
-                  name: 'Flowise',
+                  name: "Flowise",
                   icon: (
                     <img
                       src="https://flowiseai.com/_next/static/media/flowise_dark.9b83455e.svg"
@@ -272,9 +823,14 @@ const Skills = () => {
                   ),
                 },
               ].map(({ name, icon }) => (
-                <div key={name} className="flex flex-col items-center space-y-2">
+                <div
+                  key={name}
+                  className="flex flex-col items-center space-y-2"
+                >
                   {icon}
-                  <span className="text-sm font-medium text-primary text-center">{name}</span>
+                  <span className="text-sm font-medium text-primary text-center">
+                    {name}
+                  </span>
                 </div>
               ))}
             </div>

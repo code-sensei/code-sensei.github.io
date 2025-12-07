@@ -45,8 +45,8 @@ const Education = () => {
             Education & Certifications
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Academic history, highlights, and recognized professional
-            certifications.
+            Academic foundation and professional credentials that underpin
+            strategic technical execution at scale
           </p>
         </div>
 

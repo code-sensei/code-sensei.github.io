@@ -4,6 +4,14 @@ import { Users, Award, BookOpen, Heart, Sparkles, Globe } from "lucide-react";
 
 const communityActivities = [
   {
+    icon: "🤖",
+    iconComponent: <Sparkles className="w-6 h-6" />,
+    title: "AI Tinkerers Abuja Organizer",
+    description:
+      "Founded and organize AI Tinkerers Abuja—a chapter of the global community of dedicated AI builders, fostering hands-on collaboration and innovation in AI solutions across Africa.",
+    color: "text-indigo-500",
+  },
+  {
     icon: "🤝",
     iconComponent: <Globe className="w-6 h-6" />,
     title: "Ethical AI & Digital Transformation Advocate",
@@ -61,8 +69,8 @@ const Community = () => (
           Community & Mentorship
         </h2>
         <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-          Activities and impact through events, mentorship, and thought
-          leadership in the broader tech community
+          Shaping the next generation of engineers through strategic mentorship,
+          national-scale initiatives, and policy contributions
         </p>
       </div>
 

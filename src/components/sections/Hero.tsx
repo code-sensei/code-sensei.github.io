@@ -50,12 +50,16 @@ const Hero = () => {
                 <span className="gradient-text">Babangida Tsowa</span>
               </h1>
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground animate-slideIn delay-200">
-                Fullstack Developer, AI Engineer, & Consultant
+                Product & AI Engineer
               </h2>
+              <p className="text-sm sm:text-base text-primary/80 font-medium animate-slideIn delay-250">
+                Organizer, AI Tinkerers Abuja
+              </p>
               <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0 animate-slideIn delay-300">
-                I build robust, end-to-end web applications, engineer
-                intelligent AI systems, and provide expert technology consulting
-                to help businesses achieve their goals.
+                I partner with forward-thinking organizations to architect
+                intelligent systems and scalable products that drive measurable
+                impact—from AI-powered platforms to mission-critical
+                applications.
               </p>
             </div>
 
@@ -65,7 +69,7 @@ const Hero = () => {
                 onClick={scrollToAbout}
                 className="group transition-smooth"
               >
-                View My Work
+                Explore My Work
                 <ArrowDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform" />
               </Button>
 

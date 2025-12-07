@@ -1,7 +1,7 @@
 {
   "name": "Babangida Tsowa - Portfolio",
   "short_name": "BT Portfolio",
-  "description": "Fullstack Developer, AI Engineer & Technology Consultant. Specializing in AI systems, web development, and technology leadership.",
+  "description": "Trusted by government institutions and venture-backed startups to architect AI-driven platforms and mission-critical systems where precision and scale aren't optional.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -45,11 +45,7 @@
       "purpose": "any"
     }
   ],
-  "categories": [
-    "portfolio",
-    "developer",
-    "technology"
-  ],
+  "categories": ["portfolio", "developer", "technology"],
   "screenshots": [
     {
       "src": "/profile-image.png",

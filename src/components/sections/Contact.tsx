@@ -1,21 +1,22 @@
-
-import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { useToast } from '@/hooks/use-toast';
+import React, { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -27,32 +28,32 @@ const Contact = () => {
     setIsSubmitting(true);
 
     // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     toast({
       title: "Message sent!",
       description: "Thank you for your message. I'll get back to you soon.",
     });
 
-    setFormData({ name: '', email: '', message: '' });
+    setFormData({ name: "", email: "", message: "" });
     setIsSubmitting(false);
   };
 
   const contactInfo = [
     {
-      label: 'Email',
-      value: 'tsowababangida@gmail.com',
-      href: 'mailto:tsowababangida@gmail.com',
+      label: "Email",
+      value: "tsowababangida@gmail.com",
+      href: "mailto:tsowababangida@gmail.com",
     },
     {
-      label: 'Phone',
-      value: '+234 706-330-1032',
-      href: 'tel:+15551234567',
+      label: "Phone",
+      value: "+234 706-330-1032",
+      href: "tel:+15551234567",
     },
     {
-      label: 'Location',
-      value: 'Federal Capital Territory, NG',
-      href: '#',
+      label: "Location",
+      value: "Federal Capital Territory, NG",
+      href: "#",
     },
   ];
 
@@ -60,9 +61,11 @@ const Contact = () => {
     <section id="contact" className="py-20 bg-muted/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Get In Touch</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Let's Talk</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from you!
+            Currently accepting select consulting engagements and strategic
+            partnerships. Share your challenge—let's explore if we're the right
+            fit.
           </p>
         </div>
 
@@ -70,7 +73,7 @@ const Contact = () => {
           {/* Contact Form */}
           <Card>
             <CardHeader>
-              <CardTitle>Send me a message</CardTitle>
+              <CardTitle>Start a Conversation</CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -106,12 +109,16 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    placeholder="Tell me about your project or just say hello!"
+                    placeholder="Tell me about your challenge, timeline, and what success looks like..."
                     className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm resize-vertical"
                   />
                 </div>
-                <Button type="submit" className="w-full" disabled={isSubmitting}>
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                <Button
+                  type="submit"
+                  className="w-full"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Submitting..." : "Submit Inquiry"}
                 </Button>
               </form>
             </CardContent>
@@ -123,7 +130,9 @@ const Contact = () => {
               {contactInfo.map((info, index) => (
                 <div key={index} className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-primary font-semibold">{info.label[0]}</span>
+                    <span className="text-primary font-semibold">
+                      {info.label[0]}
+                    </span>
                   </div>
                   <div>
                     <div className="font-medium">{info.label}</div>

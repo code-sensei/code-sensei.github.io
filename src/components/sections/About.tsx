@@ -39,8 +39,8 @@ const About = () => {
             About Me
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Learn more about my journey, experience, and what drives me as a
-            developer
+            Transforming complex challenges into elegant solutions across
+            enterprise, government, and high-growth startups
           </p>
         </div>
 
@@ -49,60 +49,60 @@ const About = () => {
           <div className="space-y-6 animate-fadeIn">
             <div className="space-y-6">
               <h3 className="text-2xl md:text-3xl font-semibold mb-6 gradient-text">
-                My Story
+                Engineered Impact
               </h3>
 
               {/* Updated About Section */}
               <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground leading-relaxed space-y-6">
                 <p className="text-base md:text-lg">
-                  Babangida Tsowa is a dynamic IT professional, digital
-                  transformation strategist, and AI governance expert committed
-                  to ethical innovation and societal impact. With extensive
-                  experience in frontend engineering (React.js, Angular,
-                  Next.js), Web3 integrations, and cloud computing, he has led
-                  transformative projects across startups, enterprises, and
-                  government agencies.
+                  Trusted by government institutions, venture-backed startups,
+                  and enterprise organizations to architect systems where
+                  precision matters. Specializing in AI-driven platforms,
+                  full-stack product engineering, and strategic technology
+                  consulting—delivering solutions that don't just work, but
+                  scale.
                 </p>
 
                 <div className="space-y-4 pl-4 border-l-4 border-primary/50">
                   <div className="space-y-2">
                     <p className="text-base md:text-lg">
                       <span className="font-semibold text-foreground">
-                        For the Federal Ministry of Foreign Affairs
+                        Federal Ministry of Foreign Affairs
                       </span>
-                      , he developed a big‑data AI‑powered intelligence platform
-                      that enhanced data processing efficiency by 35%, informing
-                      policy adaptation and strengthening national security
-                      insights.
+                      : Architected a big‑data AI‑powered intelligence platform
+                      that enhanced data processing efficiency by 35%—directly
+                      informing policy decisions and strengthening national
+                      security insights.
                     </p>
                   </div>
 
                   <div className="space-y-2">
                     <p className="text-base md:text-lg">
                       <span className="font-semibold text-foreground">
-                        At Clafiya
+                        Clafiya
                       </span>
-                      , his frontend architecture and reusable component
-                      libraries secured $610,000 in funding and doubled Admin
-                      Dashboard usability.
+                      : Frontend architecture and reusable component libraries
+                      that helped secure $610,000 in funding—doubling Admin
+                      Dashboard usability while scaling to 1,000+ users.
                     </p>
                   </div>
 
                   <div className="space-y-2">
                     <p className="text-base md:text-lg">
                       <span className="font-semibold text-foreground">
-                        As CTO of Sweet Ride Nigeria LTD
+                        Sweet Ride Nigeria (CTO)
                       </span>
-                      , he optimized workflows and software infrastructure,
-                      accelerating delivery speed by 25% and boosting user
-                      engagement by 15%.
+                      : Rebuilt workflows and software infrastructure—25% faster
+                      delivery, 15% higher user engagement, and a foundation
+                      built to scale.
                     </p>
                   </div>
                 </div>
 
                 <p className="text-base md:text-lg">
-                  Beyond his technical achievements, Babangida is a passionate
-                  mentor and community builder, having organized:
+                  Beyond client work, I invest in the next generation—organizing
+                  and leading initiatives that shape how developers think about
+                  technology:
                 </p>
 
                 <div className="grid sm:grid-cols-2 gap-4 my-6">
@@ -145,9 +145,8 @@ const About = () => {
                 </div>
 
                 <p className="text-base md:text-lg">
-                  He has facilitated discussions on AI, Data Science, and
-                  Digital Transformation, and reviewed draft public policies
-                  including the{" "}
+                  Invited to shape national policy—reviewing and contributing to
+                  the{" "}
                   <span className="font-semibold text-foreground">
                     National AI Strategy
                   </span>{" "}
@@ -155,15 +154,15 @@ const About = () => {
                   <span className="font-semibold text-foreground">
                     NITDA's Guidelines to Software Development
                   </span>
-                  .
+                  —while facilitating strategic discussions on AI, Data Science,
+                  and Digital Transformation.
                 </p>
 
                 <div className="glass-effect p-6 rounded-xl border-l-4 border-primary">
                   <p className="text-base md:text-lg italic text-foreground">
-                    "Guided by a commitment to youth empowerment and governance
-                    transparency, he bridges cutting‑edge technology with
-                    real‑world impact, making him an invaluable asset to any
-                    forward‑thinking organization."
+                    "Where cutting‑edge technology meets measurable
+                    impact—bridging innovation with execution for organizations
+                    ready to lead, not follow."
                   </p>
                 </div>
               </div>

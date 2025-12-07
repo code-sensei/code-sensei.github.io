@@ -75,9 +75,9 @@ const Footer = () => {
                 Babangida Tsowa
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Fullstack Developer, AI Engineer, & Technology Consultant
-                passionate about creating innovative solutions that drive real
-                impact.
+                Product &amp; AI Engineer specializing in high-impact systems
+                for organizations where precision, scale, and innovation aren't
+                optional.
               </p>
             </div>
 
@@ -145,7 +145,8 @@ const Footer = () => {
             <h4 className="font-semibold text-foreground">Get In Touch</h4>
             <div className="space-y-2">
               <p className="text-sm text-muted-foreground">
-                Available for freelance projects and consulting opportunities.
+                Currently accepting select consulting engagements and strategic
+                partnerships.
               </p>
               <Button
                 size="sm"
@@ -189,9 +190,10 @@ const Footer = () => {
         {/* Additional Info */}
         <div className="mt-6 pt-6 border-t border-border/50">
           <p className="text-xs text-muted-foreground text-center max-w-2xl mx-auto leading-relaxed">
-            This portfolio showcases my work as a Fullstack Developer, AI
-            Engineer, and Technology Consultant. I specialize in React, Next.js,
-            Node.js, Python, AI/ML, and cloud technologies.
+            Trusted by government institutions, venture-backed startups, and
+            enterprise organizations to architect systems where failure isn't an
+            option. Specializing in AI-driven platforms, full-stack engineering,
+            and strategic technology consulting.
           </p>
         </div>
       </div>
