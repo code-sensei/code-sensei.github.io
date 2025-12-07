@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -12,7 +12,6 @@ import {
   getBlogPosts,
   getFeaturedPosts,
   getPostsByCategory,
-  categories,
   getAllTags,
 } from "@/data/blog/posts";
 import { BlogPost } from "@/types/blog";
@@ -32,15 +31,52 @@ const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
+  const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
+  const [allTags, setAllTags] = useState<string[]>([]);
+  const [categoryPosts, setCategoryPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
-  const allPosts = getBlogPosts();
-  const featuredPosts = getFeaturedPosts();
-  const allTags = getAllTags();
+
+  // Load initial data
+  useEffect(() => {
+    const loadInitialData = async () => {
+      try {
+        const [posts, featured, tags] = await Promise.all([
+          getBlogPosts(),
+          getFeaturedPosts(),
+          getAllTags(),
+        ]);
+        setAllPosts(posts);
+        setFeaturedPosts(featured);
+        setAllTags(tags);
+        setCategoryPosts(posts);
+      } catch (error) {
+        console.error("Error loading blog data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadInitialData();
+  }, []);
+
+  // Load posts when category changes
+  useEffect(() => {
+    const loadCategoryPosts = async () => {
+      try {
+        const posts = await getPostsByCategory(selectedCategory);
+        setCategoryPosts(posts);
+      } catch (error) {
+        console.error("Error loading category posts:", error);
+      }
+    };
+    loadCategoryPosts();
+  }, [selectedCategory]);
 
   // Filter posts based on search, category, and tag
   const filteredPosts = useMemo(() => {
-    let posts = getPostsByCategory(selectedCategory);
+    let posts = categoryPosts;
 
     if (searchQuery) {
       posts = posts.filter(
@@ -48,8 +84,8 @@ const Blog = () => {
           post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
           post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
           post.tags.some((tag) =>
-            tag.toLowerCase().includes(searchQuery.toLowerCase())
-          )
+            tag.toLowerCase().includes(searchQuery.toLowerCase()),
+          ),
       );
     }
 
@@ -59,9 +95,9 @@ const Blog = () => {
 
     return posts.sort(
       (a, b) =>
-        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
     );
-  }, [selectedCategory, searchQuery, selectedTag]);
+  }, [categoryPosts, searchQuery, selectedTag]);
 
   const handlePostClick = (slug: string) => {
     navigate(`/blog/${slug}`);
@@ -90,81 +126,86 @@ const Blog = () => {
         </div>
 
         {/* Featured Posts */}
-        {featuredPosts.length > 0 && !searchQuery && selectedCategory === "All" && !selectedTag && (
-          <div className="mb-16 animate-fadeIn">
-            <div className="flex items-center gap-2 mb-6">
-              <Sparkles className="w-5 h-5 text-primary" />
-              <h2 className="text-2xl md:text-3xl font-bold">Featured Posts</h2>
-            </div>
-            <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-              {featuredPosts.slice(0, 2).map((post, index) => (
-                <Card
-                  key={post.id}
-                  className="group card-hover overflow-hidden border-2 hover:border-primary/50 cursor-pointer"
-                  onClick={() => handlePostClick(post.slug)}
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="relative h-56 md:h-64 overflow-hidden">
-                    <img
-                      src={post.coverImage || "/blog/default.jpg"}
-                      alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        {featuredPosts.length > 0 &&
+          !searchQuery &&
+          selectedCategory === "All" &&
+          !selectedTag && (
+            <div className="mb-16 animate-fadeIn">
+              <div className="flex items-center gap-2 mb-6">
+                <Sparkles className="w-5 h-5 text-primary" />
+                <h2 className="text-2xl md:text-3xl font-bold">
+                  Featured Posts
+                </h2>
+              </div>
+              <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+                {featuredPosts.slice(0, 2).map((post, index) => (
+                  <Card
+                    key={post.id}
+                    className="group card-hover overflow-hidden border-2 hover:border-primary/50 cursor-pointer"
+                    onClick={() => handlePostClick(post.slug)}
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <div className="relative h-56 md:h-64 overflow-hidden">
+                      <img
+                        src={post.coverImage || "/blog/default.jpg"}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
-                    {/* Featured Badge */}
-                    <div className="absolute top-4 left-4 glass-effect px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
-                      <TrendingUp className="w-3 h-3" />
-                      Featured
-                    </div>
+                      {/* Featured Badge */}
+                      <div className="absolute top-4 left-4 glass-effect px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                        <TrendingUp className="w-3 h-3" />
+                        Featured
+                      </div>
 
-                    {/* Category Badge */}
-                    <div className="absolute top-4 right-4 bg-primary/90 px-3 py-1 rounded-full text-xs font-medium text-primary-foreground">
-                      {post.category}
-                    </div>
-                  </div>
-
-                  <CardHeader>
-                    <CardTitle className="text-xl md:text-2xl group-hover:text-primary transition-colors line-clamp-2">
-                      {post.title}
-                    </CardTitle>
-                    <CardDescription className="text-sm md:text-base line-clamp-2">
-                      {post.excerpt}
-                    </CardDescription>
-                  </CardHeader>
-
-                  <CardContent>
-                    <div className="flex items-center justify-between text-xs md:text-sm text-muted-foreground mb-4">
-                      <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-1">
-                          <Calendar className="w-3.5 h-3.5" />
-                          {formatDistanceToNow(new Date(post.publishedAt), {
-                            addSuffix: true,
-                          })}
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="w-3.5 h-3.5" />
-                          {post.readingTime} min read
-                        </div>
+                      {/* Category Badge */}
+                      <div className="absolute top-4 right-4 bg-primary/90 px-3 py-1 rounded-full text-xs font-medium text-primary-foreground">
+                        {post.category}
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-2">
-                      {post.tags.slice(0, 3).map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    <CardHeader>
+                      <CardTitle className="text-xl md:text-2xl group-hover:text-primary transition-colors line-clamp-2">
+                        {post.title}
+                      </CardTitle>
+                      <CardDescription className="text-sm md:text-base line-clamp-2">
+                        {post.excerpt}
+                      </CardDescription>
+                    </CardHeader>
+
+                    <CardContent>
+                      <div className="flex items-center justify-between text-xs md:text-sm text-muted-foreground mb-4">
+                        <div className="flex items-center gap-4">
+                          <div className="flex items-center gap-1">
+                            <Calendar className="w-3.5 h-3.5" />
+                            {formatDistanceToNow(new Date(post.publishedAt), {
+                              addSuffix: true,
+                            })}
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Clock className="w-3.5 h-3.5" />
+                            {post.readingTime} min read
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        {post.tags.slice(0, 3).map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-2 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
         {/* Search and Filters */}
         <div className="mb-8 space-y-6 animate-fadeIn">
@@ -182,7 +223,14 @@ const Blog = () => {
 
           {/* Category Filter */}
           <div className="flex flex-wrap gap-2 justify-center">
-            {categories.map((category) => (
+            {[
+              "All",
+              "AI Engineering",
+              "Web Development",
+              "Career",
+              "Leadership",
+              "Technology",
+            ].map((category) => (
               <Button
                 key={category}
                 variant={selectedCategory === category ? "default" : "outline"}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -11,10 +11,26 @@ import { getFeaturedPosts } from "@/data/blog/posts";
 import { Calendar, Clock, ArrowRight, BookOpen } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { useNavigate } from "react-router-dom";
+import { BlogPost } from "@/types/blog";
 
 const Blog = () => {
   const navigate = useNavigate();
-  const featuredPosts = getFeaturedPosts().slice(0, 3);
+  const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadPosts = async () => {
+      try {
+        const posts = await getFeaturedPosts();
+        setFeaturedPosts(posts.slice(0, 3));
+      } catch (error) {
+        console.error("Error loading featured posts:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadPosts();
+  }, []);
 
   const handlePostClick = (slug: string) => {
     navigate(`/blog/${slug}`);
@@ -23,6 +39,16 @@ const Blog = () => {
   const handleViewAllClick = () => {
     navigate("/blog");
   };
+
+  if (loading) {
+    return (
+      <section className="py-20 px-4 bg-background/50">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center">Loading...</div>
+        </div>
+      </section>
+    );
+  }
 
   if (featuredPosts.length === 0) {
     return null;

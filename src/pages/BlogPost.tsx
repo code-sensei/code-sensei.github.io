@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 import { getPostBySlug } from "@/data/blog/posts";
+import { BlogPost } from "@/types/blog";
 import { Button } from "@/components/ui/button";
 import {
   ArrowLeft,
@@ -23,11 +24,40 @@ import "highlight.js/styles/github-dark.css";
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
-  const post = slug ? getPostBySlug(slug) : undefined;
+  const [post, setPost] = useState<BlogPost | undefined>(undefined);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    const loadPost = async () => {
+      if (!slug) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const postData = await getPostBySlug(slug);
+        setPost(postData);
+      } catch (error) {
+        console.error("Error loading post:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadPost();
   }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background pt-20 flex items-center justify-center">
+        <div className="text-center animate-fadeIn">
+          <h1 className="text-2xl font-bold mb-4">Loading...</h1>
+        </div>
+      </div>
+    );
+  }
 
   if (!post) {
     return (
@@ -52,13 +82,13 @@ const BlogPost = () => {
   const handleShare = (platform: string) => {
     const urls = {
       twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-        shareUrl
+        shareUrl,
       )}&text=${encodeURIComponent(shareTitle)}`,
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-        shareUrl
+        shareUrl,
       )}`,
       linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-        shareUrl
+        shareUrl,
       )}`,
     };
 
@@ -68,7 +98,11 @@ const BlogPost = () => {
       return;
     }
 
-    window.open(urls[platform as keyof typeof urls], "_blank", "width=600,height=400");
+    window.open(
+      urls[platform as keyof typeof urls],
+      "_blank",
+      "width=600,height=400",
+    );
   };
 
   return (
@@ -131,11 +165,13 @@ const BlogPost = () => {
 
             <div className="flex items-center gap-1">
               <Calendar className="w-4 h-4" />
-              <span>
-                {format(new Date(post.publishedAt), "MMMM dd, yyyy")}
-              </span>
+              <span>{format(new Date(post.publishedAt), "MMMM dd, yyyy")}</span>
               <span className="text-xs ml-1">
-                ({formatDistanceToNow(new Date(post.publishedAt), { addSuffix: true })})
+                (
+                {formatDistanceToNow(new Date(post.publishedAt), {
+                  addSuffix: true,
+                })}
+                )
               </span>
             </div>
 
@@ -290,9 +326,7 @@ const BlogPost = () => {
                   className="rounded-xl my-8 w-full border border-border shadow-lg"
                 />
               ),
-              hr: () => (
-                <hr className="my-12 border-t border-border" />
-              ),
+              hr: () => <hr className="my-12 border-t border-border" />,
               table: ({ children }) => (
                 <div className="overflow-x-auto my-6">
                   <table className="w-full border-collapse border border-border">
@@ -325,7 +359,9 @@ const BlogPost = () => {
               className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-primary flex-shrink-0"
             />
             <div className="flex-1">
-              <h3 className="text-xl font-bold mb-2">About {post.author.name}</h3>
+              <h3 className="text-xl font-bold mb-2">
+                About {post.author.name}
+              </h3>
               <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
                 {post.author.bio}
               </p>
@@ -340,7 +376,9 @@ const BlogPost = () => {
             All Posts
           </Button>
 
-          <Button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <Button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
             Back to Top
           </Button>
         </div>
