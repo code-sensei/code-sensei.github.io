@@ -2,11 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
-      "source": "/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/blog",
+      "source": "/",
       "has": [
         {
           "type": "host",
@@ -14,6 +10,20 @@
         }
       ],
       "destination": "/blog"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "blog.btsowa.dev"
+        }
+      ],
+      "destination": "/blog/:path*"
+    },
+    {
+      "source": "/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
