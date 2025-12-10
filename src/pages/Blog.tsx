@@ -3,6 +3,12 @@
  * @description Modern blog page with optimal UX hierarchy and layout
  * Based on 2025 best practices: card-based design, visual hierarchy,
  * learning center approach, and mobile-first responsive design
+ *
+ * SEO & AI Search Optimized:
+ * - Dynamic metadata for search engines
+ * - JSON-LD structured data (Blog schema)
+ * - Open Graph and Twitter Card support
+ * - Optimized for ChatGPT, Perplexity, and Google AI
  */
 
 import React, { useState, useMemo, useEffect } from "react";
@@ -14,6 +20,11 @@ import {
   getAllCategories,
 } from "@/data/blog/posts";
 import { BlogPost } from "@/types/blog";
+import {
+  SEO,
+  generateBlogListSchema,
+  generateWebPageSchema,
+} from "@/components/seo";
 import {
   Calendar,
   Clock,
@@ -158,6 +169,20 @@ const Blog: React.FC = () => {
       p.id !== heroPost?.id && !secondaryFeatured.find((s) => s.id === p.id),
   );
 
+  // Generate structured data for the blog listing (must be before any early returns)
+  const blogStructuredData = useMemo(() => {
+    if (allPosts.length === 0) return [];
+    return [
+      generateWebPageSchema(
+        "Blog | Babangida Tsowa",
+        "Ideas on AI, Engineering & Leadership - Practical insights from building AI products, leading engineering teams, and navigating the future of technology.",
+        "/blog",
+        "CollectionPage",
+      ),
+      generateBlogListSchema(allPosts),
+    ];
+  }, [allPosts]);
+
   // Loading skeleton - Neobrutalism style
   if (loading) {
     return (
@@ -183,6 +208,33 @@ const Blog: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#FFFEF0] dark:bg-[#1a1a2e] pt-20">
+      {/* SEO Meta Tags and Structured Data */}
+      <SEO
+        title="Blog | Ideas on AI, Engineering & Leadership"
+        description="Practical insights from building AI products, leading engineering teams, and navigating the future of technology. Articles on AI, machine learning, software engineering, and leadership."
+        keywords={[
+          "AI blog",
+          "engineering blog",
+          "machine learning articles",
+          "software engineering insights",
+          "leadership articles",
+          "technology blog",
+          "Babangida Tsowa blog",
+          "AI tutorials",
+          "coding tutorials",
+          ...allTags.slice(0, 10),
+        ]}
+        url="/blog"
+        ogType="website"
+        ogImage="/blog/og-blog.png"
+        ogImageAlt="Babangida Tsowa Blog - Ideas on AI, Engineering & Leadership"
+        structuredData={blogStructuredData}
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Blog", url: "/blog" },
+        ]}
+      />
+
       {/* ============================================
           SECTION 1: HERO HEADER
           Clear value proposition and search

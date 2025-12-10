@@ -3,9 +3,15 @@
  * @description Full-screen view for individual cheatsheets
  * Supports both image-based cheatsheets and markdown page content
  * Page cheatsheets use Neobrutalism design style
+ *
+ * SEO & AI Search Optimized:
+ * - Dynamic per-cheatsheet metadata
+ * - LearningResource JSON-LD structured data
+ * - Open Graph and Twitter Card support
+ * - Optimized for AI search citations (ChatGPT, Perplexity, Google AI)
  */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -13,6 +19,11 @@ import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 import { getCheatsheetBySlug } from "@/data/cheatsheets";
 import type { Cheatsheet } from "@/types/cheatsheet";
+import {
+  SEO,
+  generateCheatsheetSchema,
+  generateImageSchema,
+} from "@/components/seo";
 import { Button } from "@/components/ui/button";
 import {
   ArrowLeft,
@@ -139,6 +150,19 @@ const CheatsheetView: React.FC = () => {
     }
   };
 
+  // Generate structured data for this cheatsheet (must be before any early returns)
+  const cheatsheetStructuredData = useMemo(() => {
+    if (!sheet) return [];
+    const schemas = [generateCheatsheetSchema(sheet)];
+    // Add ImageObject schema for image-based cheatsheets
+    if (sheet.type === "image" && sheet.imageUrl) {
+      schemas.push(
+        generateImageSchema(sheet.title, sheet.description, sheet.imageUrl),
+      );
+    }
+    return schemas;
+  }, [sheet]);
+
   // Loading state
   if (loading) {
     return (
@@ -160,6 +184,12 @@ const CheatsheetView: React.FC = () => {
   if (!sheet) {
     return (
       <div className="min-h-screen bg-[#FFFEF0] dark:bg-[#1a1a2e] pt-20 flex items-center justify-center">
+        <SEO
+          title="Cheatsheet Not Found"
+          description="The cheatsheet you're looking for doesn't exist or has been removed."
+          url={`/cheatsheets/${slug}`}
+          robots={{ index: false, follow: true }}
+        />
         <div className="text-center animate-fadeIn p-8">
           <div className="w-28 h-28 mx-auto mb-6 bg-[#FF6B6B] border-4 border-black dark:border-white rounded-none flex items-center justify-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.3)]">
             <FileText className="w-14 h-14 text-black" />
@@ -189,6 +219,36 @@ const CheatsheetView: React.FC = () => {
     <div
       className={`min-h-screen ${isPageType ? "bg-[#FFFEF0] dark:bg-[#1a1a2e]" : "bg-background"} ${isFullscreen ? "" : "pt-20"}`}
     >
+      {/* SEO Meta Tags and Structured Data for Cheatsheet */}
+      <SEO
+        title={sheet.title}
+        description={sheet.description}
+        keywords={[sheet.category, ...sheet.keywords]}
+        url={`/cheatsheets/${sheet.slug}`}
+        ogType="article"
+        ogImage={
+          sheet.type === "image" && sheet.imageUrl
+            ? sheet.imageUrl
+            : "/profile-image.png"
+        }
+        ogImageAlt={`${sheet.title} - Developer Cheatsheet`}
+        twitterCard="summary_large_image"
+        structuredData={cheatsheetStructuredData}
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Cheatsheets", url: "/cheatsheets" },
+          {
+            name: sheet.category,
+            url: `/cheatsheets?category=${encodeURIComponent(sheet.category)}`,
+          },
+          { name: sheet.title, url: `/cheatsheets/${sheet.slug}` },
+        ]}
+        additionalMeta={[
+          { name: "content:type", content: sheet.type },
+          { name: "content:category", content: sheet.category },
+        ]}
+      />
+
       <div
         className={`${isFullscreen ? "h-screen flex flex-col" : "max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12"}`}
       >

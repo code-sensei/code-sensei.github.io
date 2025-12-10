@@ -2,9 +2,16 @@
  * BlogPost Page Component
  * @description Full-screen view for individual blog posts
  * Uses Neobrutalism design style consistent with cheatsheets
+ *
+ * SEO & AI Search Optimized:
+ * - Dynamic per-post metadata
+ * - BlogPosting/Article JSON-LD structured data
+ * - Open Graph article tags with publish dates
+ * - Twitter Card large image support
+ * - Optimized for AI search citations (ChatGPT, Perplexity, Google AI)
  */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -12,6 +19,11 @@ import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 import { getPostBySlug } from "@/data/blog/posts";
 import type { BlogPost } from "@/types/blog";
+import {
+  SEO,
+  generateBlogPostSchema,
+  generatePersonSchema,
+} from "@/components/seo";
 import {
   ArrowLeft,
   Calendar,
@@ -140,6 +152,12 @@ const BlogPostPage: React.FC = () => {
     }
   };
 
+  // Generate structured data for this blog post (must be before any early returns)
+  const postStructuredData = useMemo(() => {
+    if (!post) return [];
+    return [generateBlogPostSchema(post), generatePersonSchema(post.author)];
+  }, [post]);
+
   // Loading state - Neobrutalism
   if (loading) {
     return (
@@ -163,6 +181,12 @@ const BlogPostPage: React.FC = () => {
   if (!post) {
     return (
       <div className="min-h-screen bg-[#FFFEF0] dark:bg-[#1a1a2e] pt-20 flex items-center justify-center">
+        <SEO
+          title="Post Not Found"
+          description="The blog post you're looking for doesn't exist or has been removed."
+          url={`/blog/${slug}`}
+          robots={{ index: false, follow: true }}
+        />
         <div className="text-center animate-fadeIn p-8">
           <div className="w-28 h-28 mx-auto mb-6 bg-[#FF6B6B] border-4 border-black dark:border-white flex items-center justify-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.3)]">
             <FileText className="w-14 h-14 text-black" />
@@ -189,6 +213,43 @@ const BlogPostPage: React.FC = () => {
     <div
       className={`min-h-screen bg-[#FFFEF0] dark:bg-[#1a1a2e] ${isFullscreen ? "" : "pt-20"}`}
     >
+      {/* SEO Meta Tags and Structured Data for Blog Post */}
+      <SEO
+        title={post.title}
+        description={post.excerpt}
+        keywords={[post.category, ...post.tags]}
+        author={post.author.name}
+        url={`/blog/${post.slug}`}
+        ogType="article"
+        ogImage={post.coverImage || "/profile-image.png"}
+        ogImageAlt={`Cover image for ${post.title}`}
+        twitterCard="summary_large_image"
+        article={{
+          publishedTime: post.publishedAt,
+          modifiedTime: post.updatedAt || post.publishedAt,
+          author: post.author.name,
+          section: post.category,
+          tags: post.tags,
+        }}
+        structuredData={postStructuredData}
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Blog", url: "/blog" },
+          {
+            name: post.category,
+            url: `/blog?category=${encodeURIComponent(post.category)}`,
+          },
+          { name: post.title, url: `/blog/${post.slug}` },
+        ]}
+        additionalMeta={[
+          {
+            name: "article:reading_time",
+            content: `${post.readingTime} minutes`,
+          },
+          { name: "publish_date", content: post.publishedAt },
+        ]}
+      />
+
       <div
         className={`${isFullscreen ? "h-screen flex flex-col" : "max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12"}`}
       >

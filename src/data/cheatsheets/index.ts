@@ -36,7 +36,7 @@ const cheatsheets: Cheatsheet[] = [
     imageUrl: "/cheatsheets/placeholder.svg",
     createdAt: "2025-01-15T10:00:00Z",
     sourceUrl: "https://example.com/git-cheatsheet",
-    published: true,
+    published: false,
   },
   // Example page-based cheatsheet (markdown content)
   {
@@ -200,7 +200,7 @@ arr.reverse();
     imageUrl: "/cheatsheets/placeholder.svg",
     createdAt: "2025-01-08T16:00:00Z",
     sourceUrl: "https://css-tricks.com/snippets/css/a-guide-to-flexbox/",
-    published: true,
+    published: false,
   },
   {
     id: "4",

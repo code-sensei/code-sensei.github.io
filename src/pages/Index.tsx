@@ -10,10 +10,44 @@ import Education from "../components/sections/Education";
 import Contact from "../components/sections/Contact";
 import Navigation from "../components/layout/Navigation";
 import Footer from "../components/layout/Footer";
+import {
+  SEO,
+  generateProfilePageSchema,
+  generateNavigationSchema,
+} from "@/components/seo";
 
 const Index = () => {
+  // Generate structured data for homepage
+  const homepageStructuredData = [
+    generateProfilePageSchema(),
+    generateNavigationSchema(),
+  ];
+
   return (
     <div className="min-h-screen bg-background">
+      {/* SEO Meta Tags and Structured Data for Homepage */}
+      <SEO
+        title="Babangida Tsowa | Product & AI Engineer"
+        description="Trusted by government institutions and venture-backed startups to architect AI-driven platforms and mission-critical systems. Specializing in solutions where precision and scale aren't optional."
+        keywords={[
+          "Babangida Tsowa",
+          "Product Engineer",
+          "AI Engineer",
+          "Software Architect",
+          "AI Systems",
+          "Machine Learning",
+          "Full-Stack Developer",
+          "Enterprise Software",
+          "Government AI Solutions",
+          "Strategic Technology Consultant",
+        ]}
+        url="/"
+        ogType="profile"
+        ogImage="/profile-image.png"
+        ogImageAlt="Babangida Tsowa - Product & AI Engineer"
+        structuredData={homepageStructuredData}
+      />
+
       <Navigation />
       <main>
         <Hero />
