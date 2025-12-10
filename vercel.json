@@ -13,7 +13,7 @@
           "value": "blog.btsowa.dev"
         }
       ],
-      "destination": "/app/blog"
+      "destination": "/blog"
     }
   ],
   "headers": [

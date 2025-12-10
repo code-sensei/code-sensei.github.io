@@ -21,11 +21,10 @@ INSERT INTO public.blog_posts (
   featured,
   published
 ) VALUES (
-  'Building a Smarter Research Assistant: A Beginner''s Guide',
+  'How I Built a Deep Research Agent Better than ChatGPT',
   'building-smarter-research-assistant-beginners-guide',
   'Learn how to build an AI research assistant that asks better questions, remembers conversations, and conducts iterative research - no coding experience required to understand!',
-  '# Building a Smarter Research Assistant: A Beginner''s Guide
-
+  '
 **Reading Time**: ~15 minutes
 **Difficulty**: Beginner
 **No coding experience required to understand the concepts!**
@@ -120,11 +119,11 @@ See the difference? The AI:
 
 ---
 
-## Comparing: ChatGPT vs Our Research Agent
+## Comparing: ChatGPT vs the Iterative Research Agent
 
 Let''s look at this side by side:
 
-| What Happens | ChatGPT Research | Our Research Agent |
+| What Happens | ChatGPT Research | My Research Agent |
 |--------------|-----------------|-------------------|
 | **Questions Asked** | 1-5 at the very start | As many as needed, anytime |
 | **During Research** | 🔇 Silent | 💬 Keeps you updated |
@@ -136,7 +135,7 @@ Let''s look at this side by side:
 
 ## How Does It Work? (The Simple Version)
 
-Think of our research agent like a really organized research assistant. Here''s what''s happening behind the scenes:
+Think of the research agent like a really organized research assistant. Here''s what''s happening behind the scenes:
 
 ### 🧠 The Brain: An AI Language Model
 
@@ -168,7 +167,7 @@ The AI maintains a checklist of what it needs to do. This keeps it organized and
 
 ## The Research Process: 7 Simple Steps
 
-Here''s how our agent conducts research, explained simply:
+Here''s how the agent conducts research, explained simply:
 
 ### Step 1: 🤔 Understand What You Want
 
@@ -252,7 +251,7 @@ Let''s see how this works with a real example.
 ### Traditional AI Would:
 Ask about 5 questions upfront, then deliver a generic travel guide.
 
-### Our Research Agent Would:
+### The Research Agent Would:
 
 **Round 1 - Understanding:**
 > "I''d love to help with your Japan trip! To give you the best information:
@@ -459,13 +458,13 @@ A detailed set of rules (about 100 lines) that tell the AI exactly how to behave
 Here are some questions you might be wondering about:
 
 **Q: Is this better than ChatGPT?**
-A: It''s different. ChatGPT is great for many things. Our agent is specifically designed for deep, ongoing research where the direction might change as you learn.
+A: It''s different. ChatGPT is great for many things. The agent is specifically designed for deep, ongoing research where the direction might change as you learn.
 
 **Q: Can I use this without knowing how to code?**
 A: Not yet - it requires setting up a development environment. But understanding *how* it works helps you use any AI tool more effectively! I will also try to release a public version for use as soon as my schedule allows it. 😮‍💨
 
 **Q: Why doesn''t ChatGPT work this way?**
-A: It''s a design choice. ChatGPT is built to be general-purpose and handle millions of users. Our approach requires more back-and-forth, which is better for deep research but slower for quick questions.
+A: It''s a design choice. ChatGPT is built to be general-purpose and handle millions of users. My approach requires more back-and-forth, which is better for deep research but slower for quick questions.
 
 **Q: How expensive is this to run?**
 A: Each search and AI response costs a small amount (fractions of a cent). A typical research session might cost $0.10-$0.50. Not free, but much cheaper than hiring a human researcher!
