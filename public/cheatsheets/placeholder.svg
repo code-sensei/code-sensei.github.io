@@ -1,0 +1,29 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#1a1a2e"/>
+  <rect x="40" y="40" width="720" height="520" rx="16" fill="#16213e" stroke="#0f3460" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="60" y="60" width="680" height="60" rx="8" fill="#0f3460"/>
+  <text x="400" y="100" font-family="system-ui, sans-serif" font-size="24" font-weight="bold" fill="#e94560" text-anchor="middle">Cheatsheet Placeholder</text>
+  
+  <!-- Content Lines -->
+  <rect x="60" y="140" width="200" height="20" rx="4" fill="#0f3460"/>
+  <rect x="60" y="170" width="680" height="16" rx="4" fill="#16213e" stroke="#0f3460" stroke-width="1"/>
+  <rect x="60" y="196" width="600" height="16" rx="4" fill="#16213e" stroke="#0f3460" stroke-width="1"/>
+  <rect x="60" y="222" width="640" height="16" rx="4" fill="#16213e" stroke="#0f3460" stroke-width="1"/>
+  
+  <rect x="60" y="260" width="180" height="20" rx="4" fill="#0f3460"/>
+  <rect x="60" y="290" width="680" height="16" rx="4" fill="#16213e" stroke="#0f3460" stroke-width="1"/>
+  <rect x="60" y="316" width="550" height="16" rx="4" fill="#16213e" stroke="#0f3460" stroke-width="1"/>
+  <rect x="60" y="342" width="620" height="16" rx="4" fill="#16213e" stroke="#0f3460" stroke-width="1"/>
+  
+  <rect x="60" y="380" width="220" height="20" rx="4" fill="#0f3460"/>
+  <rect x="60" y="410" width="680" height="16" rx="4" fill="#16213e" stroke="#0f3460" stroke-width="1"/>
+  <rect x="60" y="436" width="580" height="16" rx="4" fill="#16213e" stroke="#0f3460" stroke-width="1"/>
+  <rect x="60" y="462" width="660" height="16" rx="4" fill="#16213e" stroke="#0f3460" stroke-width="1"/>
+  
+  <!-- Code Block -->
+  <rect x="60" y="500" width="680" height="40" rx="8" fill="#0f3460"/>
+  <text x="80" y="527" font-family="monospace" font-size="14" fill="#e94560">$ Add your cheatsheet image here</text>
+</svg>
+
