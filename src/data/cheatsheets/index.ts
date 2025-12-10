@@ -4,7 +4,11 @@
  * Stores cheatsheets locally - can be extended to use Supabase later
  */
 
-import type { Cheatsheet, CheatsheetCategory, CheatsheetFilters } from "@/types/cheatsheet";
+import type {
+  Cheatsheet,
+  CheatsheetCategory,
+  CheatsheetFilters,
+} from "@/types/cheatsheet";
 
 /**
  * Sample cheatsheets data - add your cheatsheets here
@@ -12,30 +16,47 @@ import type { Cheatsheet, CheatsheetCategory, CheatsheetFilters } from "@/types/
  * pushing objects that conform to the Cheatsheet interface.
  */
 const cheatsheets: Cheatsheet[] = [
-    // Example image-based cheatsheet
-    {
-        id: "1",
-        title: "Git Commands Cheatsheet",
-        slug: "git-commands",
-        description: "Essential Git commands for everyday development workflow including branching, merging, and rebasing.",
-        keywords: ["git", "version control", "commands", "branching", "merge", "rebase"],
-        category: "Version Control",
-        type: "image",
-        imageUrl: "/cheatsheets/placeholder.svg",
-        createdAt: "2025-01-15T10:00:00Z",
-        sourceUrl: "https://example.com/git-cheatsheet",
-        published: true,
-    },
-    // Example page-based cheatsheet (markdown content)
-    {
-        id: "2",
-        title: "JavaScript Array Methods",
-        slug: "javascript-array-methods",
-        description: "Complete reference for JavaScript array methods including map, filter, reduce, and more.",
-        keywords: ["javascript", "arrays", "methods", "map", "filter", "reduce", "es6"],
-        category: "JavaScript",
-        type: "page",
-        content: `
+  // Example image-based cheatsheet
+  {
+    id: "1",
+    title: "Git Commands Cheatsheet",
+    slug: "git-commands",
+    description:
+      "Essential Git commands for everyday development workflow including branching, merging, and rebasing.",
+    keywords: [
+      "git",
+      "version control",
+      "commands",
+      "branching",
+      "merge",
+      "rebase",
+    ],
+    category: "Version Control",
+    type: "image",
+    imageUrl: "/cheatsheets/placeholder.svg",
+    createdAt: "2025-01-15T10:00:00Z",
+    sourceUrl: "https://example.com/git-cheatsheet",
+    published: true,
+  },
+  // Example page-based cheatsheet (markdown content)
+  {
+    id: "2",
+    title: "JavaScript Array Methods",
+    slug: "javascript-array-methods",
+    description:
+      "Complete reference for JavaScript array methods including map, filter, reduce, and more.",
+    keywords: [
+      "javascript",
+      "arrays",
+      "methods",
+      "map",
+      "filter",
+      "reduce",
+      "es6",
+    ],
+    category: "JavaScript",
+    type: "page",
+    content: `
 # JavaScript Array Methods
 
 ## Iteration Methods
@@ -163,32 +184,42 @@ arr.reverse();
 // Result: [3, 2, 1]
 \`\`\`
         `,
-        createdAt: "2025-01-10T14:30:00Z",
-        updatedAt: "2025-01-12T09:00:00Z",
-        published: true,
-    },
-    {
-        id: "3",
-        title: "CSS Flexbox Guide",
-        slug: "css-flexbox",
-        description: "Visual guide to CSS Flexbox properties and alignment techniques.",
-        keywords: ["css", "flexbox", "layout", "responsive", "alignment", "flex"],
-        category: "CSS",
-        type: "image",
-        imageUrl: "/cheatsheets/placeholder.svg",
-        createdAt: "2025-01-08T16:00:00Z",
-        sourceUrl: "https://css-tricks.com/snippets/css/a-guide-to-flexbox/",
-        published: true,
-    },
-    {
-        id: "4",
-        title: "TypeScript Utility Types",
-        slug: "typescript-utility-types",
-        description: "Reference for TypeScript built-in utility types like Partial, Pick, Omit, and more.",
-        keywords: ["typescript", "utility types", "generics", "partial", "pick", "omit", "record"],
-        category: "TypeScript",
-        type: "page",
-        content: `# TypeScript Utility Types
+    createdAt: "2025-01-10T14:30:00Z",
+    updatedAt: "2025-01-12T09:00:00Z",
+    published: true,
+  },
+  {
+    id: "3",
+    title: "CSS Flexbox Guide",
+    slug: "css-flexbox",
+    description:
+      "Visual guide to CSS Flexbox properties and alignment techniques.",
+    keywords: ["css", "flexbox", "layout", "responsive", "alignment", "flex"],
+    category: "CSS",
+    type: "image",
+    imageUrl: "/cheatsheets/placeholder.svg",
+    createdAt: "2025-01-08T16:00:00Z",
+    sourceUrl: "https://css-tricks.com/snippets/css/a-guide-to-flexbox/",
+    published: true,
+  },
+  {
+    id: "4",
+    title: "TypeScript Utility Types",
+    slug: "typescript-utility-types",
+    description:
+      "Reference for TypeScript built-in utility types like Partial, Pick, Omit, and more.",
+    keywords: [
+      "typescript",
+      "utility types",
+      "generics",
+      "partial",
+      "pick",
+      "omit",
+      "record",
+    ],
+    category: "TypeScript",
+    type: "page",
+    content: `# TypeScript Utility Types
 
 ## Partial<Type>
 Makes all properties optional.
@@ -336,18 +367,29 @@ type WithoutNull = Exclude<AllTypes, null>;
 // string | number | boolean
 \`\`\`
         `,
-        createdAt: "2025-01-05T11:00:00Z",
-        published: true,
-    },
-    {
-        id: "5",
-        title: "Linear & Logistic Regression",
-        slug: "linear-logistic-regression",
-        description: "Comprehensive cheat sheet comparing different regression types in machine learning with code examples and associated functions.",
-        keywords: ["machine learning", "regression", "linear regression", "logistic regression", "polynomial", "sklearn", "python", "data science", "ML"],
-        category: "Machine Learning",
-        type: "page",
-        content: `# Linear & Logistic Regression Cheat Sheet
+    createdAt: "2025-01-05T11:00:00Z",
+    published: true,
+  },
+  {
+    id: "5",
+    title: "Linear & Logistic Regression",
+    slug: "linear-logistic-regression",
+    description:
+      "Comprehensive cheat sheet comparing different regression types in machine learning with code examples and associated functions.",
+    keywords: [
+      "machine learning",
+      "regression",
+      "linear regression",
+      "logistic regression",
+      "polynomial",
+      "sklearn",
+      "python",
+      "data science",
+      "ML",
+    ],
+    category: "Machine Learning",
+    type: "page",
+    content: `# Linear & Logistic Regression Cheat Sheet
 
 > Comparing different regression types for machine learning
 
@@ -531,10 +573,11 @@ r2 = r2_score(y_true, y_pred)
 **Repurposed By:**
 [Babangida Tsowa](https://btsowa.dev)
         `,
-        createdAt: "2025-12-10T15:00:00Z",
-        sourceUrl: "https://skills.network",
-        published: true,
-    },
+    createdAt: "2025-12-10T15:00:00Z",
+    sourceUrl:
+      "https://author-ide.skills.network/render?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZF9pbnN0cnVjdGlvbnNfdXJsIjoiaHR0cHM6Ly9jZi1jb3Vyc2VzLWRhdGEuczMudXMuY2xvdWQtb2JqZWN0LXN0b3JhZ2UuYXBwZG9tYWluLmNsb3VkL3BWam5EcGZuOFN5ZVZuZmV1QTAzSlEvTTJMMyUyMENoZWF0c2hlZXQtVjIubWQ_dD0xNzQ2MTI3NDI5IiwidG9vbF90eXBlIjoiaW5zdHJ1Y3Rpb25hbC1sYWIiLCJhdGxhc19maWxlX2lkIjoyNTI0NjcsImFkbWluIjpmYWxzZSwiaWF0IjoxNzU3Njk3MjI3fQ.EZycV2hoZEIcAE6y0dy6h-Cf899Ixw3kxYpla3LKbgc",
+    published: true,
+  },
 ];
 
 /**
@@ -542,9 +585,12 @@ r2 = r2_score(y_true, y_pred)
  * @returns {Promise<Cheatsheet[]>} Array of published cheatsheets sorted by date (newest first)
  */
 export async function getCheatsheets(): Promise<Cheatsheet[]> {
-    return cheatsheets
-        .filter(sheet => sheet.published)
-        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  return cheatsheets
+    .filter((sheet) => sheet.published)
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+    );
 }
 
 /**
@@ -552,8 +598,10 @@ export async function getCheatsheets(): Promise<Cheatsheet[]> {
  * @param {string} slug - The URL slug of the cheatsheet
  * @returns {Promise<Cheatsheet | undefined>} The cheatsheet if found
  */
-export async function getCheatsheetBySlug(slug: string): Promise<Cheatsheet | undefined> {
-    return cheatsheets.find(sheet => sheet.slug === slug && sheet.published);
+export async function getCheatsheetBySlug(
+  slug: string,
+): Promise<Cheatsheet | undefined> {
+  return cheatsheets.find((sheet) => sheet.slug === slug && sheet.published);
 }
 
 /**
@@ -561,8 +609,10 @@ export async function getCheatsheetBySlug(slug: string): Promise<Cheatsheet | un
  * @param {string} id - The unique ID of the cheatsheet
  * @returns {Promise<Cheatsheet | undefined>} The cheatsheet if found
  */
-export async function getCheatsheetById(id: string): Promise<Cheatsheet | undefined> {
-    return cheatsheets.find(sheet => sheet.id === id && sheet.published);
+export async function getCheatsheetById(
+  id: string,
+): Promise<Cheatsheet | undefined> {
+  return cheatsheets.find((sheet) => sheet.id === id && sheet.published);
 }
 
 /**
@@ -570,32 +620,39 @@ export async function getCheatsheetById(id: string): Promise<Cheatsheet | undefi
  * @param {CheatsheetFilters} filters - Filter parameters
  * @returns {Promise<Cheatsheet[]>} Filtered array of cheatsheets
  */
-export async function searchCheatsheets(filters: CheatsheetFilters): Promise<Cheatsheet[]> {
-    let results = cheatsheets.filter(sheet => sheet.published);
+export async function searchCheatsheets(
+  filters: CheatsheetFilters,
+): Promise<Cheatsheet[]> {
+  let results = cheatsheets.filter((sheet) => sheet.published);
 
-    // Filter by search query (searches title, description, and keywords)
-    if (filters.query) {
-        const query = filters.query.toLowerCase();
-        results = results.filter(sheet =>
-            sheet.title.toLowerCase().includes(query) ||
-            sheet.description.toLowerCase().includes(query) ||
-            sheet.keywords.some(keyword => keyword.toLowerCase().includes(query)) ||
-            sheet.category.toLowerCase().includes(query)
-        );
-    }
+  // Filter by search query (searches title, description, and keywords)
+  if (filters.query) {
+    const query = filters.query.toLowerCase();
+    results = results.filter(
+      (sheet) =>
+        sheet.title.toLowerCase().includes(query) ||
+        sheet.description.toLowerCase().includes(query) ||
+        sheet.keywords.some((keyword) =>
+          keyword.toLowerCase().includes(query),
+        ) ||
+        sheet.category.toLowerCase().includes(query),
+    );
+  }
 
-    // Filter by category
-    if (filters.category && filters.category !== "All") {
-        results = results.filter(sheet => sheet.category === filters.category);
-    }
+  // Filter by category
+  if (filters.category && filters.category !== "All") {
+    results = results.filter((sheet) => sheet.category === filters.category);
+  }
 
-    // Filter by type
-    if (filters.type && filters.type !== "all") {
-        results = results.filter(sheet => sheet.type === filters.type);
-    }
+  // Filter by type
+  if (filters.type && filters.type !== "all") {
+    results = results.filter((sheet) => sheet.type === filters.type);
+  }
 
-    // Sort by date (newest first)
-    return results.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  // Sort by date (newest first)
+  return results.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+  );
 }
 
 /**
@@ -603,26 +660,28 @@ export async function searchCheatsheets(filters: CheatsheetFilters): Promise<Che
  * @returns {Promise<CheatsheetCategory[]>} Array of categories with counts
  */
 export async function getCategories(): Promise<CheatsheetCategory[]> {
-    const published = cheatsheets.filter(sheet => sheet.published);
-    const categoryMap = new Map<string, number>();
+  const published = cheatsheets.filter((sheet) => sheet.published);
+  const categoryMap = new Map<string, number>();
 
-    published.forEach(sheet => {
-        const count = categoryMap.get(sheet.category) || 0;
-        categoryMap.set(sheet.category, count + 1);
-    });
+  published.forEach((sheet) => {
+    const count = categoryMap.get(sheet.category) || 0;
+    categoryMap.set(sheet.category, count + 1);
+  });
 
-    const categories: CheatsheetCategory[] = Array.from(categoryMap.entries()).map(([name, count], index) => ({
-        id: `cat-${index}`,
-        name,
-        slug: name.toLowerCase().replace(/\s+/g, "-"),
-        count,
-    }));
+  const categories: CheatsheetCategory[] = Array.from(
+    categoryMap.entries(),
+  ).map(([name, count], index) => ({
+    id: `cat-${index}`,
+    name,
+    slug: name.toLowerCase().replace(/\s+/g, "-"),
+    count,
+  }));
 
-    // Sort by count (descending) then name (ascending)
-    return categories.sort((a, b) => {
-        if (b.count !== a.count) return b.count - a.count;
-        return a.name.localeCompare(b.name);
-    });
+  // Sort by count (descending) then name (ascending)
+  return categories.sort((a, b) => {
+    if (b.count !== a.count) return b.count - a.count;
+    return a.name.localeCompare(b.name);
+  });
 }
 
 /**
@@ -630,14 +689,14 @@ export async function getCategories(): Promise<CheatsheetCategory[]> {
  * @returns {Promise<string[]>} Array of unique keywords
  */
 export async function getAllKeywords(): Promise<string[]> {
-    const published = cheatsheets.filter(sheet => sheet.published);
-    const keywordSet = new Set<string>();
+  const published = cheatsheets.filter((sheet) => sheet.published);
+  const keywordSet = new Set<string>();
 
-    published.forEach(sheet => {
-        sheet.keywords.forEach(keyword => keywordSet.add(keyword));
-    });
+  published.forEach((sheet) => {
+    sheet.keywords.forEach((keyword) => keywordSet.add(keyword));
+  });
 
-    return Array.from(keywordSet).sort();
+  return Array.from(keywordSet).sort();
 }
 
 /**
@@ -645,7 +704,7 @@ export async function getAllKeywords(): Promise<string[]> {
  * @returns {Promise<number>} Total count
  */
 export async function getTotalCount(): Promise<number> {
-    return cheatsheets.filter(sheet => sheet.published).length;
+  return cheatsheets.filter((sheet) => sheet.published).length;
 }
 
 /**
@@ -653,13 +712,14 @@ export async function getTotalCount(): Promise<number> {
  * @param {Omit<Cheatsheet, 'id' | 'createdAt'>} data - Cheatsheet data without auto-generated fields
  * @returns {Promise<Cheatsheet>} The created cheatsheet
  */
-export async function addCheatsheet(data: Omit<Cheatsheet, 'id' | 'createdAt'>): Promise<Cheatsheet> {
-    const newCheatsheet: Cheatsheet = {
-        ...data,
-        id: String(Date.now()),
-        createdAt: new Date().toISOString(),
-    };
-    cheatsheets.push(newCheatsheet);
-    return newCheatsheet;
+export async function addCheatsheet(
+  data: Omit<Cheatsheet, "id" | "createdAt">,
+): Promise<Cheatsheet> {
+  const newCheatsheet: Cheatsheet = {
+    ...data,
+    id: String(Date.now()),
+    createdAt: new Date().toISOString(),
+  };
+  cheatsheets.push(newCheatsheet);
+  return newCheatsheet;
 }
-
