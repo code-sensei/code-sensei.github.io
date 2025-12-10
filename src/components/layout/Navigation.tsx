@@ -16,7 +16,7 @@ const Navigation = () => {
     { id: "experience", label: "Experience" },
     { id: "community", label: "Community" },
     { id: "education", label: "Education" },
-    // { id: "blog", label: "Blog", isRoute: true },
+    { id: "blog", label: "Blog", isRoute: true },
     { id: "cheatsheets", label: "Cheatsheets", isRoute: true },
   ];
 
