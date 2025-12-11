@@ -2,7 +2,7 @@
  * Cheatsheets Page Component
  * @description Main page for browsing, searching, and filtering cheatsheets
  * Displays cheatsheets in reverse chronological order with search functionality
- * Now using Neobrutalism design style consistent with blog pages
+ * Uses Neobrutalism design style with the default theme colors
  *
  * SEO & AI Search Optimized:
  * - Dynamic metadata for search engines
@@ -186,22 +186,22 @@ const Cheatsheets: React.FC = () => {
     ];
   }, [allCheatsheets]);
 
-  // Loading skeleton - Neobrutalism style
+  // Loading skeleton - Neobrutalism style with theme colors
   if (loading) {
     return (
       <>
         <Navigation />
-        <div className="min-h-screen bg-[#FFFEF0] dark:bg-[#1a1a2e] pt-20">
+        <div className="min-h-screen bg-background pt-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="animate-pulse space-y-8">
               {/* Header skeleton */}
-              <div className="h-[200px] bg-[#FFE156] border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]" />
+              <div className="h-[200px] bg-primary/20 border-4 border-border shadow-[8px_8px_0px_0px_hsl(var(--border))]" />
               {/* Grid skeleton */}
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[1, 2, 3, 4, 5, 6].map((i) => (
                   <div
                     key={i}
-                    className="h-64 bg-white dark:bg-[#2d2d44] border-4 border-black dark:border-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
+                    className="h-64 bg-card border-4 border-border shadow-[6px_6px_0px_0px_hsl(var(--border))]"
                   />
                 ))}
               </div>
@@ -215,7 +215,7 @@ const Cheatsheets: React.FC = () => {
   return (
     <>
       <Navigation />
-      <div className="min-h-screen bg-[#FFFEF0] dark:bg-[#1a1a2e] pt-20">
+      <div className="min-h-screen bg-background pt-20">
         {/* SEO Meta Tags and Structured Data */}
         <SEO
           title="Developer Cheatsheets | Quick Reference Guides"
@@ -245,42 +245,42 @@ const Cheatsheets: React.FC = () => {
             SECTION 1: HERO HEADER
             Clear value proposition and search
             ============================================ */}
-        <header className="border-b-4 border-black dark:border-white bg-white dark:bg-[#2d2d44]">
+        <header className="border-b-4 border-border bg-card">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
             <div className="max-w-3xl">
               {/* Breadcrumb / Context */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#A0E7E5] border-3 border-black mb-6 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-                <Layers className="w-4 h-4 text-black" />
-                <span className="text-sm font-bold text-black uppercase tracking-wide">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 border-2 border-border mb-6 shadow-[3px_3px_0px_0px_hsl(var(--border))]">
+                <Layers className="w-4 h-4 text-primary" />
+                <span className="text-sm font-bold text-foreground uppercase tracking-wide">
                   Quick Reference Library
                 </span>
               </div>
 
               {/* Main headline - Clear value proposition */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-black dark:text-white mb-4 leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-foreground mb-4 leading-[1.1]">
                 Developer Cheatsheets
               </h1>
 
               {/* Subheadline - What readers will find */}
-              <p className="text-lg md:text-xl text-black/70 dark:text-white/70 font-mono mb-8 leading-relaxed max-w-2xl">
+              <p className="text-lg md:text-xl text-muted-foreground font-mono mb-8 leading-relaxed max-w-2xl">
                 Quick reference guides and visual cheatsheets for development
                 tools, languages, frameworks, and machine learning concepts.
               </p>
 
               {/* Search Bar - Prominent placement */}
               <div className="relative max-w-xl">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black/50 dark:text-white/50" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                 <input
                   type="text"
                   placeholder="Search cheatsheets..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-12 h-14 text-base bg-[#FFFEF0] dark:bg-[#1a1a2e] border-4 border-black dark:border-white text-black dark:text-white font-mono placeholder:text-black/40 dark:placeholder:text-white/40 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] focus:outline-none focus:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
+                  className="w-full pl-12 pr-12 h-14 text-base bg-background border-4 border-border text-foreground font-mono placeholder:text-muted-foreground shadow-[4px_4px_0px_0px_hsl(var(--border))] focus:outline-none focus:shadow-[2px_2px_0px_0px_hsl(var(--border))] focus:translate-x-0.5 focus:translate-y-0.5 transition-all"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery("")}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-[#FF6B6B] transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-destructive/20 rounded transition-colors"
                   >
                     <X className="w-4 h-4" />
                   </button>
@@ -288,7 +288,7 @@ const Cheatsheets: React.FC = () => {
               </div>
 
               {/* Quick stats */}
-              <div className="flex flex-wrap gap-4 mt-6 text-sm font-mono text-black/60 dark:text-white/60">
+              <div className="flex flex-wrap gap-4 mt-6 text-sm font-mono text-muted-foreground">
                 <span>{allCheatsheets.length} cheatsheets</span>
                 <span>•</span>
                 <span>{categories.length} categories</span>
@@ -308,24 +308,24 @@ const Cheatsheets: React.FC = () => {
               Quick navigation and filtering
               ============================================ */}
           <nav
-            className="py-8 border-b-4 border-black dark:border-white"
+            className="py-8 border-b-4 border-border"
             aria-label="Category and type navigation"
           >
             {/* Category Filters */}
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-sm font-black text-black dark:text-white uppercase tracking-wide">
+              <span className="text-sm font-black text-foreground uppercase tracking-wide">
                 Browse by Category
               </span>
-              <div className="h-0.5 flex-1 bg-black/20 dark:bg-white/20" />
+              <div className="h-0.5 flex-1 bg-border" />
             </div>
 
             <div className="flex flex-wrap gap-2 mb-6">
               <button
                 onClick={() => setSelectedCategory("All")}
-                className={`inline-flex items-center gap-2 px-4 py-2.5 border-3 border-black dark:border-white font-bold text-sm uppercase tracking-wide transition-all ${
+                className={`inline-flex items-center gap-2 px-4 py-2.5 border-2 border-border font-bold text-sm uppercase tracking-wide transition-all ${
                   selectedCategory === "All"
-                    ? "bg-[#FFE156] text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] translate-x-0 translate-y-0"
-                    : "bg-white dark:bg-[#2d2d44] text-black dark:text-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.3)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+                    ? "bg-primary text-primary-foreground shadow-[3px_3px_0px_0px_hsl(var(--border))] translate-x-0 translate-y-0"
+                    : "bg-card text-foreground shadow-[3px_3px_0px_0px_hsl(var(--border))] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_hsl(var(--border))]"
                 }`}
               >
                 All
@@ -334,10 +334,10 @@ const Cheatsheets: React.FC = () => {
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.name)}
-                  className={`inline-flex items-center gap-2 px-4 py-2.5 border-3 border-black dark:border-white font-bold text-sm uppercase tracking-wide transition-all ${
+                  className={`inline-flex items-center gap-2 px-4 py-2.5 border-2 border-border font-bold text-sm uppercase tracking-wide transition-all ${
                     selectedCategory === category.name
-                      ? "bg-[#FFE156] text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] translate-x-0 translate-y-0"
-                      : "bg-white dark:bg-[#2d2d44] text-black dark:text-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.3)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+                      ? "bg-primary text-primary-foreground shadow-[3px_3px_0px_0px_hsl(var(--border))] translate-x-0 translate-y-0"
+                      : "bg-card text-foreground shadow-[3px_3px_0px_0px_hsl(var(--border))] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_hsl(var(--border))]"
                   }`}
                 >
                   {getCategoryIcon(category.name)}
@@ -349,10 +349,10 @@ const Cheatsheets: React.FC = () => {
 
             {/* Type Filters */}
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-sm font-black text-black dark:text-white uppercase tracking-wide">
+              <span className="text-sm font-black text-foreground uppercase tracking-wide">
                 Filter by Type
               </span>
-              <div className="h-0.5 flex-1 bg-black/20 dark:bg-white/20" />
+              <div className="h-0.5 flex-1 bg-border" />
             </div>
 
             <div className="flex flex-wrap gap-2">
@@ -378,10 +378,10 @@ const Cheatsheets: React.FC = () => {
                   onClick={() =>
                     setSelectedType(type.value as "all" | "image" | "page")
                   }
-                  className={`inline-flex items-center gap-2 px-4 py-2.5 border-3 border-black dark:border-white font-bold text-sm uppercase tracking-wide transition-all ${
+                  className={`inline-flex items-center gap-2 px-4 py-2.5 border-2 border-border font-bold text-sm uppercase tracking-wide transition-all ${
                     selectedType === type.value
-                      ? "bg-[#A0E7E5] text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] translate-x-0 translate-y-0"
-                      : "bg-white dark:bg-[#2d2d44] text-black dark:text-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.3)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+                      ? "bg-secondary text-secondary-foreground shadow-[3px_3px_0px_0px_hsl(var(--border))] translate-x-0 translate-y-0"
+                      : "bg-card text-foreground shadow-[3px_3px_0px_0px_hsl(var(--border))] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_hsl(var(--border))]"
                   }`}
                 >
                   {type.icon}
@@ -392,13 +392,13 @@ const Cheatsheets: React.FC = () => {
 
             {/* Active filters indicator */}
             {hasActiveFilters && (
-              <div className="flex items-center gap-3 mt-4 pt-4 border-t-2 border-black/20 dark:border-white/20">
-                <span className="text-xs font-bold text-black/60 dark:text-white/60 uppercase">
+              <div className="flex items-center gap-3 mt-4 pt-4 border-t-2 border-border">
+                <span className="text-xs font-bold text-muted-foreground uppercase">
                   Filters:
                 </span>
 
                 {searchQuery && (
-                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-[#FFE156] border-2 border-black text-black text-xs font-bold">
+                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-primary/20 border-2 border-border text-foreground text-xs font-bold">
                     "{searchQuery.slice(0, 15)}
                     {searchQuery.length > 15 ? "..." : ""}"
                     <button onClick={() => setSearchQuery("")}>
@@ -408,7 +408,7 @@ const Cheatsheets: React.FC = () => {
                 )}
 
                 {selectedCategory !== "All" && (
-                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-[#DDA0DD] border-2 border-black text-black text-xs font-bold">
+                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-accent/30 border-2 border-border text-foreground text-xs font-bold">
                     {selectedCategory}
                     <button onClick={() => setSelectedCategory("All")}>
                       <X className="w-3 h-3" />
@@ -417,7 +417,7 @@ const Cheatsheets: React.FC = () => {
                 )}
 
                 {selectedType !== "all" && (
-                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-[#A0E7E5] border-2 border-black text-black text-xs font-bold">
+                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-secondary/50 border-2 border-border text-foreground text-xs font-bold">
                     {getTypeIcon(selectedType)}
                     <span className="capitalize">{selectedType}</span>
                     <button onClick={() => setSelectedType("all")}>
@@ -428,7 +428,7 @@ const Cheatsheets: React.FC = () => {
 
                 <button
                   onClick={clearFilters}
-                  className="text-xs font-bold text-[#FF6B6B] hover:underline uppercase"
+                  className="text-xs font-bold text-destructive hover:underline uppercase"
                 >
                   Clear all
                 </button>
@@ -442,10 +442,10 @@ const Cheatsheets: React.FC = () => {
               ============================================ */}
           <section className="py-10" aria-label="All cheatsheets">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-black uppercase tracking-tight text-black dark:text-white">
+              <h2 className="text-2xl font-black uppercase tracking-tight text-foreground">
                 {hasActiveFilters ? "Search Results" : "All Cheatsheets"}
               </h2>
-              <span className="text-sm font-mono text-black/60 dark:text-white/60">
+              <span className="text-sm font-mono text-muted-foreground">
                 {filteredCheatsheets.length}{" "}
                 {filteredCheatsheets.length === 1 ? "sheet" : "sheets"}
               </span>
@@ -456,12 +456,12 @@ const Cheatsheets: React.FC = () => {
                 {filteredCheatsheets.map((sheet, index) => (
                   <article
                     key={sheet.id}
-                    className="group bg-white dark:bg-[#2d2d44] border-4 border-black dark:border-white cursor-pointer shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.3)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all animate-slideUp flex flex-col"
+                    className="group bg-card border-4 border-border cursor-pointer shadow-[6px_6px_0px_0px_hsl(var(--border))] hover:translate-x-1 hover:translate-y-1 hover:shadow-[3px_3px_0px_0px_hsl(var(--border))] transition-all animate-slideUp flex flex-col"
                     onClick={() => handleCheatsheetClick(sheet.slug)}
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
                     {/* Preview Image/Placeholder */}
-                    <div className="relative h-44 overflow-hidden border-b-4 border-black dark:border-white">
+                    <div className="relative h-44 overflow-hidden border-b-4 border-border">
                       {sheet.type === "image" && sheet.imageUrl ? (
                         <img
                           src={sheet.imageUrl}
@@ -476,11 +476,11 @@ const Cheatsheets: React.FC = () => {
                                 "flex",
                                 "items-center",
                                 "justify-center",
-                                "bg-[#DDA0DD]",
+                                "bg-accent/30",
                               );
                               const placeholder = document.createElement("div");
                               placeholder.innerHTML =
-                                '<svg class="w-16 h-16 text-black/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>';
+                                '<svg class="w-16 h-16 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>';
                               parent.appendChild(
                                 placeholder.firstElementChild!,
                               );
@@ -488,25 +488,25 @@ const Cheatsheets: React.FC = () => {
                           }}
                         />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-[#B8E986]">
-                          <FileText className="w-16 h-16 text-black/30" />
+                        <div className="w-full h-full flex items-center justify-center bg-secondary/30">
+                          <FileText className="w-16 h-16 text-muted-foreground" />
                         </div>
                       )}
 
                       {/* Type Badge */}
-                      <div className="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1.5 bg-white border-2 border-black text-black text-xs font-bold uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                      <div className="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1.5 bg-card border-2 border-border text-foreground text-xs font-bold uppercase shadow-[2px_2px_0px_0px_hsl(var(--border))]">
                         {getTypeIcon(sheet.type)}
                         <span className="capitalize">{sheet.type}</span>
                       </div>
 
                       {/* Category Badge */}
-                      <div className="absolute top-3 right-3 px-3 py-1.5 bg-[#FFE156] border-2 border-black text-black text-xs font-bold uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                      <div className="absolute top-3 right-3 px-3 py-1.5 bg-primary/80 border-2 border-border text-primary-foreground text-xs font-bold uppercase shadow-[2px_2px_0px_0px_hsl(var(--border))]">
                         {sheet.category}
                       </div>
 
                       {sheet.sourceUrl && (
-                        <div className="absolute bottom-3 right-3 p-2 bg-[#A0E7E5] border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                          <ExternalLink className="w-3 h-3 text-black" />
+                        <div className="absolute bottom-3 right-3 p-2 bg-secondary border-2 border-border shadow-[2px_2px_0px_0px_hsl(var(--border))]">
+                          <ExternalLink className="w-3 h-3 text-secondary-foreground" />
                         </div>
                       )}
                     </div>
@@ -514,17 +514,17 @@ const Cheatsheets: React.FC = () => {
                     {/* Content */}
                     <div className="p-5 flex flex-col flex-1">
                       {/* Title */}
-                      <h3 className="text-lg font-black uppercase tracking-tight text-black dark:text-white mb-2 line-clamp-2 leading-snug group-hover:text-[#FF6B6B] transition-colors">
+                      <h3 className="text-lg font-black uppercase tracking-tight text-foreground mb-2 line-clamp-2 leading-snug group-hover:text-primary transition-colors">
                         {sheet.title}
                       </h3>
 
                       {/* Description */}
-                      <p className="text-sm text-black/70 dark:text-white/70 font-mono mb-4 line-clamp-2 flex-1">
+                      <p className="text-sm text-muted-foreground font-mono mb-4 line-clamp-2 flex-1">
                         {sheet.description}
                       </p>
 
                       {/* Meta */}
-                      <div className="flex items-center gap-3 text-xs font-mono text-black/60 dark:text-white/60 mb-3">
+                      <div className="flex items-center gap-3 text-xs font-mono text-muted-foreground mb-3">
                         <span className="flex items-center gap-1">
                           <Calendar className="w-3 h-3" />
                           {formatDistanceToNow(new Date(sheet.createdAt), {
@@ -538,13 +538,13 @@ const Cheatsheets: React.FC = () => {
                         {sheet.keywords.slice(0, 3).map((keyword) => (
                           <span
                             key={keyword}
-                            className="px-2 py-0.5 bg-[#FFE156] border border-black text-black text-xs font-bold"
+                            className="px-2 py-0.5 bg-primary/20 border border-border text-foreground text-xs font-bold"
                           >
                             {keyword}
                           </span>
                         ))}
                         {sheet.keywords.length > 3 && (
-                          <span className="px-2 py-0.5 bg-black/10 dark:bg-white/10 text-black/60 dark:text-white/60 text-xs font-bold">
+                          <span className="px-2 py-0.5 bg-muted text-muted-foreground text-xs font-bold">
                             +{sheet.keywords.length - 3}
                           </span>
                         )}
@@ -556,19 +556,19 @@ const Cheatsheets: React.FC = () => {
             ) : (
               /* Empty State */
               <div className="text-center py-16">
-                <div className="w-24 h-24 mx-auto mb-6 bg-[#A0E7E5] border-4 border-black dark:border-white flex items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-                  <Search className="w-12 h-12 text-black" />
+                <div className="w-24 h-24 mx-auto mb-6 bg-secondary/30 border-4 border-border flex items-center justify-center shadow-[6px_6px_0px_0px_hsl(var(--border))]">
+                  <Search className="w-12 h-12 text-muted-foreground" />
                 </div>
-                <h3 className="text-2xl font-black uppercase mb-3 text-black dark:text-white">
+                <h3 className="text-2xl font-black uppercase mb-3 text-foreground">
                   No cheatsheets found
                 </h3>
-                <p className="text-black/70 dark:text-white/70 mb-6 max-w-md mx-auto font-mono">
+                <p className="text-muted-foreground mb-6 max-w-md mx-auto font-mono">
                   Try adjusting your search or filters to find what you're
                   looking for.
                 </p>
                 <button
                   onClick={clearFilters}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#FFE156] border-4 border-black text-black font-black uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground border-4 border-border font-black uppercase shadow-[4px_4px_0px_0px_hsl(var(--border))] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_hsl(var(--border))] transition-all"
                 >
                   Clear Filters
                 </button>
@@ -582,7 +582,7 @@ const Cheatsheets: React.FC = () => {
               ============================================ */}
           {allCheatsheets.length > 0 && (
             <section
-              className="py-10 border-t-4 border-black dark:border-white"
+              className="py-10 border-t-4 border-border"
               aria-label="Collection statistics"
             >
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -590,35 +590,34 @@ const Cheatsheets: React.FC = () => {
                   {
                     value: allCheatsheets.length,
                     label: "Total Sheets",
-                    color: "#FFE156",
+                    bg: "bg-primary/20",
                   },
                   {
                     value: categories.length,
                     label: "Categories",
-                    color: "#A0E7E5",
+                    bg: "bg-secondary/40",
                   },
                   {
                     value: allCheatsheets.filter((s) => s.type === "image")
                       .length,
                     label: "Image Sheets",
-                    color: "#DDA0DD",
+                    bg: "bg-accent/30",
                   },
                   {
                     value: allCheatsheets.filter((s) => s.type === "page")
                       .length,
                     label: "Page Guides",
-                    color: "#B8E986",
+                    bg: "bg-muted",
                   },
                 ].map((stat, i) => (
                   <div
                     key={i}
-                    className="p-6 border-4 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
-                    style={{ backgroundColor: stat.color }}
+                    className={`p-6 border-4 border-border shadow-[4px_4px_0px_0px_hsl(var(--border))] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0px_0px_hsl(var(--border))] transition-all ${stat.bg}`}
                   >
-                    <div className="text-3xl md:text-4xl font-black text-black mb-1">
+                    <div className="text-3xl md:text-4xl font-black text-foreground mb-1">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-black font-bold uppercase tracking-wide">
+                    <div className="text-sm text-muted-foreground font-bold uppercase tracking-wide">
                       {stat.label}
                     </div>
                   </div>
