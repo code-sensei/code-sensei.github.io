@@ -22,6 +22,17 @@
       "destination": "/blog/:path*"
     },
     {
+      "source": "/blog/:slug",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(facebookexternalhit|Facebot|Twitterbot|LinkedInBot|WhatsApp|Slackbot|TelegramBot|Discordbot|Pinterest).*"
+        }
+      ],
+      "destination": "/api/og?path=/blog/:slug"
+    },
+    {
       "source": "/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)",
       "destination": "/index.html"
     }

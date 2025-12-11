@@ -22,23 +22,16 @@
 
   <!-- Blog Posts -->
   <url>
-    <loc>https://btsowa.dev/blog/building-scalable-ai-systems</loc>
+    <loc>https://btsowa.dev/blog/building-smarter-research-assistant-beginners-guide</loc>
     <lastmod>2024-01-15</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://btsowa.dev/blog/react-performance-optimization</loc>
-    <lastmod>2024-01-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://btsowa.dev/blog/journey-student-to-cto</loc>
+    <loc>https://btsowa.dev/blog/my-guide-to-mastering-ai-prompting-techniques</loc>
     <lastmod>2024-01-05</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
