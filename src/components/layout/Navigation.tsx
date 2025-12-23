@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
@@ -7,6 +8,24 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Check if we're on the homepage
+  const isHomePage = location.pathname === "/";
+
+  // Get active item based on current route or scroll position
+  const getActiveItem = () => {
+    if (!isHomePage) {
+      // For route pages, extract the route name from pathname
+      const routeName = location.pathname.split("/")[1]; // e.g., "blog" from "/blog" or "/blog/slug"
+      return routeName || "home";
+    }
+    return activeSection;
+  };
+
+  const currentActive = getActiveItem();
 
   const navItems: Array<{ id: string; label: string; isRoute?: boolean }> = [
     { id: "home", label: "Home" },
@@ -25,15 +44,19 @@ const Navigation = () => {
       // Update scrolled state for navbar background
       setIsScrolled(window.scrollY > 50);
 
-      // Update active section
-      const sections = navItems.map((item) => document.getElementById(item.id));
-      const scrollPosition = window.scrollY + 100;
+      // Only update active section based on scroll if on homepage
+      if (isHomePage) {
+        const sections = navItems.map((item) =>
+          document.getElementById(item.id),
+        );
+        const scrollPosition = window.scrollY + 100;
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(navItems[i].id);
-          break;
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const section = sections[i];
+          if (section && section.offsetTop <= scrollPosition) {
+            setActiveSection(navItems[i].id);
+            break;
+          }
         }
       }
     };
@@ -42,11 +65,18 @@ const Navigation = () => {
     handleScroll(); // Call once to set initial state
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHomePage]);
 
   const scrollToSection = (sectionId: string, isRoute?: boolean) => {
     if (isRoute) {
-      window.location.href = `/${sectionId}`;
+      navigate(`/${sectionId}`);
+      setIsOpen(false);
+      return;
+    }
+
+    // If we're not on the homepage, navigate to homepage first with section hash
+    if (!isHomePage) {
+      navigate(`/#${sectionId}`);
       setIsOpen(false);
       return;
     }
@@ -120,7 +150,7 @@ const Navigation = () => {
                   key={item.id}
                   onClick={() => scrollToSection(item.id, item.isRoute)}
                   className={`px-3 xl:px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative group ${
-                    activeSection === item.id
+                    currentActive === item.id
                       ? "text-primary"
                       : "text-muted-foreground hover:text-primary"
                   }`}
@@ -128,7 +158,7 @@ const Navigation = () => {
                   {item.label}
                   <span
                     className={`absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full transition-all duration-300 ${
-                      activeSection === item.id
+                      currentActive === item.id
                         ? "opacity-100 scale-x-100"
                         : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-50"
                     }`}
@@ -181,7 +211,7 @@ const Navigation = () => {
                 key={item.id}
                 onClick={() => scrollToSection(item.id, item.isRoute)}
                 className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 transform ${
-                  activeSection === item.id
+                  currentActive === item.id
                     ? "text-primary bg-primary/10 scale-[1.02]"
                     : "text-muted-foreground hover:text-primary hover:bg-primary/5 hover:scale-[1.02]"
                 }`}
@@ -192,7 +222,7 @@ const Navigation = () => {
               >
                 <div className="flex items-center justify-between">
                   <span>{item.label}</span>
-                  {activeSection === item.id && (
+                  {currentActive === item.id && (
                     <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
                   )}
                 </div>

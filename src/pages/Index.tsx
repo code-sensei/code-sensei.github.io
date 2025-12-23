@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Hero from "../components/sections/Hero";
 import About from "../components/sections/About";
 import Skills from "../components/sections/Skills";
@@ -17,6 +18,29 @@ import {
 } from "@/components/seo";
 
 const Index = () => {
+  const location = useLocation();
+
+  // Handle hash-based navigation (e.g., /#about from other pages)
+  useEffect(() => {
+    if (location.hash) {
+      const sectionId = location.hash.slice(1); // Remove the '#'
+      const element = document.getElementById(sectionId);
+      if (element) {
+        // Small delay to ensure the page is fully rendered
+        setTimeout(() => {
+          const offset = 80; // Height of navbar
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }, 100);
+      }
+    }
+  }, [location.hash]);
+
   // Generate structured data for homepage
   const homepageStructuredData = [
     generateProfilePageSchema(),
