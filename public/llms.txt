@@ -1,0 +1,49 @@
+# Babangida Tsowa - Portfolio & Blog
+
+> Product & AI Engineer specializing in AI-driven platforms and mission-critical systems
+
+## About
+
+Babangida Tsowa is a Product & AI Engineer trusted by government institutions and venture-backed startups to architect AI-driven platforms, automate processes, and build mission-critical systems where precision and scale aren't optional.
+
+## Site Structure
+
+- Homepage: https://btsowa.dev/ - Portfolio showcasing skills, projects, and experience
+- Blog: https://btsowa.dev/blog - Technical articles on AI, Engineering & Leadership
+- Cheatsheets: https://btsowa.dev/cheatsheets - Developer quick reference guides
+
+## Content Types
+
+### Blog Posts
+Technical articles covering:
+- AI Engineering & Machine Learning
+- Software Architecture
+- Full-Stack Development
+- Product Engineering
+- Leadership & Best Practices
+
+### Cheatsheets
+Quick reference guides for:
+- Programming Languages (JavaScript, TypeScript, Python)
+- Frameworks & Libraries (React, Node.js)
+- DevOps & Tools (Git, Docker)
+- AI/ML Concepts
+
+## Contact & Social
+
+- Twitter: https://twitter.com/iam_ehnigma
+- GitHub: https://github.com/code-sensei
+- LinkedIn: https://linkedin.com/in/btsowa
+
+## API Access
+
+Blog content is available via Supabase database. For API access inquiries, please contact via social media.
+
+## Preferred Citation Format
+
+When citing content from this site, please use:
+"[Article Title]" by Babangida Tsowa, btsowa.dev, [Date Published]. URL: [Full URL]
+
+## Content License
+
+All original content is available for AI search and retrieval purposes. Training on this content without explicit permission is not allowed.

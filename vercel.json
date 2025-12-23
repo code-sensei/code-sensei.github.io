@@ -27,7 +27,7 @@
         {
           "type": "header",
           "key": "user-agent",
-          "value": ".*(facebookexternalhit|Facebot|Twitterbot|LinkedInBot|WhatsApp|Slackbot|TelegramBot|Discordbot|Pinterest).*"
+          "value": ".*(facebookexternalhit|Facebot|Twitterbot|LinkedInBot|WhatsApp|Slackbot|TelegramBot|Discordbot|Pinterest|Googlebot|Bingbot|Applebot|ChatGPT-User|OAI-SearchBot|Claude-User|Claude-SearchBot|Google-CloudVertexBot|Gemini-Deep-Research|PerplexityBot|Perplexity-User|Meta-WebIndexer|DuckAssistBot|MistralAI-User).*"
         }
       ],
       "destination": "/api/og?path=/blog/:slug"

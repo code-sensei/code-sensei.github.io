@@ -13,8 +13,9 @@ const DEFAULT_IMAGE = `${SITE_URL}/profile-image.png`;
 const DEFAULT_DESCRIPTION =
   "Trusted by government institutions and venture-backed startups to architect platforms, automate processes and build mission-critical systems.";
 
-// User agent patterns for social media crawlers
+// User agent patterns for social media and AI search crawlers (excludes training bots)
 const BOT_PATTERNS = [
+  // Social media crawlers
   "facebookexternalhit",
   "Facebot",
   "Twitterbot",
@@ -24,14 +25,22 @@ const BOT_PATTERNS = [
   "TelegramBot",
   "Discordbot",
   "Pinterest",
+  // Traditional search engines
   "Googlebot",
-  "bingbot",
+  "Bingbot",
   "Applebot",
-  "ChatGPTBot",
+  // AI search/retrieval crawlers (not training)
+  "ChatGPT-User",
+  "OAI-SearchBot",
+  "Claude-User",
+  "Claude-SearchBot",
+  "Google-CloudVertexBot",
+  "Gemini-Deep-Research",
   "PerplexityBot",
-  "GrokBot",
-  "ClaudeBot",
-  "AnthropicBot",
+  "Perplexity-User",
+  "Meta-WebIndexer",
+  "DuckAssistBot",
+  "MistralAI-User",
 ];
 
 function isBot(userAgent: string): boolean {

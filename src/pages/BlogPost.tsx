@@ -122,18 +122,28 @@ const BlogPostPage: React.FC = () => {
   const handleShare = async (platform?: string) => {
     const shareUrl = window.location.href;
     const shareTitle = post?.title || "";
+    const shareDescription = post?.excerpt || "";
 
-    if (!platform && navigator.share && post) {
-      try {
-        await navigator.share({
-          title: post.title,
-          text: post.excerpt,
-          url: shareUrl,
-        });
-        return;
-      } catch (error) {
-        console.error("Share failed:", error);
+    // If no platform specified, try native share first, then fall back to copy
+    if (!platform) {
+      if (navigator.share && post) {
+        try {
+          await navigator.share({
+            title: post.title,
+            text: post.excerpt,
+            url: shareUrl,
+          });
+          return;
+        } catch (error) {
+          // User cancelled or share failed, fall back to copy
+          console.log(
+            "Native share cancelled or unavailable, copying link instead",
+          );
+        }
       }
+      // Fall back to copying the link
+      await handleCopyLink();
+      return;
     }
 
     const urls: Record<string, string> = {
@@ -143,11 +153,11 @@ const BlogPostPage: React.FC = () => {
     };
 
     if (platform === "copy") {
-      handleCopyLink();
+      await handleCopyLink();
       return;
     }
 
-    if (platform && urls[platform]) {
+    if (urls[platform]) {
       window.open(urls[platform], "_blank", "width=600,height=400");
     }
   };
