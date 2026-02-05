@@ -660,7 +660,7 @@ const Blog: React.FC = () => {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <a
-                      href="https://twitter.com/btsowa"
+                      href="https://twitter.com/iam_ehnigma"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-foreground text-background font-black uppercase shadow-[4px_4px_0px_0px_hsl(var(--border))] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_hsl(var(--border))] transition-all"
