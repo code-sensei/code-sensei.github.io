@@ -1,207 +1,213 @@
-import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Award, TrendingUp, Users, Code } from "lucide-react";
+import {
+  TrendingUp,
+  Code,
+  Users,
+  Zap,
+  Building2,
+  Rocket,
+  Award,
+} from "lucide-react";
 
-const About = () => {
-  const stats = [
-    {
-      label: "Years Experience",
-      value: "7+",
-      icon: <TrendingUp className="w-6 h-6" />,
-      color: "text-blue-500",
-    },
-    {
-      label: "Projects Completed",
-      value: "20+",
-      icon: <Code className="w-6 h-6" />,
-      color: "text-green-500",
-    },
-    {
-      label: "Happy Clients",
-      value: "18+",
-      icon: <Users className="w-6 h-6" />,
-      color: "text-purple-500",
-    },
-    {
-      label: "Lines of Code",
-      value: "500K+",
-      icon: <Award className="w-6 h-6" />,
-      color: "text-orange-500",
-    },
-  ];
+const highlights = [
+  {
+    org: "Federal Ministry of Foreign Affairs",
+    description:
+      "Architected a big-data AI-powered intelligence platform that enhanced data processing efficiency by 35%—directly informing policy decisions.",
+    icon: Building2,
+  },
+  {
+    org: "Clafiya",
+    description:
+      "Frontend architecture and reusable component libraries that helped secure $610,000 in funding—scaling to 1,000+ users.",
+    icon: Rocket,
+  },
+  {
+    org: "Sweet Ride Nigeria (CTO)",
+    description:
+      "Rebuilt workflows and software infrastructure—25% faster delivery, 15% higher user engagement.",
+    icon: Zap,
+  },
+] as const;
 
+const initiatives = [
+  {
+    title: "NACOSS National Hackathon",
+    description: "Organized as a key leader, fostering student innovation",
+  },
+  {
+    title: "Google Hash Code Competitions",
+    description:
+      "Directed two competitions as Director of Software, SICT, FUTMINNA",
+  },
+  {
+    title: "GitHub Workshop",
+    description: "Led workshop for 100+ attendees on best practices",
+  },
+  {
+    title: "AI & Data Science Bootcamp",
+    description: "Partnered with DSN Nigeria as NACOSS Director",
+  },
+] as const;
+
+const stats = [
+  {
+    value: "7+",
+    label: "Years Experience",
+    icon: TrendingUp,
+  },
+  {
+    value: "20+",
+    label: "Projects Completed",
+    icon: Code,
+  },
+  {
+    value: "18+",
+    label: "Happy Clients",
+    icon: Users,
+  },
+  {
+    value: "500K+",
+    label: "Lines of Code",
+    icon: Award,
+  },
+] as const;
+
+export default function About() {
   return (
-    <section id="about" className="py-16 md:py-24 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="section-padding bg-muted/30">
+      <div className="container-wide">
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16 animate-fadeIn">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            About Me
-          </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+        <div className="text-center mb-16">
+          <p className="text-primary font-medium mb-2 text-sm uppercase tracking-wide">
+            Get to know me
+          </p>
+          <h2 className="text-display-sm mb-4">About Me</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             Transforming complex challenges into elegant solutions across
             enterprise, government, and high-growth startups
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-1 gap-8 lg:gap-12 items-start">
-          {/* Content */}
-          <div className="space-y-6 animate-fadeIn">
-            <div className="space-y-6">
-              <h3 className="text-2xl md:text-3xl font-semibold mb-6 gradient-text">
-                Engineered Impact
-              </h3>
+        {/* Main Content */}
+        <div className="max-w-4xl mx-auto space-y-12">
+          {/* Intro */}
+          <div className="space-y-4">
+            <h3 className="text-heading-lg text-foreground">
+              Engineered Impact
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Trusted by government institutions, venture-backed startups, and
+              enterprise organizations to architect systems where precision
+              matters. Specializing in AI-driven platforms, full-stack product
+              engineering, and strategic technology consulting—delivering
+              solutions that don't just work, but scale.
+            </p>
+          </div>
 
-              {/* Updated About Section */}
-              <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground leading-relaxed space-y-6">
-                <p className="text-base md:text-lg">
-                  Trusted by government institutions, venture-backed startups,
-                  and enterprise organizations to architect systems where
-                  precision matters. Specializing in AI-driven platforms,
-                  full-stack product engineering, and strategic technology
-                  consulting—delivering solutions that don't just work, but
-                  scale.
-                </p>
-
-                <div className="space-y-4 pl-4 border-l-4 border-primary/50">
-                  <div className="space-y-2">
-                    <p className="text-base md:text-lg">
-                      <span className="font-semibold text-foreground">
-                        Federal Ministry of Foreign Affairs
-                      </span>
-                      : Architected a big‑data AI‑powered intelligence platform
-                      that enhanced data processing efficiency by 35%—directly
-                      informing policy decisions and strengthening national
-                      security insights.
-                    </p>
+          {/* Highlights */}
+          <div className="space-y-3">
+            {highlights.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.org}
+                  className="flex gap-4 items-start p-5 rounded-lg border border-border bg-card hover:border-primary/30 transition-colors"
+                >
+                  <div className="shrink-0 size-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Icon className="size-5 text-primary" />
                   </div>
-
-                  <div className="space-y-2">
-                    <p className="text-base md:text-lg">
-                      <span className="font-semibold text-foreground">
-                        Clafiya
-                      </span>
-                      : Frontend architecture and reusable component libraries
-                      that helped secure $610,000 in funding—doubling Admin
-                      Dashboard usability while scaling to 1,000+ users.
-                    </p>
-                  </div>
-
-                  <div className="space-y-2">
-                    <p className="text-base md:text-lg">
-                      <span className="font-semibold text-foreground">
-                        Sweet Ride Nigeria (CTO)
-                      </span>
-                      : Rebuilt workflows and software infrastructure—25% faster
-                      delivery, 15% higher user engagement, and a foundation
-                      built to scale.
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-1">
+                      {item.org}
+                    </h4>
+                    <p className="text-muted-foreground text-sm">
+                      {item.description}
                     </p>
                   </div>
                 </div>
+              );
+            })}
+          </div>
 
-                <p className="text-base md:text-lg">
-                  Beyond client work, I invest in the next generation—organizing
-                  and leading initiatives that shape how developers think about
-                  technology:
-                </p>
+          {/* Community Section */}
+          <div className="space-y-4">
+            <p className="text-muted-foreground">
+              Beyond client work, I invest in the next generation—organizing and
+              leading initiatives that shape how developers think about
+              technology:
+            </p>
 
-                <div className="grid sm:grid-cols-2 gap-4 my-6">
-                  <div className="glass-effect p-4 rounded-lg transition-smooth hover:scale-[1.02]">
-                    <p className="font-semibold text-primary mb-2">
-                      🏆 NACOSS National Hackathon
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      Organized as a key leader, fostering student innovation
-                    </p>
-                  </div>
-
-                  <div className="glass-effect p-4 rounded-lg transition-smooth hover:scale-[1.02]">
-                    <p className="font-semibold text-primary mb-2">
-                      💻 Google Hash Code Competitions
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      Directed two competitions as Director of Software, SICT,
-                      FUTMINNA
-                    </p>
-                  </div>
-
-                  <div className="glass-effect p-4 rounded-lg transition-smooth hover:scale-[1.02]">
-                    <p className="font-semibold text-primary mb-2">
-                      📚 GitHub Workshop
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      Led workshop for 100+ attendees on best practices
-                    </p>
-                  </div>
-
-                  <div className="glass-effect p-4 rounded-lg transition-smooth hover:scale-[1.02]">
-                    <p className="font-semibold text-primary mb-2">
-                      🤖 AI & Data Science Bootcamp
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      Partnered with DSN Nigeria as NACOSS Director
-                    </p>
-                  </div>
-                </div>
-
-                <p className="text-base md:text-lg">
-                  Invited to shape national policy—reviewing and contributing to
-                  the{" "}
-                  <span className="font-semibold text-foreground">
-                    National AI Strategy
-                  </span>{" "}
-                  and{" "}
-                  <span className="font-semibold text-foreground">
-                    NITDA's Guidelines to Software Development
-                  </span>
-                  —while facilitating strategic discussions on AI, Data Science,
-                  and Digital Transformation.
-                </p>
-
-                <div className="glass-effect p-6 rounded-xl border-l-4 border-primary">
-                  <p className="text-base md:text-lg italic text-foreground">
-                    "Where cutting‑edge technology meets measurable
-                    impact—bridging innovation with execution for organizations
-                    ready to lead, not follow."
+            <div className="grid sm:grid-cols-2 gap-3">
+              {initiatives.map((item) => (
+                <div
+                  key={item.title}
+                  className="p-4 rounded-lg border border-border bg-card hover:border-primary/30 transition-colors"
+                >
+                  <h4 className="font-semibold text-foreground mb-1 text-sm">
+                    {item.title}
+                  </h4>
+                  <p className="text-sm text-muted-foreground">
+                    {item.description}
                   </p>
                 </div>
-              </div>
+              ))}
             </div>
+          </div>
+
+          {/* Policy Work */}
+          <div className="space-y-4">
+            <p className="text-muted-foreground">
+              Invited to shape national policy—reviewing and contributing to the{" "}
+              <span className="font-medium text-foreground">
+                National AI Strategy
+              </span>{" "}
+              and{" "}
+              <span className="font-medium text-foreground">
+                NITDA's Guidelines to Software Development
+              </span>
+              —while facilitating strategic discussions on AI, Data Science, and
+              Digital Transformation.
+            </p>
+
+            {/* Quote */}
+            <blockquote className="p-5 rounded-lg bg-muted border-l-2 border-primary">
+              <p className="text-foreground italic">
+                "Where cutting-edge technology meets measurable impact—bridging
+                innovation with execution for organizations ready to lead, not
+                follow."
+              </p>
+            </blockquote>
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-12 md:mt-16">
-          {stats.map((stat, index) => (
-            <Card
-              key={index}
-              className="card-hover text-center group overflow-hidden relative"
-              style={{
-                animationDelay: `${index * 100}ms`,
-              }}
-            >
-              {/* Gradient Background on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-              <CardContent className="p-4 md:p-6 relative z-10">
-                <div
-                  className={`${stat.color} mb-3 flex justify-center transform group-hover:scale-110 transition-transform duration-300`}
-                >
-                  {stat.icon}
-                </div>
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform duration-300">
-                  {stat.value}
-                </div>
-                <div className="text-xs md:text-sm text-muted-foreground font-medium">
-                  {stat.label}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+          {stats.map((stat) => {
+            const Icon = stat.icon;
+            return (
+              <Card
+                key={stat.label}
+                className="text-center border-border hover:border-primary/30 transition-colors"
+              >
+                <CardContent className="p-6">
+                  <div className="mb-3 flex justify-center">
+                    <div className="size-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Icon className="size-5 text-primary" />
+                    </div>
+                  </div>
+                  <div className="text-display-sm text-foreground font-semibold mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {stat.label}
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>
   );
-};
-
-export default About;
+}

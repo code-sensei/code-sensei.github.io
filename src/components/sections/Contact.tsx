@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -44,39 +45,45 @@ const Contact = () => {
       label: "Email",
       value: "tsowababangida@gmail.com",
       href: "mailto:tsowababangida@gmail.com",
+      icon: Mail,
     },
     {
       label: "Phone",
       value: "+234 706-330-1032",
-      href: "tel:+15551234567",
+      href: "tel:+2347063301032",
+      icon: Phone,
     },
     {
       label: "Location",
       value: "Federal Capital Territory, NG",
       href: "#",
+      icon: MapPin,
     },
   ];
 
   return (
-    <section id="contact" className="py-20 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="section-padding bg-muted/30">
+      <div className="container-wide">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Let's Talk</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-primary font-medium mb-2 text-sm uppercase tracking-wide">
+            Get in touch
+          </p>
+          <h2 className="text-display-sm mb-4">Let's Talk</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             Currently accepting select consulting engagements and strategic
             partnerships. Share your challenge—let's explore if we're the right
             fit.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Contact Form */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Start a Conversation</CardTitle>
+          <Card className="border-border">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-lg">Start a Conversation</CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>
                   <Input
@@ -110,7 +117,7 @@ const Contact = () => {
                     required
                     rows={5}
                     placeholder="Tell me about your challenge, timeline, and what success looks like..."
-                    className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm resize-vertical"
+                    className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-vertical"
                   />
                 </div>
                 <Button
@@ -118,46 +125,48 @@ const Contact = () => {
                   className="w-full"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Submitting..." : "Submit Inquiry"}
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </CardContent>
           </Card>
 
-          {/* Contact Info & Illustration */}
-          <div className="space-y-8">
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => (
-                <div key={index} className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-primary font-semibold">
-                      {info.label[0]}
-                    </span>
+          {/* Contact Info */}
+          <div className="space-y-6">
+            <div className="space-y-4">
+              {contactInfo.map((info) => {
+                const Icon = info.icon;
+                return (
+                  <div key={info.label} className="flex items-center gap-4">
+                    <div className="size-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                      <Icon className="size-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-medium text-sm">{info.label}</div>
+                      <a
+                        href={info.href}
+                        className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                      >
+                        {info.value}
+                      </a>
+                    </div>
                   </div>
-                  <div>
-                    <div className="font-medium">{info.label}</div>
-                    <a
-                      href={info.href}
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {info.value}
-                    </a>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
-            {/* Illustration */}
-            {/* <div className="flex justify-center">
-              <div className="relative">
-                <img
-                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop"
-                  alt="Contact illustration"
-                  className="rounded-lg shadow-lg"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-lg"></div>
-              </div>
-            </div> */}
+            {/* Additional info */}
+            <Card className="border-border bg-muted/50">
+              <CardContent className="p-5">
+                <h4 className="font-semibold mb-2">Working Hours</h4>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Monday - Friday: 9:00 AM - 6:00 PM (WAT)
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  I typically respond to inquiries within 24-48 hours.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>

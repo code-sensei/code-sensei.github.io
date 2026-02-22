@@ -1,18 +1,15 @@
 /**
  * Blog Page Component
- * @description Modern blog page with optimal UX hierarchy and layout
- * Based on 2025 best practices: card-based design, visual hierarchy,
- * learning center approach, and mobile-first responsive design
- * Uses Neobrutalism design style with the default theme colors
+ * @description Modern blog page with clean design and optimal UX hierarchy
+ * Uses vibrant design system with Space Grotesk typography
  *
  * SEO & AI Search Optimized:
  * - Dynamic metadata for search engines
  * - JSON-LD structured data (Blog schema)
  * - Open Graph and Twitter Card support
- * - Optimized for ChatGPT, Perplexity, and Google AI
  */
 
-import React, { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
   getBlogPosts,
   getFeaturedPosts,
@@ -20,19 +17,18 @@ import {
   getAllTags,
   getAllCategories,
 } from "@/data/blog/posts";
-import { BlogPost } from "@/types/blog";
+import type { BlogPost } from "@/types/blog";
 import {
   SEO,
   generateBlogListSchema,
   generateWebPageSchema,
 } from "@/components/seo";
 import Navigation from "@/components/layout/Navigation";
+import Footer from "@/components/layout/Footer";
 import {
   Calendar,
   Clock,
-  Tag,
   Search,
-  TrendingUp,
   Sparkles,
   BookOpen,
   ArrowRight,
@@ -42,14 +38,11 @@ import {
   Lightbulb,
   Code,
   Users,
-  ChevronRight,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { formatDistanceToNow, format } from "date-fns";
 
-/**
- * Category icons mapping for visual distinction
- */
+/** Category icons mapping */
 const categoryIcons: Record<string, React.ReactNode> = {
   AI: <Zap className="w-4 h-4" />,
   Technology: <Code className="w-4 h-4" />,
@@ -58,18 +51,11 @@ const categoryIcons: Record<string, React.ReactNode> = {
   default: <FileText className="w-4 h-4" />,
 };
 
-/**
- * Get icon for category
- */
 const getCategoryIcon = (category: string) => {
   return categoryIcons[category] || categoryIcons["default"];
 };
 
-/**
- * Blog component with modern UX-optimized layout
- * @returns {JSX.Element} The rendered Blog page
- */
-const Blog: React.FC = () => {
+const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
@@ -171,7 +157,7 @@ const Blog: React.FC = () => {
       p.id !== heroPost?.id && !secondaryFeatured.find((s) => s.id === p.id),
   );
 
-  // Generate structured data for the blog listing (must be before any early returns)
+  // Generate structured data
   const blogStructuredData = useMemo(() => {
     if (allPosts.length === 0) return [];
     return [
@@ -185,23 +171,18 @@ const Blog: React.FC = () => {
     ];
   }, [allPosts]);
 
-  // Loading skeleton - Neobrutalism style with theme colors
+  // Loading skeleton
   if (loading) {
     return (
       <>
         <Navigation />
-        <div className="min-h-screen bg-background pt-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="min-h-screen bg-background pt-24">
+          <div className="container-wide section-padding">
             <div className="animate-pulse space-y-8">
-              {/* Hero skeleton */}
-              <div className="h-[400px] bg-primary/20 border-4 border-border shadow-[8px_8px_0px_0px_hsl(var(--border))]" />
-              {/* Grid skeleton */}
+              <div className="h-[400px] bg-muted/30 rounded-2xl" />
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[1, 2, 3, 4, 5, 6].map((i) => (
-                  <div
-                    key={i}
-                    className="h-64 bg-card border-4 border-border shadow-[6px_6px_0px_0px_hsl(var(--border))]"
-                  />
+                  <div key={i} className="h-64 bg-muted/20 rounded-xl" />
                 ))}
               </div>
             </div>
@@ -214,11 +195,10 @@ const Blog: React.FC = () => {
   return (
     <>
       <Navigation />
-      <div className="min-h-screen bg-background pt-20">
-        {/* SEO Meta Tags and Structured Data */}
+      <div className="min-h-screen bg-background pt-24">
         <SEO
           title="Blog | Ideas on AI, Engineering & Leadership"
-          description="Practical insights from building AI products, leading engineering teams, and navigating the future of technology. Articles on AI, machine learning, software engineering, and leadership."
+          description="Practical insights from building AI products, leading engineering teams, and navigating the future of technology."
           keywords={[
             "AI blog",
             "engineering blog",
@@ -227,8 +207,6 @@ const Blog: React.FC = () => {
             "leadership articles",
             "technology blog",
             "Babangida Tsowa blog",
-            "AI tutorials",
-            "coding tutorials",
             ...allTags.slice(0, 10),
           ]}
           url="/blog"
@@ -242,33 +220,30 @@ const Blog: React.FC = () => {
           ]}
         />
 
-        {/* ============================================
-          SECTION 1: HERO HEADER
-          Clear value proposition and search
-          ============================================ */}
-        <header className="border-b-4 border-border bg-card">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        {/* Hero Header */}
+        <header className="border-b border-border/50">
+          <div className="container-wide section-padding">
             <div className="max-w-3xl">
-              {/* Breadcrumb / Context */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/50 border-2 border-border mb-6 shadow-[3px_3px_0px_0px_hsl(var(--border))]">
-                <BookOpen className="w-4 h-4 text-foreground" />
-                <span className="text-sm font-bold text-foreground uppercase tracking-wide">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-6">
+                <BookOpen className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium text-primary">
                   Blog & Insights
                 </span>
               </div>
 
-              {/* Main headline - Clear value proposition */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-foreground mb-4 leading-[1.1]">
+              {/* Main headline */}
+              <h1 className="text-display-lg md:text-display-xl font-heading font-bold text-foreground mb-4">
                 Ideas on AI, Engineering & Leadership
               </h1>
 
-              {/* Subheadline - What readers will learn */}
-              <p className="text-lg md:text-xl text-muted-foreground font-mono mb-8 leading-relaxed max-w-2xl">
+              {/* Subheadline */}
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-2xl">
                 Practical insights from building AI products, leading
                 engineering teams, and navigating the future of technology.
               </p>
 
-              {/* Search Bar - Prominent placement */}
+              {/* Search Bar */}
               <div className="relative max-w-xl">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                 <input
@@ -276,12 +251,13 @@ const Blog: React.FC = () => {
                   placeholder="Search articles..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-12 h-14 text-base bg-background border-4 border-border text-foreground font-mono placeholder:text-muted-foreground shadow-[4px_4px_0px_0px_hsl(var(--border))] focus:outline-none focus:shadow-[2px_2px_0px_0px_hsl(var(--border))] focus:translate-x-0.5 focus:translate-y-0.5 transition-all"
+                  className="w-full pl-12 pr-12 h-14 text-base bg-card border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
                 />
                 {searchQuery && (
                   <button
+                    type="button"
                     onClick={() => setSearchQuery("")}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-destructive/20 rounded transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-1.5 hover:bg-muted rounded-lg transition-colors cursor-pointer"
                   >
                     <X className="w-4 h-4" />
                   </button>
@@ -289,11 +265,11 @@ const Blog: React.FC = () => {
               </div>
 
               {/* Quick stats */}
-              <div className="flex flex-wrap gap-4 mt-6 text-sm font-mono text-muted-foreground">
+              <div className="flex flex-wrap gap-4 mt-6 text-sm text-muted-foreground">
                 <span>{allPosts.length} articles</span>
-                <span>•</span>
+                <span className="text-border">•</span>
                 <span>{categories.length - 1} topics</span>
-                <span>•</span>
+                <span className="text-border">•</span>
                 <span>
                   {allPosts.reduce((acc, p) => acc + p.readingTime, 0)} min
                   total reading
@@ -303,31 +279,29 @@ const Blog: React.FC = () => {
           </div>
         </header>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* ============================================
-            SECTION 2: LEARNING CENTER / CATEGORY NAV
-            Quick topic-based navigation
-            ============================================ */}
+        <div className="container-wide">
+          {/* Category Navigation */}
           <nav
-            className="py-8 border-b-4 border-border"
+            className="py-8 border-b border-border/50"
             aria-label="Topic navigation"
           >
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-sm font-black text-foreground uppercase tracking-wide">
+              <span className="text-sm font-semibold text-foreground">
                 Browse by Topic
               </span>
-              <div className="h-0.5 flex-1 bg-border" />
+              <div className="h-px flex-1 bg-border/50" />
             </div>
 
             <div className="flex flex-wrap gap-2">
               {categories.map((category) => (
                 <button
                   key={category}
+                  type="button"
                   onClick={() => setSelectedCategory(category)}
-                  className={`inline-flex items-center gap-2 px-4 py-2.5 border-2 border-border font-bold text-sm uppercase tracking-wide transition-all ${
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer ${
                     selectedCategory === category
-                      ? "bg-primary text-primary-foreground shadow-[3px_3px_0px_0px_hsl(var(--border))] translate-x-0 translate-y-0"
-                      : "bg-card text-foreground shadow-[3px_3px_0px_0px_hsl(var(--border))] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_hsl(var(--border))]"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-card border border-border text-foreground hover:bg-muted"
                   }`}
                 >
                   {category !== "All" && getCategoryIcon(category)}
@@ -336,35 +310,44 @@ const Blog: React.FC = () => {
               ))}
             </div>
 
-            {/* Active filters indicator */}
+            {/* Active filters */}
             {hasActiveFilters && (
-              <div className="flex items-center gap-3 mt-4 pt-4 border-t-2 border-border">
-                <span className="text-xs font-bold text-muted-foreground uppercase">
+              <div className="flex items-center gap-3 mt-4 pt-4 border-t border-border/50">
+                <span className="text-xs font-medium text-muted-foreground">
                   Filters:
                 </span>
 
                 {searchQuery && (
-                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-secondary/50 border-2 border-border text-foreground text-xs font-bold">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-muted rounded-full text-foreground text-xs font-medium">
                     "{searchQuery.slice(0, 15)}
                     {searchQuery.length > 15 ? "..." : ""}"
-                    <button onClick={() => setSearchQuery("")}>
+                    <button
+                      type="button"
+                      onClick={() => setSearchQuery("")}
+                      className="cursor-pointer"
+                    >
                       <X className="w-3 h-3" />
                     </button>
                   </span>
                 )}
 
                 {selectedTag && (
-                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-accent/30 border-2 border-border text-foreground text-xs font-bold">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-accent/20 rounded-full text-foreground text-xs font-medium">
                     #{selectedTag}
-                    <button onClick={() => setSelectedTag(null)}>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedTag(null)}
+                      className="cursor-pointer"
+                    >
                       <X className="w-3 h-3" />
                     </button>
                   </span>
                 )}
 
                 <button
+                  type="button"
                   onClick={clearFilters}
-                  className="text-xs font-bold text-destructive hover:underline uppercase"
+                  className="text-xs font-medium text-primary hover:underline cursor-pointer"
                 >
                   Clear all
                 </button>
@@ -372,25 +355,23 @@ const Blog: React.FC = () => {
             )}
           </nav>
 
-          {/* ============================================
-            SECTION 3: FEATURED / HERO POST
-            Visual hierarchy - most important content first
-            ============================================ */}
+          {/* Featured Hero Post */}
           {heroPost && !hasActiveFilters && (
             <section className="py-10" aria-label="Featured article">
-              <div
-                className="group grid lg:grid-cols-2 gap-0 bg-card border-4 border-border cursor-pointer shadow-[8px_8px_0px_0px_hsl(var(--border))] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_hsl(var(--border))] transition-all"
+              <button
+                type="button"
+                className="group w-full text-left grid lg:grid-cols-2 gap-0 bg-card border border-border rounded-2xl overflow-hidden card-interactive cursor-pointer"
                 onClick={() => handlePostClick(heroPost.slug)}
               >
                 {/* Image */}
-                <div className="relative h-64 lg:h-auto lg:min-h-[400px] overflow-hidden border-b-4 lg:border-b-0 lg:border-r-4 border-border">
+                <div className="relative h-64 lg:h-auto lg:min-h-[400px] overflow-hidden">
                   <img
                     src={heroPost.coverImage || "/blog/default.jpg"}
                     alt={heroPost.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute top-4 left-4 flex gap-2">
-                    <span className="px-3 py-1.5 bg-destructive/80 border-2 border-border text-destructive-foreground text-xs font-black uppercase shadow-[2px_2px_0px_0px_hsl(var(--border))]">
+                    <span className="px-3 py-1.5 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
                       Featured
                     </span>
                   </div>
@@ -399,20 +380,19 @@ const Blog: React.FC = () => {
                 {/* Content */}
                 <div className="p-6 lg:p-10 flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="px-3 py-1 bg-accent/40 border-2 border-border text-foreground text-xs font-bold uppercase">
+                    <span className="px-3 py-1 bg-accent/20 text-accent-foreground text-xs font-medium rounded-full">
                       {heroPost.category}
                     </span>
-                    <span className="text-sm font-mono text-muted-foreground">
+                    <span className="text-sm text-muted-foreground">
                       {heroPost.readingTime} min read
                     </span>
                   </div>
 
-                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-foreground mb-4 leading-tight group-hover:text-primary transition-colors">
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold text-foreground mb-4 leading-tight group-hover:text-primary transition-colors">
                     {heroPost.title}
                   </h2>
 
-                  {/* Quick summary - Key for scannability */}
-                  <p className="text-base lg:text-lg text-muted-foreground font-mono mb-6 leading-relaxed line-clamp-3">
+                  <p className="text-base lg:text-lg text-muted-foreground mb-6 leading-relaxed line-clamp-3">
                     {heroPost.excerpt}
                   </p>
 
@@ -421,13 +401,13 @@ const Blog: React.FC = () => {
                       <img
                         src={heroPost.author.avatar}
                         alt={heroPost.author.name}
-                        className="w-10 h-10 border-2 border-border"
+                        className="w-10 h-10 rounded-full border border-border"
                       />
                       <div>
-                        <div className="text-sm font-bold text-foreground">
+                        <div className="text-sm font-semibold text-foreground">
                           {heroPost.author.name}
                         </div>
-                        <div className="text-xs font-mono text-muted-foreground">
+                        <div className="text-xs text-muted-foreground">
                           {format(
                             new Date(heroPost.publishedAt),
                             "MMM dd, yyyy",
@@ -436,48 +416,50 @@ const Blog: React.FC = () => {
                       </div>
                     </div>
 
-                    <span className="inline-flex items-center gap-2 text-foreground font-black uppercase text-sm group-hover:gap-3 transition-all">
+                    <span className="inline-flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all">
                       Read Article
                       <ArrowRight className="w-4 h-4" />
                     </span>
                   </div>
                 </div>
-              </div>
+              </button>
             </section>
           )}
 
-          {/* ============================================
-            SECTION 4: SECONDARY FEATURED (2-up grid)
-            Supporting featured content
-            ============================================ */}
+          {/* Secondary Featured Posts */}
           {secondaryFeatured.length > 0 && !hasActiveFilters && (
             <section className="pb-10" aria-label="More featured articles">
               <div className="grid md:grid-cols-2 gap-6">
                 {secondaryFeatured.map((post) => (
                   <article
                     key={post.id}
-                    className="group bg-card border-4 border-border cursor-pointer shadow-[6px_6px_0px_0px_hsl(var(--border))] hover:translate-x-1 hover:translate-y-1 hover:shadow-[3px_3px_0px_0px_hsl(var(--border))] transition-all"
+                    className="group bg-card border border-border rounded-xl overflow-hidden card-interactive cursor-pointer"
                     onClick={() => handlePostClick(post.slug)}
+                    onKeyDown={(e) =>
+                      e.key === "Enter" && handlePostClick(post.slug)
+                    }
+                    tabIndex={0}
+                    role="button"
                   >
-                    <div className="relative h-48 overflow-hidden border-b-4 border-border">
+                    <div className="relative h-48 overflow-hidden">
                       <img
                         src={post.coverImage || "/blog/default.jpg"}
                         alt={post.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <span className="absolute top-3 left-3 px-2 py-1 bg-secondary/80 border-2 border-border text-foreground text-xs font-bold uppercase">
+                      <span className="absolute top-3 left-3 px-2.5 py-1 bg-background/90 backdrop-blur-sm text-foreground text-xs font-medium rounded-full">
                         {post.category}
                       </span>
                     </div>
 
                     <div className="p-5">
-                      <h3 className="text-xl font-black uppercase tracking-tight text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                      <h3 className="text-xl font-heading font-bold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
                         {post.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground font-mono mb-4 line-clamp-2">
+                      <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
                         {post.excerpt}
                       </p>
-                      <div className="flex items-center justify-between text-xs font-mono text-muted-foreground">
+                      <div className="flex items-center justify-between text-xs text-muted-foreground">
                         <span>
                           {format(new Date(post.publishedAt), "MMM dd, yyyy")}
                         </span>
@@ -490,32 +472,30 @@ const Blog: React.FC = () => {
             </section>
           )}
 
-          {/* ============================================
-            SECTION 5: POPULAR TOPICS / TAGS
-            Discovery and exploration
-            ============================================ */}
+          {/* Popular Topics / Tags */}
           {allTags.length > 0 && !hasActiveFilters && (
             <section
-              className="py-8 border-t-4 border-border"
+              className="py-8 border-t border-border/50"
               aria-label="Popular topics"
             >
               <div className="flex items-center gap-3 mb-4">
-                <Sparkles className="w-5 h-5 text-foreground" />
-                <span className="text-sm font-black text-foreground uppercase tracking-wide">
+                <Sparkles className="w-5 h-5 text-primary" />
+                <span className="text-sm font-semibold text-foreground">
                   Popular Topics
                 </span>
-                <div className="h-0.5 flex-1 bg-border" />
+                <div className="h-px flex-1 bg-border/50" />
               </div>
 
               <div className="flex flex-wrap gap-2">
                 {allTags.slice(0, 10).map((tag) => (
                   <button
                     key={tag}
+                    type="button"
                     onClick={() => handleTagClick(tag)}
-                    className={`px-3 py-1.5 border-2 border-border font-bold text-sm transition-all ${
+                    className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all cursor-pointer ${
                       selectedTag === tag
                         ? "bg-primary text-primary-foreground"
-                        : "bg-card text-foreground hover:bg-secondary/50"
+                        : "bg-muted text-foreground hover:bg-muted/80"
                     }`}
                   >
                     #{tag}
@@ -525,19 +505,16 @@ const Blog: React.FC = () => {
             </section>
           )}
 
-          {/* ============================================
-            SECTION 6: ALL POSTS GRID
-            Card-based layout for scannability
-            ============================================ */}
+          {/* All Posts Grid */}
           <section
-            className="py-10 border-t-4 border-border"
+            className="py-10 border-t border-border/50"
             aria-label="All articles"
           >
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-black uppercase tracking-tight text-foreground">
+              <h2 className="text-2xl font-heading font-bold text-foreground">
                 {hasActiveFilters ? "Search Results" : "All Articles"}
               </h2>
-              <span className="text-sm font-mono text-muted-foreground">
+              <span className="text-sm text-muted-foreground">
                 {filteredPosts.length}{" "}
                 {filteredPosts.length === 1 ? "article" : "articles"}
               </span>
@@ -549,22 +526,27 @@ const Blog: React.FC = () => {
                   (post, index) => (
                     <article
                       key={post.id}
-                      className="group bg-card border-4 border-border cursor-pointer shadow-[6px_6px_0px_0px_hsl(var(--border))] hover:translate-x-1 hover:translate-y-1 hover:shadow-[3px_3px_0px_0px_hsl(var(--border))] transition-all animate-slideUp flex flex-col"
+                      className="group bg-card border border-border rounded-xl overflow-hidden card-interactive cursor-pointer flex flex-col animate-slideUp"
                       onClick={() => handlePostClick(post.slug)}
+                      onKeyDown={(e) =>
+                        e.key === "Enter" && handlePostClick(post.slug)
+                      }
+                      tabIndex={0}
+                      role="button"
                       style={{ animationDelay: `${index * 50}ms` }}
                     >
-                      {/* Image with consistent aspect ratio */}
-                      <div className="relative h-44 overflow-hidden border-b-4 border-border">
+                      {/* Image */}
+                      <div className="relative h-44 overflow-hidden">
                         <img
                           src={post.coverImage || "/blog/default.jpg"}
                           alt={post.title}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
-                        <span className="absolute top-3 left-3 px-2 py-1 bg-accent/50 border-2 border-border text-foreground text-xs font-bold uppercase">
+                        <span className="absolute top-3 left-3 px-2.5 py-1 bg-background/90 backdrop-blur-sm text-foreground text-xs font-medium rounded-full">
                           {post.category}
                         </span>
                         {post.featured && (
-                          <span className="absolute top-3 right-3 p-1.5 bg-primary/80 border-2 border-border">
+                          <span className="absolute top-3 right-3 p-1.5 bg-primary rounded-full">
                             <Sparkles className="w-3 h-3 text-primary-foreground" />
                           </span>
                         )}
@@ -572,18 +554,16 @@ const Blog: React.FC = () => {
 
                       {/* Content */}
                       <div className="p-5 flex flex-col flex-1">
-                        {/* Title - Most important, prominent placement */}
-                        <h3 className="text-lg font-black uppercase tracking-tight text-foreground mb-2 line-clamp-2 leading-snug group-hover:text-primary transition-colors">
+                        <h3 className="text-lg font-heading font-bold text-foreground mb-2 line-clamp-2 leading-snug group-hover:text-primary transition-colors">
                           {post.title}
                         </h3>
 
-                        {/* Quick summary for scannability */}
-                        <p className="text-sm text-muted-foreground font-mono mb-4 line-clamp-2 flex-1">
+                        <p className="text-sm text-muted-foreground mb-4 line-clamp-2 flex-1">
                           {post.excerpt}
                         </p>
 
-                        {/* Meta - Secondary info */}
-                        <div className="flex items-center gap-3 text-xs font-mono text-muted-foreground mb-3">
+                        {/* Meta */}
+                        <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
                           <span className="flex items-center gap-1">
                             <Calendar className="w-3 h-3" />
                             {formatDistanceToNow(new Date(post.publishedAt), {
@@ -596,18 +576,18 @@ const Blog: React.FC = () => {
                           </span>
                         </div>
 
-                        {/* Tags - Tertiary, for discovery */}
+                        {/* Tags */}
                         <div className="flex flex-wrap gap-1">
                           {post.tags.slice(0, 2).map((tag) => (
                             <span
                               key={tag}
-                              className="px-2 py-0.5 bg-primary/20 border border-border text-foreground text-xs font-bold"
+                              className="px-2 py-0.5 bg-primary/10 text-primary text-xs font-medium rounded"
                             >
                               {tag}
                             </span>
                           ))}
                           {post.tags.length > 2 && (
-                            <span className="px-2 py-0.5 bg-muted text-muted-foreground text-xs font-bold">
+                            <span className="px-2 py-0.5 bg-muted text-muted-foreground text-xs font-medium rounded">
                               +{post.tags.length - 2}
                             </span>
                           )}
@@ -620,19 +600,20 @@ const Blog: React.FC = () => {
             ) : (
               /* Empty State */
               <div className="text-center py-16">
-                <div className="w-24 h-24 mx-auto mb-6 bg-secondary/30 border-4 border-border flex items-center justify-center shadow-[6px_6px_0px_0px_hsl(var(--border))]">
+                <div className="w-24 h-24 mx-auto mb-6 bg-muted/30 rounded-2xl flex items-center justify-center">
                   <Search className="w-12 h-12 text-muted-foreground" />
                 </div>
-                <h3 className="text-2xl font-black uppercase mb-3 text-foreground">
+                <h3 className="text-2xl font-heading font-bold mb-3 text-foreground">
                   No articles found
                 </h3>
-                <p className="text-muted-foreground mb-6 max-w-md mx-auto font-mono">
+                <p className="text-muted-foreground mb-6 max-w-md mx-auto">
                   Try adjusting your search or filters to find what you're
                   looking for.
                 </p>
                 <button
+                  type="button"
                   onClick={clearFilters}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground border-4 border-border font-black uppercase shadow-[4px_4px_0px_0px_hsl(var(--border))] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_hsl(var(--border))] transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors cursor-pointer"
                 >
                   Clear Filters
                 </button>
@@ -640,21 +621,18 @@ const Blog: React.FC = () => {
             )}
           </section>
 
-          {/* ============================================
-            SECTION 7: NEWSLETTER CTA (Optional)
-            Engagement and conversion
-            ============================================ */}
+          {/* Newsletter CTA */}
           {!hasActiveFilters && allPosts.length > 0 && (
             <section
-              className="py-10 border-t-4 border-border"
+              className="py-10 border-t border-border/50"
               aria-label="Newsletter signup"
             >
-              <div className="bg-primary/20 border-4 border-border shadow-[8px_8px_0px_0px_hsl(var(--border))] p-8 md:p-12">
+              <div className="bg-gradient-to-br from-primary/10 via-accent/5 to-transparent border border-border rounded-2xl p-8 md:p-12">
                 <div className="max-w-2xl mx-auto text-center">
-                  <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-foreground mb-4">
+                  <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-4">
                     Stay Updated
                   </h2>
-                  <p className="text-muted-foreground font-mono mb-6">
+                  <p className="text-muted-foreground mb-6">
                     Get notified when I publish new articles on AI, engineering,
                     and leadership.
                   </p>
@@ -663,19 +641,19 @@ const Blog: React.FC = () => {
                       href="https://twitter.com/iam_ehnigma"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-foreground text-background font-black uppercase shadow-[4px_4px_0px_0px_hsl(var(--border))] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_hsl(var(--border))] transition-all"
+                      className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-foreground text-background font-semibold rounded-lg hover:bg-foreground/90 transition-colors"
                     >
                       Follow on X
-                      <ChevronRight className="w-4 h-4" />
+                      <ArrowRight className="w-4 h-4" />
                     </a>
                     <a
                       href="https://linkedin.com/in/btsowa"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-card border-2 border-border text-foreground font-black uppercase shadow-[4px_4px_0px_0px_hsl(var(--border))] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_hsl(var(--border))] transition-all"
+                      className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-card border border-border text-foreground font-semibold rounded-lg hover:bg-muted transition-colors"
                     >
                       Connect on LinkedIn
-                      <ChevronRight className="w-4 h-4" />
+                      <ArrowRight className="w-4 h-4" />
                     </a>
                   </div>
                 </div>
@@ -683,46 +661,30 @@ const Blog: React.FC = () => {
             </section>
           )}
 
-          {/* ============================================
-            SECTION 8: STATS FOOTER
-            Social proof and content overview
-            ============================================ */}
+          {/* Stats Footer */}
           {allPosts.length > 0 && !hasActiveFilters && (
             <section
-              className="py-10 border-t-4 border-border"
+              className="py-10 border-t border-border/50"
               aria-label="Blog statistics"
             >
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 {[
-                  {
-                    value: allPosts.length,
-                    label: "Articles",
-                    bg: "bg-primary/20",
-                  },
-                  {
-                    value: categories.length - 1,
-                    label: "Topics",
-                    bg: "bg-secondary/40",
-                  },
-                  {
-                    value: allTags.length,
-                    label: "Tags",
-                    bg: "bg-accent/30",
-                  },
+                  { value: allPosts.length, label: "Articles" },
+                  { value: categories.length - 1, label: "Topics" },
+                  { value: allTags.length, label: "Tags" },
                   {
                     value: `${allPosts.reduce((acc, p) => acc + p.readingTime, 0)}+`,
                     label: "Min Reading",
-                    bg: "bg-muted",
                   },
                 ].map((stat, i) => (
                   <div
                     key={i}
-                    className={`p-6 border-4 border-border shadow-[4px_4px_0px_0px_hsl(var(--border))] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0px_0px_hsl(var(--border))] transition-all ${stat.bg}`}
+                    className="p-6 bg-card border border-border rounded-xl text-center hover:bg-muted/50 transition-colors"
                   >
-                    <div className="text-3xl md:text-4xl font-black text-foreground mb-1">
+                    <div className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-1">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-muted-foreground font-bold uppercase tracking-wide">
+                    <div className="text-sm text-muted-foreground">
                       {stat.label}
                     </div>
                   </div>
@@ -731,6 +693,8 @@ const Blog: React.FC = () => {
             </section>
           )}
         </div>
+
+        <Footer />
       </div>
     </>
   );

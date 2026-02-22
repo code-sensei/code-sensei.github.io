@@ -1,10 +1,42 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import {
+  Menu,
+  X,
+  Home,
+  User,
+  Wrench,
+  FolderKanban,
+  Briefcase,
+  Users,
+  GraduationCap,
+  BookOpen,
+  FileCode2,
+} from "lucide-react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { cn } from "@/lib/utils";
 
-const Navigation = () => {
+interface NavItem {
+  id: string;
+  label: string;
+  icon: React.ElementType;
+  isRoute?: boolean;
+}
+
+const navItems: NavItem[] = [
+  { id: "home", label: "Home", icon: Home },
+  { id: "about", label: "About", icon: User },
+  { id: "skills", label: "Skills", icon: Wrench },
+  { id: "projects", label: "Projects", icon: FolderKanban },
+  { id: "experience", label: "Experience", icon: Briefcase },
+  { id: "community", label: "Community", icon: Users },
+  { id: "education", label: "Education", icon: GraduationCap },
+  { id: "blog", label: "Blog", icon: BookOpen, isRoute: true },
+  { id: "cheatsheets", label: "Cheatsheets", icon: FileCode2, isRoute: true },
+];
+
+export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,103 +44,74 @@ const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Check if we're on the homepage
   const isHomePage = location.pathname === "/";
 
-  // Get active item based on current route or scroll position
-  const getActiveItem = () => {
+  const getActiveItem = useCallback(() => {
     if (!isHomePage) {
-      // For route pages, extract the route name from pathname
-      const routeName = location.pathname.split("/")[1]; // e.g., "blog" from "/blog" or "/blog/slug"
+      const routeName = location.pathname.split("/")[1];
       return routeName || "home";
     }
     return activeSection;
-  };
+  }, [isHomePage, location.pathname, activeSection]);
 
   const currentActive = getActiveItem();
 
-  const navItems: Array<{ id: string; label: string; isRoute?: boolean }> = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
-    { id: "projects", label: "Projects" },
-    { id: "experience", label: "Experience" },
-    { id: "community", label: "Community" },
-    { id: "education", label: "Education" },
-    { id: "blog", label: "Blog", isRoute: true },
-    { id: "cheatsheets", label: "Cheatsheets", isRoute: true },
-  ];
-
   useEffect(() => {
     const handleScroll = () => {
-      // Update scrolled state for navbar background
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
 
-      // Only update active section based on scroll if on homepage
       if (isHomePage) {
-        const sections = navItems.map((item) =>
-          document.getElementById(item.id),
-        );
-        const scrollPosition = window.scrollY + 100;
+        const scrollPosition = window.scrollY + 120;
 
-        for (let i = sections.length - 1; i >= 0; i--) {
-          const section = sections[i];
+        for (let i = navItems.length - 1; i >= 0; i--) {
+          const item = navItems[i];
+          if (item.isRoute) continue;
+
+          const section = document.getElementById(item.id);
           if (section && section.offsetTop <= scrollPosition) {
-            setActiveSection(navItems[i].id);
+            setActiveSection(item.id);
             break;
           }
         }
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Call once to set initial state
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isHomePage]);
 
-  const scrollToSection = (sectionId: string, isRoute?: boolean) => {
-    if (isRoute) {
-      navigate(`/${sectionId}`);
-      setIsOpen(false);
-      return;
-    }
-
-    // If we're not on the homepage, navigate to homepage first with section hash
-    if (!isHomePage) {
-      navigate(`/#${sectionId}`);
-      setIsOpen(false);
-      return;
-    }
-
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80; // Height of navbar
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-    setIsOpen(false);
-  };
-
-  // Close mobile menu when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      if (isOpen && !target.closest("nav")) {
+  const scrollToSection = useCallback(
+    (sectionId: string, isRoute?: boolean) => {
+      if (isRoute) {
+        navigate(`/${sectionId}`);
         setIsOpen(false);
+        return;
       }
-    };
 
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, [isOpen]);
+      if (!isHomePage) {
+        navigate(`/#${sectionId}`);
+        setIsOpen(false);
+        return;
+      }
 
-  // Prevent body scroll when mobile menu is open
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const offset = 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+      setIsOpen(false);
+    },
+    [isHomePage, navigate],
+  );
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -122,125 +125,123 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={cn(
+        "fixed top-4 left-4 right-4 z-50 transition-all duration-200 rounded-xl",
         isScrolled
-          ? "glass-effect shadow-lg"
-          : "bg-background/60 backdrop-blur-sm"
-      }`}
+          ? "bg-background/95 backdrop-blur-sm border border-border shadow-sm"
+          : "bg-background/80 backdrop-blur-sm",
+      )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 md:h-20">
-          {/* Logo/Brand */}
+      <div className="px-4 sm:px-6">
+        <div className="flex items-center justify-between h-14">
+          {/* Logo */}
           <button
+            type="button"
             onClick={() => scrollToSection("home")}
-            className="flex-shrink-0 group"
+            className="group flex items-center gap-3 rounded-lg"
+            aria-label="Go to home"
           >
-            <img
-              src="/profile-image.png"
-              alt="Babangida Tsowa"
-              className="h-10 w-10 md:h-12 md:w-12 rounded-full ring-2 ring-primary/20 group-hover:ring-primary/40 transition-all duration-300 group-hover:scale-105 object-cover"
-            />
+            <div className="relative">
+              <img
+                src="/profile-image.png"
+                alt=""
+                className="size-8 rounded-full object-cover ring-2 ring-border group-hover:ring-primary/50 transition-colors"
+              />
+              <span className="absolute -bottom-0.5 -right-0.5 size-2.5 bg-primary rounded-full border-2 border-background" />
+            </div>
+            <span className="hidden sm:block font-semibold text-foreground group-hover:text-primary transition-colors">
+              Babangida
+            </span>
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:block">
-            <div className="flex items-center space-x-1">
-              {navItems.map((item) => (
+          <div className="hidden lg:flex items-center gap-1">
+            {navItems.map((item) => {
+              const isActive = currentActive === item.id;
+              return (
                 <button
+                  type="button"
                   key={item.id}
                   onClick={() => scrollToSection(item.id, item.isRoute)}
-                  className={`px-3 xl:px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative group ${
-                    currentActive === item.id
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-primary"
-                  }`}
+                  className={cn(
+                    "px-3 py-1.5 rounded-md text-sm font-medium transition-colors",
+                    isActive
+                      ? "text-primary bg-primary/10"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted",
+                  )}
                 >
                   {item.label}
-                  <span
-                    className={`absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full transition-all duration-300 ${
-                      currentActive === item.id
-                        ? "opacity-100 scale-x-100"
-                        : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-50"
-                    }`}
-                  />
                 </button>
-              ))}
-            </div>
+              );
+            })}
           </div>
 
-          {/* Theme Toggle and Mobile Menu Button */}
-          <div className="flex items-center space-x-2">
+          {/* Right side actions */}
+          <div className="flex items-center gap-2">
             <ThemeToggle />
-            <div className="lg:hidden">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setIsOpen(!isOpen)}
-                className="relative"
-              >
-                <div
-                  className={`transition-transform duration-300 ${
-                    isOpen ? "rotate-180 scale-0" : "rotate-0 scale-100"
-                  }`}
-                >
-                  <Menu className="h-6 w-6" />
-                </div>
-                <div
-                  className={`absolute transition-transform duration-300 ${
-                    isOpen ? "rotate-0 scale-100" : "-rotate-180 scale-0"
-                  }`}
-                >
-                  <X className="h-6 w-6" />
-                </div>
-              </Button>
-            </div>
+
+            {/* Mobile menu button */}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+            >
+              <span className="sr-only">
+                {isOpen ? "Close menu" : "Open menu"}
+              </span>
+              {isOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+            </Button>
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
+        {/* Mobile Navigation */}
         <div
-          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isOpen
-              ? "max-h-[calc(100vh-5rem)] opacity-100"
-              : "max-h-0 opacity-0"
-          }`}
+          className={cn(
+            "lg:hidden overflow-hidden transition-all duration-200",
+            isOpen ? "max-h-[500px] opacity-100 pb-4" : "max-h-0 opacity-0",
+          )}
         >
-          <div className="px-2 pt-2 pb-6 space-y-1 bg-background/95 backdrop-blur-md rounded-b-2xl shadow-2xl border-t border-border/50">
-            {navItems.map((item, index) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id, item.isRoute)}
-                className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 transform ${
-                  currentActive === item.id
-                    ? "text-primary bg-primary/10 scale-[1.02]"
-                    : "text-muted-foreground hover:text-primary hover:bg-primary/5 hover:scale-[1.02]"
-                }`}
-                style={{
-                  animationDelay: `${index * 50}ms`,
-                  animation: isOpen ? "slideIn 0.3s ease-out forwards" : "none",
-                }}
-              >
-                <div className="flex items-center justify-between">
-                  <span>{item.label}</span>
-                  {currentActive === item.id && (
-                    <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+          <div className="pt-2 space-y-1 border-t border-border">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = currentActive === item.id;
+
+              return (
+                <button
+                  type="button"
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id, item.isRoute)}
+                  className={cn(
+                    "flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-left font-medium transition-colors",
+                    isActive
+                      ? "text-primary bg-primary/10"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted",
                   )}
-                </div>
-              </button>
-            ))}
+                >
+                  <Icon className="size-5 shrink-0" />
+                  <span>{item.label}</span>
+                  {isActive && (
+                    <span className="ml-auto size-1.5 bg-primary rounded-full" />
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile overlay */}
       {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm -z-10 lg:hidden transition-opacity duration-300"
+        <button
+          type="button"
+          className="fixed inset-0 bg-background/80 backdrop-blur-sm -z-10 lg:hidden"
           onClick={() => setIsOpen(false)}
+          aria-label="Close menu"
         />
       )}
     </nav>
   );
-};
-
-export default Navigation;
+}

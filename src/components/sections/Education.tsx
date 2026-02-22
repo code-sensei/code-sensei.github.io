@@ -1,210 +1,211 @@
-import React from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { GraduationCap, Award, ExternalLink, Calendar } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  GraduationCap,
+  Award,
+  ExternalLink,
+  Calendar,
+  BookOpen,
+} from "lucide-react";
 
-const Education = () => {
-  const education = [
-    {
-      institution: "Federal University of Technology, Minna",
-      degree: "B.Tech., Computer Science (Second Class, Upper Division)",
-      duration: "2014 – 2021",
-      grade: "3.65/5.00",
-      description: "",
-      highlights: [
-        "Director of Software, SICT: Organized Google Hash Code Competitions (2), hackathons, AI/DS labs.",
-        "Co‑founded FUTMINNA DevCircle, nurturing Google Developer Groups, GDSC, Ingressive for Good, Women Tech Makers, GitHub Campus Ambassadors, etc.",
-        "Developed a faculty payment portal adopted across departments.",
-        "Organized a two-week Data Science and Artificial Intelligence Bootcamp in partnership with DSN Nigeria.",
-      ],
-    },
-  ];
+interface EducationItem {
+  institution: string;
+  degree: string;
+  duration: string;
+  grade: string;
+  highlights: string[];
+}
 
-  const certifications = [
-    {
-      name: "AI Engineering Professional Certification (In Progress)",
-      issuer: "IBM Skills Network",
-      date: "Expected Completion: November 2025",
-      level: "In Progress",
-      link: "https://www.coursera.org/professional-certificates/ai-engineer",
-      color: "text-blue-500",
-    },
-  ];
+interface Certification {
+  name: string;
+  issuer: string;
+  date: string;
+  level: string;
+  link: string;
+}
 
+const education: EducationItem[] = [
+  {
+    institution: "Federal University of Technology, Minna",
+    degree: "B.Tech., Computer Science (Second Class, Upper Division)",
+    duration: "2014 – 2021",
+    grade: "3.65/5.00",
+    highlights: [
+      "Director of Software, SICT: Organized Google Hash Code Competitions and hackathons",
+      "Co-founded FUTMINNA DevCircle, nurturing developer communities (GDG, GDSC, I4G, WTM)",
+      "Developed a faculty payment portal adopted across departments",
+      "Organized a two-week Data Science and AI Bootcamp with DSN Nigeria",
+    ],
+  },
+];
+
+const certifications: Certification[] = [
+  {
+    name: "AI Engineering Professional Certification",
+    issuer: "IBM Skills Network",
+    date: "Expected: November 2025",
+    level: "In Progress",
+    link: "https://www.coursera.org/professional-certificates/ai-engineer",
+  },
+];
+
+export default function Education() {
   return (
-    <section id="education" className="py-16 md:py-24 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 md:mb-16 animate-fadeIn">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            Education & Certifications
-          </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+    <section id="education" className="section-padding bg-muted/30">
+      <div className="container-wide">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <p className="text-primary font-medium mb-2 text-sm uppercase tracking-wide">
+            Academic background
+          </p>
+          <h2 className="text-display-sm mb-4">Education & Certifications</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             Academic foundation and professional credentials that underpin
             strategic technical execution at scale
           </p>
         </div>
 
-        {/* Education */}
-        <div className="mb-16">
-          <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-center gradient-text animate-fadeIn">
-            Education
-          </h3>
-          <div className="grid md:grid-cols-1 gap-8 max-w-4xl mx-auto">
-            {education.map((edu, index) => (
-              <Card
-                key={index}
-                className="card-hover group overflow-hidden border-2 hover:border-primary/50"
-                style={{
-                  animationDelay: `${index * 100}ms`,
-                }}
-              >
-                {/* Gradient Background on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="max-w-4xl mx-auto space-y-12">
+          {/* Education */}
+          <div>
+            <h3 className="text-heading-lg text-center mb-8">Education</h3>
 
-                <CardHeader className="relative z-10">
-                  <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-4 mb-3">
-                    <div className="flex-1">
-                      <div className="flex items-start gap-3 mb-3">
-                        <GraduationCap className="w-6 h-6 text-primary mt-1 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                        <div>
-                          <CardTitle className="text-xl md:text-2xl group-hover:text-primary transition-colors">
-                            {edu.degree}
-                          </CardTitle>
-                          <CardDescription className="text-base md:text-lg font-semibold text-primary mt-1">
-                            {edu.institution}
-                          </CardDescription>
-                        </div>
+            {education.map((edu) => (
+              <Card key={edu.institution} className="border-border">
+                <CardContent className="p-6">
+                  {/* Header */}
+                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-5">
+                    <div className="flex items-start gap-4">
+                      <div className="shrink-0 size-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <GraduationCap className="size-5 text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-foreground">
+                          {edu.degree}
+                        </h4>
+                        <p className="text-primary text-sm">
+                          {edu.institution}
+                        </p>
                       </div>
                     </div>
 
-                    <div className="flex flex-col gap-2">
-                      <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground glass-effect px-3 py-1.5 rounded-full w-fit">
-                        <Calendar className="w-3.5 h-3.5" />
+                    <div className="flex flex-wrap gap-2">
+                      <Badge
+                        variant="outline"
+                        className="gap-1.5 text-xs border-border text-muted-foreground"
+                      >
+                        <Calendar className="size-3" />
                         {edu.duration}
-                      </div>
-                      <div className="text-xs sm:text-sm font-semibold text-primary bg-primary/10 px-3 py-1.5 rounded-full w-fit">
+                      </Badge>
+                      <Badge className="bg-primary/10 text-primary border-0 text-xs">
                         GPA: {edu.grade}
-                      </div>
+                      </Badge>
                     </div>
                   </div>
-                </CardHeader>
 
-                <CardContent className="relative z-10">
-                  <h4 className="font-semibold mb-3 flex items-center gap-2">
-                    <Award className="w-4 h-4 text-primary" />
-                    Highlights:
-                  </h4>
-                  <ul className="space-y-2.5">
-                    {edu.highlights.map((highlight, highlightIndex) => (
-                      <li
-                        key={highlightIndex}
-                        className="flex items-start gap-2 group/item"
-                      >
-                        <span className="text-primary mt-1 group-hover/item:scale-125 transition-transform">
-                          •
-                        </span>
-                        <span className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                          {highlight}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Highlights */}
+                  <div>
+                    <h5 className="text-sm font-medium flex items-center gap-2 mb-3">
+                      <Award className="size-4 text-primary" />
+                      Highlights
+                    </h5>
+                    <ul className="space-y-1.5">
+                      {edu.highlights.map((highlight) => (
+                        <li
+                          key={highlight}
+                          className="flex items-start gap-2 text-sm"
+                        >
+                          <span className="text-primary mt-1 shrink-0">•</span>
+                          <span className="text-muted-foreground">
+                            {highlight}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </CardContent>
               </Card>
             ))}
           </div>
-        </div>
 
-        {/* Certifications */}
-        <div className="animate-fadeIn">
-          <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-center gradient-text">
-            Certifications
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {certifications.map((cert, index) => (
-              <Card
-                key={index}
-                className="card-hover group overflow-hidden border-2 hover:border-primary/50"
-                style={{
-                  animationDelay: `${(index + education.length) * 100}ms`,
-                }}
-              >
-                {/* Gradient Background on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          {/* Certifications */}
+          <div>
+            <h3 className="text-heading-lg text-center mb-8">Certifications</h3>
 
-                <CardHeader className="relative z-10 space-y-3">
-                  <div
-                    className={`${cert.color} mb-2 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <Award className="w-8 h-8" />
-                  </div>
-                  <CardTitle className="text-base md:text-lg group-hover:text-primary transition-colors leading-tight">
-                    {cert.name}
-                  </CardTitle>
-                </CardHeader>
-
-                <CardContent className="relative z-10 space-y-3">
-                  <div className="space-y-2 text-xs md:text-sm text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <span className="font-semibold">Issuer:</span>
-                      <span>{cert.issuer}</span>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {certifications.map((cert) => (
+                <Card
+                  key={cert.name}
+                  className="border-border hover:border-primary/30 transition-colors"
+                >
+                  <CardContent className="p-5">
+                    <div className="flex items-start gap-3 mb-4">
+                      <div className="shrink-0 size-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <Award className="size-4 text-primary" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-foreground text-sm leading-tight mb-1">
+                          {cert.name}
+                        </h4>
+                        <p className="text-sm text-muted-foreground">
+                          {cert.issuer}
+                        </p>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="font-semibold">Status:</span>
-                      <span className="px-2 py-0.5 bg-primary/10 text-primary rounded-full text-xs font-medium">
+
+                    <div className="flex items-center justify-between gap-2 mb-4">
+                      <Badge
+                        variant="secondary"
+                        className="bg-muted text-muted-foreground text-xs"
+                      >
                         {cert.level}
+                      </Badge>
+                      <span className="text-xs text-muted-foreground">
+                        {cert.date}
                       </span>
                     </div>
-                    <div className="text-xs">{cert.date}</div>
-                  </div>
 
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full mt-4 group-hover:border-primary group-hover:text-primary transition-all"
-                    asChild
-                  >
-                    <a
-                      href={cert.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2"
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="w-full"
+                      asChild
                     >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      View Program
-                    </a>
-                  </Button>
-
-                  {/* Decorative Bottom Border */}
-                  <div className="mt-4 h-1 w-0 bg-gradient-to-r from-primary to-primary/50 rounded-full group-hover:w-full transition-all duration-500" />
-                </CardContent>
-              </Card>
-            ))}
+                      <a
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2"
+                      >
+                        <ExternalLink className="size-3.5" />
+                        View Program
+                      </a>
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Additional Learning Section */}
-        <div className="mt-12 md:mt-16 text-center animate-fadeIn">
-          <div className="glass-effect inline-block px-8 py-6 rounded-2xl max-w-2xl">
-            <p className="text-lg md:text-xl font-semibold text-foreground mb-2">
-              Continuous Learning
-            </p>
-            <p className="text-sm md:text-base text-muted-foreground">
-              Committed to staying at the forefront of technology through
-              continuous learning, online courses, and hands-on projects in AI,
-              cloud computing, and modern web development.
-            </p>
+          {/* Continuous Learning */}
+          <div>
+            <Card className="border-border bg-muted/50">
+              <CardContent className="p-6 text-center">
+                <div className="size-10 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <BookOpen className="size-5 text-primary" />
+                </div>
+                <h4 className="font-semibold mb-2">Continuous Learning</h4>
+                <p className="text-muted-foreground text-sm max-w-lg mx-auto">
+                  Committed to staying at the forefront of technology through
+                  continuous learning, online courses, and hands-on projects in
+                  AI, cloud computing, and modern web development.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default Education;
+}

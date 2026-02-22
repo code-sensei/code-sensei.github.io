@@ -1,186 +1,179 @@
-import React from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, ArrowRight } from "lucide-react";
 
-const Hero = () => {
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById("about");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
+const socialLinks = [
+  {
+    id: "github",
+    label: "GitHub",
+    href: "https://github.com/code-sensei",
+    icon: Github,
+  },
+  {
+    id: "linkedin",
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/btsowa",
+    icon: Linkedin,
+  },
+  {
+    id: "email",
+    label: "Email",
+    href: "mailto:babangidatsowa@gmail.com",
+    icon: Mail,
+  },
+] as const;
+
+const stats = [
+  { value: "7+", label: "Years Experience" },
+  { value: "20+", label: "Projects Delivered" },
+  { value: "18+", label: "Happy Clients" },
+] as const;
+
+export default function Hero() {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     }
   };
 
-  const openLink = (platform: "github" | "linkedin" | "email") => () => {
-    const urls = {
-      github: "https://github.com/code-sensei",
-      linkedin: "https://linkedin.com/in/btsowa",
-      email: "mailto:babangidatsowa@gmail.com",
-    };
-    if (platform === "email") {
-      window.location.href = urls[platform];
+  const handleSocialClick = (href: string) => {
+    if (href.startsWith("mailto:")) {
+      window.location.href = href;
     } else {
-      window.open(urls[platform], "_blank", "noopener,noreferrer");
+      window.open(href, "_blank", "noopener,noreferrer");
     }
   };
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center pt-24 pb-16"
     >
-      {/* Animated Background with Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10">
-        {/* Animated Gradient Orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-
-        {/* Grid Pattern Overlay */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.05),transparent_50%)]"></div>
+      {/* Subtle background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="container-wide">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Content */}
-          <div className="text-center lg:text-left space-y-6 lg:space-y-8 animate-fadeIn order-2 lg:order-1">
-            <div className="space-y-4">
-              <p className="text-base sm:text-lg text-muted-foreground font-medium animate-slideIn">
-                Hi, I'm
-              </p>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold animate-slideIn delay-100">
-                <span className="gradient-text">Babangida Tsowa</span>
+          <div className="text-center lg:text-left space-y-8 order-2 lg:order-1">
+            {/* Status badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
+              <span className="size-1.5 rounded-full bg-primary" />
+              Available for opportunities
+            </div>
+
+            {/* Heading */}
+            <div className="space-y-3">
+              <p className="text-muted-foreground">Hi, I'm</p>
+              <h1 className="text-display-lg tracking-tight">
+                Babangida Tsowa
               </h1>
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground animate-slideIn delay-200">
+              <h2 className="text-heading-lg text-muted-foreground">
                 Product & AI Engineer
               </h2>
-              <p className="text-sm sm:text-base text-primary/80 font-medium animate-slideIn delay-250">
+              <p className="text-primary font-medium">
                 Organizer, AI Tinkerers Abuja
-              </p>
-              <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0 animate-slideIn delay-300">
-                I partner with forward-thinking organizations to architect
-                intelligent systems and scalable products that drive measurable
-                impact—from AI-powered platforms to mission-critical
-                applications.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slideIn delay-400">
+            {/* Description */}
+            <p className="text-muted-foreground text-body-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              I partner with forward-thinking organizations to architect
+              intelligent systems and scalable products that drive measurable
+              impact—from AI-powered platforms to mission-critical applications.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
               <Button
                 size="lg"
-                onClick={scrollToAbout}
-                className="group transition-smooth"
+                onClick={() => scrollToSection("projects")}
+                className="group"
               >
-                Explore My Work
-                <ArrowDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform" />
+                View My Work
+                <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-0.5" />
               </Button>
 
-              <div className="flex gap-3 justify-center">
-                <Button
-                  onClick={openLink("github")}
-                  variant="outline"
-                  size="icon"
-                  className="transition-smooth hover:scale-110 hover:border-primary hover:text-primary"
-                >
-                  <Github className="h-5 w-5" />
-                </Button>
-                <Button
-                  onClick={openLink("linkedin")}
-                  variant="outline"
-                  size="icon"
-                  className="transition-smooth hover:scale-110 hover:border-primary hover:text-primary"
-                >
-                  <Linkedin className="h-5 w-5" />
-                </Button>
-                <Button
-                  onClick={openLink("email")}
-                  variant="outline"
-                  size="icon"
-                  className="transition-smooth hover:scale-110 hover:border-primary hover:text-primary"
-                >
-                  <Mail className="h-5 w-5" />
-                </Button>
-              </div>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={() => scrollToSection("about")}
+                className="group"
+              >
+                Learn More
+                <ArrowDown className="ml-2 size-4 transition-transform group-hover:translate-y-0.5" />
+              </Button>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex gap-2 justify-center lg:justify-start">
+              {socialLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <Button
+                    key={link.id}
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => handleSocialClick(link.href)}
+                    className="rounded-full text-muted-foreground hover:text-foreground hover:bg-muted"
+                    aria-label={link.label}
+                  >
+                    <Icon className="size-5" />
+                  </Button>
+                );
+              })}
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 sm:gap-6 pt-8 animate-fadeIn delay-500">
-              <div className="text-center lg:text-left">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary">
-                  7+
+            <div className="flex flex-wrap justify-center lg:justify-start gap-8 pt-8 border-t border-border">
+              {stats.map((stat) => (
+                <div key={stat.label} className="text-center lg:text-left">
+                  <div className="text-display-sm text-foreground font-semibold">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="text-xs sm:text-sm text-muted-foreground">
-                  Years Experience
-                </div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary">
-                  20+
-                </div>
-                <div className="text-xs sm:text-sm text-muted-foreground">
-                  Projects Completed
-                </div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary">
-                  18+
-                </div>
-                <div className="text-xs sm:text-sm text-muted-foreground">
-                  Happy Clients
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
           {/* Profile Image */}
-          <div className="flex justify-center lg:justify-end order-1 lg:order-2 animate-scaleIn delay-200">
-            <div className="relative">
-              {/* Main Image Container */}
-              <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
-                {/* Gradient Background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/20 to-secondary/30 rounded-full blur-2xl animate-pulse"></div>
+          <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+            <div className="relative size-64 sm:size-72 lg:size-80">
+              {/* Simple ring */}
+              <div className="absolute inset-0 rounded-full border-2 border-border" />
 
-                {/* Image */}
-                <div className="relative w-full h-full rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 p-2">
-                  <div className="w-full h-full rounded-full overflow-hidden border-4 border-background shadow-2xl">
-                    <img
-                      src="/profile-image.png"
-                      alt="Babangida Tsowa"
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                </div>
-
-                {/* Floating Elements */}
-                <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary rounded-full animate-float shadow-lg"></div>
-                <div
-                  className="absolute -bottom-4 -left-4 w-6 h-6 bg-secondary rounded-full animate-float shadow-lg"
-                  style={{ animationDelay: "1s" }}
-                ></div>
-                <div
-                  className="absolute top-1/4 -left-6 w-4 h-4 bg-accent rounded-full animate-float shadow-lg"
-                  style={{ animationDelay: "2s" }}
-                ></div>
+              {/* Image */}
+              <div className="absolute inset-2 rounded-full overflow-hidden bg-muted">
+                <img
+                  src="/profile-image.png"
+                  alt="Babangida Tsowa"
+                  className="size-full object-cover"
+                />
               </div>
-
-              {/* Decorative Ring */}
-              <div className="absolute inset-0 border-2 border-primary/20 rounded-full animate-ping opacity-20"></div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={scrollToAbout}
-          className="rounded-full hover:bg-primary/10"
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <button
+          type="button"
+          onClick={() => scrollToSection("about")}
+          className="p-2 rounded-full text-muted-foreground hover:text-foreground transition-colors"
+          aria-label="Scroll to about section"
         >
-          <ArrowDown className="h-6 w-6 text-primary" />
-        </Button>
+          <ArrowDown className="size-5 animate-bounce" />
+        </button>
       </div>
     </section>
   );
-};
-
-export default Hero;
+}

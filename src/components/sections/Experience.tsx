@@ -1,332 +1,385 @@
-import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Briefcase, Calendar, CheckCircle2 } from "lucide-react";
+  Briefcase,
+  Calendar,
+  Rocket,
+  Brain,
+  Trophy,
+  Code,
+  BarChart3,
+  FileText,
+  Building2,
+  Zap,
+  TrendingUp,
+  Users,
+} from "lucide-react";
 
-const Experience = () => {
-  const experiences = [
-    {
-      company: "Ministry of Foreign Affairs, Nigeria",
-      role: "Software & AI Consultant",
-      duration: "Oct 2023 – Present",
-      description:
-        "Retained to architect AI-driven intelligence systems and full-stack platforms that modernize critical government operations—delivering sustainable transformation at scale.",
-      highlights: [
-        "Architected real-time intelligence platforms processing national security data—35% faster insights, exponentially better decision-making (AI, Fullstack).",
-        "Engineered responsive UIs with React, TypeScript, and Next.js that replaced legacy systems and streamlined cross-departmental workflows (Fullstack).",
-        "Delivered AI-powered automation tools that eliminated manual bottlenecks across multiple government agencies (AI, Consulting).",
-        "Facilitated strategic alignment sessions with senior stakeholders—translating technical complexity into executive clarity (Consulting).",
-        "Established AI integration standards now adopted across ministry departments (AI, Consulting).",
-      ],
-    },
-    {
-      company: "SweetRide Nigeria LTD",
-      role: "Chief Technology Officer (CTO)",
-      duration: "Oct 2022 – Aug 2024",
-      description:
-        "Brought in to rebuild technical infrastructure and lead product strategy for a high-growth mobility startup—transforming engineering culture while scaling operations.",
-      highlights: [
-        "Rebuilt core platform from ground up—25% faster delivery, 15% higher engagement, zero downtime during migration (Fullstack).",
-        "Authored strategic PRDs and conducted SWOT analyses that shaped AI roadmap and secured executive buy-in (Consulting, AI).",
-        "Elevated engineering team from ad-hoc to world-class—implementing code standards, testing protocols, and mentorship programs (Consulting, Fullstack).",
-        "Automated critical workflows that previously required manual intervention—unlocking operational scale (Fullstack, Consulting).",
-      ],
-    },
-    {
-      company: "Federal Ministry of Foreign Affairs",
-      role: "Development Team Lead (Contractor)",
-      duration: "Jan 2023 – Oct 2023",
-      description:
-        "Selected to lead high-stakes delivery of AI-powered big-data platforms for national intelligence—where failure wasn't an option.",
-      highlights: [
-        "Architected and delivered big-data AI systems handling millions of records—directly informing policy decisions at the highest levels (AI, Fullstack).",
-        "Built secure RESTful APIs with Node.js, Express, and JWT—meeting government-grade security standards on the first audit (Fullstack).",
-        "Led technical integration across multiple teams—ensuring zero discrepancies between frontend and backend features (Fullstack).",
-        "Introduced agile methodologies that cut delivery cycles in half while improving code quality (Consulting, Fullstack).",
-      ],
-    },
-    {
-      company: "Clafiya",
-      role: "Lead Frontend Engineer",
-      duration: "Jan 2021 – Oct 2022",
-      description:
-        "Recruited to lead frontend architecture for a venture-backed health-tech platform scaling from MVP to Series A—where execution determined funding.",
-      highlights: [
-        "Architected component libraries and frontend systems that supported $610K Series A raise—proving technical capability to investors (Fullstack).",
-        "Scaled platform to 1,000+ active users with React.js and Next.js—doubling admin efficiency while maintaining sub-second load times (Fullstack).",
-        "Built modular UI systems that compressed feature delivery cycles from weeks to days (Fullstack).",
-        "Orchestrated frontend-backend alignment across distributed teams—zero blocked releases over 18 months (Consulting, Fullstack).",
-      ],
-    },
-    {
-      company: "Quantum Tech LLC",
-      role: "Frontend Developer (Web3, Blockchain)",
-      duration: "Mar 2022 – Aug 2022",
-      description:
-        "Brought in to architect DApp interfaces for NFT marketplace launching on Ethereum and Polygon—where user experience directly impacted transaction volume.",
-      highlights: [
-        "Built production-ready DApp interfaces in Vue 3/Nuxt.js—seamlessly connecting Web3 wallets with smart contracts (Fullstack).",
-        "Launched NFT marketplace UI handling thousands of transactions across Ethereum and Polygon networks (Fullstack).",
-        "Bridged frontend-blockchain gap with Solidity developers—eliminating integration issues before production (Fullstack, Consulting).",
-      ],
-    },
-    {
-      company: "Asusu Technology",
-      role: "Full Stack Developer",
-      duration: "Feb 2020 – Mar 2021",
-      description:
-        "Built foundational full-stack systems for a digital finance platform—establishing patterns for scale before scale was needed.",
-      highlights: [
-        "Engineered API-frontend integrations for fintech workflows handling sensitive financial data—zero security incidents (Fullstack).",
-        "Built CI/CD pipelines that reduced deployment time from hours to minutes while increasing release confidence (Fullstack).",
-        "Optimized payment processing flows—directly improving transaction success rates and customer satisfaction (Fullstack, Consulting).",
-      ],
-    },
-  ];
+interface Experience {
+  company: string;
+  role: string;
+  duration: string;
+  description: string;
+  highlights: string[];
+  tags: string[];
+  icon: React.ElementType;
+  accent: string;
+}
 
+const experiences: Experience[] = [
+  {
+    company: "Ministry of Foreign Affairs",
+    role: "Software & AI Consultant",
+    duration: "Oct 2023 – Present",
+    description:
+      "Architecting AI-driven intelligence systems and full-stack platforms that modernize critical government operations.",
+    highlights: [
+      "35% faster insights with real-time intelligence platforms",
+      "AI integration standards adopted ministry-wide",
+    ],
+    tags: ["AI", "Fullstack", "Consulting"],
+    icon: Building2,
+    accent: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+  },
+  {
+    company: "SweetRide Nigeria",
+    role: "Chief Technology Officer",
+    duration: "Oct 2022 – Aug 2024",
+    description:
+      "Rebuilt technical infrastructure and led product strategy for a high-growth mobility startup.",
+    highlights: [
+      "25% faster delivery, 15% higher engagement",
+      "Automated critical workflows unlocking scale",
+    ],
+    tags: ["Leadership", "Strategy"],
+    icon: Zap,
+    accent: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+  },
+  {
+    company: "Federal Ministry of Foreign Affairs",
+    role: "Development Team Lead",
+    duration: "Jan 2023 – Oct 2023",
+    description:
+      "Led high-stakes delivery of AI-powered big-data platforms for national intelligence.",
+    highlights: [
+      "Big-data AI systems handling millions of records",
+      "Agile methodologies cutting delivery cycles in half",
+    ],
+    tags: ["AI", "Big Data", "Team Lead"],
+    icon: Brain,
+    accent: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+  },
+  {
+    company: "Clafiya",
+    role: "Lead Frontend Engineer",
+    duration: "Jan 2021 – Oct 2022",
+    description:
+      "Led frontend architecture for a venture-backed health-tech platform scaling from MVP to Series A.",
+    highlights: [
+      "Architected systems supporting $610K Series A",
+      "Scaled to 1,000+ users with sub-second loads",
+    ],
+    tags: ["React", "Architecture"],
+    icon: TrendingUp,
+    accent: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+  },
+  {
+    company: "Quantum Tech LLC",
+    role: "Frontend Developer (Web3)",
+    duration: "Mar 2022 – Aug 2022",
+    description:
+      "Architected DApp interfaces for NFT marketplace on Ethereum and Polygon.",
+    highlights: ["Production-ready DApp interfaces in Vue 3/Nuxt.js"],
+    tags: ["Web3", "Vue"],
+    icon: Code,
+    accent: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
+  },
+  {
+    company: "Asusu Technology",
+    role: "Full Stack Developer",
+    duration: "Feb 2020 – Mar 2021",
+    description:
+      "Built foundational full-stack systems for a digital finance platform.",
+    highlights: ["CI/CD pipelines reducing deployment from hours to minutes"],
+    tags: ["Fintech", "DevOps"],
+    icon: Briefcase,
+    accent: "bg-rose-500/10 text-rose-400 border-rose-500/20",
+  },
+];
+
+interface Achievement {
+  icon: React.ElementType;
+  title: string;
+  metric: string;
+  description: string;
+}
+
+const achievements: Achievement[] = [
+  {
+    icon: Rocket,
+    title: "Series A",
+    metric: "$610K",
+    description: "Funding secured at Clafiya",
+  },
+  {
+    icon: Brain,
+    title: "AI Delivery",
+    metric: "35%",
+    description: "Faster government insights",
+  },
+  {
+    icon: Trophy,
+    title: "Events Led",
+    metric: "5+",
+    description: "Major hackathons organized",
+  },
+  {
+    icon: Users,
+    title: "Mentored",
+    metric: "1000+",
+    description: "Students & professionals",
+  },
+];
+
+export default function Experience() {
   return (
-    <section id="experience" className="py-16 md:py-24 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 md:mb-16 animate-fadeIn">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            Work Experience
-          </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            My professional journey and the impact I've made at various
-            organizations
+    <section id="experience" className="section-padding">
+      <div className="container-wide">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <p className="text-primary font-medium mb-2 text-sm uppercase tracking-wide">
+            My journey
+          </p>
+          <h2 className="text-display-sm mb-4">Work Experience</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Building impactful solutions across government, enterprise, and
+            high-growth startups
           </p>
         </div>
 
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary via-primary/50 to-transparent rounded-full hidden md:block"></div>
-          <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-transparent rounded-full md:hidden"></div>
-
-          <div className="space-y-8 md:space-y-12">
-            {experiences.map((experience, index) => (
-              <div
-                key={index}
-                className={`relative flex items-center animate-fadeIn ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-                style={{ animationDelay: `${index * 150}ms` }}
-              >
-                {/* Timeline Dot */}
-                <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-primary rounded-full border-4 border-background z-10 shadow-lg">
-                  <div className="absolute inset-0 bg-primary rounded-full animate-ping opacity-75"></div>
-                </div>
-
-                {/* Content */}
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+          {/* Featured Experience - Large Card */}
+          <Card className="md:col-span-2 lg:col-span-2 border-border hover:border-primary/30 transition-colors group">
+            <CardContent className="p-6">
+              <div className="flex items-start gap-4 mb-4">
                 <div
-                  className={`w-full md:w-1/2 ${
-                    index % 2 === 0 ? "md:pr-12" : "md:pl-12"
-                  } ml-12 md:ml-0`}
+                  className={`size-12 rounded-xl flex items-center justify-center shrink-0 ${experiences[0].accent}`}
                 >
-                  <Card className="card-hover group border-2 hover:border-primary/50 overflow-hidden">
-                    {/* Gradient Background on Hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                    <CardHeader className="relative z-10">
-                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 mb-3">
-                        <div className="flex-1">
-                          <div className="flex items-start gap-2 mb-2">
-                            <Briefcase className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                            <div>
-                              <CardTitle className="text-lg md:text-xl group-hover:text-primary transition-colors">
-                                {experience.role}
-                              </CardTitle>
-                              <CardDescription className="text-base md:text-lg font-semibold text-primary mt-1">
-                                {experience.company}
-                              </CardDescription>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground bg-muted px-3 py-1.5 rounded-full glass-effect w-fit">
-                          <Calendar className="w-3.5 h-3.5" />
-                          {experience.duration}
-                        </div>
-                      </div>
-                      <p className="text-sm md:text-base text-muted-foreground">
-                        {experience.description}
-                      </p>
-                    </CardHeader>
-
-                    <CardContent className="relative z-10">
-                      <h4 className="font-semibold mb-3 flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-primary" />
-                        Key Achievements:
-                      </h4>
-                      <ul className="space-y-2.5">
-                        {experience.highlights.map(
-                          (highlight, highlightIndex) => (
-                            <li
-                              key={highlightIndex}
-                              className="flex items-start gap-2 group/item"
-                            >
-                              <span className="text-primary mt-1 group-hover/item:scale-125 transition-transform">
-                                •
-                              </span>
-                              <span className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                                {highlight}
-                              </span>
-                            </li>
-                          ),
-                        )}
-                      </ul>
-                    </CardContent>
-                  </Card>
+                  <Building2 className="size-6" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-2 mb-1">
+                    <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                      {experiences[0].role}
+                    </h3>
+                    <Badge
+                      variant="outline"
+                      className="text-xs border-border text-muted-foreground"
+                    >
+                      <Calendar className="size-3 mr-1" />
+                      {experiences[0].duration}
+                    </Badge>
+                  </div>
+                  <p className="text-primary text-sm">
+                    {experiences[0].company}
+                  </p>
                 </div>
               </div>
-            ))}
-          </div>
+
+              <p className="text-muted-foreground text-sm mb-4">
+                {experiences[0].description}
+              </p>
+
+              <div className="grid sm:grid-cols-2 gap-3 mb-4">
+                {experiences[0].highlights.map((highlight) => (
+                  <div
+                    key={highlight}
+                    className="flex items-start gap-2 text-sm bg-muted/50 rounded-lg p-3"
+                  >
+                    <span className="text-primary mt-0.5 shrink-0">
+                      <TrendingUp className="size-4" />
+                    </span>
+                    <span className="text-muted-foreground">{highlight}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-1.5">
+                {experiences[0].tags.map((tag) => (
+                  <Badge
+                    key={tag}
+                    variant="secondary"
+                    className="text-xs bg-primary/10 text-primary border-0"
+                  >
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Achievement Stats Card */}
+          <Card className="border-border bg-muted/30">
+            <CardContent className="p-6 h-full flex flex-col">
+              <h4 className="font-semibold text-sm text-muted-foreground mb-4">
+                Key Metrics
+              </h4>
+              <div className="grid grid-cols-2 gap-4 flex-1">
+                {achievements.map((achievement) => {
+                  const Icon = achievement.icon;
+                  return (
+                    <div key={achievement.title} className="text-center">
+                      <div className="size-10 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-2">
+                        <Icon className="size-5 text-primary" />
+                      </div>
+                      <div className="text-xl font-semibold text-foreground">
+                        {achievement.metric}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        {achievement.title}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Medium Cards - Other experiences */}
+          {experiences.slice(1, 4).map((exp) => {
+            const Icon = exp.icon;
+            return (
+              <Card
+                key={exp.company + exp.role}
+                className="border-border hover:border-primary/30 transition-colors group"
+              >
+                <CardContent className="p-5">
+                  <div className="flex items-start gap-3 mb-3">
+                    <div
+                      className={`size-10 rounded-lg flex items-center justify-center shrink-0 ${exp.accent}`}
+                    >
+                      <Icon className="size-5" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors line-clamp-1">
+                        {exp.role}
+                      </h3>
+                      <p className="text-primary text-xs">{exp.company}</p>
+                    </div>
+                  </div>
+
+                  <Badge
+                    variant="outline"
+                    className="text-xs border-border text-muted-foreground mb-3"
+                  >
+                    <Calendar className="size-3 mr-1" />
+                    {exp.duration}
+                  </Badge>
+
+                  <p className="text-muted-foreground text-xs mb-3 line-clamp-2">
+                    {exp.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-1">
+                    {exp.tags.map((tag) => (
+                      <Badge
+                        key={tag}
+                        variant="secondary"
+                        className="text-xs bg-primary/10 text-primary border-0 px-1.5 py-0"
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
+
+          {/* Earlier Roles - Compact Row */}
+          <Card className="md:col-span-2 lg:col-span-3 border-border">
+            <CardContent className="p-5">
+              <h4 className="font-semibold text-sm text-muted-foreground mb-4">
+                Earlier Roles
+              </h4>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
+                {experiences.slice(4).map((exp) => {
+                  const Icon = exp.icon;
+                  return (
+                    <div
+                      key={exp.company + exp.role}
+                      className="flex items-start gap-3 p-3 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors"
+                    >
+                      <div
+                        className={`size-9 rounded-lg flex items-center justify-center shrink-0 ${exp.accent}`}
+                      >
+                        <Icon className="size-4" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-0.5">
+                          <h4 className="font-medium text-sm text-foreground">
+                            {exp.role}
+                          </h4>
+                        </div>
+                        <p className="text-xs text-muted-foreground">
+                          {exp.company} • {exp.duration}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </CardContent>
+          </Card>
         </div>
+
+        {/* Policy & Community Work */}
+        <Card className="border-border bg-gradient-to-br from-primary/5 to-transparent">
+          <CardContent className="p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="size-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <FileText className="size-5 text-primary" />
+              </div>
+              <div>
+                <h4 className="font-semibold text-foreground">
+                  Policy & National Impact
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Beyond engineering, shaping technology strategy at scale
+                </p>
+              </div>
+            </div>
+
+            <div className="grid sm:grid-cols-3 gap-4">
+              <div className="p-4 rounded-lg bg-background/50 border border-border">
+                <h5 className="font-medium text-sm text-foreground mb-1">
+                  National AI Strategy
+                </h5>
+                <p className="text-xs text-muted-foreground">
+                  Reviewed and contributed to Nigeria's AI policy framework
+                </p>
+              </div>
+              <div className="p-4 rounded-lg bg-background/50 border border-border">
+                <h5 className="font-medium text-sm text-foreground mb-1">
+                  NITDA Guidelines
+                </h5>
+                <p className="text-xs text-muted-foreground">
+                  Contributed to software development standards
+                </p>
+              </div>
+              <div className="p-4 rounded-lg bg-background/50 border border-border">
+                <h5 className="font-medium text-sm text-foreground mb-1">
+                  AI Tinkerers Abuja
+                </h5>
+                <p className="text-xs text-muted-foreground">
+                  Founded and organize local AI builder community
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
-      {/* Key Achievements Section */}
-      <section className="pt-16 md:pt-20">
-        <div className="text-center mb-10 md:mb-12 animate-fadeIn">
-          <h3 className="text-2xl md:text-3xl font-bold mb-3 gradient-text">
-            Key Achievements
-          </h3>
-          <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto">
-            Selected highlights across my professional and community journey.
-          </p>
-        </div>
-        <div className="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-          <Card className="h-full card-hover border-l-4 border-primary flex flex-col group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <CardContent className="pt-5 pb-5 flex flex-col flex-1 relative z-10">
-              <div className="mb-3 flex items-center gap-2">
-                <span
-                  className="text-2xl group-hover:scale-110 transition-transform"
-                  role="img"
-                  aria-label="funding"
-                >
-                  🚀
-                </span>
-                <span className="font-semibold text-sm md:text-base">
-                  Series A Funding
-                </span>
-              </div>
-              <p className="text-muted-foreground text-xs md:text-sm flex-1 leading-relaxed">
-                Contributed to securing $610,000 in Series A funding at Clafiya
-                by driving and leading frontend innovation.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="h-full card-hover border-l-4 border-primary flex flex-col group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <CardContent className="pt-5 pb-5 flex flex-col flex-1 relative z-10">
-              <div className="mb-3 flex items-center gap-2">
-                <span
-                  className="text-2xl group-hover:scale-110 transition-transform"
-                  role="img"
-                  aria-label="ai"
-                >
-                  🤖
-                </span>
-                <span className="font-semibold text-sm md:text-base">
-                  AI Solution Delivery
-                </span>
-              </div>
-              <p className="text-muted-foreground text-xs md:text-sm flex-1 leading-relaxed">
-                Delivered a big-data AI solution for the Ministry of Foreign
-                Affairs, improving national security reporting processes.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="h-full card-hover border-l-4 border-primary flex flex-col group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <CardContent className="pt-5 pb-5 flex flex-col flex-1 relative z-10">
-              <div className="mb-3 flex items-center gap-2">
-                <span
-                  className="text-2xl group-hover:scale-110 transition-transform"
-                  role="img"
-                  aria-label="event"
-                >
-                  🏆
-                </span>
-                <span className="font-semibold text-sm md:text-base">
-                  Major Event Leadership
-                </span>
-              </div>
-              <p className="text-muted-foreground text-xs md:text-sm flex-1 leading-relaxed">
-                Organized the NACOSS National Hackathon and coordinated two
-                Google Hash Code Competitions.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="h-full card-hover border-l-4 border-primary flex flex-col group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <CardContent className="pt-5 pb-5 flex flex-col flex-1 relative z-10">
-              <div className="mb-3 flex items-center gap-2">
-                <span
-                  className="text-2xl group-hover:scale-110 transition-transform"
-                  role="img"
-                  aria-label="github"
-                >
-                  💻
-                </span>
-                <span className="font-semibold text-sm md:text-base">
-                  Community Training
-                </span>
-              </div>
-              <p className="text-muted-foreground text-xs md:text-sm flex-1 leading-relaxed">
-                Led a GitHub workshop attended by over 100 participants,
-                focusing on platform best practices.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="h-full card-hover border-l-4 border-primary flex flex-col group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <CardContent className="pt-5 pb-5 flex flex-col flex-1 relative z-10">
-              <div className="mb-3 flex items-center gap-2">
-                <span
-                  className="text-2xl group-hover:scale-110 transition-transform"
-                  role="img"
-                  aria-label="ds"
-                >
-                  📊
-                </span>
-                <span className="font-semibold text-sm md:text-base">
-                  AI Bootcamp Organizer
-                </span>
-              </div>
-              <p className="text-muted-foreground text-xs md:text-sm flex-1 leading-relaxed">
-                Organized a two-week Data Science and Artificial Intelligence
-                Bootcamp in partnership with DSN Nigeria.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="h-full card-hover border-l-4 border-primary flex flex-col group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <CardContent className="pt-5 pb-5 flex flex-col flex-1 relative z-10">
-              <div className="mb-3 flex items-center gap-2">
-                <span
-                  className="text-2xl group-hover:scale-110 transition-transform"
-                  role="img"
-                  aria-label="policy"
-                >
-                  📄
-                </span>
-                <span className="font-semibold text-sm md:text-base">
-                  National Policy Contributor
-                </span>
-              </div>
-              <p className="text-muted-foreground text-xs md:text-sm flex-1 leading-relaxed">
-                Participated in reviewing the National AI Strategy and NITDA's
-                Software Development Guidelines.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
     </section>
   );
-};
-
-export default Experience;
+}
