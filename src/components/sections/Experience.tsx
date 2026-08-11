@@ -147,9 +147,7 @@ export default function Experience() {
       <div className="container-wide">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <p className="text-primary font-medium mb-2 text-sm uppercase tracking-wide">
-            My journey
-          </p>
+          <p className="section-eyebrow">My journey</p>
           <h2 className="text-display-sm mb-4">Work Experience</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Building impactful solutions across government, enterprise, and

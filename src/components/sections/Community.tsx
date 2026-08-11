@@ -66,9 +66,7 @@ export default function Community() {
       <div className="container-wide">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <p className="text-primary font-medium mb-2 text-sm uppercase tracking-wide">
-            Giving back
-          </p>
+          <p className="section-eyebrow">Giving back</p>
           <h2 className="text-display-sm mb-4">Community & Mentorship</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Shaping the next generation of engineers through strategic
@@ -83,7 +81,7 @@ export default function Community() {
             return (
               <Card
                 key={activity.title}
-                className="group border-border hover:border-primary/30 transition-colors"
+                className="group border-border hover:border-primary/35 transition-colors duration-200 rounded-xl shadow-sm hover:shadow-md hover:shadow-primary/5"
               >
                 <CardContent className="p-5">
                   {/* Icon */}

@@ -56,9 +56,7 @@ export default function Education() {
       <div className="container-wide">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <p className="text-primary font-medium mb-2 text-sm uppercase tracking-wide">
-            Academic background
-          </p>
+          <p className="section-eyebrow">Academic background</p>
           <h2 className="text-display-sm mb-4">Education & Certifications</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Academic foundation and professional credentials that underpin

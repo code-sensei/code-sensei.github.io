@@ -65,9 +65,7 @@ const Contact = () => {
     <section id="contact" className="section-padding bg-muted/30">
       <div className="container-wide">
         <div className="text-center mb-16">
-          <p className="text-primary font-medium mb-2 text-sm uppercase tracking-wide">
-            Get in touch
-          </p>
+          <p className="section-eyebrow">Get in touch</p>
           <h2 className="text-display-sm mb-4">Let's Talk</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Currently accepting select consulting engagements and strategic

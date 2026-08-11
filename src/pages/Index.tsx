@@ -44,7 +44,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background">
       <SEO
         title="Babangida Tsowa | Product & AI Engineer"
         description="Trusted by government institutions and venture-backed startups to architect AI-driven platforms and mission-critical systems. Specializing in solutions where precision and scale aren't optional."

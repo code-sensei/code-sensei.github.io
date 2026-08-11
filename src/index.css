@@ -4,43 +4,43 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+ * Global design tokens — zinc-neutral surfaces with a single blue CTA accent (#2563EB).
+ * Typography: Space Grotesk (UI/body), Archivo (headings via `.font-heading`).
+ */
 @layer base {
     :root {
-        /* Professional Navy/Slate Color System */
-        /* Light Mode - Clean, professional, high contrast */
-        --background: 210 40% 98%; /* Very light blue-gray #F8FAFC */
-        --foreground: 222 47% 11%; /* Near black #0F172A */
+        --background: 0 0% 98%;
+        --foreground: 240 10% 4%;
 
-        --card: 0 0% 100%; /* Pure white */
-        --card-foreground: 222 47% 11%;
+        --card: 0 0% 100%;
+        --card-foreground: 240 10% 4%;
 
         --popover: 0 0% 100%;
-        --popover-foreground: 222 47% 11%;
+        --popover-foreground: 240 10% 4%;
 
-        /* Professional blue as primary - trust color */
-        --primary: 217 91% 60%; /* Professional blue #3B82F6 */
+        --primary: 221 83% 53%;
         --primary-foreground: 0 0% 100%;
 
-        --secondary: 215 20% 95%; /* Light gray #F1F5F9 */
-        --secondary-foreground: 222 47% 11%;
+        --secondary: 240 5% 96%;
+        --secondary-foreground: 240 10% 10%;
 
-        --muted: 215 20% 95%;
-        --muted-foreground: 215 16% 47%; /* Muted slate #64748B */
+        --muted: 240 5% 96%;
+        --muted-foreground: 240 4% 38%;
 
-        --accent: 215 20% 95%;
-        --accent-foreground: 222 47% 11%;
+        --accent: 240 5% 96%;
+        --accent-foreground: 240 10% 10%;
 
         --destructive: 0 84% 60%;
         --destructive-foreground: 0 0% 100%;
 
-        --border: 214 32% 91%; /* Light border #E2E8F0 */
-        --input: 214 32% 91%;
-        --ring: 217 91% 60%;
+        --border: 240 6% 90%;
+        --input: 240 6% 90%;
+        --ring: 221 83% 53%;
 
-        --radius: 0.5rem;
+        --radius: 0.75rem;
 
-        /* Chart colors */
-        --chart-1: 217 91% 60%;
+        --chart-1: 221 83% 53%;
         --chart-2: 142 71% 45%;
         --chart-3: 262 83% 58%;
         --chart-4: 43 96% 56%;
@@ -48,35 +48,39 @@
     }
 
     .dark {
-        /* Dark Mode - Sophisticated, professional dark */
-        --background: 222 47% 11%; /* Dark navy #0F172A */
-        --foreground: 210 40% 98%; /* Light text #F8FAFC */
+        --background: 240 10% 4%;
+        --foreground: 0 0% 98%;
 
-        --card: 217 33% 17%; /* Slightly lighter #1E293B */
-        --card-foreground: 210 40% 98%;
+        --card: 240 6% 10%;
+        --card-foreground: 0 0% 98%;
 
-        --popover: 217 33% 17%;
-        --popover-foreground: 210 40% 98%;
+        --popover: 240 6% 10%;
+        --popover-foreground: 0 0% 98%;
 
-        /* Professional blue - slightly brighter for dark mode */
         --primary: 217 91% 60%;
         --primary-foreground: 0 0% 100%;
 
-        --secondary: 217 33% 17%;
-        --secondary-foreground: 210 40% 98%;
+        --secondary: 240 4% 16%;
+        --secondary-foreground: 0 0% 98%;
 
-        --muted: 217 33% 17%;
-        --muted-foreground: 215 20% 65%; /* Lighter muted for dark #94A3B8 */
+        --muted: 240 4% 16%;
+        --muted-foreground: 240 5% 64%;
 
-        --accent: 217 33% 17%;
-        --accent-foreground: 210 40% 98%;
+        --accent: 240 4% 16%;
+        --accent-foreground: 0 0% 98%;
 
-        --destructive: 0 62% 30%;
-        --destructive-foreground: 210 40% 98%;
+        --destructive: 0 62% 32%;
+        --destructive-foreground: 0 0% 98%;
 
-        --border: 217 33% 25%; /* Subtle border #334155 */
-        --input: 217 33% 25%;
+        --border: 240 4% 18%;
+        --input: 240 4% 18%;
         --ring: 217 91% 60%;
+
+        --chart-1: 217 91% 60%;
+        --chart-2: 142 71% 48%;
+        --chart-3: 262 83% 62%;
+        --chart-4: 43 96% 56%;
+        --chart-5: 339 90% 56%;
     }
 
     * {
@@ -88,8 +92,45 @@
     }
 
     body {
-        @apply bg-background text-foreground antialiased;
-        font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+        @apply bg-background text-foreground antialiased font-sans;
+        font-feature-settings: "ss01", "ss02";
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.4;
+        background-image:
+            linear-gradient(
+                to right,
+                hsl(var(--border) / 0.45) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                to bottom,
+                hsl(var(--border) / 0.45) 1px,
+                transparent 1px
+            );
+        background-size: 56px 56px;
+        mask-image: radial-gradient(
+            ellipse 80% 70% at 50% -10%,
+            black 40%,
+            transparent 75%
+        );
+    }
+
+    .dark body::before {
+        opacity: 0.22;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        @apply font-heading tracking-tight text-balance;
     }
 }
 
@@ -153,28 +194,40 @@
 
     /* Professional utility classes */
     .container-wide {
-        @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
     }
 
     .section-padding {
-        @apply py-16 md:py-24;
+        @apply py-20 md:py-28;
     }
 
     .section-padding-sm {
-        @apply py-12 md:py-16;
+        @apply py-14 md:py-20;
+    }
+
+    /** Eyebrow label shared across marketing sections */
+    .section-eyebrow {
+        @apply text-primary font-semibold mb-2 text-[11px] sm:text-xs uppercase tracking-[0.2em];
+    }
+
+    .text-display-xl,
+    .text-display-lg,
+    .text-display-md,
+    .text-display-sm {
+        @apply font-heading;
     }
 
     /* Card styles - clean, minimal shadows */
     .card-base {
-        @apply bg-card border border-border rounded-lg;
+        @apply bg-card border border-border rounded-xl;
     }
 
     .card-interactive {
-        @apply bg-card border border-border rounded-lg transition-all duration-200;
+        @apply bg-card border border-border rounded-xl transition-colors duration-200;
     }
 
     .card-interactive:hover {
-        @apply border-primary/30 shadow-sm;
+        @apply border-primary/35 shadow-md shadow-primary/5;
     }
 
     /* Focus states for accessibility */
@@ -209,7 +262,7 @@
     }
 
     .section-title {
-        @apply text-3xl md:text-4xl font-semibold tracking-tight text-foreground mb-4;
+        @apply text-3xl md:text-4xl font-heading font-semibold tracking-tight text-foreground mb-4;
     }
 
     .section-subtitle {

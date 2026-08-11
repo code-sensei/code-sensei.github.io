@@ -200,7 +200,7 @@ const Cheatsheets = () => {
           <div className="container-wide section-padding">
             <div className="max-w-3xl">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/25 rounded-2xl mb-6 shadow-sm shadow-primary/5">
                 <Layers className="w-4 h-4 text-primary" />
                 <span className="text-sm font-medium text-primary">
                   Quick Reference Library

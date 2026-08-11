@@ -79,9 +79,7 @@ export default function About() {
       <div className="container-wide">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <p className="text-primary font-medium mb-2 text-sm uppercase tracking-wide">
-            Get to know me
-          </p>
+          <p className="section-eyebrow">Get to know me</p>
           <h2 className="text-display-sm mb-4">About Me</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Transforming complex challenges into elegant solutions across

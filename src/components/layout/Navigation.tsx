@@ -126,10 +126,10 @@ export default function Navigation() {
   return (
     <nav
       className={cn(
-        "fixed top-4 left-4 right-4 z-50 transition-all duration-200 rounded-xl",
+        "fixed top-4 left-4 right-4 z-50 transition-all duration-200 rounded-2xl max-w-7xl mx-auto",
         isScrolled
-          ? "bg-background/95 backdrop-blur-sm border border-border shadow-sm"
-          : "bg-background/80 backdrop-blur-sm",
+          ? "bg-background/[0.92] backdrop-blur-md border border-border shadow-lg shadow-black/5 dark:shadow-black/40"
+          : "bg-background/75 backdrop-blur-md border border-transparent dark:border-white/[0.06]",
       )}
     >
       <div className="px-4 sm:px-6">
@@ -138,7 +138,7 @@ export default function Navigation() {
           <button
             type="button"
             onClick={() => scrollToSection("home")}
-            className="group flex items-center gap-3 rounded-lg"
+            className="group flex items-center gap-3 rounded-xl cursor-pointer focus-ring"
             aria-label="Go to home"
           >
             <div className="relative">
@@ -149,7 +149,7 @@ export default function Navigation() {
               />
               <span className="absolute -bottom-0.5 -right-0.5 size-2.5 bg-primary rounded-full border-2 border-background" />
             </div>
-            <span className="hidden sm:block font-semibold text-foreground group-hover:text-primary transition-colors">
+            <span className="hidden sm:block font-heading font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
               Babangida
             </span>
           </button>
@@ -164,9 +164,9 @@ export default function Navigation() {
                   key={item.id}
                   onClick={() => scrollToSection(item.id, item.isRoute)}
                   className={cn(
-                    "px-3 py-1.5 rounded-md text-sm font-medium transition-colors",
+                    "px-3 py-1.5 rounded-lg text-sm font-medium transition-colors duration-200 cursor-pointer focus-ring",
                     isActive
-                      ? "text-primary bg-primary/10"
+                      ? "text-primary bg-primary/[0.12] shadow-sm shadow-primary/10"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted",
                   )}
                 >
@@ -215,9 +215,9 @@ export default function Navigation() {
                   key={item.id}
                   onClick={() => scrollToSection(item.id, item.isRoute)}
                   className={cn(
-                    "flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-left font-medium transition-colors",
+                    "flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-left font-medium transition-colors duration-200 cursor-pointer focus-ring min-h-11",
                     isActive
-                      ? "text-primary bg-primary/10"
+                      ? "text-primary bg-primary/[0.12]"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted",
                   )}
                 >
@@ -237,7 +237,7 @@ export default function Navigation() {
       {isOpen && (
         <button
           type="button"
-          className="fixed inset-0 bg-background/80 backdrop-blur-sm -z-10 lg:hidden"
+          className="fixed inset-0 bg-background/80 backdrop-blur-sm -z-10 lg:hidden cursor-pointer"
           onClick={() => setIsOpen(false)}
           aria-label="Close menu"
         />

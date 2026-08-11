@@ -55,13 +55,17 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-border bg-card">
-      <div className="container-wide py-12">
+    <footer className="relative border-t border-border bg-muted/25 backdrop-blur-[2px]">
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent"
+        aria-hidden
+      />
+      <div className="container-wide py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1 space-y-4">
             <div>
-              <h3 className="font-semibold text-foreground mb-2">
+              <h3 className="font-heading font-semibold text-foreground mb-2 text-lg">
                 Babangida Tsowa
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
@@ -108,7 +112,7 @@ export default function Footer() {
                   <button
                     type="button"
                     onClick={() => scrollToSection(link.href)}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer rounded-md px-0 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >
                     {link.name}
                   </button>
@@ -126,7 +130,7 @@ export default function Footer() {
                   <button
                     type="button"
                     onClick={() => scrollToSection(link.href)}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer rounded-md px-0 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >
                     {link.name}
                   </button>

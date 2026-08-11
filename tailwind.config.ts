@@ -23,11 +23,23 @@ export default {
     },
     extend: {
       fontFamily: {
-        // Single font family - Inter for everything (Minimal Swiss approach)
-        sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
+        /** Body copy — geometric, readable at UI sizes */
+        sans: [
+          "Space Grotesk",
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "sans-serif",
+        ],
+        /** Display / headings — strong silhouette for portfolio hierarchy */
+        heading: ["Archivo", "Space Grotesk", "system-ui", "sans-serif"],
       },
       fontSize: {
         // Professional, restrained type scale
+        "display-xl": [
+          "3.75rem",
+          { lineHeight: "1.05", letterSpacing: "-0.03em", fontWeight: "600" },
+        ],
         "display-lg": [
           "3rem",
           { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" },
