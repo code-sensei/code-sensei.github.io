@@ -369,7 +369,8 @@ A: Each search and AI response costs a small amount (fractions of a cent). A typ
 **Author**: Babangida Tsowa
 **Last Updated**: December 7, 2024
 **Companion Article**: [Technical Deep Dive](./building-iterative-research-agent.md)`,
-  coverImage: "/blog/ai-research-assistant.jpg",
+  coverImage:
+    "/blog/covers/building-smarter-research-assistant-beginners-guide.svg",
   author: {
     name: "Babangida Tsowa",
     avatar: "/profile-image.png",

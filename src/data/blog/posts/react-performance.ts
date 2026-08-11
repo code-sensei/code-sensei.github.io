@@ -141,7 +141,7 @@ function onRenderCallback(
 Performance optimization is an ongoing process. Start with measurements, identify bottlenecks, and apply these techniques where they matter most.
 
 What performance techniques have worked for you?`,
-  coverImage: "/blog/react-performance.jpg",
+  coverImage: "/blog/covers/react-performance-optimization.svg",
   author: {
     name: "Babangida Tsowa",
     avatar: "/profile-image.png",

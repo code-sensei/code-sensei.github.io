@@ -89,7 +89,7 @@ I'm excited about:
 5. Be patient—success takes time
 
 What's your career story? I'd love to hear it!`,
-  coverImage: "/blog/career-journey.jpg",
+  coverImage: "/blog/covers/journey-student-to-cto.svg",
   author: {
     name: "Babangida Tsowa",
     avatar: "/profile-image.png",

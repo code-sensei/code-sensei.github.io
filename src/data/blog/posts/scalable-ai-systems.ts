@@ -67,7 +67,7 @@ What challenges have you faced in building AI systems? Share your experiences in
 ---
 
 *This post is based on my experience building AI solutions for organizations including the Federal Ministry of Foreign Affairs and various tech startups.*`,
-  coverImage: "/blog/ai-systems.jpg",
+  coverImage: "/blog/covers/building-scalable-ai-systems.svg",
   author: {
     name: "Babangida Tsowa",
     avatar: "/profile-image.png",

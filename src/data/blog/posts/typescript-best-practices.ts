@@ -117,7 +117,7 @@ function makeSound(animal: Dog | Cat) {
 ## Conclusion
 
 TypeScript is a powerful tool when used correctly. These practices have helped me build maintainable, bug-free applications at scale.`,
-  coverImage: "/blog/typescript.jpg",
+  coverImage: "/blog/covers/typescript-best-practices.svg",
   author: {
     name: "Babangida Tsowa",
     avatar: "/profile-image.png",

@@ -326,7 +326,7 @@ The future of search is here. Is your content ready for it?
 ---
 
 *Have questions about implementing AEO on your site? Reach out on [Twitter](https://twitter.com/iam_ehnigma) or [LinkedIn](https://linkedin.com/in/btsowa).*`,
-  coverImage: "/blog/aeo-ai-search-optimization.jpg",
+  coverImage: "/blog/covers/beyond-seo-building-for-ai-search-engines.svg",
   author: {
     name: "Babangida Tsowa",
     avatar: "/profile-image.png",

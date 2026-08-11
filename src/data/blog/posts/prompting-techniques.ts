@@ -86,8 +86,7 @@ If you are looking for Accuracy, here is your cheat sheet:
 Treat complex prompting like a rigorous academic assignment. Don't just ask the question. Give background context, provide examples of good answers, ask the model to show its work step-by-step, and tell it to check its answers before submitting.
 
 Found this guide helpful? Save it for your next project or share it with a developer who needs it.`,
-  coverImage:
-    "https://wdtiaofugxxinuohhnsn.supabase.co/storage/v1/object/sign/blog-thumbnails/prompting-techniques.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wNTQ3ODllMS1jY2QzLTQ4NGMtOWM3Yi1jOTQ2MDY5NGRiNDIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJibG9nLXRodW1ibmFpbHMvcHJvbXB0aW5nLXRlY2huaXF1ZXMuanBlZyIsImlhdCI6MTc2NTQ2NTg4NiwiZXhwIjoxODYwMDczODg2fQ.AqKtEPF3LSxEdiiAUEyhu4sk5ChGqKJuaSEpO_ruzr4",
+  coverImage: "/blog/covers/my-guide-to-mastering-ai-prompting-techniques.svg",
   author: {
     name: "Babangida Tsowa",
     avatar: "/profile-image.png",

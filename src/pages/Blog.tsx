@@ -211,7 +211,7 @@ const Blog = () => {
           ]}
           url="/blog"
           ogType="website"
-          ogImage="/blog/og-blog.png"
+          ogImage="/blog/og-blog.svg"
           ogImageAlt="Babangida Tsowa Blog - Ideas on AI, Engineering & Leadership"
           structuredData={blogStructuredData}
           breadcrumbs={[
@@ -225,7 +225,7 @@ const Blog = () => {
           <div className="container-wide section-padding">
             <div className="max-w-3xl">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/25 rounded-2xl mb-6 shadow-sm shadow-primary/5">
                 <BookOpen className="w-4 h-4 text-primary" />
                 <span className="text-sm font-medium text-primary">
                   Blog & Insights
