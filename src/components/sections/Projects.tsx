@@ -1,7 +1,9 @@
+import { useCallback, useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Github, ExternalLink, Lock, Calendar } from "lucide-react";
+import { publicAsset } from "@/lib/publicAsset";
 
 interface Project {
   title: string;
@@ -20,7 +22,7 @@ const projects: Project[] = [
     title: "AI-Powered Intelligence Platform",
     description:
       "Developed a big-data and AI-enabled intelligence system for the Federal Ministry of Foreign Affairs, enabling advanced policy analysis and real-time security insights.",
-    image: "/projects/mfa-project.png",
+    image: "/projects/mfa-project.svg",
     technologies: [
       "React",
       "Next.js",
@@ -37,7 +39,7 @@ const projects: Project[] = [
     title: "National Youth Investment Fund Portal",
     description:
       "Developed a prototype for the NYIF portal, enhancing user experience and accessibility for Nigerian youth seeking investment opportunities.",
-    image: "/projects/fmyd-nyif.png",
+    image: "/projects/fmyd-nyif.svg",
     technologies: ["React", "Next.js", "TypeScript", "Node.js"],
     liveUrl: "https://nyif-portal.vercel.app/",
     featured: true,
@@ -47,7 +49,7 @@ const projects: Project[] = [
     title: "NCC Licencing Management System",
     description:
       "Frontend developer on a team modernizing license management for the Nigerian Communications Commission (NCC).",
-    image: "/projects/lamsy.png",
+    image: "/projects/lamsy.svg",
     technologies: ["Angular", "TypeScript", "HTML5", "CSS3", "Semantic UI"],
     liveUrl: "https://licensing.ncc.gov.ng/",
     featured: true,
@@ -56,7 +58,7 @@ const projects: Project[] = [
     title: "NCC Type Approval System",
     description:
       "Contributed to the Type Approval Management System for the NCC, enhancing regulatory compliance and device approval processes.",
-    image: "/projects/tamsy.png",
+    image: "/projects/tamsy.svg",
     technologies: ["Angular", "TypeScript", "HTML5", "CSS3", "Semantic UI"],
     liveUrl: "https://tamsy.ncc.gov.ng/",
     featured: true,
@@ -65,7 +67,7 @@ const projects: Project[] = [
     title: "PowerPulse – AI Energy Management",
     description:
       "A personal project leveraging AI to manage & optimize energy consumption in homes with prepaid meters in Nigeria.",
-    image: "/projects/power-pulse.png",
+    image: "/projects/power-pulse.svg",
     technologies: ["React.js", "Next.js", "TypeScript", "AI", "LangChain"],
     liveUrl: "https://power-pulse-vercel.vercel.app/",
     featured: false,
@@ -75,7 +77,7 @@ const projects: Project[] = [
     title: "Market Intelligence AI Agent",
     description:
       "Developed an AI agent for market intelligence, enabling real-time data analysis and insights generation.",
-    image: "/projects/mercatus.png",
+    image: "/projects/mercatus.svg",
     technologies: [
       "LangChain",
       "HuggingFace",
@@ -91,7 +93,7 @@ const projects: Project[] = [
     title: "Clafiya Dashboard & Components",
     description:
       "Engineered frontend architecture and a reusable component system for Clafiya, supporting $610K Series A funding.",
-    image: "/projects/clafiya-user.png",
+    image: "/projects/clafiya-user.svg",
     technologies: ["React.js", "Next.js", "TypeScript", "UI/UX", "SSR"],
     liveUrl: "https://user-dashboard-liart.vercel.app/auth/login",
     featured: false,
@@ -101,8 +103,7 @@ const projects: Project[] = [
     title: "Web3 DApp & NFT Marketplace",
     description:
       "Frontend developer for decentralized applications integrating Web3 functionality with Vue 3 and blockchain APIs.",
-    image:
-      "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=400&h=250&fit=crop",
+    image: "/projects/web3-marketplace.svg",
     technologies: ["Vue 3", "Nuxt.js", "Web3.js", "Ethereum", "Polygon"],
     featured: false,
     demo: false,
@@ -122,18 +123,58 @@ const bookMeeting = () => {
   );
 };
 
+/**
+ * Maps data URLs to real asset paths (`public/` + optional CDN), respecting Vite `base`.
+ *
+ * @param {string} src - Absolute URL or root-relative path such as `/projects/x.png`.
+ * @returns {string} Loadable `src` for `<img>`.
+ */
+function resolveProjectImage(src: string): string {
+  if (src.startsWith("https://") || src.startsWith("http://")) {
+    return src;
+  }
+  return publicAsset(src.replace(/^\//, ""));
+}
+
+/**
+ * Project tile with resilient preview: a missing project image falls back to `placeholder.svg`.
+ *
+ * @param {{ project: Project }} props - Card payload.
+ * @returns {JSX.Element} Project card.
+ */
 function ProjectCard({ project }: { project: Project }) {
   const hasAction = project.githubUrl || project.liveUrl || project.private;
+  const placeholderSrc = publicAsset("placeholder.svg");
+  const [imgSrc, setImgSrc] = useState(() =>
+    resolveProjectImage(project.image),
+  );
+
+  useEffect(() => {
+    setImgSrc(resolveProjectImage(project.image));
+  }, [project.image]);
+
+  /**
+   * Swaps to local placeholder once when the screenshot 404s or blocks loading.
+   *
+   * @returns {void}
+   */
+  const handleImageError = useCallback(() => {
+    setImgSrc((current) =>
+      current === placeholderSrc ? current : placeholderSrc,
+    );
+  }, [placeholderSrc]);
 
   return (
-    <Card className="group overflow-hidden border-border hover:border-primary/30 transition-colors">
+    <Card className="group overflow-hidden border-border hover:border-primary/35 transition-colors duration-200 rounded-xl shadow-sm hover:shadow-md hover:shadow-primary/5">
       {/* Image - fixed height */}
       <div className="relative h-36 overflow-hidden bg-muted">
         <img
-          src={project.image}
+          src={imgSrc}
           alt={project.title}
           className="size-full object-cover transition-transform duration-300 group-hover:scale-105"
           loading="lazy"
+          decoding="async"
+          onError={handleImageError}
         />
 
         {/* Private badge */}
@@ -243,9 +284,7 @@ export default function Projects() {
       <div className="container-wide">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <p className="text-primary font-medium mb-2 text-sm uppercase tracking-wide">
-            My work
-          </p>
+          <p className="section-eyebrow">My work</p>
           <h2 className="text-display-sm mb-4">Selected Projects</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Real-world solutions deployed across government, enterprise, and
