@@ -1,6 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+/** Devicon SVGs (CDN) — avoids empty `public/tech-icons` breaking local `<img>` paths. */
+const DEVICON_ICONS_BASE =
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons";
+
 interface Skill {
   name: string;
   level: "Expert" | "Advanced" | "Proficient";
@@ -61,22 +65,44 @@ const skillCategories: SkillCategory[] = [
 
 interface TechIcon {
   name: string;
-  file: string;
+  /** Fully qualified SVG URL (Devicon registry on jsDelivr). */
+  iconUrl: string;
 }
 
 const techStack: TechIcon[] = [
-  { name: "React", file: "react.svg" },
-  { name: "TypeScript", file: "typescript.svg" },
-  { name: "JavaScript", file: "javascript.svg" },
-  { name: "HTML5", file: "html5.svg" },
-  { name: "CSS3", file: "css3.svg" },
-  { name: "Next.js", file: "nextjs.svg" },
-  { name: "Node.js", file: "nodejs.svg" },
-  { name: "Express", file: "express.svg" },
-  { name: "Vue.js", file: "vuejs.svg" },
-  { name: "Angular", file: "angular.svg" },
-  { name: "TailwindCSS", file: "tailwindcss.svg" },
-  { name: "Sass", file: "sass.svg" },
+  { name: "React", iconUrl: `${DEVICON_ICONS_BASE}/react/react-original.svg` },
+  {
+    name: "TypeScript",
+    iconUrl: `${DEVICON_ICONS_BASE}/typescript/typescript-original.svg`,
+  },
+  {
+    name: "JavaScript",
+    iconUrl: `${DEVICON_ICONS_BASE}/javascript/javascript-original.svg`,
+  },
+  { name: "HTML5", iconUrl: `${DEVICON_ICONS_BASE}/html5/html5-original.svg` },
+  { name: "CSS3", iconUrl: `${DEVICON_ICONS_BASE}/css3/css3-original.svg` },
+  {
+    name: "Next.js",
+    iconUrl: `${DEVICON_ICONS_BASE}/nextjs/nextjs-original.svg`,
+  },
+  {
+    name: "Node.js",
+    iconUrl: `${DEVICON_ICONS_BASE}/nodejs/nodejs-original.svg`,
+  },
+  {
+    name: "Express",
+    iconUrl: `${DEVICON_ICONS_BASE}/express/express-original.svg`,
+  },
+  { name: "Vue.js", iconUrl: `${DEVICON_ICONS_BASE}/vuejs/vuejs-original.svg` },
+  {
+    name: "Angular",
+    iconUrl: `${DEVICON_ICONS_BASE}/angular/angular-original.svg`,
+  },
+  {
+    name: "TailwindCSS",
+    iconUrl: `${DEVICON_ICONS_BASE}/tailwindcss/tailwindcss-original.svg`,
+  },
+  { name: "Sass", iconUrl: `${DEVICON_ICONS_BASE}/sass/sass-original.svg` },
 ];
 
 // Distinct colors for each skill level
@@ -92,9 +118,7 @@ export default function Skills() {
       <div className="container-wide">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <p className="text-primary font-medium mb-2 text-sm uppercase tracking-wide">
-            What I work with
-          </p>
+          <p className="section-eyebrow">What I work with</p>
           <h2 className="text-display-sm mb-4">Technical Expertise</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Technologies and frameworks proven across government, enterprise,
@@ -110,12 +134,16 @@ export default function Skills() {
                 key={tech.name}
                 className="group flex flex-col items-center gap-2"
               >
-                <div className="size-12 rounded-lg bg-card border border-border p-2.5 transition-colors group-hover:border-primary/50">
+                <div className="size-12 rounded-xl bg-card border border-border p-2.5 transition-colors duration-200 group-hover:border-primary/45 group-hover:shadow-md group-hover:shadow-primary/5">
                   <img
-                    src={`/tech-icons/${tech.file}`}
-                    alt={tech.name}
-                    className="size-full object-contain"
+                    src={tech.iconUrl}
+                    alt=""
+                    width={28}
+                    height={28}
+                    className="size-full object-contain dark:[filter:brightness(1.08)]"
                     loading="lazy"
+                    decoding="async"
+                    referrerPolicy="no-referrer"
                   />
                 </div>
                 <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">
