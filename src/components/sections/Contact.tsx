@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 const Contact = () => {
@@ -12,8 +11,6 @@ const Contact = () => {
     email: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -24,27 +21,27 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    toast({
-      title: "Message sent!",
-      description: "Thank you for your message. I'll get back to you soon.",
-    });
-
-    setFormData({ name: "", email: "", message: "" });
-    setIsSubmitting(false);
+    const subject = "Project enquiry from " + formData.name;
+    const body = [
+      "Name: " + formData.name,
+      "Reply email: " + formData.email,
+      "",
+      formData.message,
+    ].join("\n");
+    window.location.href =
+      "mailto:babangida@btsowa.dev?subject=" +
+      encodeURIComponent(subject) +
+      "&body=" +
+      encodeURIComponent(body);
   };
 
   const contactInfo = [
     {
       label: "Email",
-      value: "tsowababangida@gmail.com",
-      href: "mailto:tsowababangida@gmail.com",
+      value: "babangida@btsowa.dev",
+      href: "mailto:babangida@btsowa.dev",
       icon: Mail,
     },
     {
@@ -68,9 +65,7 @@ const Contact = () => {
           <p className="section-eyebrow">Get in touch</p>
           <h2 className="text-display-sm mb-4">Let's Talk</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Currently accepting select consulting engagements and strategic
-            partnerships. Share your challenge—let's explore if we're the right
-            fit.
+            For independent model or agent evaluation, share the release question\n            or workflow you need tested. I also welcome AI engineering and\n            governance enquiries.
           </p>
         </div>
 
@@ -121,11 +116,9 @@ const Contact = () => {
                 <Button
                   type="submit"
                   className="w-full"
-                  disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                </Button>
-              </form>
+                  Open email draft
+                </Button>\n                <p className="text-sm text-muted-foreground">\n                  Your email app will open with these details. Send the message\n                  there, or email babangida@btsowa.dev directly.\n                </p>\n              </form>
             </CardContent>
           </Card>
 
