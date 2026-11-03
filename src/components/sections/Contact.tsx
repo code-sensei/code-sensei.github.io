@@ -65,7 +65,9 @@ const Contact = () => {
           <p className="section-eyebrow">Get in touch</p>
           <h2 className="text-display-sm mb-4">Let's Talk</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            For independent model or agent evaluation, share the release question\n            or workflow you need tested. I also welcome AI engineering and\n            governance enquiries.
+            For independent model or agent evaluation, share the release question
+            or workflow you need tested. I also welcome AI engineering and
+            governance enquiries.
           </p>
         </div>
 
@@ -118,7 +120,12 @@ const Contact = () => {
                   className="w-full"
                 >
                   Open email draft
-                </Button>\n                <p className="text-sm text-muted-foreground">\n                  Your email app will open with these details. Send the message\n                  there, or email babangida@btsowa.dev directly.\n                </p>\n              </form>
+                </Button>
+                <p className="text-sm text-muted-foreground">
+                  Your email app will open with these details. Send the message
+                  there, or email babangida@btsowa.dev directly.
+                </p>
+              </form>
             </CardContent>
           </Card>
 
