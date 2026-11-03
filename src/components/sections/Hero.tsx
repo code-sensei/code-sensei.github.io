@@ -17,7 +17,7 @@ const socialLinks = [
     {
         id: "email",
         label: "Email",
-        href: "mailto:babangidatsowa@gmail.com",
+        href: "mailto:babangida@btsowa.dev",
         icon: Mail,
     },
 ] as const;
