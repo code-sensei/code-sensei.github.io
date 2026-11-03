@@ -7,6 +7,7 @@ import Projects from "../components/sections/Projects";
 import Experience from "../components/sections/Experience";
 import Community from "../components/sections/Community";
 import Education from "../components/sections/Education";
+import Contact from "../components/sections/Contact";
 import Navigation from "../components/layout/Navigation";
 import Footer from "../components/layout/Footer";
 import {
@@ -76,6 +77,7 @@ const Index = () => {
         <Experience />
         <Community />
         <Education />
+        <Contact />
       </main>
       <Footer />
     </div>
