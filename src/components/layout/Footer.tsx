@@ -15,7 +15,7 @@ const socialLinks = [
   {
     name: "Email",
     icon: Mail,
-    url: "mailto:babangidatsowa@gmail.com",
+    url: "mailto:babangida@btsowa.dev",
   },
 ];
 
@@ -149,7 +149,7 @@ export default function Footer() {
               partnerships.
             </p>
             <Button size="sm" className="w-full" asChild>
-              <a href="mailto:babangidatsowa@gmail.com">
+              <a href="mailto:babangida@btsowa.dev">
                 <Mail className="size-4 mr-2" />
                 Contact Me
               </a>
